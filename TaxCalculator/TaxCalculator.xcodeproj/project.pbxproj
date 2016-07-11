@@ -15,6 +15,7 @@
 		462D62721D33279000D4FE94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462D62701D33279000D4FE94 /* LaunchScreen.storyboard */; };
 		462D627D1D33279100D4FE94 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D627C1D33279100D4FE94 /* TaxCalculatorTests.swift */; };
 		462D62881D33279100D4FE94 /* TaxCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */; };
+		462D62961D332FCE00D4FE94 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62951D332FCE00D4FE94 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		462D62831D33279100D4FE94 /* TaxCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorUITests.swift; sourceTree = "<group>"; };
 		462D62891D33279100D4FE94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		462D62951D332FCE00D4FE94 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
+				462D62951D332FCE00D4FE94 /* Colors.swift */,
 				462D62661D33279000D4FE94 /* ViewController.swift */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
 				462D626E1D33279000D4FE94 /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				462D62671D33279000D4FE94 /* ViewController.swift in Sources */,
+				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 			);
