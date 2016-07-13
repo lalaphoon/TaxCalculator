@@ -17,11 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setUpColors(){
         //setup Navigation bar colors
-        UINavigationBar.appearance().barTintColor = UIColor.customGreenColor()
+        UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         //setup status bar colors
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        //UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        //setup tab bar colors
+        UITabBar.appearance().barTintColor = UIColor.customBlackColor()
+        UITabBar.appearance().tintColor = UIColor.customOrangeColor()
+        
+        //Setup View color
+       // UIView.appearance().backgroundColor = UIColor.customBackgroundColor(60)
     }
    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
