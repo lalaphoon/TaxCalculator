@@ -13,6 +13,7 @@ class StepZero: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor =  UIColor.customOrangeColor()
+        self.addLabel("I'm a page zero", self)
         // Do any additional setup after loading the view.
     }
 
@@ -20,6 +21,7 @@ class StepZero: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

@@ -13,8 +13,10 @@ class StepTwo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.customOrangeColor()
+        self.addLabel("I'm page Two", self)
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
