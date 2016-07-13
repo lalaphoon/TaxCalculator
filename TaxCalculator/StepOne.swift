@@ -14,7 +14,6 @@ class StepOne: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.customOrangeColor()
         self.addLabel("I'm page one",self)
-
         // Do any additional setup after loading the view.
     }
    
