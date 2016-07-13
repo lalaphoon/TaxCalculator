@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62641D33279000D4FE94 /* AppDelegate.swift */; };
-		462D62671D33279000D4FE94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62661D33279000D4FE94 /* ViewController.swift */; };
 		462D626A1D33279000D4FE94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462D62681D33279000D4FE94 /* Main.storyboard */; };
 		462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462D626B1D33279000D4FE94 /* TaxCalculator.xcdatamodeld */; };
 		462D626F1D33279000D4FE94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 462D626E1D33279000D4FE94 /* Assets.xcassets */; };
@@ -16,6 +15,9 @@
 		462D627D1D33279100D4FE94 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D627C1D33279100D4FE94 /* TaxCalculatorTests.swift */; };
 		462D62881D33279100D4FE94 /* TaxCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */; };
 		462D62961D332FCE00D4FE94 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62951D332FCE00D4FE94 /* Colors.swift */; };
+		467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC3F1D36EE1B00D3358D /* StepOne.swift */; };
+		467EFC421D36EE3700D3358D /* StepZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC411D36EE3700D3358D /* StepZero.swift */; };
+		467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC431D36EEDA00D3358D /* StepTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +40,6 @@
 /* Begin PBXFileReference section */
 		462D62611D33279000D4FE94 /* TaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		462D62641D33279000D4FE94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		462D62661D33279000D4FE94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		462D62691D33279000D4FE94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		462D626C1D33279000D4FE94 /* TaxCalculator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaxCalculator.xcdatamodel; sourceTree = "<group>"; };
 		462D626E1D33279000D4FE94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +52,9 @@
 		462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorUITests.swift; sourceTree = "<group>"; };
 		462D62891D33279100D4FE94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		462D62951D332FCE00D4FE94 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		467EFC3F1D36EE1B00D3358D /* StepOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepOne.swift; sourceTree = "<group>"; };
+		467EFC411D36EE3700D3358D /* StepZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepZero.swift; sourceTree = "<group>"; };
+		467EFC431D36EEDA00D3358D /* StepTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +105,9 @@
 		462D62631D33279000D4FE94 /* TaxCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
 				462D62951D332FCE00D4FE94 /* Colors.swift */,
-				462D62661D33279000D4FE94 /* ViewController.swift */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
 				462D626E1D33279000D4FE94 /* Assets.xcassets */,
 				462D62701D33279000D4FE94 /* LaunchScreen.storyboard */,
@@ -129,6 +133,16 @@
 				462D62891D33279100D4FE94 /* Info.plist */,
 			);
 			path = TaxCalculatorUITests;
+			sourceTree = "<group>";
+		};
+		467EFC3E1D36EDEF00D3358D /* Onboardingpages */ = {
+			isa = PBXGroup;
+			children = (
+				467EFC411D36EE3700D3358D /* StepZero.swift */,
+				467EFC3F1D36EE1B00D3358D /* StepOne.swift */,
+				467EFC431D36EEDA00D3358D /* StepTwo.swift */,
+			);
+			name = Onboardingpages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,10 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				462D62671D33279000D4FE94 /* ViewController.swift in Sources */,
+				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
+				467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */,
+				467EFC421D36EE3700D3358D /* StepZero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +508,7 @@
 				462D628E1D33279100D4FE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		462D628F1D33279100D4FE94 /* Build configuration list for PBXNativeTarget "TaxCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +517,7 @@
 				462D62911D33279100D4FE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		462D62921D33279100D4FE94 /* Build configuration list for PBXNativeTarget "TaxCalculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +526,7 @@
 				462D62941D33279100D4FE94 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

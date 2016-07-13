@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qnd-VY-HRo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fnc-SB-vhi">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -62,6 +62,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDc-T0-iTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1189" y="-190"/>
+        </scene>
+        <!--Step Zero-->
+        <scene sceneID="FX7-QW-oAn">
+            <objects>
+                <viewController storyboardIdentifier="StepZero" id="fnc-SB-vhi" customClass="StepZero" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vPq-uc-gDa"/>
+                        <viewControllerLayoutGuide type="bottom" id="JZD-L4-mAw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0l4-6C-lYG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fwf-PS-HKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742" y="-573"/>
+        </scene>
+        <!--Step One-->
+        <scene sceneID="j0m-RO-zjP">
+            <objects>
+                <viewController storyboardIdentifier="StepOne" id="Kf6-9e-MzR" customClass="StepOne" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CuO-av-EpI"/>
+                        <viewControllerLayoutGuide type="bottom" id="7gd-je-85j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hjV-TT-8CQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HC8-tc-71U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-106" y="-582"/>
+        </scene>
+        <!--Step Two-->
+        <scene sceneID="GO7-fd-2vW">
+            <objects>
+                <viewController storyboardIdentifier="StepTwo" id="JQc-VK-Uem" customClass="StepTwo" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vjj-mb-NXA"/>
+                        <viewControllerLayoutGuide type="bottom" id="6fd-Xw-mdq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lsm-LY-yVI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xlU-74-Feu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="520" y="-573"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dHT-bh-Zbc">
