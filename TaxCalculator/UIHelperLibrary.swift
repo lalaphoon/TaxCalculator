@@ -29,6 +29,19 @@ extension UIViewController {
         //func buttonaction(sender:UIButton!)
         //{}
     }
+    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ myview: UIViewController){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: 100, height: 50))
+        button.backgroundColor = .clearColor()
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.whiteColor().CGColor
+        button.setTitle(title, forState: .Normal)
+        button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
+        myview.view.addSubview(button)
+        //buttonaction is a type of selector.
+        //on your viewcontroller page, you should have
+        //func buttonaction(sender:UIButton!)
+        //{}
+    }
     func addTextField(myview: UIViewController){
         var txtField : UITextField = UITextField()
         txtField.frame = CGRectMake(50, 250, 100,50)

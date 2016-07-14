@@ -17,6 +17,8 @@ class ParentOnboardingPagesViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.customOrangeColor()
         addPages()
+        self.addWhiteButton("Sign Up", "SignUp:", 20, (self.view.frame.size.height - 70),self)
+        self.addWhiteButton("Log In", "Login:", 200,(self.view.frame.size.height - 70),self )
         // Do any additional setup after loading the view.
     }
     
@@ -27,10 +29,16 @@ class ParentOnboardingPagesViewController: UIViewController {
     
     func addPages(){
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! OnboardingPagesViewController
-        self.pageViewController.view.frame = CGRectMake(0,30,self.view.frame.width, self.view.frame.size.height-60)
+        self.pageViewController.view.frame = CGRectMake(0,30,self.view.frame.width, self.view.frame.size.height-100)
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
         self.pageViewController.didMoveToParentViewController(self)
+    }
+    func SignUp(sender: UIButton!){
+        print("Sign up")
+    }
+    func Login(sender: UIButton!){
+        print("Log in")
     }
     
 
