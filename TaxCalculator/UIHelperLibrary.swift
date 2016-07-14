@@ -20,7 +20,7 @@ extension UIViewController {
     }
     func addButton(title: String, _ buttonaction:Selector, _ myview: UIViewController){
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-        button.backgroundColor = .greenColor()
+        button.backgroundColor = UIColor.customGreenColor()
         button.setTitle(title, forState: .Normal)
         button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
         myview.view.addSubview(button)
@@ -47,6 +47,23 @@ extension UIViewController {
         txtField.frame = CGRectMake(50, 250, 100,50)
         txtField.backgroundColor = UIColor.grayColor()
         myview.view.addSubview(txtField)
+    }
+    func addBlackLayer(myview: UIViewController){
+        /*let gradientLayer: CAGradientLayer = CAGradientLayer()
+        let color = UIColor.customBackgroundColor(60)
+        gradientLayer.frame = myview.view.frame
+        gradientLayer.colors = [color]
+        //gradientLayer.locations = [0.0]
+        myview.view.layer.insertSublayer(gradientLayer, atIndex:  0 )*/
+        var blackCover: UIView = UIView()
+        blackCover.frame = myview.view.frame
+        blackCover.backgroundColor = UIColor.customBackgroundColor(60)
+        blackCover.layer.opacity = 1.0
+        myview.view.addSubview(blackCover)
+        
+    }
+    func addBackgroundImage(imagename: String, _ myview: UIViewController){
+        myview.view.backgroundColor = UIColor(patternImage: UIImage (named: imagename)!)
     }
 }
 

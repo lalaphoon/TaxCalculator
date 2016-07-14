@@ -46,7 +46,7 @@
         <!--Page1-->
         <scene sceneID="w5P-TF-l3M">
             <objects>
-                <viewController id="dgD-WI-w9g" sceneMemberID="viewController">
+                <viewController id="dgD-WI-w9g" customClass="CalculatorViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="se1-1t-5KH"/>
                         <viewControllerLayoutGuide type="bottom" id="DVX-pd-RtP"/>
@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fwf-PS-HKw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-742" y="-573"/>
+            <point key="canvasLocation" x="-1794" y="-573"/>
         </scene>
         <!--Step One-->
         <scene sceneID="j0m-RO-zjP">
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HC8-tc-71U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="-582"/>
+            <point key="canvasLocation" x="-1150" y="-566"/>
         </scene>
         <!--Step Two-->
         <scene sceneID="GO7-fd-2vW">
@@ -121,12 +121,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="qnd-VY-HRo" kind="show" identifier="Start" id="85Z-dy-Lgq"/>
+                        <segue destination="qnd-VY-HRo" kind="show" identifier="Start" animates="NO" id="85Z-dy-Lgq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlU-74-Feu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="239"/>
+            <point key="canvasLocation" x="-515" y="-566"/>
         </scene>
         <!--Parent Onboarding Pages View Controller-->
         <scene sceneID="6nA-95-esa">
