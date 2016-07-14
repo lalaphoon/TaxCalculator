@@ -120,10 +120,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="qnd-VY-HRo" kind="show" identifier="Start" id="85Z-dy-Lgq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlU-74-Feu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="520" y="-573"/>
+            <point key="canvasLocation" x="335" y="239"/>
         </scene>
         <!--Parent Onboarding Pages View Controller-->
         <scene sceneID="6nA-95-esa">
@@ -143,10 +146,10 @@
             </objects>
             <point key="canvasLocation" x="-1150" y="314"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Start View Controller-->
         <scene sceneID="dHT-bh-Zbc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qnd-VY-HRo" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="StartView" automaticallyAdjustsScrollViewInsets="NO" id="qnd-VY-HRo" customClass="StartViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MKY-ap-RdL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

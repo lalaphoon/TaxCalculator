@@ -15,6 +15,7 @@
 		462D627D1D33279100D4FE94 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D627C1D33279100D4FE94 /* TaxCalculatorTests.swift */; };
 		462D62881D33279100D4FE94 /* TaxCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */; };
 		462D62961D332FCE00D4FE94 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62951D332FCE00D4FE94 /* Colors.swift */; };
+		467D34961D380110008D820B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467D34951D380110008D820B /* StartViewController.swift */; };
 		467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC3F1D36EE1B00D3358D /* StepOne.swift */; };
 		467EFC421D36EE3700D3358D /* StepZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC411D36EE3700D3358D /* StepZero.swift */; };
 		467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC431D36EEDA00D3358D /* StepTwo.swift */; };
@@ -55,6 +56,7 @@
 		462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorUITests.swift; sourceTree = "<group>"; };
 		462D62891D33279100D4FE94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		462D62951D332FCE00D4FE94 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		467D34951D380110008D820B /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		467EFC3F1D36EE1B00D3358D /* StepOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepOne.swift; sourceTree = "<group>"; };
 		467EFC411D36EE3700D3358D /* StepZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepZero.swift; sourceTree = "<group>"; };
 		467EFC431D36EEDA00D3358D /* StepTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		462D62631D33279000D4FE94 /* TaxCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				467D34941D3800AF008D820B /* Main */,
 				467EFC491D36F3C500D3358D /* Utility */,
 				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
@@ -139,6 +142,14 @@
 				462D62891D33279100D4FE94 /* Info.plist */,
 			);
 			path = TaxCalculatorUITests;
+			sourceTree = "<group>";
+		};
+		467D34941D3800AF008D820B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				467D34951D380110008D820B /* StartViewController.swift */,
+			);
+			name = Main;
 			sourceTree = "<group>";
 		};
 		467EFC3E1D36EDEF00D3358D /* Onboardingpages */ = {
@@ -298,6 +309,7 @@
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
 				467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */,
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
+				467D34961D380110008D820B /* StartViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
 				467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */,

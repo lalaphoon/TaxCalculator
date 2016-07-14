@@ -15,7 +15,8 @@ class ParentOnboardingPagesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.customOrangeColor()
+        //self.view.backgroundColor = UIColor.customOrangeColor()
+        self.view.backgroundColor = UIColor.customGreenColor()
         addPages()
         self.addWhiteButton("Sign Up", "SignUp:", 20, (self.view.frame.size.height - 70),self)
         self.addWhiteButton("Log In", "Login:", 200,(self.view.frame.size.height - 70),self )

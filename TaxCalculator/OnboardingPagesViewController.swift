@@ -28,6 +28,9 @@ class OnboardingPagesViewController: UIPageViewController , UIPageViewController
     func getStepTwo() -> StepTwo {
         return storyboard!.instantiateViewControllerWithIdentifier("StepTwo") as! StepTwo
     }
+    func getStart() -> StartViewController {
+        return storyboard!.instantiateViewControllerWithIdentifier("StartView") as! StartViewController
+    }
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         if viewController.isKindOfClass(StepTwo){
             return getStepOne()

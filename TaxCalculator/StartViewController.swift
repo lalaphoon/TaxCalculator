@@ -1,31 +1,26 @@
 //
-//  StepTwo.swift
+//  StartViewController.swift
 //  TaxCalculator
 //
-//  Created by Mengyi LUO on 2016-07-13.
+//  Created by Mengyi LUO on 2016-07-14.
 //  Copyright © 2016 WTC Tax. All rights reserved.
 //
 
 import UIKit
 
-class StepTwo: UIViewController {
+class StartViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.customOrangeColor()
-        self.addLabel("I'm page Two", self)
-        self.addWhiteButton("Start", "Start:", 20, self.view.frame.size.height - 300, self)
+
         // Do any additional setup after loading the view.
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func Start(sender: UIButton!){
-     performSegueWithIdentifier("Start", sender: self)
-    }
+    
 
     /*
     // MARK: - Navigation
