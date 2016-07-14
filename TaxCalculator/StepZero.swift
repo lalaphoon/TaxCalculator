@@ -14,6 +14,7 @@ class StepZero: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor =  UIColor.customOrangeColor()
         self.addLabel("I'm a page zero", self)
+        self.addButton("test", "Clickme:", self)
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +23,9 @@ class StepZero: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    func Clickme(sender: UIButton! ){
+        print("Clicked me!")
+    }
 
     /*
     // MARK: - Navigation

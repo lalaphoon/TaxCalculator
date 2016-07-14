@@ -17,7 +17,7 @@ class OnboardingPagesViewController: UIPageViewController , UIPageViewController
         self.dataSource = self
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = .darkGrayColor()
+        
     }
     func getStepZero() -> StepZero{
         return storyboard!.instantiateViewControllerWithIdentifier("StepZero") as! StepZero

@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+//self-defined functions=========================================================
     func setUpColors(){
         //setup Navigation bar colors
         UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
@@ -30,10 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Setup View color
        // UIView.appearance().backgroundColor = UIColor.customBackgroundColor(60)
     }
-   
+    func dotsOnPagesSettings(){
+        var pageController = UIPageControl.appearance()
+        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
+        pageController.backgroundColor = UIColor.customOrangeColor()
+    }
+ //=====================================================================================
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         setUpColors()
+        dotsOnPagesSettings()
         return true
     }
 

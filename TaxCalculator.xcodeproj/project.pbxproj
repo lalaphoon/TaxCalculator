@@ -20,6 +20,7 @@
 		467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC431D36EEDA00D3358D /* StepTwo.swift */; };
 		467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */; };
 		467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */; };
+		467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		467EFC431D36EEDA00D3358D /* StepTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
 		467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelperLibrary.swift; sourceTree = "<group>"; };
+		467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParentOnboardingPagesViewController.swift; path = ../ParentOnboardingPagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 		467EFC3E1D36EDEF00D3358D /* Onboardingpages */ = {
 			isa = PBXGroup;
 			children = (
+				467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */,
 				467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */,
 				467EFC411D36EE3700D3358D /* StepZero.swift */,
 				467EFC3F1D36EE1B00D3358D /* StepOne.swift */,
@@ -293,6 +296,7 @@
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
+				467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */,
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
