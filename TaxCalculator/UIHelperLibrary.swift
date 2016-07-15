@@ -29,8 +29,8 @@ extension UIViewController {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ myview: UIViewController){
-        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: 100, height: 50))
+    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat, _ myview: UIViewController){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.backgroundColor = .clearColor()
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.whiteColor().CGColor
@@ -68,13 +68,28 @@ extension UIViewController {
 }
 
 
-class customView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame:frame)
+extension UIView {
+    func addBackground(imagename: String) {
+        // screen width and height:
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIScreen.mainScreen().bounds.size.height
+        
+        let imageViewBackground = UIImageView(frame: CGRectMake(0, 0, width, height))
+        imageViewBackground.image = UIImage(named: imagename )
+        
+        // you can change the content mode:
+        imageViewBackground.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        self.addSubview(imageViewBackground)
+        self.sendSubviewToBack(imageViewBackground)
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    func darken(opacity: CGFloat){
+        var blackCover: UIView = UIView()
+        blackCover.frame = self.frame
+        blackCover.backgroundColor = UIColor.customBackgroundColor(opacity)
+        blackCover.layer.opacity = 1.0
+        self.addSubview(blackCover)
     }
+
 }
 

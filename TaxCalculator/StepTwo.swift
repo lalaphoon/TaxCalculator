@@ -14,7 +14,7 @@ class StepTwo: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.customOrangeColor()
         self.addLabel("I'm page Two", self)
-        self.addWhiteButton("Start", "Start:", 20, self.view.frame.size.height - 300, self)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -23,9 +23,7 @@ class StepTwo: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func Start(sender: UIButton!){
-     performSegueWithIdentifier("Start", sender: self)
-    }
+    
 
     /*
     // MARK: - Navigation

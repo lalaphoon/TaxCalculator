@@ -120,9 +120,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="qnd-VY-HRo" kind="show" identifier="Start" animates="NO" id="85Z-dy-Lgq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlU-74-Feu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,6 +138,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="qnd-VY-HRo" kind="show" identifier="Start" id="NCd-fO-cs5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qc6-oi-qWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
