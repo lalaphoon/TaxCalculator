@@ -90,6 +90,20 @@ extension UIView {
         blackCover.layer.opacity = 1.0
         self.addSubview(blackCover)
     }
+    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        button.backgroundColor = .clearColor()
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.whiteColor().CGColor
+        button.setTitle(title, forState: .Normal)
+        button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
+        self.addSubview(button)
+        //buttonaction is a type of selector.
+        //on your viewcontroller page, you should have
+        //func buttonaction(sender:UIButton!)
+        //{}
+    }
+  
 
 }
 
