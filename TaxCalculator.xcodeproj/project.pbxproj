@@ -121,10 +121,10 @@
 		462D62631D33279000D4FE94 /* TaxCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
 				467EFC491D36F3C500D3358D /* Utility */,
 				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
 				467D34941D3800AF008D820B /* Main */,
-				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
 				462D626E1D33279000D4FE94 /* Assets.xcassets */,

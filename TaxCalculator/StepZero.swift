@@ -15,6 +15,7 @@ class StepZero: UIViewController {
         self.view.backgroundColor =  UIColor.customOrangeColor()
         self.addLabel("I'm a page zero", self)
         self.addButton("test", "Clickme:", self)
+      
         // Do any additional setup after loading the view.
     }
 

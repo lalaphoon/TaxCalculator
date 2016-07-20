@@ -15,11 +15,9 @@ class StartTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.revealViewController() != nil {
-          
-            self.navigationItem.leftBarButtonItem = menuButton
+            //self.navigationItem.leftBarButtonItem = menuButton
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
-            
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
 

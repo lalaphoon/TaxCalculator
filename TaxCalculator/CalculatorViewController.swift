@@ -12,12 +12,9 @@ class CalculatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.addBackgroundImage("background.jpg", self)
-        self.view.addBackground("background.jpg")
-        self.view.darken(60)
-        //self.addBlackLayer(self)
+        //initEverything()
+        self.addTextField()
         
-
         // Do any additional setup after loading the view.
     }
     
@@ -26,7 +23,12 @@ class CalculatorViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func initEverything(){
+        //self.addBackgroundImage("background.jpg", self)
+        self.view.addBackground("background.jpg")
+        self.view.darken(60)
+        //self.addBlackLayer(self)
+    }
 
     /*
     // MARK: - Navigation

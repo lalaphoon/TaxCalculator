@@ -65,6 +65,25 @@ extension UIViewController {
     func addBackgroundImage(imagename: String, _ myview: UIViewController){
         myview.view.backgroundColor = UIColor(patternImage: UIImage (named: imagename)!)
     }
+    func addTextField( ){
+        let sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
+        sampleTextField.tintColor = UIColor.customOrangeColor()
+        sampleTextField.backgroundColor = UIColor.clearColor()
+        sampleTextField.placeholder = "Enter text here"
+        sampleTextField.font = UIFont.systemFontOfSize(15)
+        sampleTextField.autocorrectionType = UITextAutocorrectionType.No
+        sampleTextField.keyboardType = UIKeyboardType.Default
+        sampleTextField.returnKeyType = UIReturnKeyType.Done
+        sampleTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        sampleTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+
+        //sampleTextField.delegate = self
+       
+        sampleTextField.setBottomBorder(UIColor.customOrangeColor())
+        
+        
+        self.view.addSubview(sampleTextField)
+    }
 }
 
 
@@ -103,7 +122,23 @@ extension UIView {
         //func buttonaction(sender:UIButton!)
         //{}
     }
+    
   
 
+}
+
+extension UITextField{
+    func setBottomBorder(color: UIColor)
+    {
+        self.borderStyle = UITextBorderStyle.None;
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = color.CGColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
+        
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
 }
 
