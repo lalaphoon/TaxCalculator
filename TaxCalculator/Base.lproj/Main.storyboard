@@ -146,6 +146,42 @@
             </objects>
             <point key="canvasLocation" x="-515" y="-566"/>
         </scene>
+        <!--Step Four-->
+        <scene sceneID="wqh-e7-621">
+            <objects>
+                <viewController storyboardIdentifier="StepFour" id="ZtS-4u-8oc" customClass="StepFour" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eYz-Ed-J5y"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ST-sY-OQv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Urj-S8-8q4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2RK-hu-DLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="-566"/>
+        </scene>
+        <!--Step Three-->
+        <scene sceneID="uND-W5-c8T">
+            <objects>
+                <viewController storyboardIdentifier="StepThree" id="la2-hS-QEW" customClass="StepThree" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sDD-ic-kXZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="sXg-1J-8oT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EQ3-qH-Spv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WUo-vW-uGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101" y="-566"/>
+        </scene>
         <!--Parent Onboarding Pages View Controller-->
         <scene sceneID="6nA-95-esa">
             <objects>

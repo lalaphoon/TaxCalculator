@@ -28,11 +28,24 @@ class OnboardingPagesViewController: UIPageViewController , UIPageViewController
     func getStepTwo() -> StepTwo {
         return storyboard!.instantiateViewControllerWithIdentifier("StepTwo") as! StepTwo
     }
+    func getStepThree() -> StepThree {
+        return storyboard!.instantiateViewControllerWithIdentifier("StepThree") as! StepThree
+    }
+    func getStepFour() -> StepFour {
+        return storyboard!.instantiateViewControllerWithIdentifier("StepFour") as! StepFour
+
+    }
     func getStart() -> StartViewController {
         return storyboard!.instantiateViewControllerWithIdentifier("StartView") as! StartViewController
     }
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        if viewController.isKindOfClass(StepTwo){
+        if viewController.isKindOfClass(StepFour){
+            return getStepThree()
+        }
+        else if viewController.isKindOfClass(StepThree){
+            return getStepTwo()
+        }
+        else if viewController.isKindOfClass(StepTwo){
             return getStepOne()
         }else if viewController.isKindOfClass(StepOne){
             return getStepZero()
@@ -46,14 +59,22 @@ class OnboardingPagesViewController: UIPageViewController , UIPageViewController
         }
         else if viewController.isKindOfClass(StepOne){
             return getStepTwo()
-        } else
+        }
+        else if viewController.isKindOfClass(StepTwo){
+            return getStepThree()
+        }
+        else if viewController.isKindOfClass(StepThree){
+            return getStepFour()
+        }
+        
+        else
         {
             return nil
         }
         
     }
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return 3
+        return 5
     }
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
