@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
+		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
+		460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910FA1D41A6C7003C6A65 /* User+CoreDataProperties.swift */; };
+		460910FE1D41A999003C6A65 /* CoreDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910FD1D41A999003C6A65 /* CoreDataFetcher.swift */; };
 		462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62641D33279000D4FE94 /* AppDelegate.swift */; };
 		462D626A1D33279000D4FE94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462D62681D33279000D4FE94 /* Main.storyboard */; };
 		462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462D626B1D33279000D4FE94 /* TaxCalculator.xcdatamodeld */; };
@@ -45,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
+		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		460910FA1D41A6C7003C6A65 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		460910FD1D41A999003C6A65 /* CoreDataFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataFetcher.swift; sourceTree = "<group>"; };
 		462D62611D33279000D4FE94 /* TaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		462D62641D33279000D4FE94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		462D62691D33279000D4FE94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +106,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		460910F41D41789B003C6A65 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				460910F81D41A4C1003C6A65 /* User.swift */,
+				460910FA1D41A6C7003C6A65 /* User+CoreDataProperties.swift */,
+				460910FC1D41A97E003C6A65 /* Fetcher */,
+				460910F51D4178B1003C6A65 /* Saver */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		460910F51D4178B1003C6A65 /* Saver */ = {
+			isa = PBXGroup;
+			children = (
+				460910F61D4178D5003C6A65 /* CoreDataSaver.swift */,
+			);
+			name = Saver;
+			sourceTree = "<group>";
+		};
+		460910FC1D41A97E003C6A65 /* Fetcher */ = {
+			isa = PBXGroup;
+			children = (
+				460910FD1D41A999003C6A65 /* CoreDataFetcher.swift */,
+			);
+			name = Fetcher;
+			sourceTree = "<group>";
+		};
 		462D62581D33279000D4FE94 = {
 			isa = PBXGroup;
 			children = (
@@ -121,9 +156,8 @@
 		462D62631D33279000D4FE94 /* TaxCalculator */ = {
 			isa = PBXGroup;
 			children = (
-				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
+				460910F41D41789B003C6A65 /* CoreData */,
 				467EFC491D36F3C500D3358D /* Utility */,
-				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
 				467D34941D3800AF008D820B /* Main */,
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
@@ -156,6 +190,8 @@
 		467D34941D3800AF008D820B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
+				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
 				467D34951D380110008D820B /* StartViewController.swift */,
 				46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */,
 				467D34971D381D61008D820B /* CalculatorViewController.swift */,
@@ -327,11 +363,15 @@
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
+				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
+				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				467D34981D381D61008D820B /* CalculatorViewController.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
 				467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */,
+				460910FE1D41A999003C6A65 /* CoreDataFetcher.swift in Sources */,
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
+				460910F91D41A4C1003C6A65 /* User.swift in Sources */,
 				467D34961D380110008D820B /* StartViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,

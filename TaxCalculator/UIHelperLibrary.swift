@@ -65,7 +65,7 @@ extension UIViewController {
     func addBackgroundImage(imagename: String, _ myview: UIViewController){
         myview.view.backgroundColor = UIColor(patternImage: UIImage (named: imagename)!)
     }
-    func addTextField( ){
+    func addTextField(){
         let sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
         sampleTextField.tintColor = UIColor.customOrangeColor()
         sampleTextField.backgroundColor = UIColor.clearColor()
@@ -77,7 +77,7 @@ extension UIViewController {
         sampleTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         sampleTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
 
-        //sampleTextField.delegate = self
+        //sampleTextField.delegate = myview
        
         sampleTextField.setBottomBorder(UIColor.customOrangeColor())
         
@@ -121,6 +121,26 @@ extension UIView {
         //on your viewcontroller page, you should have
         //func buttonaction(sender:UIButton!)
         //{}
+    }
+    func addTextField(inout sampleTextField: UITextField, placeholder: String){
+        sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
+        sampleTextField.tintColor = UIColor.customOrangeColor()
+        sampleTextField.backgroundColor = UIColor.clearColor()
+        sampleTextField.placeholder = placeholder
+        sampleTextField.font = UIFont.systemFontOfSize(15)
+        sampleTextField.autocorrectionType = UITextAutocorrectionType.No
+        sampleTextField.keyboardType = UIKeyboardType.Default
+        sampleTextField.returnKeyType = UIReturnKeyType.Done
+        sampleTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        sampleTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        
+        //sampleTextField.delegate = myview
+        
+        sampleTextField.setBottomBorder(UIColor.customOrangeColor())
+        
+        
+        self.addSubview(sampleTextField)
+
     }
     
   
