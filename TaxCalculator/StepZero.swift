@@ -13,8 +13,8 @@ class StepZero: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor =  UIColor.customOrangeColor()
-        self.addLabel("I'm a page zero", self)
-        self.addButton("test", "Clickme:", self)
+        self.addLabel("I'm a page zero")
+        self.addButton("test", "Clickme:")
       
         // Do any additional setup after loading the view.
     }

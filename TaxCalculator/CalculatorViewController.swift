@@ -9,11 +9,12 @@
 import UIKit
 
 class CalculatorViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //initEverything()
-        self.addTextField()
+       self.addTextField( "Please input your name", 1)
         
         // Do any additional setup after loading the view.
     }

@@ -10,44 +10,39 @@ import UIKit
 
 extension UIViewController {
     //a test for adding a label
-    func addLabel(what: String, _ myview: UIViewController){
+    func addLabel(what: String){
         var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
         label.center = CGPointMake(160, 284)
         label.textAlignment = NSTextAlignment.Center
         label.text = what
-        myview.view.addSubview(label)
+        self.view.addSubview(label)
     
     }
-    func addButton(title: String, _ buttonaction:Selector, _ myview: UIViewController){
+    func addButton(title: String, _ buttonaction:Selector){
         let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         button.backgroundColor = UIColor.customGreenColor()
         button.setTitle(title, forState: .Normal)
         button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
-        myview.view.addSubview(button)
+        self.view.addSubview(button)
         //buttonaction is a type of selector.
         //on your viewcontroller page, you should have
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat, _ myview: UIViewController){
+    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.backgroundColor = .clearColor()
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.whiteColor().CGColor
         button.setTitle(title, forState: .Normal)
         button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
-        myview.view.addSubview(button)
+        self.view.addSubview(button)
         //buttonaction is a type of selector.
         //on your viewcontroller page, you should have
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addTextField(myview: UIViewController){
-        var txtField : UITextField = UITextField()
-        txtField.frame = CGRectMake(50, 250, 100,50)
-        txtField.backgroundColor = UIColor.grayColor()
-        myview.view.addSubview(txtField)
-    }
+    
     func addBlackLayer(myview: UIViewController){
         /*let gradientLayer: CAGradientLayer = CAGradientLayer()
         let color = UIColor.customBackgroundColor(60)
@@ -65,17 +60,19 @@ extension UIViewController {
     func addBackgroundImage(imagename: String, _ myview: UIViewController){
         myview.view.backgroundColor = UIColor(patternImage: UIImage (named: imagename)!)
     }
-    func addTextField(){
+    func addTextField( placeholder: String = "Enter your value", _ tag: Int){
         let sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
         sampleTextField.tintColor = UIColor.customOrangeColor()
         sampleTextField.backgroundColor = UIColor.clearColor()
-        sampleTextField.placeholder = "Enter text here"
+        sampleTextField.placeholder = placeholder
         sampleTextField.font = UIFont.systemFontOfSize(15)
         sampleTextField.autocorrectionType = UITextAutocorrectionType.No
         sampleTextField.keyboardType = UIKeyboardType.Default
         sampleTextField.returnKeyType = UIReturnKeyType.Done
         sampleTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         sampleTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        sampleTextField.tag = tag
+        
 
         //sampleTextField.delegate = myview
        
@@ -122,8 +119,8 @@ extension UIView {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addTextField(inout sampleTextField: UITextField, placeholder: String){
-        sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
+    func addTextField( placeholder: String = "Enter your value", _ tag : Int){
+        let sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
         sampleTextField.tintColor = UIColor.customOrangeColor()
         sampleTextField.backgroundColor = UIColor.clearColor()
         sampleTextField.placeholder = placeholder
@@ -133,6 +130,7 @@ extension UIView {
         sampleTextField.returnKeyType = UIReturnKeyType.Done
         sampleTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
         sampleTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+        sampleTextField.tag = tag
         
         //sampleTextField.delegate = myview
         
@@ -140,8 +138,41 @@ extension UIView {
         
         
         self.addSubview(sampleTextField)
+        
+        /* =========================get a text of uitextfild by tag ==========================
+        
+        http://stackoverflow.com/questions/31281352/how-to-get-text-from-programmatically-added-uitextview-swift
+        
+        for var index = 0; index < 3; ++index {
+        var textField = UITextField(frame: CGRectMake(0, 0, 300, 40))
+        var pom:CGFloat = 130 + CGFloat(index*50)
+        textField.center = CGPointMake(185, pom)
+        textField.layer.borderWidth = 1.0;
+        textField.layer.cornerRadius = 5.0;
+        textField.textAlignment = NSTextAlignment.Center
+        textField.tag = index
+        self.textFields.append( textField )
+        self.view.addSubview(textField)
+        }
+        
+        
+        
+        for var index = 0; index < 3; ++index {
+            if let textField = self.textFieldForTag( index ) {
+                print( textField.text )
+            }
+        }
+        
+        
+        func textFieldForTag(tag: Int) -> UITextField? {
+            return self.textFields.filter({ $0.tag == tag }).first
+        }
+        
+        */
 
     }
+   
+ 
     
   
 

@@ -13,7 +13,7 @@ class StepOne: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.customOrangeColor()
-        self.addLabel("I'm page one",self)
+        self.addLabel("I'm page one")
         // Do any additional setup after loading the view.
     }
    

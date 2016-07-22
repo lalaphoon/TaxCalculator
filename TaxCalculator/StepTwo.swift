@@ -13,7 +13,7 @@ class StepTwo: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.customOrangeColor()
-        self.addLabel("I'm page Two", self)
+        self.addLabel("I'm page Two")
         
         // Do any additional setup after loading the view.
     }

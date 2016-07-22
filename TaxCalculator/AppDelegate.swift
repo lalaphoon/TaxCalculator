@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Setup View color
        // UIView.appearance().backgroundColor = UIColor.customBackgroundColor(60)
+        
     }
     func dotsOnPagesSettings(){
         var pageController = UIPageControl.appearance()
