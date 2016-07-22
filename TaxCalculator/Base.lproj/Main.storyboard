@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="ocz-gn-IE3">
             <objects>
                 <viewController id="xJt-8o-XVS" sceneMemberID="viewController">
@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="IPV-pe-nUn"/>
+                    <tabBarItem key="tabBarItem" title="Search" id="IPV-pe-nUn"/>
                     <navigationItem key="navigationItem" id="1R1-09-xnE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stx-Ju-Yp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1721" y="475"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="pj9-W8-B61">
             <objects>
                 <viewController id="OSz-8y-qbO" sceneMemberID="viewController">
@@ -38,14 +38,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="wLP-UG-iSG"/>
+                    <tabBarItem key="tabBarItem" title="" id="wLP-UG-iSG"/>
                     <navigationItem key="navigationItem" id="e88-vL-QeJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kg0-ie-ilM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1721" y="1171"/>
         </scene>
-        <!--Item-->
+        <!--Contact-->
+        <scene sceneID="yVA-Js-VsE">
+            <objects>
+                <viewController id="NbZ-je-tlE" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZAL-Jd-G3F"/>
+                        <viewControllerLayoutGuide type="bottom" id="ibf-Ig-QfU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="48b-xq-ul8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Contact" id="ApI-r0-G6V"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wdI-CZ-hqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1721" y="1842"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="w5P-TF-l3M">
             <objects>
                 <viewController id="dgD-WI-w9g" customClass="CalculatorViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,7 +77,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="MNu-c0-Hcr"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="MNu-c0-Hcr"/>
                     <navigationItem key="navigationItem" id="Uti-FH-67j"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDc-T0-iTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,7 +192,6 @@
         <!--Start View Controller-->
         <scene sceneID="dHT-bh-Zbc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LSg-NF-fb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="StartView" automaticallyAdjustsScrollViewInsets="NO" id="qnd-VY-HRo" customClass="StartViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MKY-ap-RdL">
@@ -185,6 +203,7 @@
                         <segue destination="R6z-Og-2Aw" kind="relationship" relationship="rootViewController" id="Gcd-T7-Vn8"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSg-NF-fb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1022" y="-338"/>
         </scene>
@@ -195,7 +214,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="zBt-ZB-POd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Profile" id="RAf-3k-uHn">
                                 <cells>
@@ -209,7 +228,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzP-am-cmI">
                                                     <rect key="frame" x="19" y="12" width="75" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -285,6 +304,7 @@
                         <segue destination="dgD-WI-w9g" kind="relationship" relationship="viewControllers" id="dJk-ta-z9L"/>
                         <segue destination="xJt-8o-XVS" kind="relationship" relationship="viewControllers" id="Zfn-ji-41v"/>
                         <segue destination="OSz-8y-qbO" kind="relationship" relationship="viewControllers" id="eec-cS-RVW"/>
+                        <segue destination="NbZ-je-tlE" kind="relationship" relationship="viewControllers" id="P2g-Dy-iRj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtt-EQ-9NQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
