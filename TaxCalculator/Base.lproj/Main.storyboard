@@ -241,7 +241,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSg-NF-fb1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1001" y="-217"/>
+            <point key="canvasLocation" x="1004" y="-416"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="eg6-of-ggZ">

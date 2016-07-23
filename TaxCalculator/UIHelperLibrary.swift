@@ -60,8 +60,8 @@ extension UIViewController {
     func addBackgroundImage(imagename: String, _ myview: UIViewController){
         myview.view.backgroundColor = UIColor(patternImage: UIImage (named: imagename)!)
     }
-    func addTextField( placeholder: String = "Enter your value", _ tag: Int){
-        let sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
+    func addTextField( placeholder: String = "Enter your value", _ tag: Int , _ location_x: CGFloat = 20, _ location_y: CGFloat = 100){
+        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, 300, 40))
         sampleTextField.tintColor = UIColor.customOrangeColor()
         sampleTextField.backgroundColor = UIColor.clearColor()
         sampleTextField.placeholder = placeholder
@@ -119,8 +119,8 @@ extension UIView {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addTextField( placeholder: String = "Enter your value", _ tag : Int){
-        let sampleTextField = UITextField(frame: CGRectMake(20, 100, 300, 40))
+    func addTextField( placeholder: String = "Enter your value", _ tag : Int, _ location_x: CGFloat = 20, _ location_y: CGFloat = 100){
+        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, 300, 40))
         sampleTextField.tintColor = UIColor.customOrangeColor()
         sampleTextField.backgroundColor = UIColor.clearColor()
         sampleTextField.placeholder = placeholder
@@ -142,6 +142,8 @@ extension UIView {
         /* =========================get a text of uitextfild by tag ==========================
         
         http://stackoverflow.com/questions/31281352/how-to-get-text-from-programmatically-added-uitextview-swift
+        
+        var textFields = [UITextField]()
         
         for var index = 0; index < 3; ++index {
         var textField = UITextField(frame: CGRectMake(0, 0, 300, 40))

@@ -32,6 +32,7 @@
 		467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */; };
 		46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94701D3D65F800EC6294 /* SWRevealViewController.m */; };
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
+		46FF4E2F1D43E3980028C96E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* GlobalVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		46DD946F1D3D65F800EC6294 /* TaxCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		46DD94701D3D65F800EC6294 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTabBarViewController.swift; sourceTree = "<group>"; };
+		46FF4E2E1D43E3980028C96E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			children = (
 				467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */,
 				462D62951D332FCE00D4FE94 /* Colors.swift */,
+				46FF4E2E1D43E3980028C96E /* GlobalVariables.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
 				460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */,
 				467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */,
+				46FF4E2F1D43E3980028C96E /* GlobalVariables.swift in Sources */,
 				467EFC421D36EE3700D3358D /* StepZero.swift in Sources */,
 				46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */,
 			);

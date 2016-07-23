@@ -7,10 +7,14 @@
 //
 
 import UIKit
+var TP = TaxPro()
+class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-class UserSettingsViewController: UIViewController {
-
+   
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var pickOption = TP.province
+    var provinceTextField =  UITextField()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +25,22 @@ class UserSettingsViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view.
+        self.addTextField("Type Your First Name", 1)
+        self.addTextField("Type Your Last Name", 2, 20, 160)
+        self.addTextField("Type your province", 3, 20, 220)
+        
+         provinceTextField =  self.view.viewWithTag(3) as! UITextField
+        
+        
+        var pickerView = UIPickerView()
+        pickerView.delegate = self
+        provinceTextField.inputView = pickerView
+        
     }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,5 +57,19 @@ class UserSettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickOption.count
+    }
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickOption[row]
+    }
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        provinceTextField.text = pickOption[row]
+    }
 
 }
