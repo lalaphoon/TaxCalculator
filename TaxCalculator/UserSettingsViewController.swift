@@ -12,8 +12,14 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
 
    
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    var pickOption = TP.province
+    //var pickOption = [String]()
     var provinceTextField =  UITextField()
+    var maritalTextField = UITextField()
+    var province_pickerView = UIPickerView()
+    var marital_pickerView = UIPickerView()
+    let province_tag: Int = 3
+    let marital_tag: Int = 4
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +31,37 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         }
         
         // Do any additional setup after loading the view.
+        
+        //put layout on the user view
         self.addTextField("Type Your First Name", 1)
         self.addTextField("Type Your Last Name", 2, 20, 160)
         self.addTextField("Type your province", 3, 20, 220)
+        self.addTextField("Select your marital status", 4, 20, 280)
         
-         provinceTextField =  self.view.viewWithTag(3) as! UITextField
+        //set up picker for these two textfields
+        provinceTextField =  self.view.viewWithTag(province_tag) as! UITextField
+        maritalTextField = self.view.viewWithTag(marital_tag) as! UITextField
+        
+        //setup picker view
+        province_pickerView.delegate = self
+        province_pickerView.tag = province_tag
+        
+        marital_pickerView.delegate = self
+        marital_pickerView.tag = marital_tag
         
         
-        var pickerView = UIPickerView()
-        pickerView.delegate = self
-        provinceTextField.inputView = pickerView
+        //select particular content for pickOption
+        /*
+        if provinceTextField.editing {
+            pickOption =  TP.province
+        } else if maritalTextField.editing {
+            pickOption =  TP.marital_status
+        }*/
+        
+        
+        //make the inputview link to picker view
+        provinceTextField.inputView = province_pickerView
+        maritalTextField.inputView = marital_pickerView
         
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -63,13 +90,35 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickOption.count
+        if pickerView.tag == province_tag
+        {
+            return TP.province.count
+        }
+        if pickerView.tag == marital_tag
+        {
+            return TP.marital_status.count
+        }
+        
+        return 0
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickOption[row]
+        if pickerView.tag == province_tag{
+         return TP.province[row]
+        }
+        if pickerView.tag == marital_tag{
+        return TP.marital_status[row]
+        }
+        
+        return nil
     }
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        provinceTextField.text = pickOption[row]
+     
+        if pickerView.tag == province_tag{
+            provinceTextField.text = TP.province[row]
+        }
+        if pickerView.tag == marital_tag {
+            maritalTextField.text = TP.marital_status[row]
+        }
     }
 
 }
