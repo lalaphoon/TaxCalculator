@@ -69,5 +69,34 @@ class User : NSManagedObject {
     func getMaritalStatus() -> String{
         return self.maritalstatus
     }
+    //=========
+    func save(){
+        if let context = self.managedObjectContext {
+            do {
+                try context.save()
+            } catch {
+                print("ERROR: fail to save a user")
+            }
+        }
+    }
+   /* func delete() -> Bool {
+        if let context = self.managedObjectContext {
+            let containedMoment = self.mutableSetValueForKey("containedMoment")
+            for item in containedMoment {
+                if let moment = item as? Moment, uncategorize = Category.getUncategorized() {
+                    moment.setMomentCategory(uncategorize)
+                }
+            }
+            
+            context.deleteObject(self)
+            do {
+                try context.save()
+                return true
+            } catch {
+                print("ERROR: fail to delete category")
+            }
+        }
+        return false
+    }*/
 
 }

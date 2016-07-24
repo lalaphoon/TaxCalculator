@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 
 
-var TP = TaxPro()
+//var CDF = CoreDataFetcher()
 class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var CDS = CoreDataSaver()
+    var TP = TaxPro()
    
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     //var pickOption = [String]()
     var firstnameTextField = UITextField()
@@ -79,6 +81,8 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         provinceTextField.inputView = province_pickerView
         maritalTextField.inputView = marital_pickerView
         
+        initSettings()
+        
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
@@ -94,9 +98,21 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     func save(){
         var i: User = User(firstname: firstnameTextField.text! , lastname: lastnameTextField.text! , province: provinceTextField.text! , income: Double(incomeTextField.text!)!, marital: maritalTextField.text!)!
-       // CDS.save_a_user_withUser(i)
+       // CoreDataSaver.save_a_user_withUser(i)
+        i.save()
     }
-    
+    func initSettings(){
+        let i: [User] = CoreDataFetcher.fetch_a_user()
+        if i.count>0 {
+        print("In user setting, there is at least one user, Reading....")
+        self.firstnameTextField.text = i[0].getFirstname()
+        self.lastnameTextField.text = i[0].getLastname()
+        self.provinceTextField.text = i[0].getProvince()
+        self.incomeTextField.text = String(i[0].getIncome())
+        self.maritalTextField.text = i[0].getMaritalStatus()
+        } else {}
+        
+    }
 
     /*
     // MARK: - Navigation

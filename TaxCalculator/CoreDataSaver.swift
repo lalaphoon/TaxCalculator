@@ -13,7 +13,7 @@ import CoreData
 
 class CoreDataSaver {
     
-func save_a_user (firstname: String, _ lastname : String, _ province: String, _ marital: Bool, _ income: Double ){
+static func save_a_user (firstname: String, _ lastname : String, _ province: String, _ marital: Bool, _ income: Double ){
     let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let context : NSManagedObjectContext = appDel.managedObjectContext
     var newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context)
@@ -29,7 +29,7 @@ func save_a_user (firstname: String, _ lastname : String, _ province: String, _ 
     }
     
  }
-    func save_a_user_withUser(user: User){
+  static  func save_a_user_withUser(user: User){
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDel.managedObjectContext
         var newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context)
