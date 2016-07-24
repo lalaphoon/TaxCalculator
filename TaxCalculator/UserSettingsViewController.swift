@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import CoreData
+
+
 var TP = TaxPro()
 class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
+    var CDS = CoreDataSaver()
    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     //var pickOption = [String]()
+    var firstnameTextField = UITextField()
+    var lastnameTextField = UITextField()
     var provinceTextField =  UITextField()
     var maritalTextField = UITextField()
+    var incomeTextField = UITextField()
     var province_pickerView = UIPickerView()
     var marital_pickerView = UIPickerView()
     let province_tag: Int = 3
     let marital_tag: Int = 4
-    
+    let income_tag: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +42,18 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         //put layout on the user view
         self.addTextField("Type Your First Name", 1)
         self.addTextField("Type Your Last Name", 2, 20, 160)
-        self.addTextField("Type your province", 3, 20, 220)
-        self.addTextField("Select your marital status", 4, 20, 280)
+        self.addTextField("Type your province", province_tag, 20, 220)
+        self.addTextField("Select your marital status", marital_tag, 20, 280)
+        self.addTextField("Income", income_tag, 20, 340)
+        
+        self.addButton("Save", "save", 20, 500, self.view.bounds.width - 50, 50)
         
         //set up picker for these two textfields
+        firstnameTextField = self.view.viewWithTag(1) as! UITextField
+        lastnameTextField = self.view.viewWithTag(2) as! UITextField
         provinceTextField =  self.view.viewWithTag(province_tag) as! UITextField
         maritalTextField = self.view.viewWithTag(marital_tag) as! UITextField
+        incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
         
         //setup picker view
         province_pickerView.delegate = self
@@ -49,6 +62,9 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         marital_pickerView.delegate = self
         marital_pickerView.tag = marital_tag
         
+        //Set specia keyboard for income
+        
+        incomeTextField.keyboardType = .DecimalPad
         
         //select particular content for pickOption
         /*
@@ -67,11 +83,18 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
- 
-
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func save(){
+        var i: User = User(firstname: firstnameTextField.text! , lastname: lastnameTextField.text! , province: provinceTextField.text! , income: Double(incomeTextField.text!)!, marital: maritalTextField.text!)!
+       // CDS.save_a_user_withUser(i)
     }
     
 

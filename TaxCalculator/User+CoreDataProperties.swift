@@ -13,7 +13,7 @@ extension User{
     @NSManaged internal var firstname: String
     @NSManaged internal var lastname: String
     @NSManaged internal var province: String
-    @NSManaged internal var income: Double
-    @NSManaged internal var maritalstatus: Bool
+    @NSManaged internal var income: NSNumber
+    @NSManaged internal var maritalstatus: String
 
 }

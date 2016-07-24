@@ -16,7 +16,7 @@ class User : NSManagedObject {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
     
-    init?(firstname: String, lastname: String, province: String, income: Double, marital: Bool){
+    init?(firstname: String, lastname: String, province: String, income: Double, marital: String){
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context: NSManagedObjectContext =  appDel.managedObjectContext
         let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
@@ -27,6 +27,7 @@ class User : NSManagedObject {
             setProvince(province)
             setIncome(income)
             setMaritalStatus(marital)
+            print("Saving a user is done")
             
         }else {
             super.init()
@@ -46,15 +47,15 @@ class User : NSManagedObject {
    private func setLastname(last: String){
         self.lastname = last
     }
-   private func setMaritalStatus(m: Bool){
+   private func setMaritalStatus(m: String){
         self.maritalstatus = m
     }
    private func setIncome(income :  Double){
-        self.income = income
+    self.income = NSNumber(double: income)
     }
     //=========================Getter==============================
     func getIncome() -> Double {
-        return self.income
+        return Double(self.income)
     }
     func getFirstname() -> String{
         return self.firstname
@@ -65,7 +66,7 @@ class User : NSManagedObject {
     func getProvince() -> String{
         return self.province
     }
-    func getMaritalStatus() -> Bool{
+    func getMaritalStatus() -> String{
         return self.maritalstatus
     }
 
