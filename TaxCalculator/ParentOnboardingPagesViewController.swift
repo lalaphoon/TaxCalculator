@@ -1,5 +1,7 @@
 //
 //  ParentOnboardingPagesViewController.swift
+//
+//  ParentOnboardingPagesViewController.swift
 //  TaxCalculator
 //
 //  Created by Mengyi LUO on 2016-07-13.
@@ -19,7 +21,7 @@ class ParentOnboardingPagesViewController: UIViewController {
         //self.view.backgroundColor = UIColor.customGreenColor()
         addPages()
         self.addWhiteButton("Start", "Start:", 20, self.view.frame.size.height - 100, self.view.frame.size.width - 40 , 50)
-       // self.addWhiteButton("Sign Up", "SignUp:", 20, (self.view.frame.size.height - 70),self)
+        // self.addWhiteButton("Sign Up", "SignUp:", 20, (self.view.frame.size.height - 70),self)
         //self.addWhiteButton("Log In", "Login:", 200,(self.view.frame.size.height - 70),self )
         // Do any additional setup after loading the view.
     }
@@ -46,5 +48,5 @@ class ParentOnboardingPagesViewController: UIViewController {
         print("Log in")
     }
     
-
+    
 }

@@ -29,10 +29,10 @@
 		467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC431D36EEDA00D3358D /* StepTwo.swift */; };
 		467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */; };
 		467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */; };
-		467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */; };
 		46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94701D3D65F800EC6294 /* SWRevealViewController.m */; };
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
 		46FF4E2F1D43E3980028C96E /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* GlobalVariables.swift */; };
+		46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,12 +81,12 @@
 		467EFC431D36EEDA00D3358D /* StepTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
 		467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelperLibrary.swift; sourceTree = "<group>"; };
-		467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParentOnboardingPagesViewController.swift; path = ../ParentOnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		46DD946E1D3D65F000EC6294 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		46DD946F1D3D65F800EC6294 /* TaxCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		46DD94701D3D65F800EC6294 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTabBarViewController.swift; sourceTree = "<group>"; };
 		46FF4E2E1D43E3980028C96E /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentOnboardingPagesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,8 +211,8 @@
 		467EFC3E1D36EDEF00D3358D /* Onboardingpages */ = {
 			isa = PBXGroup;
 			children = (
-				467EFC4C1D370D0800D3358D /* ParentOnboardingPagesViewController.swift */,
 				467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */,
+				46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */,
 				467EFC411D36EE3700D3358D /* StepZero.swift */,
 				467EFC3F1D36EE1B00D3358D /* StepOne.swift */,
 				467EFC431D36EEDA00D3358D /* StepTwo.swift */,
@@ -380,9 +380,9 @@
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				467D34981D381D61008D820B /* CalculatorViewController.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
-				467EFC4D1D370D0800D3358D /* ParentOnboardingPagesViewController.swift in Sources */,
 				460911001D428C0F003C6A65 /* StepThree.swift in Sources */,
 				460910FE1D41A999003C6A65 /* CoreDataFetcher.swift in Sources */,
+				46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */,
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
 				460910F91D41A4C1003C6A65 /* User.swift in Sources */,
 				460911021D428C69003C6A65 /* StepFour.swift in Sources */,
