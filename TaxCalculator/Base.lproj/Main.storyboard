@@ -48,7 +48,7 @@
         <!--Contact-->
         <scene sceneID="yVA-Js-VsE">
             <objects>
-                <viewController id="NbZ-je-tlE" sceneMemberID="viewController">
+                <viewController id="NbZ-je-tlE" customClass="ContactViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZAL-Jd-G3F"/>
                         <viewControllerLayoutGuide type="bottom" id="ibf-Ig-QfU"/>

@@ -13,10 +13,8 @@ import CoreData
 //var CDF = CoreDataFetcher()
 class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var CDS = CoreDataSaver()
+    //var CDS = CoreDataSaver()
     var TP = TaxPro()
-   
-    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     //var pickOption = [String]()
     var firstnameTextField = UITextField()
@@ -105,12 +103,14 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         let i: [User] = CoreDataFetcher.fetch_a_user()
         if i.count>0 {
         print("In user setting, there is at least one user, Reading....")
-        self.firstnameTextField.text = i[0].getFirstname()
-        self.lastnameTextField.text = i[0].getLastname()
-        self.provinceTextField.text = i[0].getProvince()
-        self.incomeTextField.text = String(i[0].getIncome())
-        self.maritalTextField.text = i[0].getMaritalStatus()
-        } else {}
+        self.firstnameTextField.text = i[i.count - 1].getFirstname()
+        self.lastnameTextField.text = i[i.count - 1].getLastname()
+        self.provinceTextField.text = i[i.count - 1].getProvince()
+        self.incomeTextField.text = String(i[i.count - 1].getIncome())
+        self.maritalTextField.text = i[i.count - 1].getMaritalStatus()
+        } else {
+        print(" No User Stored in Core Data")
+        }
         
     }
 
@@ -131,7 +131,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == province_tag
         {
-            return TP.province.count
+            return TP.getProvinces().count
         }
         if pickerView.tag == marital_tag
         {
@@ -142,7 +142,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     }
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == province_tag{
-         return TP.province[row]
+         return TP.province_list[row]
         }
         if pickerView.tag == marital_tag{
         return TP.marital_status[row]
@@ -153,7 +153,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
      
         if pickerView.tag == province_tag{
-            provinceTextField.text = TP.province[row]
+            provinceTextField.text = TP.province_list[row]
         }
         if pickerView.tag == marital_tag {
             maritalTextField.text = TP.marital_status[row]
