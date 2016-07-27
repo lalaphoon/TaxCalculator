@@ -124,7 +124,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == province_tag
         {
-            return TP.getProvinces().count
+            return TP.province_list.count
         }
         if pickerView.tag == marital_tag
         {
