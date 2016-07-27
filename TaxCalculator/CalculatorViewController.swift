@@ -76,7 +76,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         self.view.endEditing(true)
     }
     func next(){
-    
+       TP.Interest_Calculation(Double(incomeTextField.text!)!, Double(interestTextField.text!)!)
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
