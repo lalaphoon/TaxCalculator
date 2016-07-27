@@ -62,11 +62,12 @@ class TaxPro {
         FederalBracketDictionary.insert(0.205, forKey: 45282, atIndex: 3)
         FederalBracketDictionary.insert(0.15, forKey: 0, atIndex: 4)
         
-       /* ProvincialBracketDictionary["Ontario"]?.insert(0.1316, forKey: 220000, atIndex: 0)
+        ProvincialBracketDictionary = ["Ontario" : OrderedDictionary()]
+        ProvincialBracketDictionary["Ontario"]?.insert(0.1316, forKey: 220000, atIndex: 0)
         ProvincialBracketDictionary["Ontario"]?.insert(0.1216, forKey: 150000, atIndex: 1)
         ProvincialBracketDictionary["Ontario"]?.insert(0.1116, forKey: 83075, atIndex: 2)
         ProvincialBracketDictionary["Ontario"]?.insert(0.0915, forKey: 41536, atIndex: 3)
-        ProvincialBracketDictionary["Ontario"]?.insert(0.0505, forKey: 0, atIndex: 4)*/
+        ProvincialBracketDictionary["Ontario"]?.insert(0.0505, forKey: 0, atIndex: 4)
         
         
         
@@ -166,7 +167,7 @@ class TaxPro {
         var total_1: Double =  income + interest
         var top = flag_a_column(total_1, FederalBracketDictionary)
         var bottom = flag_a_column(income, FederalBracketDictionary)
-        print("Top is \(top) and bottom is \(bottom)")
+        //print("Top is \(top) and bottom is \(bottom)")
         /*var top = flag_a_column(total_1, Federal_Bracket)
         var bottom = flag_a_column(income , Federal_Bracket)
         var result = Float()
@@ -190,7 +191,7 @@ class TaxPro {
        // print("error is that dictionary is not in ordered")
         //let sortedarray =  Provincial_Bracket["Ontario"].sort
         //print(Float(calculateTheDifference(income, total_1, Provincial_Bracket["Ontario"]!.sort{$0.0 > $1.0})))
-        //print(Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)))
+        print(Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)))
         return calculateTheDifference(income, total_1, FederalBracketDictionary)
         
     }
