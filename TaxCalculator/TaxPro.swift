@@ -14,10 +14,10 @@ class TaxPro {
     var province_list : [String] = []
     var marital_status : [String] = []
     
-    var FederalBracketDictionary = OrderedDictionary<Int,Float>()
-    var ProvincialBracketDictionary =  [String :  OrderedDictionary <Int,Float>] ()
+    var FederalBracketDictionary = OrderedDictionary<Int,Double>()
+    var ProvincialBracketDictionary =  [String :  OrderedDictionary <Int,Double>] ()
     
-    var InterestThreshold = [Int: Float]()
+    var InterestThreshold = [Int: Double]()
     
     init() {
         initLists()
@@ -75,10 +75,10 @@ class TaxPro {
     }
     //=======================helper =======================================
     
-    func flag_a_column(amount : Double , _ collection : OrderedDictionary<Int, Float>) -> Int {
+    func flag_a_group(amount : Double , _ collection : OrderedDictionary<Int, Double>) -> Int {
         var counter: Int = collection.count
         for var i = 0 ; i < counter; ++i {
-            var byIndex: (Int, Float) = collection[i]
+            var byIndex: (Int, Double) = collection[i]
             if Int(amount) > byIndex.0 {
                 return counter - i
             }
@@ -87,31 +87,31 @@ class TaxPro {
         
     }
   
-    func calculateTheDifference(income: Double, _ total : Double, _ group : OrderedDictionary<Int , Float>) -> Double{
+    func calculateTheDifference(income: Double, _ total : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
         
         if total < income {
             return 0
         }
         
-        var top = flag_a_column(total, group)
+        var top = flag_a_group(total, group)
        // print("Top is \(top)")
-        var bottom = flag_a_column(income , group)
+        var bottom = flag_a_group(income , group)
         //print("bottom is \(bottom)")
-        var result = Float()
+        var result = Double()
         var total_container : Double = total
         for var i = top ; i > bottom - 1; --i {
-            var byIndex: (Int, Float) = group[group.count - i]
+            var byIndex: (Int, Double) = group[group.count - i]
             var level : Double = Double(byIndex.0)
            // print("level is \(level)")
-            var byKey: Float = group[Int(level)]!
+            var byKey: Double = group[Int(level)]!
             if i == bottom {
                 //level = income
                 
-                result = result + Float((total_container - income)) * byKey
+                result = result + (total_container - income) * byKey
                 //print("where am i? \(result)")
                 return Double(result)
             }
-            result = result + Float((total_container - level)) * byKey
+            result = result + (total_container - level) * byKey
             total_container =  Double(level)
         }
         return Double(result)
@@ -123,14 +123,14 @@ class TaxPro {
     func Interest_Calculation(income : Double, _ interest : Double) -> Double {
         var total_1: Double =  income + interest
         
-        var result = Float(0)
+        var result = Double(0)
        
         //Step 1
         print(Float(calculateTheDifference(income, total_1, FederalBracketDictionary)))
-        result = result + Float(calculateTheDifference(income, total_1, FederalBracketDictionary))
+        result = result + calculateTheDifference(income, total_1, FederalBracketDictionary)
         //Step 2
         print(Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)))
-        result = result + Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!))
+        result = result + calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)
         
         /*//Step 3
         
@@ -142,7 +142,7 @@ class TaxPro {
         //Step 4
         if income < 86176 {
             print(Float(calculateTheDifference(86176, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[86176]!)
-        } else {
+        } else
             print(Float(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[86176]!)
         }*/
         
@@ -151,16 +151,16 @@ class TaxPro {
         //Step 3 & 4
         for keyCode in InterestThreshold.keys {
             if income < Double(keyCode) {
-                print(Float(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[keyCode]!)
-                result = result + Float(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[keyCode]!
+                print(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
             } else {
-                print(Float(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[keyCode]!)
-                result = result + Float(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[keyCode]!
+                print(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
             }
         }
         
         print(result)
-        return Double(result)
+        return result
         
     }
     
