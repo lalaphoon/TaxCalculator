@@ -17,13 +17,14 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
     var maritalTextField = UITextField()
     var incomeTextField = UITextField()
     var interestTextField = UITextField()
+    var contributionTextField = UITextField()
     var province_pickerView = UIPickerView()
     var marital_pickerView = UIPickerView()
     let province_tag: Int = 3
     let marital_tag: Int = 4
     let income_tag: Int = 5
     let interest_tag: Int = 6
-    
+    let contribution_tag : Int = 7
     
     
 
@@ -38,8 +39,8 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         self.addTextField("Type your province", province_tag, 20, 220)
         self.addTextField("Select your marital status", marital_tag, 20, 280)
         self.addTextField("Income", income_tag, 20, 340)
-        self.addTextField("Interest", interest_tag, 20, 400)
-        
+        //self.addTextField("Interest", interest_tag, 20, 400)
+        self.addTextField("Contribution", contribution_tag, 20, 400)
         self.addOrangeButton("Next", "next", 20, 500, self.view.bounds.width - 50, 50)
         
         //set up picker for these two textfields
@@ -48,7 +49,8 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         provinceTextField =  self.view.viewWithTag(province_tag) as! UITextField
         maritalTextField = self.view.viewWithTag(marital_tag) as! UITextField
         incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
-        interestTextField = self.view.viewWithTag(interest_tag) as! UITextField
+        //interestTextField = self.view.viewWithTag(interest_tag) as! UITextField
+        contributionTextField = self.view.viewWithTag(contribution_tag) as! UITextField
         
         //setup picker view
         province_pickerView.delegate = self
@@ -60,7 +62,12 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         //Set specia keyboard for income
         
         incomeTextField.keyboardType = .DecimalPad
-        interestTextField.keyboardType = .DecimalPad
+        //interestTextField.keyboardType = .DecimalPad
+        contributionTextField.keyboardType = .DecimalPad
+        
+        
+        
+        
         
         //make the inputview link to picker view
         provinceTextField.inputView = province_pickerView
@@ -76,7 +83,8 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         self.view.endEditing(true)
     }
     func next(){
-       TP.Interest_Calculation(Double(incomeTextField.text!)!, Double(interestTextField.text!)!)
+       //TP.Interest_Calculation(Double(incomeTextField.text!)!, Double(interestTextField.text!)!)
+        TP.RRSP_calculation(Double(incomeTextField.text!)!, Double(contributionTextField.text!)!)
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()

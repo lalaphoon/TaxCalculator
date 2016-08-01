@@ -87,6 +87,8 @@ class TaxPro {
         
     }
   
+     //income : lower
+    // total : higher
     func calculateTheDifference(income: Double, _ total : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
         
         if total < income {
@@ -120,6 +122,36 @@ class TaxPro {
     
     //=====================helper end=======================================
     
+    func RRSP_calculation(income: Double, _ contribution : Double) -> Double{
+        var vary = income - contribution
+        var result  =  Double(0)
+        
+        //Step 1
+        print(Float(calculateTheDifference(vary, income, FederalBracketDictionary)))
+        result = result + calculateTheDifference(vary, income, FederalBracketDictionary)
+        //Step 2
+        print(Float(calculateTheDifference(vary, income, ProvincialBracketDictionary["Ontario"]!)))
+        result = result + calculateTheDifference(vary,income , ProvincialBracketDictionary["Ontario"]!)
+        
+        for keyCode in InterestThreshold.keys {
+            if vary < Double(keyCode) {
+                print(calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
+            } else {
+                print(calculateTheDifference(vary, income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(vary, income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
+            }
+        }
+        
+        print("the result is \(result)")
+        return result
+        
+    
+    }
+    
+    
+    
+    
     func Interest_Calculation(income : Double, _ interest : Double) -> Double {
         var total_1: Double =  income + interest
         
@@ -132,10 +164,11 @@ class TaxPro {
         print(Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)))
         result = result + calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)
         
-        /*//Step 3
-        
+        //Step 3
+       /*
         if income < 73145 {
             print(Float(calculateTheDifference(73145, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[73145]!)
+            result = result + Float(calculateTheDifference(73145, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[73145]!
         } else {
             print(Float(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[73145]!)
         }
@@ -145,6 +178,7 @@ class TaxPro {
         } else
             print(Float(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! ) ) * InterestThreshold[86176]!)
         }*/
+        
         
         
         
@@ -159,7 +193,8 @@ class TaxPro {
             }
         }
         
-        print(result)
+        
+        print("the result is \(result)")
         return result
         
     }
