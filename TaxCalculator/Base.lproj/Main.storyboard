@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--View Controller-->
         <scene sceneID="ocz-gn-IE3">
             <objects>
                 <viewController id="xJt-8o-XVS" sceneMemberID="viewController">
@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="IPV-pe-nUn"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="IPV-pe-nUn"/>
                     <navigationItem key="navigationItem" id="1R1-09-xnE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stx-Ju-Yp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2533" y="475"/>
         </scene>
-        <!--View Controller-->
+        <!--Calculator-->
         <scene sceneID="pj9-W8-B61">
             <objects>
                 <viewController id="OSz-8y-qbO" sceneMemberID="viewController">
@@ -38,14 +38,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="wLP-UG-iSG"/>
+                    <tabBarItem key="tabBarItem" title="Calculator" image="calculator_25" id="wLP-UG-iSG"/>
                     <navigationItem key="navigationItem" id="e88-vL-QeJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kg0-ie-ilM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2533" y="1171"/>
         </scene>
-        <!--Contact-->
+        <!--Message-->
         <scene sceneID="yVA-Js-VsE">
             <objects>
                 <viewController id="NbZ-je-tlE" customClass="ContactViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,13 +58,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Contact" id="ApI-r0-G6V"/>
+                    <tabBarItem key="tabBarItem" title="Message" image="message_25" id="ApI-r0-G6V"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdI-CZ-hqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1721" y="1842"/>
         </scene>
-        <!--Home-->
+        <!--Calculator View Controller-->
         <scene sceneID="w5P-TF-l3M">
             <objects>
                 <viewController id="dgD-WI-w9g" customClass="CalculatorViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="MNu-c0-Hcr"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="MNu-c0-Hcr"/>
                     <navigationItem key="navigationItem" id="Uti-FH-67j"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDc-T0-iTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -347,7 +347,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="MTS-3P-W2D">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="oW6-2t-KKa"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="oW6-2t-KKa"/>
                     </navigationItem>
                     <connections>
                         <outlet property="menuButton" destination="oW6-2t-KKa" id="yHs-tI-UQB"/>
@@ -363,7 +363,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="R6z-Og-2Aw" customClass="StartTabBarViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="QSt-aP-sdd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="bookmarks" id="9Oh-jq-er8">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="organize" id="9Oh-jq-er8">
                             <connections>
                                 <action selector="menuButton:" destination="R6z-Og-2Aw" id="Nf4-hE-e6J"/>
                             </connections>
@@ -404,6 +404,10 @@
             <point key="canvasLocation" x="183" y="1090"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calculator_25" width="25" height="25"/>
+        <image name="message_25" width="33" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SjX-tx-EJv"/>
     </inferredMetricsTieBreakers>

@@ -98,5 +98,17 @@ class User : NSManagedObject {
         }
         return false
     }*/
+    
+    
+    /*
+    
+    你好
+*/
+    
+    
+    
+    
+    
+    
 
 }

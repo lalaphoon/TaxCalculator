@@ -49,7 +49,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         provinceTextField =  self.view.viewWithTag(province_tag) as! UITextField
         maritalTextField = self.view.viewWithTag(marital_tag) as! UITextField
         incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
-        //interestTextField = self.view.viewWithTag(interest_tag) as! UITextField
+       // interestTextField = self.view.viewWithTag(interest_tag) as! UITextField
         contributionTextField = self.view.viewWithTag(contribution_tag) as! UITextField
         
         //setup picker view
@@ -83,7 +83,8 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         self.view.endEditing(true)
     }
     func next(){
-       //TP.Interest_Calculation(Double(incomeTextField.text!)!, Double(interestTextField.text!)!)
+       //var re = TP.Interest_Calculation(Double(incomeTextField.text!)!, Double(interestTextField.text!)!)
+    // self.addLabel(String(re))
         TP.RRSP_calculation(Double(incomeTextField.text!)!, Double(contributionTextField.text!)!)
     }
     func textFieldShouldReturn(textField: UITextField) -> Bool {
