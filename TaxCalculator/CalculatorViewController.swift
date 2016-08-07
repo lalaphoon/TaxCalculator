@@ -41,7 +41,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         self.addTextField("Income", income_tag, 20, 340)
         //self.addTextField("Interest", interest_tag, 20, 400)
         self.addTextField("Contribution", contribution_tag, 20, 400)
-        self.addOrangeButton("Next", "next", 20, 500, self.view.bounds.width - 50, 50)
+        self.addOrangeBorderButton("Next", "next", 20, 500, self.view.bounds.width - 50, 50)
         
         //set up picker for these two textfields
         firstnameTextField = self.view.viewWithTag(1) as! UITextField

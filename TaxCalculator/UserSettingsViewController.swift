@@ -46,7 +46,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         self.addTextField("Select your marital status", marital_tag, 20, 280)
         self.addTextField("Income", income_tag, 20, 340)
         
-        self.addButton("Save", "save", 20, 500, self.view.bounds.width - 50, 50)
+        self.addGreenButton("Save", "save", 20, 500, self.view.bounds.width - 50, 50)
         
         //set up picker for these two textfields
         firstnameTextField = self.view.viewWithTag(1) as! UITextField

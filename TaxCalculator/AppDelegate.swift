@@ -38,9 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func setUpFont(){
         //Setup all text font
-        UILabel.appearance().font = UIFont(name: "STHeitiTC-Light", size: 18)
-        UITextField.appearance().font =  UIFont(name: "STHeitiTC-Light", size: 18)
-        UITextView.appearance().font = UIFont(name: "STHeitiTC-Light", size: 18)
+        UILabel.appearance().font = UIFont(name: THINFONT, size: 18)
+        UITextField.appearance().font =  UIFont(name: THINFONT, size: 18)
+        UITextView.appearance().font = UIFont(name: THINFONT, size: 18)
     
     }
     func dotsOnPagesSettings(){

@@ -9,6 +9,19 @@
 import UIKit
 
 extension UIViewController {
+    
+    //MARK: Close keyboard by touching anywhere:
+    //just say: self.hideKeyboardWhenTappedAround() in viewDidLoad()
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    
     //a test for adding a label
     func addLabel(what: String){
         var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
@@ -18,7 +31,7 @@ extension UIViewController {
         self.view.addSubview(label)
     
     }
-    func addButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50){
+    func addGreenButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.backgroundColor = UIColor.customGreenColor()
         button.setTitle(title, forState: .Normal)
@@ -29,7 +42,18 @@ extension UIViewController {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
+    func addYellowButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        //button.backgroundColor = UIColor.customOrangeColor()
+        button.backgroundColor =  UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 0.62)
+        button.setTitle(title, forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+        button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
+        self.view.addSubview(button)
+    
+    }
+    func addWhiteBorderButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.backgroundColor = .clearColor()
         button.layer.borderWidth = 1.0
@@ -42,7 +66,7 @@ extension UIViewController {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addOrangeButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
+    func addOrangeBorderButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.backgroundColor = .clearColor()
         button.layer.borderWidth = 1.0
@@ -104,7 +128,7 @@ extension UIViewController {
     }
     func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat){
         let textView = UITextView()
-        textView.frame = CGRect(x: location_x, y: location_y, width: self.view.bounds.width - (43 * 2), height: 170)
+        textView.frame = CGRect(x: location_x, y: location_y, width: self.view.bounds.width - (43 * 2), height: 145)
         textView.text = placeholder
         textView.tag = textTag
         textView.textColor = UIColor.lightGrayColor()
@@ -205,10 +229,6 @@ extension UIView {
         */
 
     }
-   
- 
-    
-  
 
 }
 
@@ -217,7 +237,7 @@ extension UITextField{
     {
         self.borderStyle = UITextBorderStyle.None;
         let border = CALayer()
-        let width = CGFloat(2.0)
+        let width = CGFloat(2.5)
         border.borderColor = color.CGColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
         
@@ -232,7 +252,7 @@ extension UITextView{
         //self.borderStyle = UITextBorderStyle.None;
         
         let border = CALayer()
-        let width = CGFloat(2.0)
+        let width = CGFloat(2.5)
         border.borderColor = color.CGColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
         
