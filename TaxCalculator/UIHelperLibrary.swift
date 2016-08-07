@@ -74,12 +74,10 @@ extension UIViewController {
     func addBackgroundImage(imagename: String, _ myview: UIViewController){
         myview.view.backgroundColor = UIColor(patternImage: UIImage (named: imagename)!)
     }
+    
     func addTextField( placeholder: String = "Enter your value", _ tag: Int , _ location_x: CGFloat = 20, _ location_y: CGFloat = 100){
-        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, 300, 40))
-        sampleTextField.tintColor = UIColor.customOrangeColor()
-        sampleTextField.backgroundColor = UIColor.clearColor()
+        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, self.view.bounds.width - (43 * 2), 40))
         sampleTextField.placeholder = placeholder
-        sampleTextField.font = UIFont.systemFontOfSize(15)
         sampleTextField.autocorrectionType = UITextAutocorrectionType.No
         sampleTextField.keyboardType = UIKeyboardType.Default
         sampleTextField.returnKeyType = UIReturnKeyType.Done
@@ -94,6 +92,26 @@ extension UIViewController {
         
         
         self.view.addSubview(sampleTextField)
+        
+    }
+    func addImage(name: String , _ location_x : CGFloat = 0, _ location_y: CGFloat =  0, _ imageWidth: CGFloat = 121, _ imageHeight : CGFloat = 121  ){
+        let imageName = name
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: location_x, y: location_y, width: imageWidth, height: imageHeight)
+        self.view.addSubview(imageView)
+        
+    }
+    func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat){
+        let textView = UITextView()
+        textView.frame = CGRect(x: location_x, y: location_y, width: self.view.bounds.width - (43 * 2), height: 170)
+        textView.text = placeholder
+        textView.tag = textTag
+        textView.textColor = UIColor.lightGrayColor()
+        
+        textView.setBottomBorder(UIColor.customOrangeColor())
+        
+        self.view.addSubview(textView)
     }
 }
 
@@ -138,7 +156,7 @@ extension UIView {
         sampleTextField.tintColor = UIColor.customOrangeColor()
         sampleTextField.backgroundColor = UIColor.clearColor()
         sampleTextField.placeholder = placeholder
-        sampleTextField.font = UIFont.systemFontOfSize(15)
+        sampleTextField.font = UIFont.systemFontOfSize(18)
         sampleTextField.autocorrectionType = UITextAutocorrectionType.No
         sampleTextField.keyboardType = UIKeyboardType.Default
         sampleTextField.returnKeyType = UIReturnKeyType.Done
@@ -199,7 +217,22 @@ extension UITextField{
     {
         self.borderStyle = UITextBorderStyle.None;
         let border = CALayer()
-        let width = CGFloat(1.0)
+        let width = CGFloat(2.0)
+        border.borderColor = color.CGColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
+        
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
+}
+extension UITextView{
+    func setBottomBorder(color: UIColor)
+    {
+        //self.borderStyle = UITextBorderStyle.None;
+        
+        let border = CALayer()
+        let width = CGFloat(2.0)
         border.borderColor = color.CGColor
         border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
         

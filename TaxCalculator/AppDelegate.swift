@@ -27,9 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().barTintColor = UIColor.customBlackColor()
         UITabBar.appearance().tintColor = UIColor.customOrangeColor()
         
+        //setup textfield/textview colors
+        UITextField.appearance().tintColor = UIColor.customOrangeColor()
+        UITextField.appearance().backgroundColor = UIColor.clearColor()
+        UITextView.appearance().tintColor = UIColor.customOrangeColor()
+        
         //Setup View color
        // UIView.appearance().backgroundColor = UIColor.customBackgroundColor(60)
         
+    }
+    func setUpFont(){
+        //Setup all text font
+        UILabel.appearance().font = UIFont(name: "STHeitiTC-Light", size: 18)
+        UITextField.appearance().font =  UIFont(name: "STHeitiTC-Light", size: 18)
+        UITextView.appearance().font = UIFont(name: "STHeitiTC-Light", size: 18)
+    
     }
     func dotsOnPagesSettings(){
         var pageController = UIPageControl.appearance()
@@ -41,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         setUpColors()
+        setUpFont()
         dotsOnPagesSettings()
         return true
     }
