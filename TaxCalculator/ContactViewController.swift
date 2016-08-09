@@ -40,11 +40,11 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     func initContainerUI(){
         //=====================This is for container view==========================
         containerView.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93)
-        containerView.addTextField("Your Name", name_tag, 43, 250)
+        containerView.addTextField("Your Name", name_tag, 43, 250, self.view.bounds.width - (43*2))
         //self.addTextField("Your Email", email_tag, 43, 310)
-        containerView.addTextField("Your Subject", subject_tag, 43, 310)
-        containerView.addTextView("\n\n\n\nYour Message",message_tag, 43 , 370)
-        containerView.addYellowButton("Send", "sendEmail", 266, 567, 87, 36)
+        containerView.addTextField("Your Subject", subject_tag, 43, 310, self.view.bounds.width - (43*2))
+        containerView.addTextView("\n\n\n\nYour Message",message_tag, 43 , 370, self.view.bounds.width - (43*2))
+        containerView.addYellowButton("Send", "sendEmail", self.view.bounds.width - 100, 567, 87, 36)
         //=====================This is the end for container view===================
     }
     func retrieveDataFromView(){
@@ -72,7 +72,7 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(375,667)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,667)
         
         self.containerView =  UIView()
         
@@ -94,7 +94,8 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         //emailTextField.keyboardType = .EmailAddress
         
         // Do any additional setup after loading the view.
-        self.automaticallyAdjustsScrollViewInsets = false;
+       // self.automaticallyAdjustsScrollViewInsets = false;
+        self.hideKeyboardWhenTappedAround()
        
     }
     override func viewWillLayoutSubviews(){
@@ -102,12 +103,13 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         self.scrollView.frame = self.view.bounds
         //self.scrollView.contentSize.height = 3000
     }
-   /* override func viewDidLayoutSubviews() {
+    //if we comment this out, we will not input anything...
+    override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
-    }*/
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -115,7 +117,8 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true) /////<-------------? self.containerView.endEdting(true)
+        //self.view.endEditing(true) /////<-------------? 
+        self.containerView.endEditing(true)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {

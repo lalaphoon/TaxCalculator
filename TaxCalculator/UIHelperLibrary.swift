@@ -149,9 +149,9 @@ extension UIView {
         self.addSubview(imageView)
         
     }
-    func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat){
+    func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat, _ width_w : CGFloat = 300){
         let textView = UITextView()
-        textView.frame = CGRect(x: location_x, y: location_y, width: 300, height: 145)
+        textView.frame = CGRect(x: location_x, y: location_y, width: width_w, height: 145)
         textView.text = placeholder
         textView.tag = textTag
         textView.textColor = UIColor.lightGrayColor()
@@ -208,8 +208,8 @@ extension UIView {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addTextField( placeholder: String = "Enter your value", _ tag : Int, _ location_x: CGFloat = 20, _ location_y: CGFloat = 100){
-        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, 300, 40))
+    func addTextField( placeholder: String = "Enter your value", _ tag : Int, _ location_x: CGFloat = 20, _ location_y: CGFloat = 100, _ width : CGFloat = 300){
+        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, width , 40))
        // sampleTextField.tintColor = UIColor.customOrangeColor()
        // sampleTextField.backgroundColor = UIColor.clearColor()
         sampleTextField.placeholder = placeholder
