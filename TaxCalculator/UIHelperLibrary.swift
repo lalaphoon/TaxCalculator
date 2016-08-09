@@ -127,8 +127,8 @@ extension UIViewController {
         
     }
     func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat){
-        let textView = UITextView()
-        textView.frame = CGRect(x: location_x, y: location_y, width: self.view.bounds.width - (43 * 2), height: 145)
+        let textView = UITextView(frame: CGRectMake(location_x, location_y, self.view.bounds.width - (43 * 2),145) )
+        //textView.frame = CGRect(x: location_x, y: location_y, width: self.view.bounds.width - (43 * 2), height: 145)
         textView.text = placeholder
         textView.tag = textTag
         textView.textColor = UIColor.lightGrayColor()
@@ -151,7 +151,7 @@ extension UIView {
     }
     func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat){
         let textView = UITextView()
-        textView.frame = CGRect(x: location_x, y: location_y, width: self.bounds.width - (43 * 2), height: 145)
+        textView.frame = CGRect(x: location_x, y: location_y, width: 300, height: 145)
         textView.text = placeholder
         textView.tag = textTag
         textView.textColor = UIColor.lightGrayColor()
