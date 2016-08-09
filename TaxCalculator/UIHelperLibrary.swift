@@ -141,6 +141,39 @@ extension UIViewController {
 
 
 extension UIView {
+    func addImage(name: String , _ location_x : CGFloat = 0, _ location_y: CGFloat =  0, _ imageWidth: CGFloat = 121, _ imageHeight : CGFloat = 121  ){
+        let imageName = name
+        let image = UIImage(named: imageName)
+        let imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: location_x, y: location_y, width: imageWidth, height: imageHeight)
+        self.addSubview(imageView)
+        
+    }
+    func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat){
+        let textView = UITextView()
+        textView.frame = CGRect(x: location_x, y: location_y, width: self.bounds.width - (43 * 2), height: 145)
+        textView.text = placeholder
+        textView.tag = textTag
+        textView.textColor = UIColor.lightGrayColor()
+        
+        textView.setBottomBorder(UIColor.customOrangeColor())
+        
+        self.addSubview(textView)
+    }
+    func addYellowButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        //button.backgroundColor = UIColor.customOrangeColor()
+        button.backgroundColor =  UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 0.62)
+        button.setTitle(title, forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+        button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
+        self.addSubview(button)
+        
+    }
+    
+    
+    
     func addBackground(imagename: String) {
         // screen width and height:
         let width = UIScreen.mainScreen().bounds.size.width
@@ -177,10 +210,10 @@ extension UIView {
     }
     func addTextField( placeholder: String = "Enter your value", _ tag : Int, _ location_x: CGFloat = 20, _ location_y: CGFloat = 100){
         let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, 300, 40))
-        sampleTextField.tintColor = UIColor.customOrangeColor()
-        sampleTextField.backgroundColor = UIColor.clearColor()
+       // sampleTextField.tintColor = UIColor.customOrangeColor()
+       // sampleTextField.backgroundColor = UIColor.clearColor()
         sampleTextField.placeholder = placeholder
-        sampleTextField.font = UIFont.systemFontOfSize(18)
+        //sampleTextField.font = UIFont.systemFontOfSize(18)
         sampleTextField.autocorrectionType = UITextAutocorrectionType.No
         sampleTextField.keyboardType = UIKeyboardType.Default
         sampleTextField.returnKeyType = UIReturnKeyType.Done

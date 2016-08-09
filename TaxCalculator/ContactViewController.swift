@@ -9,8 +9,10 @@
 import UIKit
 import MessageUI
 
-class ContactViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
+class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
+    var scrollView : UIScrollView!
+    var containerView : UIView!
     
     var nameTextField = UITextField()
     var emailTextField = UITextField()
@@ -24,24 +26,66 @@ class ContactViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
 
     func initUI(){
-      self.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93)
-      self.addTextField("Your Name", name_tag, 43, 250)
-      //self.addTextField("Your Email", email_tag, 43, 310)
+        
+        //=====================This is for self.view=============================
+        self.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93)
+        self.addTextField("Your Name", name_tag, 43, 250)
+        //self.addTextField("Your Email", email_tag, 43, 310)
         self.addTextField("Your Subject", subject_tag, 43, 310)
-      self.addTextView("\n\n\n\nYour Message",message_tag,43,370)
-      self.addYellowButton("Send", "sendEmail", 266, 567, 87, 36)
-      
+        self.addTextView("\n\n\n\nYour Message",message_tag,43,370)
+        self.addYellowButton("Send", "sendEmail", 266, 567, 87, 36)
+        //======================This is the end for self.view======================
+
+    }
+    func initContainerUI(){
+        //=====================This is for container view==========================
+        containerView.addImage("Title_message.png", containerView.bounds.width/2 - 65, 93)
+        containerView.addTextField("Your Name", name_tag, 43, 250)
+        //self.addTextField("Your Email", email_tag, 43, 310)
+        containerView.addTextField("Your Subject", subject_tag, 43, 310)
+        containerView.addTextView("\n\n\n\nYour Message",message_tag,43,370)
+        containerView.addYellowButton("Send", "sendEmail", 266, 567, 87, 36)
+        //=====================This is the end for container view===================
+    }
+    func retrieveDataFromView(){
+        //====================This is for self.view==========================
+        
+        nameTextField = self.view.viewWithTag(name_tag) as! UITextField
+        //emailTextField = self.view.viewWithTag(email_tag) as! UITextField
+        subjectTextField = self.view.viewWithTag(subject_tag) as! UITextField
+        messageTextView = self.view.viewWithTag(message_tag) as! UITextView
+
+        //=======================This is the end for self.view=================
+    }
+    func retrieveDataFromContainer(){
+        //====================This is for container.view=======================
+        
+        nameTextField = self.containerView.viewWithTag(name_tag) as! UITextField
+        //emailTextField = self.containerView.viewWithTag(email_tag) as! UITextField
+        subjectTextField = self.containerView.viewWithTag(subject_tag) as! UITextField
+        messageTextView = self.containerView.viewWithTag(message_tag) as! UITextView
+        
+        //====================This is the end for container view===================
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView.delegate = self
+        self.scrollView.contentSize = CGSizeMake(1000,1000)
+        
+        self.containerView =  UIView()
+        
+        self.scrollView.addSubview(containerView)
+        self.view.addSubview(scrollView)
+        //self.view = self.scrollView
+        
+        //initContainerUI()
+        //retrieveDataFromContainer()
+        
         initUI()
-        
-        nameTextField = self.view.viewWithTag(name_tag) as! UITextField
-       // emailTextField = self.view.viewWithTag(email_tag) as! UITextField
-        subjectTextField = self.view.viewWithTag(subject_tag) as! UITextField
-        messageTextView = self.view.viewWithTag(message_tag) as! UITextView
-        
+        retrieveDataFromView()
+     
         nameTextField.delegate = self
        // emailTextField.delegate = self
         subjectTextField.delegate = self
@@ -53,6 +97,12 @@ class ContactViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         self.automaticallyAdjustsScrollViewInsets = false;
        
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.frame = view.bounds
+        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -60,7 +110,7 @@ class ContactViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
+        self.view.endEditing(true) /////<-------------? self.containerView.endEdting(true)
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
@@ -123,9 +173,8 @@ class ContactViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     /*func textViewDidChange(textView: UITextView) {
         placeholderLabel.hidden = !textView.text.isEmpty
     }*/
-    // press return doesn dismiss the keyboard
-  
     
+    // press return doesn dismiss the keyboard - This is for Done button
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
