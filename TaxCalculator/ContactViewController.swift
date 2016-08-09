@@ -148,7 +148,7 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate =  self
-        mailComposerVC.setToRecipients(["lalaphoon@gmail.com"])
+        mailComposerVC.setToRecipients(["lalaphoon@gmail.com", "will@wtctax.ca"])
         mailComposerVC.setSubject(subjectTextField.text!)
         mailComposerVC.setMessageBody(messageTextView.text! + "\n\n" + nameTextField.text!, isHTML: false)
         return mailComposerVC
