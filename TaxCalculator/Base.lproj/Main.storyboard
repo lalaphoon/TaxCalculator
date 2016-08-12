@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Topics View Controller-->
         <scene sceneID="ocz-gn-IE3">
             <objects>
-                <viewController id="xJt-8o-XVS" sceneMemberID="viewController">
+                <viewController id="xJt-8o-XVS" customClass="TopicsViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7AH-Zd-dVX"/>
                         <viewControllerLayoutGuide type="bottom" id="nql-i1-05P"/>
@@ -18,14 +18,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="history" id="IPV-pe-nUn"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="IPV-pe-nUn"/>
                     <navigationItem key="navigationItem" id="1R1-09-xnE"/>
+                    <connections>
+                        <segue destination="qRt-j8-uDs" kind="show" identifier="MoveIntoSubTopics" id="Rlw-zx-3j7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stx-Ju-Yp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2533" y="475"/>
+            <point key="canvasLocation" x="1829" y="463"/>
         </scene>
-        <!--Calculator-->
+        <!--Sub Topics View Controller-->
+        <scene sceneID="wWH-27-ah8">
+            <objects>
+                <viewController id="qRt-j8-uDs" customClass="SubTopicsViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vsp-WP-csU"/>
+                        <viewControllerLayoutGuide type="bottom" id="7IT-1i-aAn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JOJ-Mm-YqL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoProfile" id="4Ir-5M-wVa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GLK-Fd-nKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586" y="466"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QJu-vi-xAa">
+            <objects>
+                <viewController id="3Hk-sh-8TG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="clc-qw-MkB"/>
+                        <viewControllerLayoutGuide type="bottom" id="ixT-Vk-vPe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3E1-lg-kir">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3278" y="470"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="pj9-W8-B61">
             <objects>
                 <viewController id="OSz-8y-qbO" sceneMemberID="viewController">
@@ -38,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calculator" image="calculator_25" id="wLP-UG-iSG"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="wLP-UG-iSG"/>
                     <navigationItem key="navigationItem" id="e88-vL-QeJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kg0-ie-ilM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,7 +447,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calculator_25" width="25" height="25"/>
         <image name="message_25" width="33" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -33,6 +33,8 @@
 		467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC431D36EEDA00D3358D /* StepTwo.swift */; };
 		467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */; };
 		467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */; };
+		4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */; };
+		4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */; };
 		46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94701D3D65F800EC6294 /* SWRevealViewController.m */; };
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
 		46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* TaxPro.swift */; };
@@ -90,6 +92,8 @@
 		467EFC431D36EEDA00D3358D /* StepTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepTwo.swift; sourceTree = "<group>"; };
 		467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelperLibrary.swift; sourceTree = "<group>"; };
+		4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
+		4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTopicsViewController.swift; sourceTree = "<group>"; };
 		46DD946E1D3D65F000EC6294 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		46DD946F1D3D65F800EC6294 /* TaxCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		46DD94701D3D65F800EC6294 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -216,7 +220,7 @@
 				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
 				467D34951D380110008D820B /* StartViewController.swift */,
 				46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */,
-				467D34971D381D61008D820B /* CalculatorViewController.swift */,
+				4684CA721D5D5A48009B0598 /* Topics */,
 				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
 				46FF4E341D4596D50028C96E /* ContactViewController.swift */,
 			);
@@ -247,6 +251,16 @@
 				46FF4E2E1D43E3980028C96E /* TaxPro.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		4684CA721D5D5A48009B0598 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
+				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
+				467D34971D381D61008D820B /* CalculatorViewController.swift */,
+			);
+			name = Topics;
 			sourceTree = "<group>";
 		};
 		46DD946D1D3D65DA00EC6294 /* SWRevealView */ = {
@@ -403,11 +417,13 @@
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
 				460910F91D41A4C1003C6A65 /* User.swift in Sources */,
 				460911021D428C69003C6A65 /* StepFour.swift in Sources */,
+				4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */,
 				467D34961D380110008D820B /* StartViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
 				46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */,
 				460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */,
+				4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */,
 				46FF4E351D4596D50028C96E /* ContactViewController.swift in Sources */,
 				467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */,
 				46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */,
