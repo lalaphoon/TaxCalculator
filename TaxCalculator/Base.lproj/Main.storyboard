@@ -42,17 +42,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoProfile" id="4Ir-5M-wVa"/>
+                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoInputs" id="4Ir-5M-wVa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLK-Fd-nKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2586" y="466"/>
         </scene>
-        <!--View Controller-->
+        <!--Inputs View Controller-->
         <scene sceneID="QJu-vi-xAa">
             <objects>
-                <viewController id="3Hk-sh-8TG" sceneMemberID="viewController">
+                <viewController id="3Hk-sh-8TG" customClass="InputsViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="clc-qw-MkB"/>
                         <viewControllerLayoutGuide type="bottom" id="ixT-Vk-vPe"/>

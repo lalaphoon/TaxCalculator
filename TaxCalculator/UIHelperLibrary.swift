@@ -66,8 +66,9 @@ extension UIViewController {
         //func buttonaction(sender:UIButton!)
         //{}
     }
-    func addOrangeBorderButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
+    func addOrangeBorderButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat, _ tag: Int){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        button.tag = tag
         button.backgroundColor = .clearColor()
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.customOrangeColor().CGColor
@@ -171,7 +172,21 @@ extension UIView {
         self.addSubview(button)
         
     }
-    
+    func addOrangeBorderButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat, _ tag: Int){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        button.tag = tag
+        button.backgroundColor = .clearColor()
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.customOrangeColor().CGColor
+        button.setTitle(title, forState: .Normal)
+        button.setTitleColor(UIColor.customOrangeColor(), forState: .Normal)
+        button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
+        self.addSubview(button)
+        //buttonaction is a type of selector.
+        //on your viewcontroller page, you should have
+        //func buttonaction(sender:UIButton!)
+        //{}
+    }
     
     
     func addBackground(imagename: String) {

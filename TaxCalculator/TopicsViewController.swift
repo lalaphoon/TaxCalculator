@@ -13,6 +13,7 @@ class TopicsViewController: UIViewController {
     let INCOME = 1
     let DEDUCTION = 2
     let TAXCREDIT = 3
+    let s = NSSelectorFromString("moveIntoNext:")
     
     var choice = Int()
     override func viewDidLoad() {
@@ -22,23 +23,16 @@ class TopicsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     func initUI(){
-        self.addOrangeBorderButton("Income", "choiseIncome", 43, 207, self.view.bounds.width - (43*2), 67)
-        self.addOrangeBorderButton("Deduction", "choiseDeduction", 43, 322, self.view.bounds.width - (43*2), 67)
-        self.addOrangeBorderButton("Tax Credit", "choiseTaxCredit", 43, 429, self.view.bounds.width - (43*2), 67)
+        self.addOrangeBorderButton("Income", s, 43, 207, self.view.bounds.width - (43*2), 67, INCOME)
+        self.addOrangeBorderButton("Deduction", s, 43, 322, self.view.bounds.width - (43*2), 67, DEDUCTION)
+        self.addOrangeBorderButton("Tax Credit", s, 43, 429, self.view.bounds.width - (43*2), 67, TAXCREDIT)
     }
-    func choiseIncome() {
-        choice = INCOME
-        performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
-        
+    
+    func moveIntoNext(sender: UIButton){
+      choice = sender.tag
+      performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
     }
-    func choiseDeduction(){
-        choice = DEDUCTION
-        performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
-    }
-    func choiseTaxCredit(){
-        choice = TAXCREDIT
-        performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
