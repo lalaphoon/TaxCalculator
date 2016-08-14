@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SubTopicsViewController: UIViewController, UIScrollViewDelegate {
+class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
     
     var scrollView: UIScrollView!
     var containerView: UIView!
+    var button: UIButton!
     
     let INCOME = 1
     let DEDUCTION = 2
@@ -29,37 +30,50 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate {
     
     let s = NSSelectorFromString("moveIntoNext:")
     
-    func moveIntoNext(sender: UIButton){
-        choice = sender.tag
+    func moveIntoNext(sender: AnyObject){
+        print("I'm here")
+        result = sender.tag
         performSegueWithIdentifier("MoveIntoInputs", sender: self)
     }
     
     
     var choice = Int()
+    var result = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,600)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,667)
         
         self.containerView =  UIView()
+    
+       // self.scrollView.userInteractionEnabled = true
+        //containerView.userInteractionEnabled = true
+        //self.view.userInteractionEnabled =  true
         
         self.scrollView.addSubview(containerView)
         self.view.addSubview(scrollView)
+        
         initContainerUi()
-
+        containerView.userInteractionEnabled =  true
+        scrollView.userInteractionEnabled = true
+        
         // Do any additional setup after loading the view.
     }
     func initContainerUi(){
         if choice == INCOME {
-         containerView.addOrangeBorderButton("Employment", s, 43, 60, self.view.bounds.width - 86, 53, employment)
-            containerView.addOrangeBorderButton("Dividend Income", s, 43, 130, self.view.bounds.width - 86, 53, dividend_income)
-            containerView.addOrangeBorderButton("Interest Income", s, 43, 200, self.view.bounds.width - 86, 53, interest_income)
-            containerView.addOrangeBorderButton("Other Investment Income", s, 43, 270, self.view.bounds.width - 86, 53, other_investment_income)
-            containerView.addOrangeBorderButton("Capital Gain", s, 43, 340, self.view.bounds.width - 86, 53, capital_gain)
-            containerView.addOrangeBorderButton("Rental Income", s, 43, 410, self.view.bounds.width - 86, 53, rental_income)
-            containerView.addOrangeBorderButton("Business and Professional Income", s, 43, 480, self.view.bounds.width - 86, 53, business_and_professional_income)
+         containerView.addOrangeBorderButton("Employment", s, 43, 60, self.view.bounds.width - 86, 53, employment,self)
+            containerView.addOrangeBorderButton("Dividend Income", s, 43, 130, self.view.bounds.width - 86, 53, dividend_income, self)
+            containerView.addOrangeBorderButton("Interest Income", s, 43, 200, self.view.bounds.width - 86, 53, interest_income,self)
+            containerView.addOrangeBorderButton("Other Investment Income", s, 43, 270, self.view.bounds.width - 86, 53, other_investment_income, self)
+          containerView.addOrangeBorderButton("Capital Gain", s, 43, 340, self.view.bounds.width - 86, 53, capital_gain, self)
+            containerView.addOrangeBorderButton("Rental Income", s, 43, 410, self.view.bounds.width - 86, 53, rental_income, self)
+           containerView.addOrangeBorderButton("Business and Professional Income", s, 43, 480, self.view.bounds.width - 86, 53, business_and_professional_income, self)
+
+
+          
             
         }else if choice == DEDUCTION {
         
@@ -68,19 +82,11 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate {
         }
     
     }
-    
-    func initUI(){
-        if choice == INCOME {
-         self.addOrangeBorderButton("Employment1", s, 43, 138, self.view.bounds.width - (43*2) , 53, INCOME)
-            
-        }else if choice == DEDUCTION {
-             self.addOrangeBorderButton("Employment1", "choiseEmployment", 43, 138, self.view.bounds.width - (43*2) , 53, DEDUCTION)
-        
-        }else if choice == TAXCREDIT {
-         self.addOrangeBorderButton("Employment2", "choiseEmployment", 43, 138, self.view.bounds.width - (43*2) , 53 , TAXCREDIT)
-        }
-    
+    func Move(sender: UIButton){
+    //print("the sender is \(sender)")
+        print("I'm here")
     }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -102,7 +108,10 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate {
         //self.view.endEditing(true) /////<-------------?
         self.containerView.endEditing(true)
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC : InputsViewController = segue.destinationViewController as! InputsViewController
+        DestinyVC.choice = result
+    }
     /*
     // MARK: - Navigation
 

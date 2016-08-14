@@ -27,6 +27,7 @@
 		46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E021D459ADC00456B69 /* CoreLocation.framework */; };
 		46369E051D4912E700456B69 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46369E041D4912E700456B69 /* OrderedDictionary.swift */; };
 		4670331E1D5FC75900688802 /* InputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331D1D5FC75900688802 /* InputsViewController.swift */; };
+		467033201D612F8900688802 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331F1D612F8900688802 /* ProfileViewController.swift */; };
 		467D34961D380110008D820B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467D34951D380110008D820B /* StartViewController.swift */; };
 		467D34981D381D61008D820B /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467D34971D381D61008D820B /* CalculatorViewController.swift */; };
 		467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC3F1D36EE1B00D3358D /* StepOne.swift */; };
@@ -87,6 +88,7 @@
 		46369E021D459ADC00456B69 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46369E041D4912E700456B69 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		4670331D1D5FC75900688802 /* InputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputsViewController.swift; sourceTree = "<group>"; };
+		4670331F1D612F8900688802 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		467D34951D380110008D820B /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		467D34971D381D61008D820B /* CalculatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		467EFC3F1D36EE1B00D3358D /* StepOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepOne.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
 				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
 				4670331D1D5FC75900688802 /* InputsViewController.swift */,
+				4670331F1D612F8900688802 /* ProfileViewController.swift */,
 				467D34971D381D61008D820B /* CalculatorViewController.swift */,
 			);
 			name = Topics;
@@ -425,6 +428,7 @@
 				467D34961D380110008D820B /* StartViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
+				467033201D612F8900688802 /* ProfileViewController.swift in Sources */,
 				46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */,
 				460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */,
 				4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */,

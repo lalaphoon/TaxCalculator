@@ -62,10 +62,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="KqH-TL-Iq0" kind="show" id="95J-Rb-Dtd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3278" y="470"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="9dN-2n-avi">
+            <objects>
+                <viewController id="KqH-TL-Iq0" customClass="ProfileViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pHC-a0-gsg"/>
+                        <viewControllerLayoutGuide type="bottom" id="FyW-No-r8E"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0w9-8x-Ie3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BuE-AM-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3931" y="470"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pj9-W8-B61">

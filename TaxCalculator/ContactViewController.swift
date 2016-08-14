@@ -44,7 +44,7 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         //self.addTextField("Your Email", email_tag, 43, 310)
         containerView.addTextField("Your Subject", subject_tag, 43, 310, self.view.bounds.width - (43*2))
         containerView.addTextView("\n\n\n\nYour Message",message_tag, 43 , 370, self.view.bounds.width - (43*2))
-        containerView.addYellowButton("Send", "sendEmail", self.view.bounds.width - 100, 567, 87, 36)
+        containerView.addYellowButton("Send", "sendEmail", self.view.bounds.width - 100, 567, 87, 36, self)
         //=====================This is the end for container view===================
     }
     func retrieveDataFromView(){
