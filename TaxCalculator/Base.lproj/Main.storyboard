@@ -63,7 +63,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="KqH-TL-Iq0" kind="show" id="95J-Rb-Dtd"/>
+                        <segue destination="KqH-TL-Iq0" kind="show" identifier="MoveIntoProfile" id="95J-Rb-Dtd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>

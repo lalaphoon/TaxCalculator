@@ -44,6 +44,7 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         // Do any additional setup after loading the view.
     }
     func initContainerUI(){
+        //if choice ==? {}
         containerView.addImage("Title_calculation.png", self.view.bounds.width/2 - 65, 93)
         containerView.addTextField("Dividend Income", 1, 43, 274, self.view.bounds.width - (43*2))
         containerView.addTextField("Choose an option", 2, 43, 334, self.view.bounds.width - (43*2))
@@ -51,6 +52,14 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         containerView.addYellowButton("Next", "moveToNext", self.view.bounds.width - 100, 567, 87, 36, self)
         
     
+    }
+    func moveToNext(){
+        performSegueWithIdentifier("MoveIntoProfile", sender: self)
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
+       // DestinyVC.choice = result
     }
     func retrieveData(){
         dividendIncome = self.view.viewWithTag(1) as! UITextField
