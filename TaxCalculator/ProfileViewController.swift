@@ -19,8 +19,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     var provinceTextField = UITextField()
     var incomeTextField = UITextField()
     
-    var option = String()
-    var input = Double()
+    var option = String() // given from inputviewController
+    var input = Double() // given from inputviewcontroller
     
     let province_tag: Int = 3
    // let marital_tag: Int = 4
@@ -41,9 +41,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         
         initContainerUI()
         
+        
         provincePickerView.delegate = self
-        provinceTextField = self.view.viewWithTag(province_tag) as! UITextField
-        incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
+        retrieveContainer()
         incomeTextField.keyboardType = .DecimalPad
         provinceTextField.inputView = provincePickerView
         
@@ -59,8 +59,25 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
        containerView.addTextField("Your Province", province_tag, 43, 334, self.view.bounds.width-86)
        containerView.addYellowButton("Calculate", "moveToNext", self.view.bounds.width-100, 567,87,36,self)
     }
+    func retrieveContainer(){
+        incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
+        provinceTextField = self.view.viewWithTag(province_tag) as! UITextField
+    }
     func moveToNext(){
-       // performSegueWithIdentifier("", sender: <#T##AnyObject?#>)
+        //translate choice to option
+        //send option to next view
+        performSegueWithIdentifier("MoveIntoResult", sender: self)
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
+        // DestinyVC.choice = choice
+        DestinyVC.option =  self.option
+        DestinyVC.input =  self.input
+        DestinyVC.income = Double(incomeTextField.text!)!
+        DestinyVC.province = provinceTextField.text!
+
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

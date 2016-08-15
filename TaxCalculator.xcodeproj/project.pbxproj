@@ -26,6 +26,7 @@
 		46369E011D459ACC00456B69 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E001D459ACC00456B69 /* MessageUI.framework */; };
 		46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E021D459ADC00456B69 /* CoreLocation.framework */; };
 		46369E051D4912E700456B69 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46369E041D4912E700456B69 /* OrderedDictionary.swift */; };
+		465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C74F91D62282800F9572A /* ResultViewController.swift */; };
 		4670331E1D5FC75900688802 /* InputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331D1D5FC75900688802 /* InputsViewController.swift */; };
 		467033201D612F8900688802 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331F1D612F8900688802 /* ProfileViewController.swift */; };
 		467D34961D380110008D820B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467D34951D380110008D820B /* StartViewController.swift */; };
@@ -87,6 +88,7 @@
 		46369E001D459ACC00456B69 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		46369E021D459ADC00456B69 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46369E041D4912E700456B69 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		465C74F91D62282800F9572A /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		4670331D1D5FC75900688802 /* InputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputsViewController.swift; sourceTree = "<group>"; };
 		4670331F1D612F8900688802 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		467D34951D380110008D820B /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
 				4670331D1D5FC75900688802 /* InputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
+				465C74F91D62282800F9572A /* ResultViewController.swift */,
 				467D34971D381D61008D820B /* CalculatorViewController.swift */,
 			);
 			name = Topics;
@@ -412,6 +415,7 @@
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
+				465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */,
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
 				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,

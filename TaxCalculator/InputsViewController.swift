@@ -59,7 +59,13 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
-       // DestinyVC.choice = result
+       // DestinyVC.choice = choice
+         DestinyVC.option =  optionTextField.text!
+         DestinyVC.input =  Double(dividendIncome.text!)!
+        
+        
+        
+        
     }
     func retrieveData(){
         dividendIncome = self.view.viewWithTag(1) as! UITextField
