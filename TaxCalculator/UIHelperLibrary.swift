@@ -24,10 +24,11 @@ extension UIViewController {
     
     //a test for adding a label
     func addLabel(what: String){
-        var label = UILabel(frame: CGRectMake(0, 0, 200, 21))
-        label.center = CGPointMake(160, 284)
+        var label = UILabel(frame: CGRectMake(0, 0, 200, 200))
+        label.center = CGPointMake(100, 284)
         label.textAlignment = NSTextAlignment.Center
         label.text = what
+        label.backgroundColor = UIColor.orangeColor()
         self.view.addSubview(label)
     
     }
@@ -142,6 +143,16 @@ extension UIViewController {
 
 
 extension UIView {
+    func addGreenLabel(what: String){
+        //290, 49
+        var label = UILabel(frame: CGRectMake(0, 0,self.bounds.width-86 , 49))
+        label.center = CGPointMake((self.bounds.width/2), (self.bounds.height/2))
+        label.textAlignment = NSTextAlignment.Center
+        label.text = what
+        label.backgroundColor = UIColor.customLabelGreen()
+        self.addSubview(label)
+        
+    }
     func addImage(name: String , _ location_x : CGFloat = 0, _ location_y: CGFloat =  0, _ imageWidth: CGFloat = 121, _ imageHeight : CGFloat = 121  ){
         let imageName = name
         let image = UIImage(named: imageName)

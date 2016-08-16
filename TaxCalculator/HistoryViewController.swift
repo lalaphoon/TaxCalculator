@@ -1,5 +1,5 @@
 //
-//  ResultViewController.swift
+//  HistoryViewController.swift
 //  TaxCalculator
 //
 //  Created by Mengyi LUO on 2016-08-15.
@@ -8,24 +8,17 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
-    
-    var TP = TaxPro()
-    
-    var option = String()
-    var province = String()
-    var income = Double()
-    var input = Double()
+class HistoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  self.view.addText()
-
+       self.view.addGreenLabel("This is a text")
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
     }
     

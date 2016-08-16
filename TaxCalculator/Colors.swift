@@ -31,5 +31,8 @@ extension UIColor {
     class func customGreenSignal() -> UIColor{
         return UIColor(red: 125/255.0, green: 222/255.0, blue: 142/255.0, alpha: 1.0)
     }
+    class func customLabelGreen() -> UIColor{
+        return UIColor(red: 118/255.0, green: 194/255.0, blue: 175/255.0, alpha: 1.0)
+    }
     
 }

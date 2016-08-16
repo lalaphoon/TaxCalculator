@@ -109,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="4566" y="470"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="pj9-W8-B61">
             <objects>
-                <viewController id="OSz-8y-qbO" sceneMemberID="viewController">
+                <viewController id="OSz-8y-qbO" customClass="HistoryViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tm2-sh-nZh"/>
                         <viewControllerLayoutGuide type="bottom" id="Rw4-SH-E18"/>
