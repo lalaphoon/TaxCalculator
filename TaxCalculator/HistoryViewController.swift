@@ -8,11 +8,29 @@
 
 import UIKit
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, UIScrollViewDelegate {
 
+    var scrollView : UIScrollView!
+    var containerView :  UIView!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       self.view.addGreenLabel("This is a text")
+        
+        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView.delegate = self
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
+        
+        self.containerView =  UIView()
+        
+        self.scrollView.addSubview(containerView)
+        self.view.addSubview(scrollView)
+        //self.view = self.scrollView
+        
+        //self.view.addGreenLabel("This is a text", 0, 200)
+        containerView.addGreenLabel("This is a text", self.view.bounds.width/2, 200,self.view.bounds.width - 86, 49)
         // Do any additional setup after loading the view.
     }
 

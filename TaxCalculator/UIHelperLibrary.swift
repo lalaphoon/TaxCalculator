@@ -143,16 +143,55 @@ extension UIViewController {
 
 
 extension UIView {
-    func addGreenLabel(what: String){
+    func addGreenLabel(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
         //290, 49
-        var label = UILabel(frame: CGRectMake(0, 0,self.bounds.width-86 , 49))
-        label.center = CGPointMake((self.bounds.width/2), (self.bounds.height/2))
+        var h = location_y
+        var w = location_x
+        var wd = width
+        if h == 0 {
+            h = self.bounds.height/2
+        }
+        if w == 0 {
+            w = self.bounds.width/2
+        }
+        if width == 0 {
+            wd = self.bounds.width-86
+        }
+        var label = UILabel(frame: CGRectMake(0, 0,wd  , height))
+        label.center = CGPointMake(w, h)
         label.textAlignment = NSTextAlignment.Center
         label.text = what
         label.backgroundColor = UIColor.customLabelGreen()
+        //label.font = UIFont(name: THINFONT, size: 18)
         self.addSubview(label)
         
     }
+    func addText(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
+        //290, 49
+        var h = location_y
+        var w = location_x
+        var wd = width
+        if h == 0 {
+            h = self.bounds.height/2
+        }
+        if w == 0 {
+            w = self.bounds.width/2
+        }
+        if width == 0 {
+            wd = self.bounds.width-86
+        }
+        var label = UILabel(frame: CGRectMake(0, 0,wd  , height))
+        label.center = CGPointMake(w, h)
+        label.textAlignment = NSTextAlignment.Center
+        label.text = what
+        label.font = UIFont(name: THINFONT, size: 18)
+        //label.backgroundColor = UIColor.customLabelGreen()
+        label.lineBreakMode = .ByWordWrapping
+        label.numberOfLines = 0
+        self.addSubview(label)
+        
+    }
+    
     func addImage(name: String , _ location_x : CGFloat = 0, _ location_y: CGFloat =  0, _ imageWidth: CGFloat = 121, _ imageHeight : CGFloat = 121  ){
         let imageName = name
         let image = UIImage(named: imageName)
