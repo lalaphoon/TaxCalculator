@@ -39,6 +39,7 @@
 		467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */; };
 		4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */; };
 		4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */; };
+		46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9E1C21D67A7A400B80106 /* HomeViewController.swift */; };
 		46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94701D3D65F800EC6294 /* SWRevealViewController.m */; };
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
 		46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* TaxPro.swift */; };
@@ -102,6 +103,7 @@
 		467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelperLibrary.swift; sourceTree = "<group>"; };
 		4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTopicsViewController.swift; sourceTree = "<group>"; };
+		46B9E1C21D67A7A400B80106 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		46DD946E1D3D65F000EC6294 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		46DD946F1D3D65F800EC6294 /* TaxCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		46DD94701D3D65F800EC6294 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -172,7 +174,6 @@
 				462D627B1D33279100D4FE94 /* TaxCalculatorTests */,
 				462D62861D33279100D4FE94 /* TaxCalculatorUITests */,
 				462D62621D33279000D4FE94 /* Products */,
-				46369E001D459ACC00456B69 /* MessageUI.framework */,
 				46369E021D459ADC00456B69 /* CoreLocation.framework */,
 			);
 			sourceTree = "<group>";
@@ -232,6 +233,8 @@
 		467D34941D3800AF008D820B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				46B9E1C11D67A76200B80106 /* Message */,
+				46B9E1C01D67A71C00B80106 /* Home-Search */,
 				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
 				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
 				467D34951D380110008D820B /* StartViewController.swift */,
@@ -239,7 +242,7 @@
 				4684CA721D5D5A48009B0598 /* Topics */,
 				465C74FB1D62A3CA00F9572A /* History */,
 				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
-				46FF4E341D4596D50028C96E /* ContactViewController.swift */,
+				467D34971D381D61008D820B /* CalculatorViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -278,9 +281,25 @@
 				4670331D1D5FC75900688802 /* InputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
 				465C74F91D62282800F9572A /* ResultViewController.swift */,
-				467D34971D381D61008D820B /* CalculatorViewController.swift */,
 			);
 			name = Topics;
+			sourceTree = "<group>";
+		};
+		46B9E1C01D67A71C00B80106 /* Home-Search */ = {
+			isa = PBXGroup;
+			children = (
+				46B9E1C21D67A7A400B80106 /* HomeViewController.swift */,
+			);
+			name = "Home-Search";
+			sourceTree = "<group>";
+		};
+		46B9E1C11D67A76200B80106 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				46369E001D459ACC00456B69 /* MessageUI.framework */,
+				46FF4E341D4596D50028C96E /* ContactViewController.swift */,
+			);
+			name = Message;
 			sourceTree = "<group>";
 		};
 		46DD946D1D3D65DA00EC6294 /* SWRevealView */ = {
@@ -426,6 +445,7 @@
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
+				46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */,
 				465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */,
 				465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */,
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,

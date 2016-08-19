@@ -148,10 +148,10 @@
             </objects>
             <point key="canvasLocation" x="1769" y="2050"/>
         </scene>
-        <!--Calculator View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="w5P-TF-l3M">
             <objects>
-                <viewController id="dgD-WI-w9g" customClass="CalculatorViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dgD-WI-w9g" customClass="HomeViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="se1-1t-5KH"/>
                         <viewControllerLayoutGuide type="bottom" id="DVX-pd-RtP"/>
