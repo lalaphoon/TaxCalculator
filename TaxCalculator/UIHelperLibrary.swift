@@ -143,6 +143,7 @@ extension UIViewController {
 
 
 extension UIView {
+    // Add a single label
     func addGreenLabel(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
         //290, 49
         var h = location_y
@@ -166,6 +167,7 @@ extension UIView {
         self.addSubview(label)
         
     }
+    //This is used to add a paragraph
     func addText(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
         //290, 49
         var h = location_y
@@ -182,7 +184,8 @@ extension UIView {
         }
         var label = UILabel(frame: CGRectMake(0, 0,wd  , height))
         label.center = CGPointMake(w, h)
-        label.textAlignment = NSTextAlignment.Center
+        //label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.Left
         label.text = what
         label.font = UIFont(name: THINFONT, size: 18)
         //label.backgroundColor = UIColor.customLabelGreen()

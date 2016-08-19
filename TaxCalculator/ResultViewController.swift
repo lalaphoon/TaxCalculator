@@ -31,6 +31,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
         
         self.containerView =  UIView()
+        self.scrollView.userInteractionEnabled = true
+        self.containerView.userInteractionEnabled = true
         
         self.scrollView.addSubview(containerView)
         self.view.addSubview(scrollView)
@@ -43,18 +45,40 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     }
     func initContainerUI(){
         containerView.addImage("Title_completed.png", self.view.bounds.width/2 - 65,93)
-        var str = "Dividend income of " + String(income) + " result in additional taxed payable of"
+        
+        var str = "Dividend income of $" + String(income) + " result in additional taxed payable of"
         containerView.addText(str,self.view.bounds.width/2, 274, self.view.bounds.width-86, 100)
         result =  TP.Interest_Calculation(income, input)
         var re = "$ " + String(result)
         //  containerView.addGreenLabel("This is a text", self.view.bounds.width/2, 200,self.view.bounds.width - 86, 49)
 
         containerView.addGreenLabel(re, self.view.bounds.width/2, 345, self.view.bounds.width-86, 49)
+        containerView.addText("Tax Advice: \nContribution to RPP will reduce the conribution room available for RRSP an individual's T4 slip Box 20.", self.view.bounds.width/2, 440, self.view.bounds.width-86, 100)
+        containerView.addYellowButton("Start a new search", "StartNewCalculation", (self.view.bounds.width-169)/2, 565, 169, 50, self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func StartNewCalculation() {
+      print("cllicked!")
+      performSegueWithIdentifier("goBack", sender: self)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+      
+    }
+    override func viewWillLayoutSubviews(){
+        super.viewWillLayoutSubviews()
+        self.scrollView.frame = self.view.bounds
+        //self.scrollView.contentSize.height = 3000
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.frame = view.bounds
+        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+    }
+
     
 
     /*
