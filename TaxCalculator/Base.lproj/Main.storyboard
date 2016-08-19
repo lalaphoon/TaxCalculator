@@ -104,13 +104,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="xJt-8o-XVS" kind="show" identifier="goBack" id="01O-Ki-X0E"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3f-no-myQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4600" y="470"/>
+            <point key="canvasLocation" x="4601" y="470"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="pj9-W8-B61">
@@ -495,7 +492,6 @@
         <image name="message_25" width="33" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="01O-Ki-X0E"/>
         <segue reference="SjX-tx-EJv"/>
     </inferredMetricsTieBreakers>
 </document>

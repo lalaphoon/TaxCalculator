@@ -62,7 +62,9 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     }
     func StartNewCalculation() {
       print("cllicked!")
-      performSegueWithIdentifier("goBack", sender: self)
+      //performSegueWithIdentifier("goBack", sender: self)
+        navigationController?.popToRootViewControllerAnimated(true)
+    //self.dismissViewControllerAnimated(false, completion: nil)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       
