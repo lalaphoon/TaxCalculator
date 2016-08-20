@@ -21,8 +21,10 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func initBackground(){
+   
     self.view.addBackground("background.jpg")
     self.view.darken(60)
+    self.addImage("logo.png",self.view.bounds.width/2-42, 200, 84,20.5)
     }
     
 
