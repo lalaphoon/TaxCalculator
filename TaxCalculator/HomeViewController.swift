@@ -67,7 +67,8 @@ class MainView: UIView{
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.addTarget(self, action: "searchClicked:", forControlEvents: .TouchUpInside)
         searchButton.setTitle("Search", forState: .Normal)
-        searchButton.backgroundColor = UIColor.customOrangeColor()
+        searchButton.setImage(UIImage(named:"search_bar.png"), forState: .Normal)
+        //searchButton.backgroundColor = UIColor.customOrangeColor()
         searchButton.layer.cornerRadius = searchButtonStartingCornerRadius
         addSubview(searchButton)
     }
