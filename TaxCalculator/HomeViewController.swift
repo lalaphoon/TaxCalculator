@@ -18,8 +18,8 @@ class MainView: UIView{
     private var searchButton: UIButton!
     private var resultsTable: UITableView!
     
-    private let searchButtonHeight: CGFloat = 60
-    private let searchButtonWidth: CGFloat = 200
+    private let searchButtonHeight: CGFloat = 40
+    private let searchButtonWidth: CGFloat = 300
     
     private let searchBarStartingAlpha: CGFloat = 0
     private let searchButtonStartingAlpha: CGFloat = 1
@@ -67,7 +67,7 @@ class MainView: UIView{
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.addTarget(self, action: "searchClicked:", forControlEvents: .TouchUpInside)
         searchButton.setTitle("Search", forState: .Normal)
-        searchButton.backgroundColor = .blueColor()
+        searchButton.backgroundColor = UIColor.customOrangeColor()
         searchButton.layer.cornerRadius = searchButtonStartingCornerRadius
         addSubview(searchButton)
     }
