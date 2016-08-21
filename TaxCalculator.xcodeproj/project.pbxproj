@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01DCDF86920F4079C17E626C /* Pods_TaxCalculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -45,6 +46,8 @@
 		46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* TaxPro.swift */; };
 		46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */; };
 		46FF4E351D4596D50028C96E /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E341D4596D50028C96E /* ContactViewController.swift */; };
+		9E6F7F2FD0EDC62A389B25A4 /* Pods_TaxCalculatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8210293436993C27133F2A38 /* Pods_TaxCalculatorUITests.framework */; };
+		D4166594122906E09DD1779A /* Pods_TaxCalculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AB9621C7B80B357F3917F4 /* Pods_TaxCalculator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10FA72CB9FB6A65914BEBAAE /* Pods-TaxCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorTests/Pods-TaxCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		16B6AEE528FE1157DF9D9A8F /* Pods-TaxCalculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorUITests/Pods-TaxCalculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -111,6 +116,13 @@
 		46FF4E2E1D43E3980028C96E /* TaxPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxPro.swift; sourceTree = "<group>"; };
 		46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentOnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		46FF4E341D4596D50028C96E /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		6D863E45694888916219BC97 /* Pods-TaxCalculatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorUITests/Pods-TaxCalculatorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaxCalculatorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77AB9621C7B80B357F3917F4 /* Pods_TaxCalculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaxCalculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8210293436993C27133F2A38 /* Pods_TaxCalculatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaxCalculatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B691F5314C46346235450291 /* Pods-TaxCalculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculator/Pods-TaxCalculator.release.xcconfig"; sourceTree = "<group>"; };
+		D6608A231A3965E09AF8CDE3 /* Pods-TaxCalculatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorTests/Pods-TaxCalculatorTests.release.xcconfig"; sourceTree = "<group>"; };
+		E89FE382EDE74CA1556F0D30 /* Pods-TaxCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculator/Pods-TaxCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +132,7 @@
 			files = (
 				46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */,
 				46369E011D459ACC00456B69 /* MessageUI.framework in Frameworks */,
+				D4166594122906E09DD1779A /* Pods_TaxCalculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DCDF86920F4079C17E626C /* Pods_TaxCalculatorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E6F7F2FD0EDC62A389B25A4 /* Pods_TaxCalculatorUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +190,8 @@
 				462D62861D33279100D4FE94 /* TaxCalculatorUITests */,
 				462D62621D33279000D4FE94 /* Products */,
 				46369E021D459ADC00456B69 /* CoreLocation.framework */,
+				DF9C0D8854765E90F6B3F88A /* Pods */,
+				AE21AAD6080E1F20151E7A2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -312,6 +329,29 @@
 			name = SWRevealView;
 			sourceTree = "<group>";
 		};
+		AE21AAD6080E1F20151E7A2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77AB9621C7B80B357F3917F4 /* Pods_TaxCalculator.framework */,
+				7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */,
+				8210293436993C27133F2A38 /* Pods_TaxCalculatorUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF9C0D8854765E90F6B3F88A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E89FE382EDE74CA1556F0D30 /* Pods-TaxCalculator.debug.xcconfig */,
+				B691F5314C46346235450291 /* Pods-TaxCalculator.release.xcconfig */,
+				10FA72CB9FB6A65914BEBAAE /* Pods-TaxCalculatorTests.debug.xcconfig */,
+				D6608A231A3965E09AF8CDE3 /* Pods-TaxCalculatorTests.release.xcconfig */,
+				16B6AEE528FE1157DF9D9A8F /* Pods-TaxCalculatorUITests.debug.xcconfig */,
+				6D863E45694888916219BC97 /* Pods-TaxCalculatorUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -319,9 +359,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 462D628C1D33279100D4FE94 /* Build configuration list for PBXNativeTarget "TaxCalculator" */;
 			buildPhases = (
+				DD38481DCE3220DCFD902784 /* [CP] Check Pods Manifest.lock */,
 				462D625D1D33279000D4FE94 /* Sources */,
 				462D625E1D33279000D4FE94 /* Frameworks */,
 				462D625F1D33279000D4FE94 /* Resources */,
+				6C328CE63662BC9EE66D37F2 /* [CP] Embed Pods Frameworks */,
+				C2BCDFA6F7EF7071553B388A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,9 +379,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 462D628F1D33279100D4FE94 /* Build configuration list for PBXNativeTarget "TaxCalculatorTests" */;
 			buildPhases = (
+				C2E6074A354111FED6FD4CBB /* [CP] Check Pods Manifest.lock */,
 				462D62741D33279100D4FE94 /* Sources */,
 				462D62751D33279100D4FE94 /* Frameworks */,
 				462D62761D33279100D4FE94 /* Resources */,
+				D0CDEACF8BC777B039B21EC5 /* [CP] Embed Pods Frameworks */,
+				9389A35BE61E18924FC735E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -354,9 +400,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 462D62921D33279100D4FE94 /* Build configuration list for PBXNativeTarget "TaxCalculatorUITests" */;
 			buildPhases = (
+				FA2AA2223FAFF7ECFCF75F80 /* [CP] Check Pods Manifest.lock */,
 				462D627F1D33279100D4FE94 /* Sources */,
 				462D62801D33279100D4FE94 /* Frameworks */,
 				462D62811D33279100D4FE94 /* Resources */,
+				D148248EA9D111108FA21261 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -437,6 +485,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6C328CE63662BC9EE66D37F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaxCalculator/Pods-TaxCalculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9389A35BE61E18924FC735E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaxCalculatorTests/Pods-TaxCalculatorTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2BCDFA6F7EF7071553B388A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaxCalculator/Pods-TaxCalculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2E6074A354111FED6FD4CBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D0CDEACF8BC777B039B21EC5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaxCalculatorTests/Pods-TaxCalculatorTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D148248EA9D111108FA21261 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaxCalculatorUITests/Pods-TaxCalculatorUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD38481DCE3220DCFD902784 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA2AA2223FAFF7ECFCF75F80 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		462D625D1D33279000D4FE94 /* Sources */ = {
@@ -613,6 +784,7 @@
 		};
 		462D628D1D33279100D4FE94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E89FE382EDE74CA1556F0D30 /* Pods-TaxCalculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -627,6 +799,7 @@
 		};
 		462D628E1D33279100D4FE94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B691F5314C46346235450291 /* Pods-TaxCalculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -640,6 +813,7 @@
 		};
 		462D62901D33279100D4FE94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10FA72CB9FB6A65914BEBAAE /* Pods-TaxCalculatorTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TaxCalculatorTests/Info.plist;
@@ -652,6 +826,7 @@
 		};
 		462D62911D33279100D4FE94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6608A231A3965E09AF8CDE3 /* Pods-TaxCalculatorTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TaxCalculatorTests/Info.plist;
@@ -664,6 +839,7 @@
 		};
 		462D62931D33279100D4FE94 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16B6AEE528FE1157DF9D9A8F /* Pods-TaxCalculatorUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TaxCalculatorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -676,6 +852,7 @@
 		};
 		462D62941D33279100D4FE94 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D863E45694888916219BC97 /* Pods-TaxCalculatorUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = TaxCalculatorUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
