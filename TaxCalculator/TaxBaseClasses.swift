@@ -1,0 +1,53 @@
+//
+//  TaxBaseClasses.swift
+//  TaxCalculator
+//
+//  Created by Mengyi LUO on 2016-08-22.
+//  Copyright © 2016 WTC Tax. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+enum Category {
+case Income, Deduction, Credit
+}
+//All formulars will be writen in Strategy Design Pattern
+//We probably should use Template Design Pattern
+
+protocol Formula {
+    
+    func initUI()
+    func retrieveData()
+    
+    func getResult() -> Double
+    func getTip() -> String
+    func displayProcess()
+    //factory
+    //static func make(string: String) -> Formula
+}
+
+class Calculator{
+    let strategy : Formula
+    init (algorithm:  Formula){
+        self.strategy = algorithm
+    }
+    func getResult() -> Double{
+        return self.strategy.getResult()
+    }
+    func getTip() -> String{
+        return self.strategy.getTip()
+    }
+    func displayProcess(){
+        self.strategy.displayProcess()
+    }
+    func initUI(){
+        self.strategy.initUI()
+    }
+    func retrieveData(){
+        self.strategy.retrieveData()
+    }
+    
+
+}
+

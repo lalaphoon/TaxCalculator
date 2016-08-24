@@ -89,18 +89,18 @@ class TaxPro {
   
      //income : lower
     // total : higher
-    func calculateTheDifference(income: Double, _ total : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
+    func calculateTheDifference(lower: Double, _ higher : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
         
-        if total < income {
+        if higher < lower {
             return 0
         }
         
-        var top = flag_a_group(total, group)
+        var top = flag_a_group(higher, group)
        // print("Top is \(top)")
-        var bottom = flag_a_group(income , group)
+        var bottom = flag_a_group(lower , group)
         //print("bottom is \(bottom)")
         var result = Double()
-        var total_container : Double = total
+        var total_container : Double = higher
         for var i = top ; i > bottom - 1; --i {
             var byIndex: (Int, Double) = group[group.count - i]
             var level : Double = Double(byIndex.0)
@@ -109,7 +109,7 @@ class TaxPro {
             if i == bottom {
                 //level = income
                 
-                result = result + (total_container - income) * byKey
+                result = result + (total_container - lower) * byKey
                 //print("where am i? \(result)")
                 return Double(result)
             }
