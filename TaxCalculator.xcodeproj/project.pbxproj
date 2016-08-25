@@ -40,6 +40,7 @@
 		467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */; };
 		4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */; };
 		4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */; };
+		468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E07441D6E1B8300290D70 /* DividendIncome.swift */; };
 		46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9E1C21D67A7A400B80106 /* HomeViewController.swift */; };
 		46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94701D3D65F800EC6294 /* SWRevealViewController.m */; };
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
@@ -110,6 +111,7 @@
 		467EFC471D36F1BA00D3358D /* UIHelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelperLibrary.swift; sourceTree = "<group>"; };
 		4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTopicsViewController.swift; sourceTree = "<group>"; };
+		468E07441D6E1B8300290D70 /* DividendIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividendIncome.swift; sourceTree = "<group>"; };
 		46B9E1C21D67A7A400B80106 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		46DD946E1D3D65F000EC6294 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		46DD946F1D3D65F800EC6294 /* TaxCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				46E972881D6BF28F007AAD82 /* Employment.swift */,
+				468E07441D6E1B8300290D70 /* DividendIncome.swift */,
 			);
 			name = Income;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
 				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
+				468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */,
 				467D34981D381D61008D820B /* CalculatorViewController.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
 				460911001D428C0F003C6A65 /* StepThree.swift in Sources */,

@@ -17,7 +17,7 @@ class TaxPro {
     var FederalBracketDictionary = OrderedDictionary<Int,Double>()
     var ProvincialBracketDictionary =  [String :  OrderedDictionary <Int,Double>] ()
     
-    var InterestThreshold = [Int: Double]()
+    var InterestThreshold = OrderedDictionary<Int, Double>()
     
     init() {
         initLists()
@@ -62,7 +62,9 @@ class TaxPro {
         ProvincialBracketDictionary["Ontario"]?.insert(0.0915, forKey: 41536, atIndex: 3)
         ProvincialBracketDictionary["Ontario"]?.insert(0.0505, forKey: 0, atIndex: 4)
     
-        InterestThreshold = [73145 : 0.2 , 86176: 0.36]
+       // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
+        InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
+        InterestThreshold.insert(0.2, forKey: 86176, atIndex: 1)
         //===========================================================================
     }
    
@@ -119,8 +121,26 @@ class TaxPro {
         return Double(result)
         
     }
+    func foundation(lower:Double, _ higher: Double, _ province: String) -> Double{
+       var result = Double(0)
+        result = result + calculateTheDifference(lower, higher, FederalBracketDictionary)
+        result = result + calculateTheDifference(lower, higher , ProvincialBracketDictionary[province]!)
+        var counter:Int = InterestThreshold.count
+        for var i = 0; i < counter; ++i {
+            var byIndex: (Int, Double) = InterestThreshold[i]
+            var keyCode = byIndex.0
+            if lower < Double(keyCode){
+                result = result + calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+            } else {
+                result = result + calculateTheDifference(lower, higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+            }
+        }
+        return result
+    }
     
     //=====================helper end=======================================
+    
+    //=====================Testing code======================================
     
     func RRSP_calculation(income: Double, _ contribution : Double) -> Double{
         var vary = income - contribution
@@ -132,8 +152,11 @@ class TaxPro {
         //Step 2
         print(Float(calculateTheDifference(vary, income, ProvincialBracketDictionary["Ontario"]!)))
         result = result + calculateTheDifference(vary,income , ProvincialBracketDictionary["Ontario"]!)
-        
-        for keyCode in InterestThreshold.keys {
+        var counter: Int = InterestThreshold.count
+         for var i = 0 ; i < counter; ++i {
+            var byIndex: (Int, Double) = InterestThreshold[i]
+            var keyCode = byIndex.0
+        //for keyCode in InterestThreshold.keys {
             if vary < Double(keyCode) {
                 print(calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
                 result = result + calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
@@ -183,7 +206,11 @@ class TaxPro {
         
         
         //Step 3 & 4
-        for keyCode in InterestThreshold.keys {
+       // for keyCode in InterestThreshold.keys {
+        var counter: Int = InterestThreshold.count
+        for var i = 0 ; i < counter; ++i {
+            var byIndex: (Int, Double) = InterestThreshold[i]
+            var keyCode = byIndex.0
             if income < Double(keyCode) {
                 print(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
                 result = result + calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!

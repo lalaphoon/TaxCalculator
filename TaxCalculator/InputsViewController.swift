@@ -46,7 +46,8 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
     func initContainerUI(){
         //if choice ==? {}
         containerView.addImage("Title_calculation.png", self.view.bounds.width/2 - 65, 93)
-        containerView.addTextField("Dividend Income", 1, 43, 274, self.view.bounds.width - (43*2))
+        //containerView.addTextField("Dividend Income", 1, 43, 274, self.view.bounds.width - (43*2))
+        dividendIncome = containerView.returnTextField("Dividend Income", 43, 274, self.view.bounds.width - (43*2))
         containerView.addTextField("Choose an option", 2, 43, 334, self.view.bounds.width - (43*2))
        // containerView.userInteractionEnabled =  true
         containerView.addYellowButton("Next", "moveToNext", self.view.bounds.width - 100, 567, 87, 36, self)
@@ -68,7 +69,7 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         
     }
     func retrieveData(){
-        dividendIncome = self.view.viewWithTag(1) as! UITextField
+       // dividendIncome = self.view.viewWithTag(1) as! UITextField
         optionTextField = self.view.viewWithTag(2) as! UITextField
         optionPickerView.delegate = self
         optionPickerView.tag = 2

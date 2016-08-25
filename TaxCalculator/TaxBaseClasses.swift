@@ -17,7 +17,9 @@ case Income, Deduction, Credit
 
 protocol Formula {
     
-    func initUI()
+    
+   // var containerView:UIView {set get}
+    func initUI(VC:UIViewController)->UIView
     func retrieveData()
     
     func getResult() -> Double
@@ -41,8 +43,8 @@ class Calculator{
     func displayProcess(){
         self.strategy.displayProcess()
     }
-    func initUI(){
-        self.strategy.initUI()
+    func initUI(VC: UIViewController){
+        self.strategy.initUI(VC)
     }
     func retrieveData(){
         self.strategy.retrieveData()

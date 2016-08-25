@@ -277,6 +277,32 @@ extension UIView {
         //func buttonaction(sender:UIButton!)
         //{}
     }
+    
+    
+    //This is just used to return a value
+    
+    func returnTextField(placeholder: String = "Enter your value",  _ location_x: CGFloat = 20, _ location_y: CGFloat = 100, _ width : CGFloat = 300)->UITextField{
+        let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, width , 40))
+        // sampleTextField.tintColor = UIColor.customOrangeColor()
+        // sampleTextField.backgroundColor = UIColor.clearColor()
+        sampleTextField.placeholder = placeholder
+        //sampleTextField.font = UIFont.systemFontOfSize(18)
+        sampleTextField.autocorrectionType = UITextAutocorrectionType.No
+        sampleTextField.keyboardType = UIKeyboardType.Default
+        sampleTextField.returnKeyType = UIReturnKeyType.Done
+        sampleTextField.clearButtonMode = UITextFieldViewMode.WhileEditing;
+        sampleTextField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
+       // sampleTextField.tag = tag
+        
+        //sampleTextField.delegate = myview
+        
+        sampleTextField.setBottomBorder(UIColor.customOrangeColor())
+        
+        
+        self.addSubview(sampleTextField)
+        return sampleTextField
+
+    }
     func addTextField( placeholder: String = "Enter your value", _ tag : Int, _ location_x: CGFloat = 20, _ location_y: CGFloat = 100, _ width : CGFloat = 300){
         let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, width , 40))
        // sampleTextField.tintColor = UIColor.customOrangeColor()
