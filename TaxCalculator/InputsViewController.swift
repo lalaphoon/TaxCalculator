@@ -18,7 +18,7 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
     var optionTextField = UITextField()
     var dividendIncome = UITextField()
     var dividendIncomeList = ["Dividend income from securities", "Dividend income business", "Dividend income (non-eligible only)", "Dividend income from TFSA", "Dividend income from RRSP", "Other types of dividend income", "Capital Gains Dividends"]
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
@@ -26,6 +26,7 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
     
         self.containerView =  UIView()
+        
         
         self.scrollView.addSubview(containerView)
         self.view.addSubview(scrollView)

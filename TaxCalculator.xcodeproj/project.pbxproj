@@ -46,6 +46,7 @@
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
 		46E972871D6BE4A1007AAD82 /* TaxBaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E972861D6BE4A1007AAD82 /* TaxBaseClasses.swift */; };
 		46E972891D6BF28F007AAD82 /* Employment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E972881D6BF28F007AAD82 /* Employment.swift */; };
+		46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */; };
 		46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* TaxPro.swift */; };
 		46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */; };
 		46FF4E351D4596D50028C96E /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E341D4596D50028C96E /* ContactViewController.swift */; };
@@ -119,6 +120,7 @@
 		46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTabBarViewController.swift; sourceTree = "<group>"; };
 		46E972861D6BE4A1007AAD82 /* TaxBaseClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxBaseClasses.swift; sourceTree = "<group>"; };
 		46E972881D6BF28F007AAD82 /* Employment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employment.swift; sourceTree = "<group>"; };
+		46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInputsViewController.swift; sourceTree = "<group>"; };
 		46FF4E2E1D43E3980028C96E /* TaxPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxPro.swift; sourceTree = "<group>"; };
 		46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentOnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		46FF4E341D4596D50028C96E /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
 				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
 				4670331D1D5FC75900688802 /* InputsViewController.swift */,
+				46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
 				465C74F91D62282800F9572A /* ResultViewController.swift */,
 			);
@@ -670,6 +673,7 @@
 				465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */,
 				46E972871D6BE4A1007AAD82 /* TaxBaseClasses.swift in Sources */,
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
+				46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */,
 				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */,

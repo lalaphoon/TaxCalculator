@@ -8,14 +8,18 @@
 
 import Foundation
 import UIKit
+//Each algorithm is a singleton
 
 class RRSP: Formula{
     //var view =  UIView()
    // var VC = UIViewController()
+    
+    static let sharedInstance = RRSP()
+    
     var TP = TaxPro()
     
     
-    var containerView = UIView()
+   // var containerView = UIView()
     
     var contribution = UITextField()
     var provincePickerView =  UIPickerView()
@@ -25,8 +29,12 @@ class RRSP: Formula{
     /*init(view: UIView){
         self.view = view
     }*/
+    private init(){
+        
+    }
+    
     func initUI(VC:UIViewController)-> UIView{
-       // containerView = UIView()
+        var containerView = UIView()
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
         contribution = containerView.returnTextField("Contribution", 43, 274, VC.view.bounds.width - (43*2))
         contribution.keyboardType = .DecimalPad
@@ -35,7 +43,7 @@ class RRSP: Formula{
         
     }
     func initProfile(VC: UIViewController) -> UIView{
-        
+        var containerView = UIView()
         containerView.addImage("Title_profile.png", VC.view.bounds.width/2 - 65,93)
         incomeTextField=containerView.returnTextField("Your Income", 43,274, VC.view.bounds.width-86)
         provinceTextField=containerView.returnTextField("Your Province", 43, 334, VC.view.bounds.width-86)
@@ -57,7 +65,7 @@ class RRSP: Formula{
         
     }
     func getTip() -> String {
-        return ""
+        return "If an individual is a first-time home buyer, consider withdrawing funds from RRSP under the Home Buyers' Plan (HBP) of up to $25,000 given the funds are tax-deferred. The funds shall remain in the RRSP for at least 90 days before withdrawing under the HBP to avoid adverse tax consequences."
     }
     func displayProcess() {
     

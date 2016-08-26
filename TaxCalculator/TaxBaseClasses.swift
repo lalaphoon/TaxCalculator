@@ -31,6 +31,7 @@ protocol Formula {
 
 class Calculator{
     let strategy : Formula
+    
     init (algorithm:  Formula){
         self.strategy = algorithm
     }
@@ -43,8 +44,8 @@ class Calculator{
     func displayProcess(){
         self.strategy.displayProcess()
     }
-    func initUI(VC: UIViewController){
-        self.strategy.initUI(VC)
+    func initUI(VC: UIViewController)->UIView{
+        return self.strategy.initUI(VC)
     }
     func retrieveData(){
         self.strategy.retrieveData()

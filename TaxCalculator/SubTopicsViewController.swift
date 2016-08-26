@@ -109,8 +109,8 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
         self.containerView.endEditing(true)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : InputsViewController = segue.destinationViewController as! InputsViewController
-        DestinyVC.choice = result
+      //  var DestinyVC : InputsViewController = segue.destinationViewController as! InputsViewController
+       // DestinyVC.choice = result
     }
     /*
     // MARK: - Navigation
