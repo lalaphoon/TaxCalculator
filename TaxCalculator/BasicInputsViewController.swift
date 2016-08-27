@@ -29,7 +29,7 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
         
     }
     func moveToNext(){
-        c.retrieveData()
+       // c.retrieveData()
         performSegueWithIdentifier("MoveIntoProfile", sender: self)
     }
     override func viewWillLayoutSubviews() {

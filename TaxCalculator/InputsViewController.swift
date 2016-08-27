@@ -60,10 +60,10 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
+       // var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
        // DestinyVC.choice = choice
-         DestinyVC.option =  optionTextField.text!
-         DestinyVC.input =  Double(dividendIncome.text!)!
+       //  DestinyVC.option =  optionTextField.text!
+       //  DestinyVC.input =  Double(dividendIncome.text!)!
         
         
         

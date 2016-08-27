@@ -17,7 +17,6 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     
     var c = Calculator(algorithm: RRSP.sharedInstance)
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
@@ -45,7 +44,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         
         //3.setting up the result for the green box
         var re = "$ " + String(c.getResult())
-        containerView.addGreenLabel(re, self.view.bounds.width/2, 345, self.view.bounds.width-86, 49)
+       // containerView.addGreenLabel(re, self.view.bounds.width/2, 345, self.view.bounds.width-86, 49)
+        containerView.addLabelGreenButton(re, "viewProcess", 43, 325, self.view.bounds.width-86, 49, self)
         
         //4.setting up the tips
         containerView.addText(c.getTip(), self.view.bounds.width/2, 440, self.view.bounds.width-86, 100)
@@ -56,6 +56,9 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func viewProcess(){
+    
     }
     func StartNewCalculation() {
       print("cllicked!")

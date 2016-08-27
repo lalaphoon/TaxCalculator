@@ -221,6 +221,7 @@
 				467EFC491D36F3C500D3358D /* Utility */,
 				467D34941D3800AF008D820B /* Main */,
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
+				46FE9DC81D7148E9005A9E2D /* unused file */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
 				462D626E1D33279000D4FE94 /* Assets.xcassets */,
 				462D62701D33279000D4FE94 /* LaunchScreen.storyboard */,
@@ -268,7 +269,6 @@
 				4684CA721D5D5A48009B0598 /* Topics */,
 				465C74FB1D62A3CA00F9572A /* History */,
 				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
-				467D34971D381D61008D820B /* CalculatorViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -303,7 +303,6 @@
 			children = (
 				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
 				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
-				4670331D1D5FC75900688802 /* InputsViewController.swift */,
 				46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
 				465C74F91D62282800F9572A /* ResultViewController.swift */,
@@ -379,6 +378,15 @@
 				468E07401D6D3C5500290D70 /* Strategies */,
 			);
 			name = TaxFormulaClasses;
+			sourceTree = "<group>";
+		};
+		46FE9DC81D7148E9005A9E2D /* unused file */ = {
+			isa = PBXGroup;
+			children = (
+				467D34971D381D61008D820B /* CalculatorViewController.swift */,
+				4670331D1D5FC75900688802 /* InputsViewController.swift */,
+			);
+			name = "unused file";
 			sourceTree = "<group>";
 		};
 		AE21AAD6080E1F20151E7A2B /* Frameworks */ = {

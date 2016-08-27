@@ -68,7 +68,7 @@ class RRSP: Formula{
         return TP.foundation(vary, income!, profileProvince!)
     }
     func getInstruction() -> String{
-        return "Dividend income of $" + String(profileIncome) + " result in additional taxed payable of"
+        return "Dividend income of $" + String(contribution.text!) + " result in additional taxed payable of"
     }
     
     func retrieveData(){
