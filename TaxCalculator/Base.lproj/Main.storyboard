@@ -104,10 +104,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="HPt-rc-46v" kind="show" identifier="MoveIntoAfterResult" id="I64-WO-LD3"/>
+                        <segue destination="NjA-9k-hjn" kind="show" identifier="MoveIntoProcess" id="F9R-jr-KKS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3f-no-myQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4601" y="470"/>
+        </scene>
+        <!--After Result View Controller-->
+        <scene sceneID="TB5-qi-70i">
+            <objects>
+                <viewController id="HPt-rc-46v" customClass="AfterResultViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HA6-R8-6xY"/>
+                        <viewControllerLayoutGuide type="bottom" id="4MD-O0-Jdu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uxu-vG-c8R">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FC-Za-LnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5246" y="470"/>
+        </scene>
+        <!--Process View Controller-->
+        <scene sceneID="TwO-AZ-hiE">
+            <objects>
+                <viewController id="NjA-9k-hjn" customClass="ProcessViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ny3-Yi-W4C"/>
+                        <viewControllerLayoutGuide type="bottom" id="omw-v8-oFt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MRv-H4-gOh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeh-9v-pX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4664" y="-208"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="pj9-W8-B61">

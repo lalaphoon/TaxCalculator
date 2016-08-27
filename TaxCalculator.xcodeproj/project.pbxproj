@@ -47,6 +47,8 @@
 		46E972871D6BE4A1007AAD82 /* TaxBaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E972861D6BE4A1007AAD82 /* TaxBaseClasses.swift */; };
 		46E972891D6BF28F007AAD82 /* Employment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E972881D6BF28F007AAD82 /* Employment.swift */; };
 		46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */; };
+		46FE9DCA1D72096A005A9E2D /* AfterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DC91D72096A005A9E2D /* AfterResultViewController.swift */; };
+		46FE9DCC1D723041005A9E2D /* ProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DCB1D723041005A9E2D /* ProcessViewController.swift */; };
 		46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E2E1D43E3980028C96E /* TaxPro.swift */; };
 		46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */; };
 		46FF4E351D4596D50028C96E /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FF4E341D4596D50028C96E /* ContactViewController.swift */; };
@@ -121,6 +123,8 @@
 		46E972861D6BE4A1007AAD82 /* TaxBaseClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxBaseClasses.swift; sourceTree = "<group>"; };
 		46E972881D6BF28F007AAD82 /* Employment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employment.swift; sourceTree = "<group>"; };
 		46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInputsViewController.swift; sourceTree = "<group>"; };
+		46FE9DC91D72096A005A9E2D /* AfterResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterResultViewController.swift; sourceTree = "<group>"; };
+		46FE9DCB1D723041005A9E2D /* ProcessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessViewController.swift; sourceTree = "<group>"; };
 		46FF4E2E1D43E3980028C96E /* TaxPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxPro.swift; sourceTree = "<group>"; };
 		46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentOnboardingPagesViewController.swift; sourceTree = "<group>"; };
 		46FF4E341D4596D50028C96E /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -220,8 +224,8 @@
 				460910F41D41789B003C6A65 /* CoreData */,
 				467EFC491D36F3C500D3358D /* Utility */,
 				467D34941D3800AF008D820B /* Main */,
-				462D62641D33279000D4FE94 /* AppDelegate.swift */,
 				46FE9DC81D7148E9005A9E2D /* unused file */,
+				462D62641D33279000D4FE94 /* AppDelegate.swift */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
 				462D626E1D33279000D4FE94 /* Assets.xcassets */,
 				462D62701D33279000D4FE94 /* LaunchScreen.storyboard */,
@@ -306,6 +310,8 @@
 				46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
 				465C74F91D62282800F9572A /* ResultViewController.swift */,
+				46FE9DC91D72096A005A9E2D /* AfterResultViewController.swift */,
+				46FE9DCB1D723041005A9E2D /* ProcessViewController.swift */,
 			);
 			name = Topics;
 			sourceTree = "<group>";
@@ -700,10 +706,12 @@
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
 				467033201D612F8900688802 /* ProfileViewController.swift in Sources */,
+				46FE9DCA1D72096A005A9E2D /* AfterResultViewController.swift in Sources */,
 				46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */,
 				460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */,
 				4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */,
 				46FF4E351D4596D50028C96E /* ContactViewController.swift in Sources */,
+				46FE9DCC1D723041005A9E2D /* ProcessViewController.swift in Sources */,
 				467EFC401D36EE1B00D3358D /* StepOne.swift in Sources */,
 				46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */,
 				467EFC421D36EE3700D3358D /* StepZero.swift in Sources */,

@@ -69,6 +69,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     func moveToNext(){
         //translate choice to option
         //send option to next view
+        provinceTextField.text = "Ontario"
         c.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
         performSegueWithIdentifier("MoveIntoResult", sender: self)
         

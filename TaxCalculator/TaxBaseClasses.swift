@@ -26,7 +26,7 @@ protocol Formula {
     func getResult() -> Double
     func getTip() -> String
     func getInstruction() -> String
-    func displayProcess()
+    func displayProcess() -> String
     //factory
     //static func make(string: String) -> Formula
 }
@@ -46,8 +46,8 @@ class Calculator{
     func getInstruction() -> String{
         return self.strategy.getInstruction()
     }
-    func displayProcess(){
-        self.strategy.displayProcess()
+    func displayProcess() -> String{
+        return self.strategy.displayProcess()
     }
     func initUI(VC: UIViewController)->UIView{
         return self.strategy.initUI(VC)

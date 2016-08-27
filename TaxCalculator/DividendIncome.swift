@@ -11,28 +11,15 @@ import UIKit
 //Each algorithm is a singleton
 
 class RRSP: Formula{
-    //var view =  UIView()
-   // var VC = UIViewController()
-    
     static let sharedInstance = RRSP()
     
     var TP = TaxPro()
-    
-    
-   // var containerView = UIView()
-    
+
     var contribution = UITextField()
-   // var provincePickerView =  UIPickerView()
-    //var provinceTextField = UITextField()
-    //var incomeTextField = UITextField()
-    
+
     var profileIncome : Double!
     var profileProvince: String!
-    
-    
-    /*init(view: UIView){
-        self.view = view
-    }*/
+
     private init(){
         
     }
@@ -63,9 +50,8 @@ class RRSP: Formula{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
         var vary = income! - contribution!
-        //var result  =  Double(0)
-       profileProvince = "Ontario"
-        return TP.foundation(vary, income!, profileProvince!)
+      
+        return TP.foundation(vary, income!, profileProvince!).result
     }
     func getInstruction() -> String{
         return "Dividend income of $" + String(contribution.text!) + " result in additional taxed payable of"
@@ -77,7 +63,23 @@ class RRSP: Formula{
     func getTip() -> String {
         return "If an individual is a first-time home buyer, consider withdrawing funds from RRSP under the Home Buyers' Plan (HBP) of up to $25,000 given the funds are tax-deferred. The funds shall remain in the RRSP for at least 90 days before withdrawing under the HBP to avoid adverse tax consequences."
     }
-    func displayProcess() {
+    func displayProcess() -> String {
+        var process = String()
+        process =           "-------------------------\n"
+        process = process + "Income:       \(profileIncome)\n"
+        process = process + "Province:     \(profileProvince)\n"
+        process = process + "Contribution: \(self.contribution.text!)\n"
+        process = process + "--------------------------\n"
+        
+        var income = profileIncome
+        var contribution = Double(self.contribution.text!)
+        var vary = income! - contribution!
+        process = process + "\(TP.foundation(vary, income!, profileProvince!).process)\n"
+        process = process + "--------------------------\n"
+        process = process + "result: \(self.getResult())\n"
+        
+        return process
+      
     
     }
 }

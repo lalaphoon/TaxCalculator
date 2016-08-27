@@ -48,7 +48,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         containerView.addLabelGreenButton(re, "viewProcess", 43, 325, self.view.bounds.width-86, 49, self)
         
         //4.setting up the tips
-        containerView.addText(c.getTip(), self.view.bounds.width/2, 440, self.view.bounds.width-86, 100)
+       // containerView.addText(c.getTip(), self.view.bounds.width/2, 440, self.view.bounds.width-86, 100)
+        containerView.addYellowButton("Tax Tip", "viewTip", 43, 420, 100, 50, self)
         
         //5.Setting up the the start new calculat buttion
         containerView.addYellowButton("Start a new search", "StartNewCalculation", (self.view.bounds.width-169)/2, 565, 169, 50, self)
@@ -58,7 +59,10 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     func viewProcess(){
-    
+        performSegueWithIdentifier("MoveIntoProcess", sender: self)
+    }
+    func viewTip(){
+         performSegueWithIdentifier("MoveIntoAfterResult", sender: self)
     }
     func StartNewCalculation() {
       print("cllicked!")

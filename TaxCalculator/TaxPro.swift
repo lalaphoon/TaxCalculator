@@ -64,7 +64,7 @@ class TaxPro {
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
-        InterestThreshold.insert(0.2, forKey: 86176, atIndex: 1)
+        InterestThreshold.insert(0.36, forKey: 86176, atIndex: 1)
         //===========================================================================
     }
    
@@ -121,21 +121,43 @@ class TaxPro {
         return Double(result)
         
     }
-    func foundation(lower:Double, _ higher: Double, _ province: String) -> Double{
-       var result = Double(0)
-        result = result + calculateTheDifference(lower, higher, FederalBracketDictionary)
-        result = result + calculateTheDifference(lower, higher , ProvincialBracketDictionary[province]!)
+    func foundation(lower:Double, _ higher: Double, _ province: String) ->(result: Double, process: String){
+        var result = Double(0)
+        var process =  String()
+        
+        //step one
+        let StepOne = calculateTheDifference(lower, higher, FederalBracketDictionary)
+        result = result + StepOne
+        process =  "Federal:  \(StepOne)  \n"
+        
+        //step Two
+        let StepTwo = calculateTheDifference(lower, higher , ProvincialBracketDictionary[province]!)
+        result = result + StepTwo
+        process = process + "Provincial: \(StepTwo)  \n"
+        
+        
+        process = process + "Surtax %  Threshold \n"
+        
+        
+        //StepThree & StepFour
         var counter:Int = InterestThreshold.count
         for var i = 0; i < counter; ++i {
             var byIndex: (Int, Double) = InterestThreshold[i]
             var keyCode = byIndex.0
+            var finalStep = Double()
             if lower < Double(keyCode){
-                result = result + calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+
+                result = result + finalStep
             } else {
-                result = result + calculateTheDifference(lower, higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                finalStep = calculateTheDifference(lower, higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                result = result + finalStep
             }
+           
+                process = process + "\(byIndex.1*100)%       \(byIndex.0)      \(finalStep)\n"
+            
         }
-        return result
+        return (result, process)
     }
     
     //=====================helper end=======================================
