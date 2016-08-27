@@ -31,7 +31,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
     func initProcessUI(){
         containerView.addText(c.displayProcess(),self.view.bounds.width/2, 200, self.view.bounds.width-86, self.view.bounds.height)
     }
-    /*
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,6 +47,6 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
     }
-*/
+
     
 }
