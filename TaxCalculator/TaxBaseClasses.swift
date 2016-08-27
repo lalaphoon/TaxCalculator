@@ -25,6 +25,7 @@ protocol Formula {
     
     func getResult() -> Double
     func getTip() -> String
+    func getInstruction() -> String
     func displayProcess()
     //factory
     //static func make(string: String) -> Formula
@@ -41,6 +42,9 @@ class Calculator{
     }
     func getTip() -> String{
         return self.strategy.getTip()
+    }
+    func getInstruction() -> String{
+        return self.strategy.getInstruction()
     }
     func displayProcess(){
         self.strategy.displayProcess()

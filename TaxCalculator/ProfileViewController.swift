@@ -22,8 +22,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     var provinceTextField = UITextField()
     var incomeTextField = UITextField()
     
-    var option = String() // given from inputviewController
-    var input = Double() // given from inputviewcontroller
+   // var option = String() // given from inputviewController
+   // var input = Double() // given from inputviewcontroller
     
     let province_tag: Int = 3
    // let marital_tag: Int = 4
@@ -74,13 +74,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
+       /* var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
         // DestinyVC.choice = choice
         DestinyVC.option =  self.option
         DestinyVC.input =  self.input
         DestinyVC.income = Double(incomeTextField.text!)!
         DestinyVC.province = provinceTextField.text!
-
+*/
         
     }
     override func didReceiveMemoryWarning() {
