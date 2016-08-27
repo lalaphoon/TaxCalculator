@@ -15,6 +15,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     var scrollView : UIScrollView!
     var containerView : UIView!
     
+    var c = Calculator(algorithm: RRSP.sharedInstance)
+
+    
     var provincePickerView =  UIPickerView()
     var provinceTextField = UITextField()
     var incomeTextField = UITextField()
@@ -66,6 +69,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     func moveToNext(){
         //translate choice to option
         //send option to next view
+        c.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
         performSegueWithIdentifier("MoveIntoResult", sender: self)
         
     }

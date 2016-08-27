@@ -22,9 +22,13 @@ class RRSP: Formula{
    // var containerView = UIView()
     
     var contribution = UITextField()
-    var provincePickerView =  UIPickerView()
-    var provinceTextField = UITextField()
-    var incomeTextField = UITextField()
+   // var provincePickerView =  UIPickerView()
+    //var provinceTextField = UITextField()
+    //var incomeTextField = UITextField()
+    
+    var profileIncome : Double!
+    var profileProvince: String!
+    
     
     /*init(view: UIView){
         self.view = view
@@ -42,7 +46,7 @@ class RRSP: Formula{
         return containerView
         
     }
-    func initProfile(VC: UIViewController) -> UIView{
+    /*func initProfile(VC: UIViewController) -> UIView{
         var containerView = UIView()
         containerView.addImage("Title_profile.png", VC.view.bounds.width/2 - 65,93)
         incomeTextField=containerView.returnTextField("Your Income", 43,274, VC.view.bounds.width-86)
@@ -50,15 +54,18 @@ class RRSP: Formula{
         containerView.addYellowButton("Calculate", "moveToNext", VC.view.bounds.width-100, 567,87,36,VC)
         return containerView
     
+    }*/
+    func setProfile(income: Double, province: String){
+        profileIncome = income
+        profileProvince = province
     }
     func getResult() -> Double {
-        var income = Double(incomeTextField.text!)
+        var income = profileIncome
         var contribution = Double(self.contribution.text!)
         var vary = income! - contribution!
         //var result  =  Double(0)
-        provinceTextField.text = "Ontario"
-        return TP.foundation(vary, income!, provinceTextField.text!)
-        
+       profileProvince = "Ontario"
+        return TP.foundation(vary, income!, profileProvince!)
     }
     
     func retrieveData(){

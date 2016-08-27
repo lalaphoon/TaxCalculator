@@ -20,6 +20,7 @@ protocol Formula {
     
    // var containerView:UIView {set get}
     func initUI(VC:UIViewController)->UIView
+    func setProfile(income: Double, province: String)
     func retrieveData()
     
     func getResult() -> Double
@@ -46,6 +47,9 @@ class Calculator{
     }
     func initUI(VC: UIViewController)->UIView{
         return self.strategy.initUI(VC)
+    }
+    func setProfile(income: Double, province: String){
+        self.strategy.setProfile(income, province: province)
     }
     func retrieveData(){
         self.strategy.retrieveData()
