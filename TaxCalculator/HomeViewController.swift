@@ -59,6 +59,8 @@ class MainView: UIView{
         searchBar.showsCancelButton = true
         searchBar.alpha = searchBarStartingAlpha
         searchBar.delegate = self
+        searchBar.scopeButtonTitles = ["All","Deduction","Income","Tax Credits"]
+        searchBar.showsScopeBar = true
         addSubview(searchBar)
     }
     
@@ -171,6 +173,9 @@ extension MainView: UISearchBarDelegate {
         searchBar.text = ""
         dismissSearchBar(searchBar)
     }
+    //func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+      //  <#code#>
+    //}
 }
 
 

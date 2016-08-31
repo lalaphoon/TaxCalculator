@@ -27,7 +27,7 @@ class OptionViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLoad() {
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,800)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,1000)
         
         self.containerView =  UIView()
         self.scrollView.addSubview(containerView)
