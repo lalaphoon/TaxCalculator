@@ -13,6 +13,10 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     var scrollView: UIScrollView!
     var containerView = UIView()
     
+    var category = Int()
+    var topic = Int()
+    var option = Int()
+    
     let c = Calculator(algorithm: RRSP.sharedInstance)
     override func viewDidLoad(){
         super.viewDidLoad()

@@ -42,12 +42,33 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoInputs" id="4Ir-5M-wVa"/>
+                        <segue destination="vUc-pw-fJ1" kind="show" identifier="MoveIntoOptions" id="KUM-wA-BFK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLK-Fd-nKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2586" y="466"/>
+        </scene>
+        <!--Option View Controller-->
+        <scene sceneID="vvA-nf-0iw">
+            <objects>
+                <viewController id="vUc-pw-fJ1" customClass="OptionViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xe8-Tu-Q7y"/>
+                        <viewControllerLayoutGuide type="bottom" id="772-ZO-Iya"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vg7-nw-QIB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoInputs" id="mmf-iF-rK2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3k9-IF-DTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586" y="1134"/>
         </scene>
         <!--Basic Inputs View Controller-->
         <scene sceneID="QJu-vi-xAa">
@@ -68,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3278" y="470"/>
+            <point key="canvasLocation" x="3255" y="466"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="9dN-2n-avi">

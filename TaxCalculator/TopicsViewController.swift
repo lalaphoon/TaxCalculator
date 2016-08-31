@@ -10,15 +10,14 @@ import UIKit
 
 class TopicsViewController: UIViewController {
 
-    let INCOME = 1
-    let DEDUCTION = 2
-    let TAXCREDIT = 3
     let s = NSSelectorFromString("moveIntoNext:")
     
-    var choice = Int()
+    var category = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
-        initUI()
+        
+        //initUI()
+        initForUI()
         
         // Do any additional setup after loading the view.
     }
@@ -27,9 +26,18 @@ class TopicsViewController: UIViewController {
         self.addOrangeBorderButton("Deduction", s, 43, 322, self.view.bounds.width - (43*2), 67, DEDUCTION)
         self.addOrangeBorderButton("Tax Credit", s, 43, 429, self.view.bounds.width - (43*2), 67, TAXCREDIT)
     }
+    func initForUI(){
+        var pos_y = 207
+        let distance = 105
+        for i in TaxMenu.keys{
+            self.addOrangeBorderButton(i, s, 43, CGFloat(pos_y), self.view.bounds.width - (43*2), 67, TaxMenu[i]!)
+            pos_y += distance
+        }
+    
+    }
     
     func moveIntoNext(sender: UIButton){
-      choice = sender.tag
+      category = sender.tag
       performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
     }
     
@@ -40,7 +48,7 @@ class TopicsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var DestinyVC : SubTopicsViewController = segue.destinationViewController as! SubTopicsViewController
-        DestinyVC.choice = choice
+        DestinyVC.category = category
     }
 
     /*

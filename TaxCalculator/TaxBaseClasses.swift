@@ -19,6 +19,7 @@ protocol Formula {
     
     
    // var containerView:UIView {set get}
+    //init()
     func initUI(VC:UIViewController)->UIView
     func setProfile(income: Double, province: String)
     func retrieveData()
