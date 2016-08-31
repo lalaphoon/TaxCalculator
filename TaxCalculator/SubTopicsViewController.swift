@@ -30,6 +30,7 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
     func moveIntoNext(sender: AnyObject){
         //print("I'm here")
         topic = sender.tag
+        print("topic is \(topic)")
         performSegueWithIdentifier("MoveIntoOptions", sender: self)
     }
     

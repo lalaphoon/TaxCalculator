@@ -61,6 +61,9 @@ class MainView: UIView{
         searchBar.delegate = self
         searchBar.scopeButtonTitles = ["All","Deduction","Income","Tax Credits"]
         searchBar.showsScopeBar = true
+       // searchBar.backgroundColor = UIColor.customOrangeColor()
+        searchBar.barTintColor = UIColor.customOrangeColor()
+        searchBar.tintColor = UIColor.whiteColor()
         addSubview(searchBar)
     }
     

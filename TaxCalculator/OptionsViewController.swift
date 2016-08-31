@@ -21,6 +21,7 @@ class OptionViewController: UIViewController, UIScrollViewDelegate{
     
     func moveIntoNext(sender: AnyObject){
         option = sender.tag
+        print("option is \(option)")
         performSegueWithIdentifier("MoveIntoInputs", sender: self)
     }
     

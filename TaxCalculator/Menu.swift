@@ -13,7 +13,7 @@ import UIKit
 
 //let TaxBook = [INCOME:[EMPLOYMENT:Employment,]]
 
-
+let ERROR = "ERROR"
 
 let TaxMenu = [ "Income":1,
                 "Deduction":2,
@@ -194,8 +194,38 @@ let Credit_subMenu = ["CPP contribution through employment": 1,
                         "Age credit":22,
                         "Spouse credit":23]
 //========================End of Tax==================================
-
-
+let taxBook = [
+"1-1-1": "Employment income",
+"1-1-2": "Employer-provided automobile and vehicle benefits",
+"1-1-3": "Allowances",
+"1-1-4": "Expense reimbursement",
+"1-1-5": "Stock option",
+"1-2-1": "Dividend income from securities(stock, mutual funds, etc.)"]
+extension TaxPro{
+    func lookForOption(index: String) -> String{
+        if taxBook[index] != nil{
+            return taxBook[index]!
+        } else
+        {        return ERROR
+        }
+    }
+    func lookForTopic(category: String, _ topic: String) ->[String]{
+        let index = category + "-" + topic + "-"
+        var result = [String]()
+        var count = 0
+        for item in taxBook{
+            if item.0.hasPrefix(index) {
+                
+               result.insert( item.1, atIndex: count)
+                count+=1
+              
+            }
+        }
+        return result
+    }
+    
+    
+}
 
 
 

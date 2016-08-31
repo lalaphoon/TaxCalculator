@@ -17,7 +17,19 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     var topic = Int()
     var option = Int()
     
-    let c = Calculator(algorithm: RRSP.sharedInstance)
+    var c = Calculator(algorithm: RRSP.sharedInstance)
+    
+    
+    func checkCalculation(){
+     let start = String(self.category)+"-"+String(topic)+"-"+String(option)
+         print("start is \(start)")
+        if start == "1-1-1" {
+           print("I'm in12")
+        c = Calculator(algorithm: InterestIncome.sharedInstance)
+        }
+    }
+    
+   
     override func viewDidLoad(){
         super.viewDidLoad()
         self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
@@ -29,7 +41,7 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
         self.scrollView.addSubview(self.containerView)
         self.view.addSubview(scrollView)
         self.hideKeyboardWhenTappedAround()
-        
+        checkCalculation()
         
     }
     func moveToNext(){

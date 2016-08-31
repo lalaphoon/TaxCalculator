@@ -242,12 +242,18 @@ extension UIView {
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.tag = tag
         button.backgroundColor = .clearColor()
-        button.layer.borderWidth = 1.0
+        button.layer.borderWidth = 2.5
+        button.layer.cornerRadius = 10
         button.layer.borderColor = UIColor.customOrangeColor().CGColor
         button.setTitle(title, forState: .Normal)
-        button.setTitleColor(UIColor.customOrangeColor(), forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
-       // button.userInteractionEnabled = true
+       
+        //button.layer.shadowRadius = 3.0;
+        //button.layer.shadowColor = UIColor.customBlackColor().CGColor
+        //button.layer.shadowOffset = CGSizeMake(0.0, 1.0)
+        //button.layer.shadowOpacity = 0.5;
+        //button.layer.masksToBounds = false
         self.addSubview(button)
         //buttonaction is a type of selector.
         //on your viewcontroller page, you should have

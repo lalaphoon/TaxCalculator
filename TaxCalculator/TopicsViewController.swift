@@ -38,6 +38,7 @@ class TopicsViewController: UIViewController {
     
     func moveIntoNext(sender: UIButton){
       category = sender.tag
+      print("category is \(category)")
       performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
     }
     
