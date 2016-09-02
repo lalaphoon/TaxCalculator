@@ -14,7 +14,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
     var scrollView: UIScrollView!
     var containerView: UIView!
     
-    var c = Calculator(algorithm: RRSP.sharedInstance)
+    var formula : Calculator!
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         initTipUI()
     }
     func initTipUI(){
-       containerView.addText(c.getTip(),self.view.bounds.width/2, 300, self.view.bounds.width-86, self.view.bounds.height)
+       containerView.addText(formula.getTip(),self.view.bounds.width/2, 300, self.view.bounds.width-86, self.view.bounds.height)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

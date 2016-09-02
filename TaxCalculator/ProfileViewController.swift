@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     var scrollView : UIScrollView!
     var containerView : UIView!
     
-    var c = Calculator(algorithm: RRSP.sharedInstance)
+    var formula = Calculator(algorithm: RRSP.sharedInstance)
 
     
     var provincePickerView =  UIPickerView()
@@ -70,18 +70,16 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         //translate choice to option
         //send option to next view
         provinceTextField.text = "Ontario"
-        c.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
+        formula.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
         performSegueWithIdentifier("MoveIntoResult", sender: self)
         
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       /* var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
+        var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
         // DestinyVC.choice = choice
-        DestinyVC.option =  self.option
-        DestinyVC.input =  self.input
-        DestinyVC.income = Double(incomeTextField.text!)!
-        DestinyVC.province = provinceTextField.text!
-*/
+        DestinyVC.formula =  formula
+       
+
         
     }
     override func didReceiveMemoryWarning() {

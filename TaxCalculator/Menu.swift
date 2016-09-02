@@ -200,7 +200,136 @@ let taxBook = [
 "1-1-3": "Allowances",
 "1-1-4": "Expense reimbursement",
 "1-1-5": "Stock option",
-"1-2-1": "Dividend income from securities(stock, mutual funds, etc.)"]
+"1-2-1": "Dividend income from securities(stock, mutual funds, etc.)",
+"1-2-2": "Dividend income business",
+"1-2-3": "Dividend income (non-eligible only)",
+"1-2-4": "Dividend income from TFSA",
+"1-2-5": "Dividend income from RRSP",
+"1-2-6": "Other types of dividend income",
+"1-2-7": "Capital Gains Dividends",
+"1-3-1": "Interest income from bank deposits",
+"1-3-2": "Interest income from money loaned",
+"1-3-3":"Interest income from bonds",
+"1-3-4":"Interest income from GIC",
+"1-3-5":"Interest income from Treasury Bills",
+"1-3-6": "Interest income from TFSA",
+"1-3-7":"Interest income from RRSP",
+"1-3-8":"Other types of interest income",
+"1-4-1": "Sale of publicly traded shares(eg.Stock market trading)",
+"1-4-2": "Sale of mutual fund units",
+"1-4-3":"Sale of real estate property(eg. Home, vacation home)",
+"1-4-4":"Sale of depreciable properties",
+"1-4-5":"Sale of bonds, debentures, promissory notes",
+"1-4-6":"Sale of other properties",
+"1-4-7":"Sale of personal-use property",
+"1-4-8":"Sale of listed personal property",
+"1-4-9":"Sale of shares of a private company",
+"1-4-10":"Exchange one property for another",
+"1-4-11":"Donates a property as a gift",
+"1-4-12":"Settles a debt denominated in foreign currency",
+"1-4-13":"Foreign exchange gain",
+"1-4-14":"An option to buy or sell a property has expired",
+"1-4-15":"Owns a property that was expropriated, sholen, or destroyed",
+"1-4-16":"Owns a securities that a corporation redeems or cancels",
+"1-4-17":"Changes all or part of the property's use",
+"1-5-1":"Income from rental property(eg. Vacation home, investment property, etc.)",
+"1-6-1":"Income from Business",
+"1-6-2":"Income from rendering professional services",
+"1-7-1":"Annuities",
+"1-7-2":"Life Insurance",
+"1-7-3":"Mutual Fund income",
+"1-7-4":"Foreign investment income(and foreign tax credit)",
+"1-8-1":"Old Age Security",
+"1-8-2":"CPP benefits",
+"1-8-3":"Other pension income",
+"1-8-4":"Universal Child Care Benefit",
+"1-8-5":"Canada Child Benefit",
+"1-8-6":"Employment insurance",
+"1-8-7":"RRSP income",
+"1-8-8":"RDSP income",
+"1-8-9":"Support payment",
+"1-8-10":"Worker's compensation",
+"1-8-11":"Social assistance payments",
+
+"2-1-1": "Investment counsel fees and custodial fees",
+"2-1-2":"Fees paid for investment record-keeping",
+"2-1-3":"Fees paid for investment administrative services",
+"2-1-4":"Fees paid for investment advice on buying or selling investments",
+"2-1-5":"Interest Expense",
+"2-1-6":"Fees paid for safety deposit box",
+"2-1-7":"Fees paid for investment advice and administrative services for registered investments(RRSP, TFSAs, RPPs, etc.)",
+"2-1-8":"Subscription fees paid for financial newspapers, magazines or newsletters",
+"2-1-9":"Brokerage fees for buying and selling securites",
+
+"2-2-1":"Capital loss",
+"2-2-2":"Allowable business investment loss",
+"2-3-1":"Rental loss",
+"2-3-2":"Purchase of rental property",
+"2-3-3":"Purchase of furnitures for rental property",
+"2-3-4":"Purchase of fixtures for rental property",
+"2-3-5":"Mortgage payment for rental property",
+"2-3-6":"Property taxes for rental property",
+"2-3-7":"Utility costs for rental property",
+"2-3-8":"Home insurance costs for rental property",
+"2-3-9":"Maintenance and repaire costs for rental property",
+"2-3-10":"Other expenses paid for rental property",
+"2-3-11":"Legal fees for rental property",
+"2-3-12":"Accounting fees for rental property",
+"2-3-13":"Landscaping costs for rental property",
+"2-3-14":"Lease inducement paid on rental property",
+"2-3-15": "Costs on construction and renovation of a building",
+"2-4-1":"Meals and Entertainment",
+"2-4-2":"CCA",
+"2-4-3":"Eligible capital property",
+"2-5-1":"Pension adjustment",
+"2-5-2":"Registered Pension Plan(RPP)deduction",
+"2-5-3":"Registered Retirement Savings Plan(RRSP) deduction",
+"2-5-4":"Union/Professinal dues",
+"2-5-5":"Universal Child Care Benefit repaymet",
+"2-5-6":"Child care expense",
+"2-5-7":"Disability supports deduction",
+"2-5-8":"Business investment loss",
+"2-5-9":"Moving expense",
+"2-5-10":"Carrying charges & interest expense",
+"2-5-11":"Canada Pension Plan(CPP) deduction for self-employment",
+"2-5-12":"Other employment expense",
+"2-5-13":"Other deductions",
+"2-5-14":"Social benefit repayment",
+"2-5-15":"Employee home relocation loan deduction",
+"2-5-16":"Security options deductions",
+"2-5-17":"Other payment deductions",
+"2-5-18":"Non-capital loss of other years",
+"2-5-19":"Net capital loss of other years",
+"2-5-20":"Capital gains deductions",
+"2-5-21":"Additional deductions",
+"2-5-22":"Meals & Entertainment",
+"2-5-23":"Moving expenses",
+"2-5-24":"Professional membership dues",
+"3-1-":"CPP contribution through employment",
+"3-2-":"CPP contribution on self-employment",
+"3-3-":"Employment insurance(EI) premiums through employment",
+"3-4-":"Employment insurance(EI) premiums on self-employment",
+"3-5-":"Adoption expense",
+"3-6-":"Pension income amount",
+"3-7-":"Caregiver amount",
+"3-8-":"Disability amount",
+"3-9-":"Interest paid on student loans",
+"3-10-":"Tuition, education, and textbook amounts",
+"3-11-":"Medical expense for self, spouse, and dependant children",
+"3-12-":"Volunteer firefighters' amounts",
+"3-13-":"Canada employment amount",
+"3-14-":"Public transit amount",
+"3-15-":"Children's fitness amount",
+"3-16-":"Family caregiver amount for children under 18 years of age",
+"3-17-":"Home buyer's amount",
+"3-18-":"Children art's amount",
+"3-19-":"Search and rescue volunteer tax credit",
+"3-20-":"Home accessbility tax credit",
+"3-21-":"Investment tax credit",
+"3-22-":"Children's fitness tax credit",
+"3-23-":"Age credit",
+"3-24-":"Spouse credit"]
+
 extension TaxPro{
     func lookForOption(index: String) -> String{
         if taxBook[index] != nil{
@@ -209,8 +338,8 @@ extension TaxPro{
         {        return ERROR
         }
     }
-    func lookForTopic(category: String, _ topic: String) ->[String]{
-        let index = category + "-" + topic + "-"
+    func lookForTopic(category: Int, _ topic: Int) ->[String]{
+        let index = String(category) + "-" + String(topic) + "-"
         var result = [String]()
         var count = 0
         for item in taxBook{
@@ -219,6 +348,18 @@ extension TaxPro{
                result.insert( item.1, atIndex: count)
                 count+=1
               
+            }
+        }
+        return result
+    }
+    func lookForCategory(category: Int) ->[String]{
+        let index = String(category) + "-"
+        var result = [String]()
+        var count = 0
+        for item in taxBook{
+            if item.0.hasPrefix(index){
+                result.insert(item.1, atIndex: count)
+                count += 1
             }
         }
         return result

@@ -13,7 +13,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var containerView: UIView!
     
-    var c = Calculator(algorithm: RRSP.sharedInstance)
+    var formula : Calculator!
     override func viewDidLoad(){
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
@@ -29,7 +29,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         
     }
     func initProcessUI(){
-        containerView.addText(c.displayProcess(),self.view.bounds.width/2, 200, self.view.bounds.width-86, self.view.bounds.height)
+        containerView.addText(formula.displayProcess(),self.view.bounds.width/2, 200, self.view.bounds.width-86, self.view.bounds.height)
     }
     
     override func didReceiveMemoryWarning() {

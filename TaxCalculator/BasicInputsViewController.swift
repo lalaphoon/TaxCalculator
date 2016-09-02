@@ -36,12 +36,13 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
         self.scrollView.delegate = self
         self.scrollView.contentSize =  CGSizeMake(self.view.bounds.width, 667)
        // self.containerView = UIView()
+        checkCalculation()
         self.containerView = c.initUI(self)
         //Add something for calculator...
         self.scrollView.addSubview(self.containerView)
         self.view.addSubview(scrollView)
         self.hideKeyboardWhenTappedAround()
-        checkCalculation()
+        
         
     }
     func moveToNext(){
@@ -60,5 +61,11 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0,0,scrollView.contentSize.width, scrollView.contentSize.height)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
+        DestinyVC.formula = c
+        //DestinyVC.topic = topic
+        //DestinyVC.option = option
     }
 }

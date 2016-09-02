@@ -67,7 +67,7 @@ class InterestIncome: Formula{
         process =           "-------------------------\n"
         process = process + "Income:       \(profileIncome)\n"
         process = process + "Province:     \(profileProvince)\n"
-        process = process + "Contribution: \(self.interest.text!)\n"
+        process = process + "Interest: \(self.interest.text!)\n"
         process = process + "--------------------------\n"
         
         var income = profileIncome

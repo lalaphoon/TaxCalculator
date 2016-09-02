@@ -15,7 +15,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     var scrollView : UIScrollView!
     var containerView: UIView!
     
-    var c = Calculator(algorithm: RRSP.sharedInstance)
+    var formula = Calculator(algorithm: RRSP.sharedInstance)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +39,11 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         containerView.addImage("Title_completed.png", self.view.bounds.width/2 - 65,93)
         
         //2.setting up the instruction
-        var str = c.getInstruction()
+        var str = formula.getInstruction()
         containerView.addText(str,self.view.bounds.width/2, 274, self.view.bounds.width-86, 100)
         
         //3.setting up the result for the green box
-        var re = "$ " + String(c.getResult())
+        var re = "$ " + String(formula.getResult())
        // containerView.addGreenLabel(re, self.view.bounds.width/2, 345, self.view.bounds.width-86, 49)
         containerView.addLabelGreenButton(re, "viewProcess", 43, 325, self.view.bounds.width-86, 49, self)
         
@@ -68,10 +68,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
       print("cllicked!")
       //performSegueWithIdentifier("goBack", sender: self)
         navigationController?.popToRootViewControllerAnimated(true)
+       // navigationController?.popToViewController(HomeViewController, animated: true)
     //self.dismissViewControllerAnimated(false, completion: nil)
-    }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      
     }
     override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
@@ -83,6 +81,17 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "MoveIntoAfterResult"{
+        var DestinyVC : AfterResultViewController = segue.destinationViewController as! AfterResultViewController
+        DestinyVC.formula = formula
+        } else {
+        var DesVC: ProcessViewController = segue.destinationViewController as! ProcessViewController
+        DesVC.formula = formula
+        }
+        //DestinyVC.topic = topic
+        //DestinyVC.option = option
     }
 
     
