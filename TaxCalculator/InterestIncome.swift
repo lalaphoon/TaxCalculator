@@ -26,7 +26,7 @@ class InterestIncome: Formula{
     func initUI(VC:UIViewController)-> UIView{
         var containerView = UIView()
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        interest = containerView.returnTextField("Interest", 43, 274, VC.view.bounds.width - (43*2))
+        interest = containerView.returnTextField("Interest income", 43, 274, VC.view.bounds.width - (43*2))
         interest.keyboardType = .DecimalPad
         containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
         return containerView
@@ -53,7 +53,7 @@ class InterestIncome: Formula{
         return TP.foundation(income!, total, profileProvince!).result
     }
     func getInstruction() -> String{
-        return "Interest  of $" + String(interest.text!) + " result in additional taxed payable of"
+        return "Dividend Income of $" + String(interest.text!) + " results in additional taxed payable for the current year of"
     }
     
     func retrieveData(){

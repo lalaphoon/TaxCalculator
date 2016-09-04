@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     func initContainerUI(){
        containerView.addImage("Title_profile.png", self.view.bounds.width/2 - 65,93)
        containerView.addTextField("Your Income", income_tag, 43,274, self.view.bounds.width-86)
-       containerView.addTextField("Your Province", province_tag, 43, 334, self.view.bounds.width-86)
+       containerView.addTextField("Your Province or Territory of Residence", province_tag, 43, 334, self.view.bounds.width-86)
        containerView.addYellowButton("Calculate", "moveToNext", self.view.bounds.width-100, 567,87,36,self)
     }
     func retrieveContainer(){
