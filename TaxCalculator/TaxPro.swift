@@ -19,6 +19,8 @@ class TaxPro {
     
     var InterestThreshold = OrderedDictionary<Int, Double>()
     
+    var TaxCredit =  [String: Double]()
+    
     init() {
         initLists()
         initBracket()
@@ -45,6 +47,9 @@ class TaxPro {
             "Nunavut",
             "Northwest Territories",
             "Quebec"]
+    }
+    func initTaxCredit(){
+        TaxCredit = ["Federal": 0.15 , "Ontario":0.0505 ]
     }
     func initBracket() {
         //================Interest/income calculation===============================

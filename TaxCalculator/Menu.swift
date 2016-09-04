@@ -265,11 +265,22 @@ Menu(category: INCOME, topic: CAPITALGAIN, name: "Owns a property that was expro
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Owns a securities that a corporation redeems or cancels", id: 16),
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Changes all or part of the property's use", id: 17),
 
+    
+    
+    
 Menu(category: INCOME, topic: RENTALINCOME, name: "Income from rental property(eg. Vacation home, investment property, etc.)", id: 1),
 
+    
+    
+    
+    
 Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from Business", id: 1),
 Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from rendering professional services", id: 2),
 
+    
+    
+    
+    
 Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Annuities", id: 1),
 Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Life Insurance", id: 2),
 Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Mutual Fund income", id: 3),
@@ -287,6 +298,11 @@ Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Support payment", id: 9
 Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Worker's compensation", id: 10),
 Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Social assistance payments", id: 11),
 
+    
+    
+    
+    
+    
 Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Investment counsel fees and custodial fees", id: 1),
 Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment record-keeping", id: 2),
 Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment administrative services", id: 3),
@@ -296,10 +312,17 @@ Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for
 Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment advice and administrative services for registered investments(RRSP, TFSAs, RPPs, etc.)", id: 7),
 Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Subscription fees paid for financial newspapers, magazines or newsletters", id: 8),
 Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Brokerage fees for buying and selling securites", id: 9),
+  
+    
+    
     
     
 Menu(category: DEDUCTION, topic: CAPITALGAIN, name: "Capital loss", id: 1),
 Menu(category: DEDUCTION, topic: CAPITALGAIN, name: "Allowable business investment loss", id: 2),
+    
+    
+    
+    
     
 Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Rental loss", id: 1),
 Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of rental property", id: 2),

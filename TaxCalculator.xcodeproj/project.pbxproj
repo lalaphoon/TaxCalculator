@@ -17,6 +17,7 @@
 		460911021D428C69003C6A65 /* StepFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460911011D428C69003C6A65 /* StepFour.swift */; };
 		460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460911031D42C364003C6A65 /* UserSettingsViewController.swift */; };
 		4629A86B1D777D4A006533BC /* InterestIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86A1D777D4A006533BC /* InterestIncome.swift */; };
+		4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86C1D7B622C006533BC /* Tax credit.swift */; };
 		462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62641D33279000D4FE94 /* AppDelegate.swift */; };
 		462D626A1D33279000D4FE94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462D62681D33279000D4FE94 /* Main.storyboard */; };
 		462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462D626B1D33279000D4FE94 /* TaxCalculator.xcdatamodeld */; };
@@ -88,6 +89,7 @@
 		460911011D428C69003C6A65 /* StepFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepFour.swift; sourceTree = "<group>"; };
 		460911031D42C364003C6A65 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		4629A86A1D777D4A006533BC /* InterestIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestIncome.swift; sourceTree = "<group>"; };
+		4629A86C1D7B622C006533BC /* Tax credit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tax credit.swift"; sourceTree = "<group>"; };
 		462D62611D33279000D4FE94 /* TaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		462D62641D33279000D4FE94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		462D62691D33279000D4FE94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -326,7 +328,7 @@
 		468E07401D6D3C5500290D70 /* Strategies */ = {
 			isa = PBXGroup;
 			children = (
-				468E07431D6D3CC800290D70 /* Credit */,
+				468E07431D6D3CC800290D70 /* Tax Credit */,
 				468E07421D6D3CB500290D70 /* Deduction */,
 				468E07411D6D3C7400290D70 /* Income */,
 			);
@@ -350,11 +352,12 @@
 			name = Deduction;
 			sourceTree = "<group>";
 		};
-		468E07431D6D3CC800290D70 /* Credit */ = {
+		468E07431D6D3CC800290D70 /* Tax Credit */ = {
 			isa = PBXGroup;
 			children = (
+				4629A86C1D7B622C006533BC /* Tax credit.swift */,
 			);
-			name = Credit;
+			name = "Tax Credit";
 			sourceTree = "<group>";
 		};
 		46B9E1C01D67A71C00B80106 /* Home-Search */ = {
@@ -698,6 +701,7 @@
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
 				46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */,
 				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
+				4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */,
 				467D34981D381D61008D820B /* CalculatorViewController.swift in Sources */,
