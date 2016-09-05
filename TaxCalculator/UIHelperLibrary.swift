@@ -225,7 +225,31 @@ extension UIView {
         self.addSubview(button)
         
     }
-   
+    func addImageButton(title: String, _ buttonaction: Selector, _ image: String, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50, _ target: UIViewController){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        button.setTitle(title, forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState:  .Normal)
+        //button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+        button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
+        let i:UIImage = UIImage(named: image)!
+        button.setImage(i, forState: .Normal)
+        
+        button.centerTextAndImage(10)
+        self.addSubview(button)
+    }
+    //http://stackoverflow.com/questions/2451223/uibutton-how-to-center-an-image-and-a-text-using-imageedgeinsets-and-titleedgei
+    //=========This is used for aling image with a button ===========
+    func setupButton(button: UIButton) {
+        let spacing: CGFloat = 6.0
+        let imageSize: CGSize = button.imageView!.image!.size
+        button.titleEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, -(imageSize.height + spacing), 0.0)
+        let labelString = NSString(string: button.titleLabel!.text!)
+        let titleSize = labelString.sizeWithAttributes([NSFontAttributeName: button.titleLabel!.font])
+        button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0.0, 0.0, -titleSize.width)
+        let edgeOffset = abs(titleSize.height - imageSize.height) / 2.0;
+        button.contentEdgeInsets = UIEdgeInsetsMake(edgeOffset, 0.0, edgeOffset, 0.0)
+    }
+    //===================================
     func addLabelGreenButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50, _ target: UIViewController){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         //button.backgroundColor = UIColor.customOrangeColor()
@@ -406,6 +430,14 @@ extension UITextView{
         border.borderWidth = width
         self.layer.addSublayer(border)
         self.layer.masksToBounds = true
+    }
+}
+extension UIButton {
+    func centerTextAndImage(spacing: CGFloat) {
+        let insetAmount = spacing / 2
+        imageEdgeInsets = UIEdgeInsets(top: 0, left: -insetAmount, bottom: 0, right: insetAmount)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: -insetAmount)
+        contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
     }
 }
 

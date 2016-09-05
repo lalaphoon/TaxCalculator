@@ -31,6 +31,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         initTipUI()
     }
     func initTipUI(){
+       containerView.addImage("Title_light.png", self.view.bounds.width/2 - 65,93)
        containerView.addText(formula.getTip(),self.view.bounds.width/2, 300, self.view.bounds.width-86, self.view.bounds.height)
     }
     override func didReceiveMemoryWarning() {
