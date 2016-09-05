@@ -31,9 +31,9 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         self.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93)
         self.addTextField("Your Name", name_tag, 43, 250)
         //self.addTextField("Your Email", email_tag, 43, 310)
-        self.addTextField("Your Subject", subject_tag, 43, 310)
-        self.addTextView("\n\n\n\nYour Message",message_tag,43,370)
-        self.addYellowButton("Send", "sendEmail", 266, 567, 87, 36)
+        self.addTextField("Subject", subject_tag, 43, 310)
+        self.addTextView("\n\n\n\nMessage",message_tag,43,370)
+        self.addYellowButton("Send", "sendEmail", 266, 567, self.view.bounds.width - (43 * 2), 36)
         //======================This is the end for self.view======================
 
     }
@@ -42,9 +42,9 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         containerView.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93)
         containerView.addTextField("Your Name", name_tag, 43, 250, self.view.bounds.width - (43*2))
         //self.addTextField("Your Email", email_tag, 43, 310)
-        containerView.addTextField("Your Subject", subject_tag, 43, 310, self.view.bounds.width - (43*2))
-        containerView.addTextView("\n\n\n\nYour Message",message_tag, 43 , 370, self.view.bounds.width - (43*2))
-        containerView.addYellowButton("Send", "sendEmail", self.view.bounds.width - 100, 567, 87, 36, self)
+        containerView.addTextField("Subject", subject_tag, 43, 310, self.view.bounds.width - (43*2))
+        containerView.addTextView("\n\n\n\nMessage",message_tag, 43 , 370, self.view.bounds.width - (43*2))
+        containerView.addYellowButton("Send", "sendEmail", 43, 567, self.view.bounds.width - (43*2), 36, self)
         //=====================This is the end for container view===================
     }
     func retrieveDataFromView(){
