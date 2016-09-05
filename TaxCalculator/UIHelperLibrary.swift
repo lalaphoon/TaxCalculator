@@ -167,6 +167,34 @@ extension UIView {
         self.addSubview(label)
         
     }
+    // This is used to add a title/header
+    func addHeader(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
+        //290, 49
+        var h = location_y
+        var w = location_x
+        var wd = width
+        if h == 0 {
+            h = self.bounds.height/2
+        }
+        if w == 0 {
+            w = self.bounds.width/2
+        }
+        if width == 0 {
+            wd = self.bounds.width-86
+        }
+        var label = UILabel(frame: CGRectMake(0, 0,wd  , height))
+        label.center = CGPointMake(w, h)
+        label.textAlignment = NSTextAlignment.Center
+        //label.textAlignment = NSTextAlignment.Left
+        label.text = what
+        //label.font = UIFont(name: THINFONT, size: 18)
+        label.font = UIFont(name: <#T##String#>, size: 25)
+        //label.backgroundColor = UIColor.customLabelGreen()
+        label.lineBreakMode = .ByWordWrapping
+        label.numberOfLines = 0
+        self.addSubview(label)
+
+    }
     //This is used to add a paragraph
     func addText(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
         //290, 49
@@ -184,12 +212,13 @@ extension UIView {
         }
         var label = UILabel(frame: CGRectMake(0, 0,wd  , height))
         label.center = CGPointMake(w, h)
-        //label.textAlignment = NSTextAlignment.Center
-        label.textAlignment = NSTextAlignment.Left
+        label.textAlignment = NSTextAlignment.Center
+        //label.textAlignment = NSTextAlignment.Left
         label.text = what
         label.font = UIFont(name: THINFONT, size: 18)
+        label.textColor =  UIColor.grayColor()
         //label.backgroundColor = UIColor.customLabelGreen()
-        label.lineBreakMode = .ByWordWrapping
+        label.lineBreakMode = .ByTruncatingMiddle
         label.numberOfLines = 0
         self.addSubview(label)
         
