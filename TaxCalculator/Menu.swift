@@ -39,12 +39,15 @@ class Menu {
 
 let ERROR = "ERROR"
 
-let TaxMenu = [ "Income":1,
+let TaxMenu = [
+    "Income":1,
                 "Deduction":2,
-                "Credit":3]
+                "Tax Credit":3
+    ]
 let INCOME = 1
 let DEDUCTION = 2
 let TAXCREDIT = 3
+let ALL = 0
 //======================Income========================================
 let Income_subMenu = ["Employment": 1,
                       "Dividend Income": 2,
@@ -252,7 +255,7 @@ Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of mutual fund units", id
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of real estate property(eg. Home, vacation home)", id: 3),
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of depreciable properties", id: 4),
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of bonds, debentures, promissory notes", id: 5),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "ale of other properties", id: 6),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of other properties", id: 6),
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of personal-use property", id: 7),
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of listed personal property", id: 8),
 Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of shares of a private company", id: 9),

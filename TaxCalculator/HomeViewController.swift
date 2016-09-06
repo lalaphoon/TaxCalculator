@@ -18,7 +18,6 @@ class MainView: UIView{
     private var searchButton: UIButton!
     private var resultsTable: UITableView!
     
-    
     private let searchButtonHeight: CGFloat = 40
     private let searchButtonWidth: CGFloat = 300
     
@@ -33,11 +32,13 @@ class MainView: UIView{
     private let searchButtonEndingCornerRadius: CGFloat = 0
     
     private var searchBarTop = false
-    
+    var searchActive : Bool = false
     private var didSetupConstraints = false
     
     private var searchButtonWidthConstraint: NSLayoutConstraint?
     private var searchButtonEdgeConstraint: NSLayoutConstraint?
+    
+    var filteredMenus = [Menu]()
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -60,7 +61,7 @@ class MainView: UIView{
         searchBar.showsCancelButton = true
         searchBar.alpha = searchBarStartingAlpha
         searchBar.delegate = self
-        searchBar.scopeButtonTitles = ["All","Deduction","Income","Tax Credits"]
+        searchBar.scopeButtonTitles = ["All", "Income", "Deduction", "Tax Credit"]
         searchBar.showsScopeBar = true
        // searchBar.backgroundColor = UIColor.customOrangeColor()
         searchBar.barTintColor = UIColor.customOrangeColor()
@@ -169,29 +170,71 @@ class MainView: UIView{
             }
         )
     }
+    func filterContentForSearchText(searchText: String, scope: Int = 0){
+       print("scope is\(scope)")
+        filteredMenus = taxMenuBook.filter({(menu: Menu) -> Bool in
+            let menuMatch = (scope == 0) || (menu.category == scope)
+            
+            return menuMatch && menu.name.lowercaseString.containsString(searchText.lowercaseString)
+        })
+       resultsTable.reloadData()
+    }
 
 
 }
 
 
-
+//http://shrikar.com/swift-ios-tutorial-uisearchbar-and-uisearchbardelegate/
 extension MainView: UISearchBarDelegate {
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.text = ""
+        searchActive = false
         dismissSearchBar(searchBar)
+        
     }
-    //func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-      //  <#code#>
-    //}
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        var i : Int
+        if searchBar.scopeButtonTitles![selectedScope] == "All" {
+            i = 0
+        } else {
+            i = TaxMenu[searchBar.scopeButtonTitles![selectedScope]]!
+        }
+        filterContentForSearchText(searchBar.text!, scope: i)
+    }
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filterContentForSearchText(searchBar.text!)
+    }
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true
+    }
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+   
 }
+
+
 extension MainView: UITableViewDataSource, UITableViewDelegate{
   
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.text != "" && searchActive {
+            return filteredMenus.count
+        }
         return taxMenuBook.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel?.text = taxMenuBook[indexPath.row].name
+        let menu:Menu
+        if searchBar.text != "" && searchActive {
+            menu = filteredMenus[indexPath.row]
+        } else {
+            menu = taxMenuBook[indexPath.row]
+        }
+        cell.textLabel?.text = menu.name
         return cell
     }
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
