@@ -71,8 +71,8 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
-        self.scrollView = UIScrollView(frame: self.view.bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        //self.scrollView = UIScrollView(frame: self.view.bounds)
         self.scrollView.delegate = self
         self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,550)
         

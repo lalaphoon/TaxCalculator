@@ -38,8 +38,9 @@ class TopicsViewController: UIViewController {
     func initForUI(){
         var pos_y = 207
         let distance = 105
+        //let inset: CGFloat = -63 // move up by 63
         for i in TaxMenu.keys{
-            self.addOrangeBorderButton(i, s, 43, CGFloat(pos_y), self.view.bounds.width - (43*2), 67, TaxMenu[i]!)
+            self.addOrangeBorderButton(i, s, 43, CGFloat(pos_y) , self.view.bounds.width - (43*2), 67, TaxMenu[i]!)
             pos_y += distance
         }
     

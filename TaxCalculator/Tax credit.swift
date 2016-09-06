@@ -22,10 +22,11 @@ class Adoption_Tax_Credit: Formula{
     }
     func initUI(VC: UIViewController) -> UIView {
         var containerView = UIView()
-        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        Adoption_Expense = containerView.returnTextField("Adoption expense", 43, 274, VC.view.bounds.width - (43*2))
+        let num: CGFloat = -63
+        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
+        Adoption_Expense = containerView.returnTextField("Adoption expense", 43, 274 + num, VC.view.bounds.width - (43*2))
         Adoption_Expense.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -81,10 +82,11 @@ class Pension_Tax_Credit: Formula{
     }
     func initUI(VC: UIViewController) -> UIView {
         var containerView = UIView()
-        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        Pension_income = containerView.returnTextField("Pension income", 43, 274, VC.view.bounds.width - (43*2))
+        let num: CGFloat = -63
+        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
+        Pension_income = containerView.returnTextField("Pension income", 43, 274 + num, VC.view.bounds.width - (43*2))
         Pension_income.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -140,10 +142,11 @@ class Interest_Paid_on_Student_Loan: Formula{
     }
     func initUI(VC: UIViewController) -> UIView {
         var containerView = UIView()
-        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        Interest_expense = containerView.returnTextField("Interest Expense", 43, 274, VC.view.bounds.width - (43*2))
+        let num: CGFloat = -63
+        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
+        Interest_expense = containerView.returnTextField("Interest Expense", 43, 274 + num, VC.view.bounds.width - (43*2))
         Interest_expense.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -197,15 +200,16 @@ class Tuition_Education_TextbookCredits : Formula {
     }
     func initUI(VC: UIViewController) -> UIView {
         var containerView = UIView()
-        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        TuitionFees = containerView.returnTextField("Tuition Fees", 43, 274, VC.view.bounds.width - (43*2))
+        let num: CGFloat = -63
+        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
+        TuitionFees = containerView.returnTextField("Tuition Fees", 43, 274 + num, VC.view.bounds.width - (43*2))
         TuitionFees.keyboardType = .DecimalPad
-        numFullTimeStudent = containerView.returnTextField("Number of months as full time students", 43, 334, VC.view.bounds.width - (43*2))
+        numFullTimeStudent = containerView.returnTextField("Number of months as full time students", 43, 334 + num, VC.view.bounds.width - (43*2))
         numFullTimeStudent.keyboardType = .DecimalPad
-        numPartTimeStudent = containerView.returnTextField("Number of months as part time students", 43, 394, VC.view.bounds.width - (43*2))
+        numPartTimeStudent = containerView.returnTextField("Number of months as part time students", 43, 394 + num, VC.view.bounds.width - (43*2))
         numPartTimeStudent.keyboardType = .DecimalPad
         
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -276,10 +280,11 @@ class Medical_Expense : Formula {
     }
     func initUI(VC: UIViewController) -> UIView {
         var containerView = UIView()
-        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        MedicalExpense = containerView.returnTextField("Medical expense", 43, 274, VC.view.bounds.width - (43*2))
+        let num: CGFloat = -63
+        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
+        MedicalExpense = containerView.returnTextField("Medical expense", 43, 274 + num, VC.view.bounds.width - (43*2))
         MedicalExpense.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {

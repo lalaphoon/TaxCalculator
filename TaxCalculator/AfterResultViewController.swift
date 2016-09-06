@@ -31,10 +31,11 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         initTipUI()
     }
     func initTipUI(){
-       containerView.addImage("Title_light.png", self.view.bounds.width/2 - 65,93)
-       containerView.addHeader("Tax Tip:", self.view.bounds.width/2, 253, self.view.bounds.width-86,100)
-       containerView.addText(formula.getTip(),self.view.bounds.width/2, 390, self.view.bounds.width-86, 300)
-       containerView.addYellowButton("Get General Help", "goHelp", 43, 700, self.view.bounds.width - (43*2), 36, self)
+        let offset: CGFloat = -63
+       containerView.addImage("Title_light.png", self.view.bounds.width/2 - 65,93 + offset)
+       containerView.addHeader("Tax Tip:", self.view.bounds.width/2, 253 + offset, self.view.bounds.width-86,100)
+       containerView.addText(formula.getTip(),self.view.bounds.width/2, 390 + offset, self.view.bounds.width-86, 300)
+       containerView.addYellowButton("Get General Help", "goHelp", 43, 650 + offset, self.view.bounds.width - (43*2), 36, self)
     }
     func goHelp(){
         performSegueWithIdentifier("goHelp", sender: self)

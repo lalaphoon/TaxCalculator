@@ -64,6 +64,7 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
          var pos_y = 60
         let distance = 100
         let left = 30
+        //let offset: CGFloat = -63
         if category == INCOME {
         /* containerView.addOrangeBorderButton("Employment", s, 43, 60, self.view.bounds.width - 86, 53, employment,self)
             containerView.addOrangeBorderButton("Dividend Income", s, 43, 130, self.view.bounds.width - 86, 53, dividend_income, self)
@@ -75,13 +76,13 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
             */
        
             for i in Income_subMenu.keys{
-                containerView.addOrangeBorderButton(i, s, CGFloat(left), CGFloat(pos_y), self.view.bounds.width - (CGFloat(left)*2), 67, Income_subMenu[i]!,self)
+                containerView.addOrangeBorderButton(i, s, CGFloat(left), CGFloat(pos_y) , self.view.bounds.width - (CGFloat(left)*2), 67, Income_subMenu[i]!,self)
                 pos_y += distance
             }
             
         }else if category == DEDUCTION {
             for i in Deduction_subMenu.keys{
-                containerView.addOrangeBorderButton(i, s, CGFloat(left), CGFloat(pos_y), self.view.bounds.width - (CGFloat(left)*2), 67, Deduction_subMenu[i]!,self)
+                containerView.addOrangeBorderButton(i, s, CGFloat(left), CGFloat(pos_y) , self.view.bounds.width - (CGFloat(left)*2), 67, Deduction_subMenu[i]!,self)
                 pos_y += distance
             }
         

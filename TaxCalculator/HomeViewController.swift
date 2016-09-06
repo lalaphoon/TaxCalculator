@@ -18,6 +18,7 @@ class MainView: UIView{
     private var searchButton: UIButton!
     private var resultsTable: UITableView!
     
+    
     private let searchButtonHeight: CGFloat = 40
     private let searchButtonWidth: CGFloat = 300
     
@@ -80,7 +81,10 @@ class MainView: UIView{
     
     func setupResultsTable() {
         resultsTable = UITableView.newAutoLayoutView()
+        resultsTable.dataSource = self
+        resultsTable.delegate = self
         resultsTable.alpha = tableStartingAlpha
+        resultsTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         addSubview(resultsTable)
     }
     // MARK: - Layout
@@ -180,6 +184,20 @@ extension MainView: UISearchBarDelegate {
       //  <#code#>
     //}
 }
+extension MainView: UITableViewDataSource, UITableViewDelegate{
+  
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return taxMenuBook.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        cell.textLabel?.text = taxMenuBook[indexPath.row].name
+        return cell
+    }
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        print("YOuselected cell \(indexPath.row)")
+    }
+}
 
 
 
@@ -195,6 +213,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         initBackground()
         mainView = MainView.newAutoLayoutView()
+        
         view.addSubview(mainView)
         // Do any additional setup after loading the view.
     }
@@ -238,3 +257,5 @@ class HomeViewController: UIViewController {
     */
 
 }
+
+

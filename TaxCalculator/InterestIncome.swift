@@ -25,10 +25,11 @@ class InterestIncome: Formula{
     
     func initUI(VC:UIViewController)-> UIView{
         var containerView = UIView()
-        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93)
-        interest = containerView.returnTextField("Interest income", 43, 274, VC.view.bounds.width - (43*2))
+        let num: CGFloat = -63
+        containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
+        interest = containerView.returnTextField("Interest income", 43, 274 + num, VC.view.bounds.width - (43*2))
         interest.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
         return containerView
         
     }
