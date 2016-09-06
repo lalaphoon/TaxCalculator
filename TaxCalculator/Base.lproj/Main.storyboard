@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3k9-IF-DTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4254" y="1105"/>
+            <point key="canvasLocation" x="4816" y="466"/>
         </scene>
         <!--Basic Inputs View Controller-->
         <scene sceneID="QJu-vi-xAa">
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4879" y="466"/>
+            <point key="canvasLocation" x="5419" y="454"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="9dN-2n-avi">
@@ -112,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BuE-AM-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5555" y="470"/>
+            <point key="canvasLocation" x="6075" y="454"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="bkX-H9-0Mt">
@@ -134,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3f-no-myQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6225" y="470"/>
+            <point key="canvasLocation" x="6749" y="454"/>
         </scene>
         <!--After Result View Controller-->
         <scene sceneID="TB5-qi-70i">
@@ -149,10 +149,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Qnp-F4-5a4" kind="show" identifier="goHelp" id="G8Y-Cr-K5u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FC-Za-LnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6870" y="470"/>
+            <point key="canvasLocation" x="7446" y="466"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PCG-KG-c2p">
+            <objects>
+                <viewController id="Qnp-F4-5a4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FNu-wE-9pg"/>
+                        <viewControllerLayoutGuide type="bottom" id="0gf-LV-xNZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CGo-1m-Ljj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5L1-r9-PtZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8116" y="466"/>
         </scene>
         <!--Process View Controller-->
         <scene sceneID="TwO-AZ-hiE">
@@ -170,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeh-9v-pX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5476" y="-208"/>
+            <point key="canvasLocation" x="6749" y="-240"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="pj9-W8-B61">

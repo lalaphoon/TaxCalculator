@@ -20,7 +20,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 1000)
         
         self.containerView =  UIView()
         self.scrollView.userInteractionEnabled = true
@@ -32,8 +32,12 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
     }
     func initTipUI(){
        containerView.addImage("Title_light.png", self.view.bounds.width/2 - 65,93)
-       containerView.addHeader("Tax Tip:", self.view.bounds.width/2, 255, self.view.bounds.width-86,100)
+       containerView.addHeader("Tax Tip:", self.view.bounds.width/2, 253, self.view.bounds.width-86,100)
        containerView.addText(formula.getTip(),self.view.bounds.width/2, 390, self.view.bounds.width-86, 300)
+       containerView.addYellowButton("Get General Help", "goHelp", 43, 700, self.view.bounds.width - (43*2), 36, self)
+    }
+    func goHelp(){
+        performSegueWithIdentifier("goHelp", sender: self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

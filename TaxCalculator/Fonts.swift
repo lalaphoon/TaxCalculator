@@ -10,3 +10,4 @@ import Foundation
 import UIKit
 
 let THINFONT : String = "STHeitiTC-Light"
+let HEADERFONT : String = "Arial-BoldMT"

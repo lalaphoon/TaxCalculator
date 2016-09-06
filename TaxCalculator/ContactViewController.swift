@@ -39,12 +39,13 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     }
     func initContainerUI(){
         //=====================This is for container view==========================
-        containerView.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93)
-        containerView.addTextField("Your Name", name_tag, 43, 250, self.view.bounds.width - (43*2))
+        let num: CGFloat = 63
+        containerView.addImage("Title_message.png", self.view.bounds.width/2 - 65, 93 - num)
+        containerView.addTextField("Your Name", name_tag, 43, 250 - num, self.view.bounds.width - (43*2))
         //self.addTextField("Your Email", email_tag, 43, 310)
-        containerView.addTextField("Subject", subject_tag, 43, 310, self.view.bounds.width - (43*2))
-        containerView.addTextView("\n\n\n\nMessage",message_tag, 43 , 370, self.view.bounds.width - (43*2))
-        containerView.addYellowButton("Send", "sendEmail", 43, 567, self.view.bounds.width - (43*2), 36, self)
+        containerView.addTextField("Subject", subject_tag, 43, 310 - num, self.view.bounds.width - (43*2))
+        containerView.addTextView("\n\n\n\nMessage",message_tag, 43 , 370 - num, self.view.bounds.width - (43*2))
+        containerView.addYellowButton("Send", "sendEmail", 43, 567 - num, self.view.bounds.width - (43*2), 36, self)
         //=====================This is the end for container view===================
     }
     func retrieveDataFromView(){
@@ -70,9 +71,10 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        //self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView = UIScrollView(frame: self.view.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,667)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,550)
         
         self.containerView =  UIView()
         

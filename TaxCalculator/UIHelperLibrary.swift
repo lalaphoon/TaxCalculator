@@ -188,7 +188,7 @@ extension UIView {
         //label.textAlignment = NSTextAlignment.Left
         label.text = what
         //label.font = UIFont(name: THINFONT, size: 18)
-        label.font = UIFont(name: <#T##String#>, size: 25)
+        label.font = UIFont(name: HEADERFONT, size: 20)
         //label.backgroundColor = UIColor.customLabelGreen()
         label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 0
