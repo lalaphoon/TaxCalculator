@@ -55,6 +55,13 @@ class MainView: UIView{
         setupSearchButton()
         setupResultsTable()
     }
+    func hideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard(){
+       searchBar.endEditing(true)
+    }
     
     func setupSearchBar() {
         searchBar = UISearchBar.newAutoLayoutView()
@@ -212,7 +219,7 @@ extension MainView: UISearchBarDelegate {
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchActive = false
-        searchBar.endEditing(true)
+        dismissKeyboard()
     }
     
    
@@ -223,6 +230,14 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
   
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchBar.text != "" && searchActive {
+            if filteredMenus.count == 0{
+                resultsTable.separatorStyle = .None
+                resultsTable.backgroundView?.hidden = false
+            } else {
+                resultsTable.separatorStyle = .SingleLine
+                resultsTable.backgroundView?.hidden = true
+            }
+            
             return filteredMenus.count
         }
         return taxMenuBook.count
@@ -250,6 +265,9 @@ class HomeViewController: UIViewController {
     private var mainView: MainView!
     private var didSetupConstraints = false
     
+    private let image = UIImage(named: "star-large")!.imageWithRenderingMode(.AlwaysTemplate)
+    private let topMessage = "Oops!"
+    private let bottomMessage = "There is no records in our database!"
     //Mark: - View Lifecycle
     
        
@@ -258,6 +276,8 @@ class HomeViewController: UIViewController {
         initBackground()
         mainView = MainView.newAutoLayoutView()
         //self.hideKeyboardWhenTappedAround()
+        //mainView.hideKeyboard()
+        setupEmptyBackgroundView()
         view.addSubview(mainView)
         // Do any additional setup after loading the view.
     }
@@ -267,7 +287,10 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     // MARK: - Layout
-    
+    func setupEmptyBackgroundView() {
+        let emptyBackgroundView = EmptyBackgroundView(image: image, top: topMessage, bottom: bottomMessage)
+        mainView.resultsTable.backgroundView = emptyBackgroundView
+    }
     override func updateViewConstraints() {
         if !didSetupConstraints {
             mainView.autoPinToTopLayoutGuideOfViewController(self, withInset: 0)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01DCDF86920F4079C17E626C /* Pods_TaxCalculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */; };
+		46006C8E1D80AF4800CCBFFE /* EmptyBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -80,6 +81,7 @@
 /* Begin PBXFileReference section */
 		10FA72CB9FB6A65914BEBAAE /* Pods-TaxCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorTests/Pods-TaxCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		16B6AEE528FE1157DF9D9A8F /* Pods-TaxCalculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorUITests/Pods-TaxCalculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyBackgroundView.swift; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				46020E0A1D5791AE0050C400 /* Fonts.swift */,
 				46369E041D4912E700456B69 /* OrderedDictionary.swift */,
 				462D62951D332FCE00D4FE94 /* Colors.swift */,
+				46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */,
 				467D34981D381D61008D820B /* CalculatorViewController.swift in Sources */,
 				462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */,
+				46006C8E1D80AF4800CCBFFE /* EmptyBackgroundView.swift in Sources */,
 				460911001D428C0F003C6A65 /* StepThree.swift in Sources */,
 				460910FE1D41A999003C6A65 /* CoreDataFetcher.swift in Sources */,
 				46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */,
