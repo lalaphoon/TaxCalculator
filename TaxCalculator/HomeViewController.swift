@@ -212,6 +212,7 @@ extension MainView: UISearchBarDelegate {
     }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchActive = false
+        searchBar.endEditing(true)
     }
     
    
@@ -256,7 +257,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         initBackground()
         mainView = MainView.newAutoLayoutView()
-        
+        //self.hideKeyboardWhenTappedAround()
         view.addSubview(mainView)
         // Do any additional setup after loading the view.
     }
