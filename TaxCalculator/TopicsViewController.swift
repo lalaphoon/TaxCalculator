@@ -8,9 +8,11 @@
 
 import UIKit
 
-class TopicsViewController: UIViewController {
+class TopicsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let s = NSSelectorFromString("moveIntoNext:")
+    var tableView: UITableView =  UITableView()
+    let menu: [String] = Array(TaxMenu.keys)
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -26,9 +28,23 @@ class TopicsViewController: UIViewController {
         }
 
         //initUI()
-        initForUI()
+        //initForUI()
+        initTableView()
         
         // Do any additional setup after loading the view.
+    }
+   /* override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }*/
+    
+    func initTableView(){
+        tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.tableFooterView = UIView()
+        self.view.addSubview(self.tableView)
+    
     }
     func initUI(){
         self.addOrangeBorderButton("Income", s, 43, 207, self.view.bounds.width - (43*2), 67, INCOME)
@@ -44,6 +60,25 @@ class TopicsViewController: UIViewController {
             pos_y += distance
         }
     
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menu.count
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+        cell.textLabel!.text = menu[indexPath.row]
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        //cell.backgroundColor = UIColor.yellowColor()
+        //cell.tintColor = UIColor.customRedButton()
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        category = TaxMenu[menu[indexPath.row]]!
+        print(indexPath.row)
+        print(menu[indexPath.row])
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
     }
     
     func moveIntoNext(sender: UIButton){
