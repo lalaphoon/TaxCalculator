@@ -40,7 +40,7 @@ class Menu {
 let ERROR = "ERROR"
 
 let TaxMenu = [
-    "Income":1,
+                 "Income":1,
                 "Deduction":2,
                 "Tax Credit":3
     ]

@@ -19,7 +19,7 @@ class MainView: UIView{
     private var resultsTable: UITableView!
     
     private let searchButtonHeight: CGFloat = 40
-    private let searchButtonWidth: CGFloat = 300
+    private let searchButtonWidth: CGFloat = 310
     
     private let searchBarStartingAlpha: CGFloat = 0
     private let searchButtonStartingAlpha: CGFloat = 1
@@ -309,6 +309,7 @@ class HomeViewController: UIViewController {
    
     self.view.addBackground("background.jpg")
     self.view.darken(60)
+   // self.addLabel("Never be blinded sided by personal tax again")
     self.addImage("logo.png",self.view.bounds.width/2-42, 200, 84,20.5)
     }
     

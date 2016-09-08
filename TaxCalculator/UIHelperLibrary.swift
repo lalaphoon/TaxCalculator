@@ -219,6 +219,7 @@ extension UIView {
         label.textColor =  UIColor.grayColor()
         //label.backgroundColor = UIColor.customLabelGreen()
         label.lineBreakMode = .ByTruncatingMiddle
+        //label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 0
         self.addSubview(label)
         
@@ -257,7 +258,7 @@ extension UIView {
     func addImageButton(title: String, _ buttonaction: Selector, _ image: String, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50, _ target: UIViewController){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.setTitle(title, forState: .Normal)
-        button.setTitleColor(UIColor.blackColor(), forState:  .Normal)
+        button.setTitleColor(UIColor.orangeColor(), forState:  .Normal)
         //button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
         button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
         let i:UIImage = UIImage(named: image)!
