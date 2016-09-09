@@ -93,8 +93,9 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : SubTopicsViewController = segue.destinationViewController as! SubTopicsViewController
+        /*var DestinyVC : SubTopicsViewController = segue.destinationViewController as! SubTopicsViewController
         DestinyVC.category = category
+*/
     }
 
     /*

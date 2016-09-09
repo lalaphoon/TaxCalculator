@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		01DCDF86920F4079C17E626C /* Pods_TaxCalculatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */; };
 		46006C8E1D80AF4800CCBFFE /* EmptyBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */; };
+		46006C901D82332900CCBFFE /* SubMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C8F1D82332900CCBFFE /* SubMenuViewController.swift */; };
+		46006C921D82346F00CCBFFE /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C911D82346F00CCBFFE /* CustomCell.swift */; };
+		46006C971D82360D00CCBFFE /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C961D82360D00CCBFFE /* NormalCell.xib */; };
+		46006C991D82361E00CCBFFE /* TextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C981D82361E00CCBFFE /* TextfieldCell.xib */; };
+		46006C9B1D82362500CCBFFE /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C9A1D82362500CCBFFE /* DatePickerCell.xib */; };
+		46006C9D1D82363500CCBFFE /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C9C1D82363500CCBFFE /* SwitchCell.xib */; };
+		46006C9F1D82363C00CCBFFE /* ValuePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C9E1D82363C00CCBFFE /* ValuePickerCell.xib */; };
+		46006CA11D82364400CCBFFE /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006CA01D82364400CCBFFE /* SliderCell.xib */; };
+		46006CA31D82365000CCBFFE /* CellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46006CA21D82365000CCBFFE /* CellDescriptor.plist */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -82,6 +91,15 @@
 		10FA72CB9FB6A65914BEBAAE /* Pods-TaxCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorTests/Pods-TaxCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		16B6AEE528FE1157DF9D9A8F /* Pods-TaxCalculatorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaxCalculatorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaxCalculatorUITests/Pods-TaxCalculatorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyBackgroundView.swift; sourceTree = "<group>"; };
+		46006C8F1D82332900CCBFFE /* SubMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMenuViewController.swift; sourceTree = "<group>"; };
+		46006C911D82346F00CCBFFE /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		46006C961D82360D00CCBFFE /* NormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalCell.xib; sourceTree = "<group>"; };
+		46006C981D82361E00CCBFFE /* TextfieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextfieldCell.xib; sourceTree = "<group>"; };
+		46006C9A1D82362500CCBFFE /* DatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
+		46006C9C1D82363500CCBFFE /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		46006C9E1D82363C00CCBFFE /* ValuePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuePickerCell.xib; sourceTree = "<group>"; };
+		46006CA01D82364400CCBFFE /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
+		46006CA21D82365000CCBFFE /* CellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CellDescriptor.plist; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -177,6 +195,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46006C931D8234A600CCBFFE /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				46006C9A1D82362500CCBFFE /* DatePickerCell.xib */,
+				46006C981D82361E00CCBFFE /* TextfieldCell.xib */,
+				46006C9E1D82363C00CCBFFE /* ValuePickerCell.xib */,
+				46006CA01D82364400CCBFFE /* SliderCell.xib */,
+				46006C9C1D82363500CCBFFE /* SwitchCell.xib */,
+				46006C961D82360D00CCBFFE /* NormalCell.xib */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		460910F41D41789B003C6A65 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +339,10 @@
 				46020E0A1D5791AE0050C400 /* Fonts.swift */,
 				46369E041D4912E700456B69 /* OrderedDictionary.swift */,
 				462D62951D332FCE00D4FE94 /* Colors.swift */,
+				46006C911D82346F00CCBFFE /* CustomCell.swift */,
 				46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */,
+				46006CA21D82365000CCBFFE /* CellDescriptor.plist */,
+				46006C931D8234A600CCBFFE /* Custom Cells */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -319,6 +353,7 @@
 				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
 				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
 				46FE9DCF1D7684C8005A9E2D /* OptionsViewController.swift */,
+				46006C8F1D82332900CCBFFE /* SubMenuViewController.swift */,
 				46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
 				465C74F91D62282800F9572A /* ResultViewController.swift */,
@@ -545,9 +580,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46006CA11D82364400CCBFFE /* SliderCell.xib in Resources */,
+				46006CA31D82365000CCBFFE /* CellDescriptor.plist in Resources */,
+				46006C971D82360D00CCBFFE /* NormalCell.xib in Resources */,
+				46006C991D82361E00CCBFFE /* TextfieldCell.xib in Resources */,
 				462D62721D33279000D4FE94 /* LaunchScreen.storyboard in Resources */,
+				46006C9B1D82362500CCBFFE /* DatePickerCell.xib in Resources */,
 				462D626F1D33279000D4FE94 /* Assets.xcassets in Resources */,
+				46006C9D1D82363500CCBFFE /* SwitchCell.xib in Resources */,
 				462D626A1D33279000D4FE94 /* Main.storyboard in Resources */,
+				46006C9F1D82363C00CCBFFE /* ValuePickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +739,7 @@
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
+				46006C921D82346F00CCBFFE /* CustomCell.swift in Sources */,
 				46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */,
 				465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */,
 				465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */,
@@ -704,6 +747,7 @@
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
 				46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */,
 				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
+				46006C901D82332900CCBFFE /* SubMenuViewController.swift in Sources */,
 				4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */,
