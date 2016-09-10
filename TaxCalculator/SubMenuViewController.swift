@@ -163,10 +163,10 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Personal"
+            return "Please select a topic"
             
         case 1:
-            return "Preferences"
+            return "Please choose an Option"
             
         default:
             return "Work Experience"
@@ -274,14 +274,19 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 //cellDescriptors.removeAllObjects()
+                if cellDescriptors.count > 1 {
+                    //cellDescriptors.removeLastObject()
+                   // cellDescriptors.addObject(addTopicGroupCell(INCOME))
+                } else {
                 cellDescriptors.addObject(addTopicGroupCell(INCOME))
+                }
                 getIndicesOfVisibleRows()
                 tblExpandable.reloadData()
             }
         }
         
         getIndicesOfVisibleRows()
-       // tblExpandable.reloadData()
+        //tblExpandable.reloadData()
         tblExpandable.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Fade)
     }
     
