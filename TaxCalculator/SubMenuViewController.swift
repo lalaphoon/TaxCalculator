@@ -34,9 +34,23 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         configureTableView()
         
         loadCellDescriptors()
+        self.addYellowButton("Next", "MovetoNext", 43, tblExpandable.bounds.height + 10, self.view.bounds.width-86, 36)
+        
         print(cellDescriptors)
     }
     
+    func MovetoNext(){
+        print(cellDescriptors)
+        var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
+       // var test : NSMutableDictionary = cellDescriptors[0][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
+        for item in array {
+            var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
+            if m["additionalRows"] as! Int != 0 {
+                print(m["primaryTitle"] as! String)
+            }
+        }
+        print("clicked")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,6 +73,26 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblExpandable.registerNib(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "idCellSlider")
     }
     
+    func addNormalCell(Title: String, _ child: Int, _ guy: NSMutableArray){
+      guy.addObject(["additionalRows":child, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":Title, "primaryTitle":"", "value":""])
+    }
+    func addValueCell(Title: String, _ guy:  NSMutableArray){
+          guy.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":Title, "value":""])
+    }
+    func addTopicGroupCell(category: Int) -> NSMutableArray{
+        var guy = NSMutableArray()
+       // myNewNSMutableArray.removeAllObjects()
+        if category == INCOME {
+            addNormalCell("Topic", Income_subMenu.count,guy)
+            for i in Income_subMenu.keys {
+                addValueCell(i, guy)
+            }
+        }
+        return guy
+    }
+    func addOptionGroupCell(){
+        
+    }
     
     func loadCellDescriptors() {
         
@@ -68,14 +102,17 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             getIndicesOfVisibleRows()
             tblExpandable.reloadData()
         }*/
-
-        
-        
-        
-         myNewNSMutableArray.addObject(["additionalRows":2, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":"Title", "primaryTitle":"", "value":""])
+        /* myNewNSMutableArray.addObject(["additionalRows":2, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":"Title", "primaryTitle":"", "value":""])
         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])
         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"world", "value":""])
-        cellDescriptors.addObject(myNewNSMutableArray)
+         myNewNSMutableArray.addObject(["additionalRows":3, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":"Title2", "primaryTitle":"", "value":""])
+         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"Hello", "value":""])
+         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])
+         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])*/
+        
+        //addTopicGroupCell(INCOME)
+        
+        cellDescriptors.addObject(addTopicGroupCell(INCOME))
         getIndicesOfVisibleRows()
         tblExpandable.reloadData()
 
@@ -196,18 +233,15 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpandable"] as! Bool == true {
             var shouldExpandAndShowSubRows = false
             if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpanded"] as! Bool == false {
-                // In this case the cell should expand.
-                print(cellDescriptors[indexPath.section][indexOfTappedRow]["isExpanded"]!)
-                print("I'm in")
                 shouldExpandAndShowSubRows = true
             }
-            
+            //https://www.appcoda.com/expandable-table-view/
             var array: NSMutableArray = cellDescriptors[indexPath.section].mutableCopy() as! NSMutableArray
             var test : NSMutableDictionary = cellDescriptors[indexPath.section][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
             test.setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             array.replaceObjectAtIndex(indexOfTappedRow, withObject: test)
             cellDescriptors[indexPath.section] = array
-            print("I'm here")
+           // print("I'm here")
             
           //  cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             
@@ -234,18 +268,26 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cellDescriptors[indexPath.section][indexOfParentCell].setValue((tblExpandable.cellForRowAtIndexPath(indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
                 cellDescriptors[indexPath.section][indexOfParentCell].setValue(false, forKey: "isExpanded")
                 
+               
                 for i in (indexOfParentCell + 1)...(indexOfParentCell + (cellDescriptors[indexPath.section][indexOfParentCell]["additionalRows"] as! Int)) {
                     cellDescriptors[indexPath.section][i].setValue(false, forKey: "isVisible")
                 }
+                
+                //cellDescriptors.removeAllObjects()
+                cellDescriptors.addObject(addTopicGroupCell(INCOME))
+                getIndicesOfVisibleRows()
+                tblExpandable.reloadData()
             }
         }
         
         getIndicesOfVisibleRows()
+       // tblExpandable.reloadData()
         tblExpandable.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Fade)
     }
     
     
     // MARK: CustomCellDelegate Functions
+    //Warning: setValue forKey shouldn't be working here, we have to use a NSMutableDictionary instead
     
     func dateWasSelected(selectedDateString: String) {
         let dateCellSection = 0
