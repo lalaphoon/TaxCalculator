@@ -16,8 +16,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: Variables
     
-    var cellDescriptors: NSMutableArray!
-    
+    //var cellDescriptors : NSMutableArray!
+    var cellDescriptors = NSMutableArray()
+    var myNewNSMutableArray = NSMutableArray()
     var visibleRowsPerSection = [[Int]]()
     
     
@@ -60,11 +61,24 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func loadCellDescriptors() {
+        
+        /*
         if let path = NSBundle.mainBundle().pathForResource("CellDescriptor", ofType: "plist") {
-            cellDescriptors = NSMutableArray(contentsOfFile: path)
+            cellDescriptors = NSMutableArray(contentsOfFile: path)!
             getIndicesOfVisibleRows()
             tblExpandable.reloadData()
-        }
+        }*/
+
+        
+        
+        
+         myNewNSMutableArray.addObject(["additionalRows":2, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":"Title", "primaryTitle":"", "value":""])
+        myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])
+        myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"world", "value":""])
+        cellDescriptors.addObject(myNewNSMutableArray)
+        getIndicesOfVisibleRows()
+        tblExpandable.reloadData()
+
     }
     
     
@@ -95,12 +109,12 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: UITableView Delegate and Datasource Functions
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if cellDescriptors != nil {
+       // if cellDescriptors != nil {
             return cellDescriptors.count
-        }
-        else {
-            return 0
-        }
+       // }
+       // else {
+        //    return 0
+       // }
     }
     
     
@@ -183,13 +197,27 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             var shouldExpandAndShowSubRows = false
             if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpanded"] as! Bool == false {
                 // In this case the cell should expand.
+                print(cellDescriptors[indexPath.section][indexOfTappedRow]["isExpanded"]!)
+                print("I'm in")
                 shouldExpandAndShowSubRows = true
             }
             
-            cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
+            var array: NSMutableArray = cellDescriptors[indexPath.section].mutableCopy() as! NSMutableArray
+            var test : NSMutableDictionary = cellDescriptors[indexPath.section][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
+            test.setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
+            array.replaceObjectAtIndex(indexOfTappedRow, withObject: test)
+            cellDescriptors[indexPath.section] = array
+            print("I'm here")
+            
+          //  cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             
             for i in (indexOfTappedRow + 1)...(indexOfTappedRow + (cellDescriptors[indexPath.section][indexOfTappedRow]["additionalRows"] as! Int)) {
-                cellDescriptors[indexPath.section][i].setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
+               // cellDescriptors[indexPath.section][i].setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
+                var array: NSMutableArray = cellDescriptors[indexPath.section].mutableCopy() as! NSMutableArray
+                var test : NSMutableDictionary = cellDescriptors[indexPath.section][i].mutableCopy() as! NSMutableDictionary
+                test.setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
+                array.replaceObjectAtIndex(i, withObject: test)
+                cellDescriptors[indexPath.section] = array
             }
         }
         else {
