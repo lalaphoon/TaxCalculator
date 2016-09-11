@@ -320,8 +320,8 @@ Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Brokerage fee
     
     
     
-Menu(category: DEDUCTION, topic: CAPITALGAIN, name: "Capital loss", id: 1),
-Menu(category: DEDUCTION, topic: CAPITALGAIN, name: "Allowable business investment loss", id: 2),
+Menu(category: DEDUCTION, topic: CAPITALTRANSACTION, name: "Capital loss", id: 1),
+Menu(category: DEDUCTION, topic: CAPITALTRANSACTION, name: "Allowable business investment loss", id: 2),
     
     
     

@@ -13,7 +13,6 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var tblExpandable: UITableView!
     
-    
     // MARK: Variables
     
     //var cellDescriptors : NSMutableArray!
@@ -27,7 +26,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.category = INCOME
+        //self.category = INCOME
         self.Topics = TP.getTopics_IDByCategory(self.category)
         TopicsChanged = false
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,7 +39,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         configureTableView()
         
         loadCellDescriptors()
-        self.addYellowButton("Next", "MovetoNext", 43, tblExpandable.bounds.height + 10, self.view.bounds.width-86, 36)
+        self.addYellowButton("Next", "MovetoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
         
         print(cellDescriptors)
     }
@@ -104,9 +103,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         for item in array {
             var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
             if m["cellIdentifier"] as! String == "idCellNormal" {
-                print(m["primaryTitle"] as! String)
                 topic_name = m["primaryTitle"] as! String
-                
             }
         }
         var topic_id = self.Topics[topic_name]
@@ -116,7 +113,6 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             for i in list {
                 addValueCell(i, guy)
             }
-      
         return guy
     }
    
@@ -296,7 +292,8 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                     cellDescriptors[indexPath.section][i].setValue(false, forKey: "isVisible")
                 }
                 
-                //cellDescriptors.removeAllObjects()
+                //================Adding Additional cell===================
+                if category != TAXCREDIT {
                 if cellDescriptors.count > 1 {
                     if TopicsChanged == true {
                         cellDescriptors.removeLastObject()
@@ -308,11 +305,12 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 getIndicesOfVisibleRows()
                 tblExpandable.reloadData()
                 TopicsChanged = false
+                }
+                //===========================================================
             }
         }
         
         getIndicesOfVisibleRows()
-        //tblExpandable.reloadData()
         tblExpandable.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Fade)
     }
     
