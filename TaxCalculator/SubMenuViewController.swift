@@ -22,6 +22,8 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     let TP =  TaxPro()
     var Topics = [String: Int]()
     var category : Int!
+    var topic : Int = 0
+    var option : Int = 0
     var TopicsChanged: Bool!
     
     override func viewDidLoad() {
@@ -39,22 +41,36 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         configureTableView()
         
         loadCellDescriptors()
-        self.addYellowButton("Next", "MovetoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
+        self.addYellowButton("Next", "MoveIntoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
         
         print(cellDescriptors)
     }
     
-    func MovetoNext(){
+    func MoveIntoNext(){
         print(cellDescriptors)
         var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
-       // var test : NSMutableDictionary = cellDescriptors[0][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
         for item in array {
             var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
-            if m["additionalRows"] as! Int != 0 {
+            if m["cellIdentifier"] as! String == "idCellNormal" {
                 print(m["primaryTitle"] as! String)
+                self.topic = self.Topics[m["primaryTitle"] as! String]!
             }
         }
-        print("clicked")
+        if cellDescriptors.count > 1 {
+            array = cellDescriptors[1].mutableCopy() as! NSMutableArray
+            for item in array {
+                var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
+                if m["cellIdentifier"] as! String == "idCellNormal" {
+                    //print(m["primaryTitle"] as! String)
+                    self.option = TP.lookForMenuID(self.category, self.topic, m["primaryTitle"] as! String)
+                }
+            }
+
+        }
+        
+        
+        performSegueWithIdentifier("MoveIntoInputs", sender: self)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -370,6 +386,12 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         cellDescriptors[2][1].setValue(newSliderValue, forKey: "value")
         
         tblExpandable.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.None)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC : BasicInputsViewController = segue.destinationViewController as! BasicInputsViewController
+        DestinyVC.category = category
+        DestinyVC.topic = topic
+        DestinyVC.option = option
     }
 
 

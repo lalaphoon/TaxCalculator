@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLK-Fd-nKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4766" y="-482"/>
+            <point key="canvasLocation" x="3638" y="-514"/>
         </scene>
         <!--Option View Controller-->
         <scene sceneID="vvA-nf-0iw">
@@ -65,13 +65,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoInputs" id="mmf-iF-rK2"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3k9-IF-DTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4736" y="350"/>
+            <point key="canvasLocation" x="4304" y="-506"/>
         </scene>
         <!--Basic Inputs View Controller-->
         <scene sceneID="QJu-vi-xAa">
@@ -92,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5419" y="454"/>
+            <point key="canvasLocation" x="4147" y="439"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="9dN-2n-avi">
@@ -113,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BuE-AM-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6075" y="454"/>
+            <point key="canvasLocation" x="4823" y="439"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="bkX-H9-0Mt">
@@ -135,7 +132,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3f-no-myQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6749" y="454"/>
+            <point key="canvasLocation" x="5549" y="439"/>
         </scene>
         <!--After Result View Controller-->
         <scene sceneID="TB5-qi-70i">
@@ -156,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3FC-Za-LnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7446" y="466"/>
+            <point key="canvasLocation" x="6270" y="439"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="PCG-KG-c2p">
@@ -174,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5L1-r9-PtZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8116" y="466"/>
+            <point key="canvasLocation" x="6972" y="439"/>
         </scene>
         <!--Process View Controller-->
         <scene sceneID="TwO-AZ-hiE">
@@ -192,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeh-9v-pX2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6749" y="-240"/>
+            <point key="canvasLocation" x="5501" y="-308"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="pj9-W8-B61">
@@ -297,6 +294,7 @@
                     </view>
                     <connections>
                         <outlet property="tblExpandable" destination="zxv-K2-A3r" id="03k-DU-GHj"/>
+                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoInputs" id="zfk-Jp-d3R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dd7-lS-Ox9" userLabel="First Responder" sceneMemberID="firstResponder"/>

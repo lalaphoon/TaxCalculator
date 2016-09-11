@@ -562,6 +562,16 @@ extension TaxPro{
         }
         return result
     }
+    func lookForMenuID(category: Int, _ topic: Int, _ name: String) -> Int {
+        var result: Menu!
+        for item in taxMenuBook {
+            if item.category == category && item.topic == topic && item.name == name{
+                //return item
+                result = item
+            }
+        }
+        return result.id
+    }
     func lookForOptions(category: Int, _ topic:Int) -> [String]{
         var m = lookForMenusByCategoryTopic(category, topic)
         var result = [String]()

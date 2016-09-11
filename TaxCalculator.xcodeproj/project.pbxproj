@@ -351,8 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
-				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
-				46FE9DCF1D7684C8005A9E2D /* OptionsViewController.swift */,
 				46006C8F1D82332900CCBFFE /* SubMenuViewController.swift */,
 				46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */,
 				4670331F1D612F8900688802 /* ProfileViewController.swift */,
@@ -440,6 +438,8 @@
 			isa = PBXGroup;
 			children = (
 				467D34971D381D61008D820B /* CalculatorViewController.swift */,
+				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,
+				46FE9DCF1D7684C8005A9E2D /* OptionsViewController.swift */,
 				4670331D1D5FC75900688802 /* InputsViewController.swift */,
 			);
 			name = "unused file";
