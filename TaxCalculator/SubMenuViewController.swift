@@ -20,10 +20,16 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     var cellDescriptors = NSMutableArray()
     var myNewNSMutableArray = NSMutableArray()
     var visibleRowsPerSection = [[Int]]()
-    
+    let TP =  TaxPro()
+    var Topics = [String: Int]()
+    var category : Int!
+    var TopicsChanged: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.category = INCOME
+        self.Topics = TP.getTopics_IDByCategory(self.category)
+        TopicsChanged = false
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -76,23 +82,44 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     func addNormalCell(Title: String, _ child: Int, _ guy: NSMutableArray){
       guy.addObject(["additionalRows":child, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":Title, "primaryTitle":"", "value":""])
     }
+    
     func addValueCell(Title: String, _ guy:  NSMutableArray){
           guy.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":Title, "value":""])
     }
-    func addTopicGroupCell(category: Int) -> NSMutableArray{
+    
+    func addTopicGroupCell(what: [String]) -> NSMutableArray{
         var guy = NSMutableArray()
-       // myNewNSMutableArray.removeAllObjects()
-        if category == INCOME {
-            addNormalCell("Topic", Income_subMenu.count,guy)
-            for i in Income_subMenu.keys {
-                addValueCell(i, guy)
-            }
+        addNormalCell("Topics", what.count, guy)
+        for i in what{
+            addValueCell(i, guy)
         }
         return guy
     }
-    func addOptionGroupCell(){
-        
+    
+    func addOptionGroupCell() -> NSMutableArray{
+        var guy = NSMutableArray()
+        var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
+        var topic_name : String!
+        // var test : NSMutableDictionary = cellDescriptors[0][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
+        for item in array {
+            var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
+            if m["cellIdentifier"] as! String == "idCellNormal" {
+                print(m["primaryTitle"] as! String)
+                topic_name = m["primaryTitle"] as! String
+                
+            }
+        }
+        var topic_id = self.Topics[topic_name]
+        // myNewNSMutableArray.removeAllObjects()
+        var list = TP.lookForOptions(self.category, topic_id!)
+            addNormalCell("Options", list.count,guy)
+            for i in list {
+                addValueCell(i, guy)
+            }
+      
+        return guy
     }
+   
     
     func loadCellDescriptors() {
         
@@ -102,17 +129,8 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             getIndicesOfVisibleRows()
             tblExpandable.reloadData()
         }*/
-        /* myNewNSMutableArray.addObject(["additionalRows":2, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":"Title", "primaryTitle":"", "value":""])
-        myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])
-        myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"world", "value":""])
-         myNewNSMutableArray.addObject(["additionalRows":3, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":"Title2", "primaryTitle":"", "value":""])
-         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"Hello", "value":""])
-         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])
-         myNewNSMutableArray.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":"hello", "value":""])*/
-        
-        //addTopicGroupCell(INCOME)
-        
-        cellDescriptors.addObject(addTopicGroupCell(INCOME))
+
+        cellDescriptors.addObject(addTopicGroupCell(Array(self.Topics.keys)))
         getIndicesOfVisibleRows()
         tblExpandable.reloadData()
 
@@ -241,8 +259,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             test.setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             array.replaceObjectAtIndex(indexOfTappedRow, withObject: test)
             cellDescriptors[indexPath.section] = array
-           // print("I'm here")
-            
+
           //  cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             
             for i in (indexOfTappedRow + 1)...(indexOfTappedRow + (cellDescriptors[indexPath.section][indexOfTappedRow]["additionalRows"] as! Int)) {
@@ -253,10 +270,16 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 array.replaceObjectAtIndex(i, withObject: test)
                 cellDescriptors[indexPath.section] = array
             }
+            
         }
         else {
+            
             if cellDescriptors[indexPath.section][indexOfTappedRow]["cellIdentifier"] as! String == "idCellValuePicker" {
                 var indexOfParentCell: Int!
+                if indexPath.section == 0 {
+                    TopicsChanged = true
+                }
+                
                 
                 for var i=indexOfTappedRow - 1; i>=0; --i {
                     if cellDescriptors[indexPath.section][i]["isExpandable"] as! Bool == true {
@@ -275,13 +298,16 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 //cellDescriptors.removeAllObjects()
                 if cellDescriptors.count > 1 {
-                    //cellDescriptors.removeLastObject()
-                   // cellDescriptors.addObject(addTopicGroupCell(INCOME))
+                    if TopicsChanged == true {
+                        cellDescriptors.removeLastObject()
+                        cellDescriptors.addObject(addOptionGroupCell())
+                    }
                 } else {
-                cellDescriptors.addObject(addTopicGroupCell(INCOME))
+                cellDescriptors.addObject(addOptionGroupCell())
                 }
                 getIndicesOfVisibleRows()
                 tblExpandable.reloadData()
+                TopicsChanged = false
             }
         }
         

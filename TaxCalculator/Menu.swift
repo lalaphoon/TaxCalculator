@@ -544,6 +544,53 @@ let taxBook = [
 "3-24-":"Spouse credit"]
 
 extension TaxPro{
+    func getTopics_IDByCategory(category: Int) -> [String: Int]{
+        if category == INCOME {
+            return Income_subMenu
+        } else if category == DEDUCTION {
+            return Deduction_subMenu
+        } else {
+            return Credit_subMenu
+        }
+    }
+    func lookForMenusByCategoryTopic(category: Int, _ topic: Int) -> [Menu] {
+        var result =  [Menu]()
+        for item in taxMenuBook {
+            if item.category == category && item.topic == topic {
+                result.append(item)
+            }
+        }
+        return result
+    }
+    func lookForOptions(category: Int, _ topic:Int) -> [String]{
+        var m = lookForMenusByCategoryTopic(category, topic)
+        var result = [String]()
+        for item in m {
+            result.append(item.name)
+        }
+        return result
+    }
+    func lookForMenusByCategory(category: Int) -> [Menu]{
+        var result = [Menu]()
+        for item in taxMenuBook {
+            if item.category == category {
+                result.append(item)
+            }
+        }
+        return result
+    }
+    func lookForAMenu(category: Int, _ topic: Int, _ ID: Int) -> Menu{
+        var result: Menu!
+        for item in taxMenuBook {
+            if item.category == category && item.topic == topic && item.id == ID{
+                //return item
+                result = item
+            }
+        }
+        return result
+        
+    }
+    //===========================Unused================================
     func lookForOption(index: String) -> String{
         if taxBook[index] != nil{
             return taxBook[index]!
