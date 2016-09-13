@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -78,7 +78,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
             
             var v = yMin
             
-            for _ in 0 ..< labelCount
+            for (var i = 0; i < labelCount; i++)
             {
                 yAxis.entries.append(v)
                 v += step
@@ -114,13 +114,15 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
                 
                 let last = ChartUtils.nextUp(floor(Double(yMax) / interval) * interval)
                 
+                var f: Double
+                var i: Int
                 var n = 0
-                for _ in first.stride(through: last, by: interval)
+                for (f = first; f <= last; f += interval)
                 {
-                    n += 1
+                    ++n
                 }
                 
-                if !yAxis.isAxisMaxCustom
+                if (isnan(yAxis.customAxisMax))
                 {
                     n += 1
                 }
@@ -131,14 +133,9 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
                     yAxis.entries = [Double](count: n, repeatedValue: 0.0)
                 }
                 
-                var f = first
-                var i = 0
-                while (i < n)
+                for (f = first, i = 0; i < n; f += interval, ++i)
                 {
                     yAxis.entries[i] = Double(f)
-                    
-                    f += interval
-                    i += 1
                 }
             }
         }
@@ -147,10 +144,10 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
         {
             // If startAtZero is disabled, and the first label is lower that the axis minimum,
             // Then adjust the axis minimum
-            yAxis._axisMinimum = yAxis.entries[0]
+            yAxis.axisMinimum = yAxis.entries[0]
         }
-        yAxis._axisMaximum = yAxis.entries[yAxis.entryCount - 1]
-        yAxis.axisRange = abs(yAxis._axisMaximum - yAxis._axisMinimum)
+        yAxis.axisMaximum = yAxis.entries[yAxis.entryCount - 1]
+        yAxis.axisRange = abs(yAxis.axisMaximum - yAxis.axisMinimum)
     }
     
     public override func renderAxisLabels(context context: CGContext)
@@ -175,14 +172,14 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
         
         let labelLineHeight = yAxis.labelFont.lineHeight
         
-        for j in 0 ..< labelCount
+        for (var j = 0; j < labelCount; j++)
         {
             if (j == labelCount - 1 && yAxis.isDrawTopYLabelEntryEnabled == false)
             {
                 break
             }
             
-            let r = CGFloat(yAxis.entries[j] - yAxis._axisMinimum) * factor
+            let r = CGFloat(yAxis.entries[j] - yAxis.axisMinimum) * factor
             
             let p = ChartUtils.getPosition(center: center, dist: r, angle: chart.rotationAngle)
             
@@ -215,7 +212,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
         
         let center = chart.centerOffsets
         
-        for i in 0 ..< limitLines.count
+        for (var i = 0; i < limitLines.count; i++)
         {
             let l = limitLines[i]
             
@@ -239,7 +236,7 @@ public class ChartYAxisRendererRadarChart: ChartYAxisRenderer
             
             CGContextBeginPath(context)
             
-            for j in 0 ..< chart.data!.xValCount
+            for (var j = 0, count = chart.data!.xValCount; j < count; j++)
             {
                 let p = ChartUtils.getPosition(center: center, dist: r, angle: sliceangle * CGFloat(j) + chart.rotationAngle)
                 

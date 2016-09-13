@@ -9,7 +9,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -106,7 +106,7 @@ public class ChartData: NSObject
         
         var sum = 1
         
-        for i in 0 ..< _xVals.count
+        for (var i = 0; i < _xVals.count; i++)
         {
             sum += _xVals[i] == nil ? 0 : (_xVals[i]!).characters.count
         }
@@ -128,7 +128,7 @@ public class ChartData: NSObject
             return
         }
         
-        for i in 0 ..< dataSets.count
+        for (var i = 0; i < dataSets.count; i++)
         {
             if (dataSets[i].entryCount > _xVals.count)
             {
@@ -162,7 +162,7 @@ public class ChartData: NSObject
             _yMin = DBL_MAX
             _yMax = -DBL_MAX
             
-            for i in 0 ..< _dataSets.count
+            for (var i = 0; i < _dataSets.count; i++)
             {
                 _dataSets[i].calcMinMax(start: start, end: end)
                 
@@ -250,7 +250,7 @@ public class ChartData: NSObject
         
         var count = 0
         
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             count += _dataSets[i].entryCount
         }
@@ -329,14 +329,7 @@ public class ChartData: NSObject
     /// - returns: the x-values the chart represents
     public var xVals: [String?]
     {
-        get
-        {
-            return _xVals
-        }
-        set
-        {
-            _xVals = newValue
-        }
+        return _xVals
     }
     
     ///Adds a new x-value to the chart data.
@@ -377,7 +370,7 @@ public class ChartData: NSObject
     {
         if (ignorecase)
         {
-            for i in 0 ..< dataSets.count
+            for (var i = 0; i < dataSets.count; i++)
             {
                 if (dataSets[i].label == nil)
                 {
@@ -391,7 +384,7 @@ public class ChartData: NSObject
         }
         else
         {
-            for i in 0 ..< dataSets.count
+            for (var i = 0; i < dataSets.count; i++)
             {
                 if (label == dataSets[i].label)
                 {
@@ -414,7 +407,7 @@ public class ChartData: NSObject
     {
         var types = [String]()
         
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             if (dataSets[i].label == nil)
             {
@@ -439,18 +432,7 @@ public class ChartData: NSObject
         }
         else
         {
-            // The value of the highlighted entry could be NaN - if we are not interested in highlighting a specific value.
-        
-            let entries = _dataSets[highlight.dataSetIndex].entriesForXIndex(highlight.xIndex)
-            for e in entries
-            {
-                if e.value == highlight.value || isnan(highlight.value)
-                {
-                    return e
-                }
-            }
-            
-            return nil
+            return _dataSets[highlight.dataSetIndex].entryForXIndex(highlight.xIndex)
         }
     }
     
@@ -574,7 +556,7 @@ public class ChartData: NSObject
             return false
         }
         
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             if (_dataSets[i] === dataSet)
             {
@@ -725,7 +707,7 @@ public class ChartData: NSObject
             return nil
         }
         
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             let set = _dataSets[i]
             
@@ -741,7 +723,7 @@ public class ChartData: NSObject
     /// - returns: the index of the provided DataSet inside the DataSets array of this data object. -1 if the DataSet was not found.
     public func indexOfDataSet(dataSet: IChartDataSet) -> Int
     {
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             if (_dataSets[i] === dataSet)
             {
@@ -790,14 +772,14 @@ public class ChartData: NSObject
         
         var clrcnt = 0
         
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             clrcnt += _dataSets[i].colors.count
         }
         
         var colors = [NSUIColor]()
         
-        for i in 0 ..< _dataSets.count
+        for (var i = 0; i < _dataSets.count; i++)
         {
             let clrs = _dataSets[i].colors
             
@@ -815,7 +797,7 @@ public class ChartData: NSObject
     {
         var xvals = [String]()
         
-        for i in from ..< to
+        for (var i = from; i < to; i++)
         {
             xvals.append(String(i))
         }
@@ -928,15 +910,5 @@ public class ChartData: NSObject
     /// MARK: - ObjC compatibility
     
     /// - returns: the average length (in characters) across all values in the x-vals array
-    public var xValsObjc: [NSObject]
-    {
-        get
-        {
-            return ChartUtils.bridgedObjCGetStringArray(swift: _xVals);
-        }
-        set
-        {
-            _xVals = ChartUtils.bridgedObjCGetStringArray(objc: newValue)
-        }
-    }
+    public var xValsObjc: [NSObject] { return ChartUtils.bridgedObjCGetStringArray(swift: _xVals); }
 }

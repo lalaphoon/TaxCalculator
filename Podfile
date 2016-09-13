@@ -7,6 +7,7 @@ target 'TaxCalculator' do
 
   # Pods for TaxCalculator
   pod 'PureLayout'
+  pod 'Charts','2.2.3'
 
   target 'TaxCalculatorTests' do
     inherit! :search_paths

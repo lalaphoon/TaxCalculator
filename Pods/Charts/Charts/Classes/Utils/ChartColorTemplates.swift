@@ -9,7 +9,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -77,16 +77,6 @@ public class ChartColorTemplates: NSObject
         ]
     }
     
-    public class func material () -> [NSUIColor]
-    {
-        return [
-            NSUIColor(red: 46/255.0, green: 204/255.0, blue: 113/255.0, alpha: 1.0),
-            NSUIColor(red: 241/255.0, green: 196/255.0, blue: 15/255.0, alpha: 1.0),
-            NSUIColor(red: 231/255.0, green: 76/255.0, blue: 60/255.0, alpha: 1.0),
-            NSUIColor(red: 52/255.0, green: 152/255.0, blue: 219/255.0, alpha: 1.0)
-        ]
-    }
-    
     public class func colorFromString(colorString: String) -> NSUIColor
     {
         let leftParenCharset: NSCharacterSet = NSCharacterSet(charactersInString: "( ")
@@ -102,8 +92,11 @@ public class ChartColorTemplates: NSObject
             var index = colorString.startIndex
             let endIndex = colorString.endIndex
             
-            index = index.advancedBy(1)
-            length = length - 1
+            if length % 2 == 1
+            {
+                index = index.advancedBy(1)
+                length = length - 1
+            }
             
             if length == 3 || length == 6 || length == 8
             {
@@ -128,7 +121,7 @@ public class ChartColorTemplates: NSObject
                         argb[i] = argb[i] + UInt(val)
                     }
                     
-                    i += 1
+                    i = i + 1
                 }
             }
             

@@ -350,11 +350,11 @@ types are aliased to either their UI* implementation (on iOS) or their NS* imple
         {
             get
             {
-                return magnification + 1.0
+                return magnification
             }
             set
             {
-                magnification = newValue - 1.0
+                magnification = newValue
             }
         }
         

@@ -26,8 +26,6 @@
 		460911001D428C0F003C6A65 /* StepThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910FF1D428C0F003C6A65 /* StepThree.swift */; };
 		460911021D428C69003C6A65 /* StepFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460911011D428C69003C6A65 /* StepFour.swift */; };
 		460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460911031D42C364003C6A65 /* UserSettingsViewController.swift */; };
-		462214EB1D8876C800BD334A /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 462214E41D8876A800BD334A /* Charts.framework */; };
-		462214EC1D8876C800BD334A /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 462214E41D8876A800BD334A /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4629A86B1D777D4A006533BC /* InterestIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86A1D777D4A006533BC /* InterestIncome.swift */; };
 		4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86C1D7B622C006533BC /* Tax credit.swift */; };
 		462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62641D33279000D4FE94 /* AppDelegate.swift */; };
@@ -73,41 +71,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		462214E31D8876A800BD334A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 462214DC1D8876A800BD334A /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
-		462214E51D8876A800BD334A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 462214DC1D8876A800BD334A /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
-			remoteInfo = "Charts-TV";
-		};
-		462214E71D8876A800BD334A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 462214DC1D8876A800BD334A /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
-			remoteInfo = "Charts-OSX";
-		};
-		462214E91D8876A800BD334A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 462214DC1D8876A800BD334A /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
-			remoteInfo = ChartsTests;
-		};
-		462214ED1D8876C800BD334A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 462214DC1D8876A800BD334A /* Charts.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
-			remoteInfo = "Charts-iOS";
-		};
 		462D62791D33279100D4FE94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 462D62591D33279000D4FE94 /* Project object */;
@@ -131,7 +94,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				462214EC1D8876C800BD334A /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,7 +121,6 @@
 		460910FF1D428C0F003C6A65 /* StepThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepThree.swift; sourceTree = "<group>"; };
 		460911011D428C69003C6A65 /* StepFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepFour.swift; sourceTree = "<group>"; };
 		460911031D42C364003C6A65 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
-		462214DC1D8876A800BD334A /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		4629A86A1D777D4A006533BC /* InterestIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestIncome.swift; sourceTree = "<group>"; };
 		4629A86C1D7B622C006533BC /* Tax credit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tax credit.swift"; sourceTree = "<group>"; };
 		462D62611D33279000D4FE94 /* TaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,7 +184,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */,
-				462214EB1D8876C800BD334A /* Charts.framework in Frameworks */,
 				46369E011D459ACC00456B69 /* MessageUI.framework in Frameworks */,
 				D4166594122906E09DD1779A /* Pods_TaxCalculator.framework in Frameworks */,
 			);
@@ -288,17 +248,6 @@
 			name = Fetcher;
 			sourceTree = "<group>";
 		};
-		462214DD1D8876A800BD334A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				462214E41D8876A800BD334A /* Charts.framework */,
-				462214E61D8876A800BD334A /* Charts.framework */,
-				462214E81D8876A800BD334A /* Charts.framework */,
-				462214EA1D8876A800BD334A /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		462D62581D33279000D4FE94 = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +281,6 @@
 				46FE9DC81D7148E9005A9E2D /* unused file */,
 				462D62641D33279000D4FE94 /* AppDelegate.swift */,
 				462D62681D33279000D4FE94 /* Main.storyboard */,
-				462214DC1D8876A800BD334A /* Charts.xcodeproj */,
 				462D626E1D33279000D4FE94 /* Assets.xcassets */,
 				462D62701D33279000D4FE94 /* LaunchScreen.storyboard */,
 				462D62731D33279000D4FE94 /* Info.plist */,
@@ -551,7 +499,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				462214EE1D8876C800BD334A /* PBXTargetDependency */,
 			);
 			name = TaxCalculator;
 			productName = TaxCalculator;
@@ -633,12 +580,6 @@
 			mainGroup = 462D62581D33279000D4FE94;
 			productRefGroup = 462D62621D33279000D4FE94 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 462214DD1D8876A800BD334A /* Products */;
-					ProjectRef = 462214DC1D8876A800BD334A /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				462D62601D33279000D4FE94 /* TaxCalculator */,
@@ -647,37 +588,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		462214E41D8876A800BD334A /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 462214E31D8876A800BD334A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		462214E61D8876A800BD334A /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 462214E51D8876A800BD334A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		462214E81D8876A800BD334A /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = 462214E71D8876A800BD334A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		462214EA1D8876A800BD334A /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = 462214E91D8876A800BD334A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		462D625F1D33279000D4FE94 /* Resources */ = {
@@ -907,11 +817,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		462214EE1D8876C800BD334A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Charts-iOS";
-			targetProxy = 462214ED1D8876C800BD334A /* PBXContainerItemProxy */;
-		};
 		462D627A1D33279100D4FE94 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 462D62601D33279000D4FE94 /* TaxCalculator */;
@@ -1033,7 +938,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = TaxCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wtctax.TaxCalculator;
@@ -1049,7 +954,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = "$(inherited)";
 				INFOPLIST_FILE = TaxCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wtctax.TaxCalculator;

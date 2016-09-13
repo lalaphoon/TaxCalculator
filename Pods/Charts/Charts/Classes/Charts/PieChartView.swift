@@ -8,7 +8,7 @@
 //  A port of MPAndroidChart for iOS
 //  Licensed under Apache License 2.0
 //
-//  https://github.com/danielgindi/Charts
+//  https://github.com/danielgindi/ios-charts
 //
 
 import Foundation
@@ -79,7 +79,6 @@ public class PieChartView: PieRadarChartViewBase
         super.initialize()
         
         renderer = PieChartRenderer(chart: self, animator: _animator, viewPortHandler: _viewPortHandler)
-        _xAxis = nil
     }
     
     public override func drawRect(rect: CGRect)
@@ -137,6 +136,8 @@ public class PieChartView: PieRadarChartViewBase
     
     internal override func calcMinMax()
     {
+        super.calcMinMax()
+        
         calcAngles()
     }
     
@@ -185,12 +186,12 @@ public class PieChartView: PieRadarChartViewBase
 
         var cnt = 0
 
-        for i in 0 ..< data.dataSetCount
+        for (var i = 0; i < data.dataSetCount; i++)
         {
             let set = dataSets[i]
             let entryCount = set.entryCount
 
-            for j in 0 ..< entryCount
+            for (var j = 0; j < entryCount; j++)
             {
                 guard let e = set.entryForIndex(j) else { continue }
                 
@@ -205,7 +206,7 @@ public class PieChartView: PieRadarChartViewBase
                     _absoluteAngles.append(_absoluteAngles[cnt - 1] + _drawAngles[cnt])
                 }
 
-                cnt += 1
+                cnt++
             }
         }
     }
@@ -219,7 +220,7 @@ public class PieChartView: PieRadarChartViewBase
             return false
         }
         
-        for i in 0 ..< _indicesToHighlight.count
+        for (var i = 0; i < _indicesToHighlight.count; i++)
         {
             // check if the xvalue for the given dataset needs highlight
             if (_indicesToHighlight[i].xIndex == xIndex
@@ -244,17 +245,11 @@ public class PieChartView: PieRadarChartViewBase
         return CGFloat(value) / CGFloat(yValueSum) * _maxAngle
     }
     
-    /// This will throw an exception, PieChart has no XAxis object.
-    public override var xAxis: ChartXAxis
-    {
-        fatalError("PieChart has no XAxis")
-    }
-    
     public override func indexForAngle(angle: CGFloat) -> Int
     {
         // take the current angle of the chart into consideration
         let a = ChartUtils.normalizedAngleFromAngle(angle - self.rotationAngle)
-        for i in 0 ..< _absoluteAngles.count
+        for (var i = 0; i < _absoluteAngles.count; i++)
         {
             if (_absoluteAngles[i] > a)
             {
@@ -270,7 +265,7 @@ public class PieChartView: PieRadarChartViewBase
     {
         var dataSets = _data?.dataSets ?? []
         
-        for i in 0 ..< dataSets.count
+        for (var i = 0; i < dataSets.count; i++)
         {
             if (dataSets[i].entryForXIndex(xIndex) !== nil)
             {
@@ -562,7 +557,7 @@ public class PieChartView: PieRadarChartViewBase
     
     /// The max angle that is used for calculating the pie-circle.
     /// 360 means it's a full pie-chart, 180 results in a half-pie-chart.
-    /// **default**: 360.0
+    /// - default: 360.0
     public var maxAngle: CGFloat
     {
         get
