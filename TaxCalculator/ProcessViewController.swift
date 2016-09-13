@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import Charts
 
 class ProcessViewController: UIViewController, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var containerView: UIView!
     
+    @IBOutlet weak var pieChart: PieChartView!
     var formula : Calculator!
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -24,9 +26,29 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.userInteractionEnabled = true
         self.containerView.userInteractionEnabled = true
         self.scrollView.addSubview(containerView)
-        self.view.addSubview(scrollView)
-        initProcessUI()
+        //self.view.addSubview(scrollView)
+       // initProcessUI()
+        initPieChart()
         
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
+    }
+    func initPieChart(){
+       var chartView = PieChartView(frame: view.frame)
+       // view.addSubview(chartView)
+        let xValues = ["Income", "Interest income", "Others"]
+        
+        let yValues = [20.0,30.0, 40.0]
+        let chartData:[ChartDataEntry] = [ChartDataEntry(value: yValues[0], xIndex: 0),ChartDataEntry(value: yValues[1], xIndex: 1),ChartDataEntry(value: yValues[2], xIndex: 2)]
+        var dataEntries = PieChartDataSet(yVals: chartData, label: "Incomes")
+        dataEntries.sliceSpace = 2.0
+        dataEntries.colors = ChartColorTemplates.colorful()
+        let data = PieChartData(xVals: xValues, dataSet: dataEntries)
+        //chartView.data = data
+        pieChart.data = data
+       
     }
     func initProcessUI(){
         containerView.addText(formula.displayProcess(),self.view.bounds.width/2, 200, self.view.bounds.width-86, self.view.bounds.height)
