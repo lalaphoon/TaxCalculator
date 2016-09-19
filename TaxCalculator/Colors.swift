@@ -12,6 +12,18 @@ extension UIColor {
     class func customGreenColor() ->UIColor{
         return UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1.0)
     }
+    class func chartYellowColor() ->UIColor{
+        return UIColor(red: 254/255.0, green: 205/255.0, blue: 3/255.0, alpha:1.0)
+    }
+    class func chartRedColor() -> UIColor{
+        return UIColor(red: 252/255.0, green: 138/255.0, blue: 100/255.0, alpha: 1.0)
+    }
+    class func chartGreenColor() -> UIColor{
+        return UIColor(red: 135/255.0, green: 208/255.0, blue: 72/255.0, alpha:1.0)
+    }
+    class func chartBlueColor() -> UIColor{
+        return UIColor(red: 84/255.0, green: 199/255.0, blue: 252/255.0, alpha: 1.0)
+    }
     //Our custom orange color is brighter than official orange color
     class func customOrangeColor() -> UIColor{
         return UIColor(red: 255/255.0, green: 150/255.0, blue: 0/255.0, alpha: 1.0)

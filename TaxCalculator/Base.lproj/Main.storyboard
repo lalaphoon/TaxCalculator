@@ -186,14 +186,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pc4-SR-pUW" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="0.0" y="49" width="600" height="250"/>
+                                <rect key="frame" x="28" y="49" width="544" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pc4-SR-pUW" firstAttribute="leading" secondItem="MRv-H4-gOh" secondAttribute="leadingMargin" constant="-20" id="2s4-9H-sRQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Pc4-SR-pUW" secondAttribute="trailing" constant="-20" id="Jph-mc-6tM"/>
+                            <constraint firstItem="Pc4-SR-pUW" firstAttribute="leading" secondItem="MRv-H4-gOh" secondAttribute="leadingMargin" constant="8" id="EdK-5v-L00"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pc4-SR-pUW" secondAttribute="trailing" constant="8" id="wSe-1h-6w6"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>

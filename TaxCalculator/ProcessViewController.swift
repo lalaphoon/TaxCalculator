@@ -28,27 +28,63 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.addSubview(containerView)
         //self.view.addSubview(scrollView)
        // initProcessUI()
-        initPieChart()
+        
+        let xValues = ["Income", "Interest income", "Others"]
+        
+        let yValues = [20.0,30.0, 40.0]
+        
+        initPieChart(xValues,values: yValues)
         
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
     }
-    func initPieChart(){
-       var chartView = PieChartView(frame: view.frame)
-       // view.addSubview(chartView)
-        let xValues = ["Income", "Interest income", "Others"]
+    func initPieChart(dataPoints:[String],values: [Double]){
         
-        let yValues = [20.0,30.0, 40.0]
-        let chartData:[ChartDataEntry] = [ChartDataEntry(value: yValues[0], xIndex: 0),ChartDataEntry(value: yValues[1], xIndex: 1),ChartDataEntry(value: yValues[2], xIndex: 2)]
-        var dataEntries = PieChartDataSet(yVals: chartData, label: "Incomes")
-        dataEntries.sliceSpace = 2.0
-        dataEntries.colors = ChartColorTemplates.colorful()
-        dataEntries.
-        let data = PieChartData(xVals: xValues, dataSet: dataEntries)
+       //var chartView = PieChartView(frame: view.frame)
+       // view.addSubview(chartView)
+        
+        var dataEntries:[ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count{
+            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Labels for attributes")
+        let pieChartData = PieChartData(xVals:dataPoints, dataSet: pieChartDataSet)
+        
+        pieChartDataSet.sliceSpace = 2.0
+        pieChartDataSet.colors = ChartColorTemplates.colorful()
+       // pieChart.centerAttributedText.
+       
+        //==========================Set up for colors=========================================
+        var colors: [UIColor] = []
+        
+        /*for i in 0..<dataPoints.count {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(256))
+            
+            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+        }*/
+        colors = [UIColor.chartBlueColor(),UIColor.chartYellowColor(),UIColor.chartGreenColor(),UIColor.chartRedColor()]
+        
+        pieChartDataSet.colors = colors
+        //======================================================================================
+        
+        
         //chartView.data = data
-        pieChart.data = data
+        pieChart.descriptionText = ""
+        pieChart.descriptionTextAlign = .Center
+        pieChart.descriptionFont = UIFont(name: HEADERFONT, size: 18)
+        pieChart.setDescriptionTextPosition(x: 100.0, y: 0.0)
+        pieChart.highlightPerTapEnabled = false
+        //This below is used to save a piechart
+        //pieChart.saveToCameraRoll()
+        pieChart.data = pieChartData
+        
        
     }
     func initProcessUI(){
