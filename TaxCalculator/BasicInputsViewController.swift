@@ -34,7 +34,7 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
         self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize =  CGSizeMake(self.view.bounds.width, 667)
+        self.scrollView.contentSize =  CGSizeMake(self.view.bounds.width, 550)
        // self.containerView = UIView()
         checkCalculation()
         self.containerView = c.initUI(self)

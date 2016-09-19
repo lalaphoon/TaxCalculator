@@ -45,6 +45,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         var dataEntries = PieChartDataSet(yVals: chartData, label: "Incomes")
         dataEntries.sliceSpace = 2.0
         dataEntries.colors = ChartColorTemplates.colorful()
+        dataEntries.
         let data = PieChartData(xVals: xValues, dataSet: dataEntries)
         //chartView.data = data
         pieChart.data = data

@@ -30,7 +30,7 @@ class RRSP: Formula{
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         contribution = containerView.returnTextField("Contribution", 43, 274 + num, VC.view.bounds.width - (43*2))
         contribution.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", 43, 567 + num, VC.view.bounds.width - (43*2), 36, VC)
         return containerView
         
     }

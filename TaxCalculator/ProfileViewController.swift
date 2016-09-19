@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
        
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 550)
         
         self.containerView =  UIView()
         
@@ -57,10 +57,11 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         // Do any additional setup after loading the view.
     }
     func initContainerUI(){
-       containerView.addImage("Title_profile.png", self.view.bounds.width/2 - 65,93)
-       containerView.addTextField("Your Income", income_tag, 43,274, self.view.bounds.width-86)
-       containerView.addTextField("Province/Territory of Residence", province_tag, 43, 334, self.view.bounds.width-86)
-       containerView.addYellowButton("Calculate", "moveToNext", self.view.bounds.width-100, 567,87,36,self)
+    let num:CGFloat = -63
+       containerView.addImage("Title_profile.png", self.view.bounds.width/2 - 65,93 + num)
+       containerView.addTextField("Your Income", income_tag, 43,274 + num, self.view.bounds.width-86)
+       containerView.addTextField("Province/Territory of Residence", province_tag, 43, 334 + num, self.view.bounds.width-86)
+       containerView.addYellowButton("Calculate", "moveToNext", 43, 567 + num ,self.view.bounds.width-86,36,self)
     }
     func retrieveContainer(){
         incomeTextField = self.view.viewWithTag(income_tag) as! UITextField

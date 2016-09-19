@@ -31,6 +31,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         //self.category = INCOME
         self.Topics = TP.getTopics_IDByCategory(self.category)
         TopicsChanged = false
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -141,8 +142,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             getIndicesOfVisibleRows()
             tblExpandable.reloadData()
         }*/
-
+        if cellDescriptors.count < 2 {
         cellDescriptors.addObject(addTopicGroupCell(Array(self.Topics.keys)))
+        }
         getIndicesOfVisibleRows()
         tblExpandable.reloadData()
 
@@ -316,6 +318,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                         cellDescriptors.addObject(addOptionGroupCell())
                     }
                 } else {
+                print("Adding a table cell")
                 cellDescriptors.addObject(addOptionGroupCell())
                 }
                 getIndicesOfVisibleRows()
