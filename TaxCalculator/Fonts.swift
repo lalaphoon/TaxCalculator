@@ -11,3 +11,5 @@ import UIKit
 
 let THINFONT : String = "STHeitiTC-Light"
 let HEADERFONT : String = "Arial-BoldMT"
+let BIGTITLE : String = "Avenir-Book"
+let SMALLTITLE : String = "Avenir-Light"

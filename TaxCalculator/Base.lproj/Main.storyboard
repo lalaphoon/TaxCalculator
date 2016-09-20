@@ -186,19 +186,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pc4-SR-pUW" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="28" y="49" width="544" height="250"/>
+                                <rect key="frame" x="28" y="49" width="544" height="213"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-Ie-Kz0">
+                                <rect key="frame" x="28" y="281" width="544" height="198"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="u9d-Ie-Kz0" firstAttribute="leading" secondItem="MRv-H4-gOh" secondAttribute="leadingMargin" constant="8" id="7m5-lV-E3F"/>
                             <constraint firstItem="Pc4-SR-pUW" firstAttribute="leading" secondItem="MRv-H4-gOh" secondAttribute="leadingMargin" constant="8" id="EdK-5v-L00"/>
+                            <constraint firstItem="u9d-Ie-Kz0" firstAttribute="top" secondItem="Pc4-SR-pUW" secondAttribute="bottom" constant="19" id="L5A-Hi-eGV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u9d-Ie-Kz0" secondAttribute="trailing" constant="8" id="MsQ-3n-hoY"/>
+                            <constraint firstItem="omw-v8-oFt" firstAttribute="top" secondItem="u9d-Ie-Kz0" secondAttribute="bottom" constant="8" id="UYO-V3-Dzo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Pc4-SR-pUW" secondAttribute="trailing" constant="8" id="wSe-1h-6w6"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="pieChart" destination="Pc4-SR-pUW" id="J0f-e2-YDu"/>
+                        <outlet property="resultChart" destination="u9d-Ie-Kz0" id="dSP-XY-q4p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeh-9v-pX2" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,6 +15,9 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
     var containerView: UIView!
     
     @IBOutlet weak var pieChart: PieChartView!
+    @IBOutlet weak var resultChart: UITableView!
+    let reuseIdentifier = "TableCell"
+    
     var formula : Calculator!
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -34,6 +37,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         let yValues = [20.0,30.0, 40.0]
         
         initPieChart(xValues,values: yValues)
+        initTable()
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -80,7 +84,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         pieChart.descriptionTextAlign = .Center
         pieChart.descriptionFont = UIFont(name: HEADERFONT, size: 18)
         pieChart.setDescriptionTextPosition(x: 100.0, y: 0.0)
-        pieChart.highlightPerTapEnabled = false
+       // pieChart.highlightPerTapEnabled = false
         //This below is used to save a piechart
         //pieChart.saveToCameraRoll()
         pieChart.data = pieChartData
@@ -109,3 +113,54 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
 
     
 }
+
+extension ProcessViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func initTable(){
+        resultChart.dataSource = self
+        resultChart.delegate = self
+        let cellCollNib = UINib (nibName: "TableCell", bundle: NSBundle.mainBundle())
+        resultChart.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
+        resultChart.tableFooterView =  UIView()
+        //resultChart.tableHeaderView = UIView()
+    }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: ResultTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ResultTableCell
+        cell.Title1.text = "changed"
+        cell.Title2.text = "changed"
+        cell.Title3.text = "changed"
+        cell.Value.text = "0"
+        return cell
+    }
+}
+class ResultTableCell : UITableViewCell {
+
+    @IBOutlet weak var Title1: UILabel!
+    @IBOutlet weak var Title2: UILabel!
+    @IBOutlet weak var Title3: UILabel!
+    @IBOutlet weak var Value: UILabel!
+    override func awakeFromNib(){
+        super.awakeFromNib()
+      
+        Title1.font = UIFont(name: BIGTITLE, size: 17.0)
+        Title1.textColor = UIColor.blackColor()
+        Title2.font = UIFont(name: SMALLTITLE, size: 13.0)
+        Title2.textColor = UIColor.grayColor()
+        Title3.font = UIFont(name: SMALLTITLE, size: 13.0)
+        Title3.textColor = UIColor.grayColor()
+        Value.font = UIFont(name: BIGTITLE, size: 17.0)
+        Value.textColor = UIColor.blackColor()
+      
+    }
+    /*override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }*/
+}
+
+

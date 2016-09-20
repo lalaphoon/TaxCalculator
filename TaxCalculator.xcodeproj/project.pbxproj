@@ -53,6 +53,7 @@
 		4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */; };
 		4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */; };
 		468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468E07441D6E1B8300290D70 /* DividendIncome.swift */; };
+		469C30BC1D918C74002BBB4C /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 469C30BB1D918C74002BBB4C /* TableCell.xib */; };
 		46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B9E1C21D67A7A400B80106 /* HomeViewController.swift */; };
 		46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94701D3D65F800EC6294 /* SWRevealViewController.m */; };
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
@@ -154,6 +155,7 @@
 		4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTopicsViewController.swift; sourceTree = "<group>"; };
 		468E07441D6E1B8300290D70 /* DividendIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DividendIncome.swift; sourceTree = "<group>"; };
+		469C30BB1D918C74002BBB4C /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		46B9E1C21D67A7A400B80106 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		46DD946E1D3D65F000EC6294 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		46DD946F1D3D65F800EC6294 /* TaxCalculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxCalculator-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				46006CA01D82364400CCBFFE /* SliderCell.xib */,
 				46006C9C1D82363500CCBFFE /* SwitchCell.xib */,
 				46006C961D82360D00CCBFFE /* NormalCell.xib */,
+				469C30BB1D918C74002BBB4C /* TableCell.xib */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -596,6 +599,7 @@
 			files = (
 				46006CA11D82364400CCBFFE /* SliderCell.xib in Resources */,
 				46006CA31D82365000CCBFFE /* CellDescriptor.plist in Resources */,
+				469C30BC1D918C74002BBB4C /* TableCell.xib in Resources */,
 				46006C971D82360D00CCBFFE /* NormalCell.xib in Resources */,
 				46006C991D82361E00CCBFFE /* TextfieldCell.xib in Resources */,
 				462D62721D33279000D4FE94 /* LaunchScreen.storyboard in Resources */,
