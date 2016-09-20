@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
         //setup status bar colors
         //UIApplication.sharedApplication().statusBarStyle = .LightContent
-        
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
         //setup tab bar colors
         UITabBar.appearance().barTintColor = UIColor.customBlackColor()
         UITabBar.appearance().tintColor = UIColor.customOrangeColor()
