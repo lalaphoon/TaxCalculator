@@ -136,6 +136,7 @@ extension ProcessViewController: UITableViewDataSource, UITableViewDelegate {
         cell.Title2.text = "changed"
         cell.Title3.text = "changed"
         cell.Value.text = "0"
+        
         return cell
     }
 }
@@ -156,10 +157,10 @@ class ResultTableCell : UITableViewCell {
         Title3.textColor = UIColor.grayColor()
         Value.font = UIFont(name: BIGTITLE, size: 17.0)
         Value.textColor = UIColor.blackColor()
-      
+        self.userInteractionEnabled = false
     }
     /*override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        super.setSelected(selected, animated: false)
     }*/
 }
 
