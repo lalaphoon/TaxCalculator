@@ -22,7 +22,7 @@ protocol Formula {
     //init()
     func initUI(VC:UIViewController)->UIView
     func setProfile(income: Double, province: String)
-    func retrieveData()
+    func retrieveData() -> ([String],[Double],[[String]])
     
     func getResult() -> Double
     func getTip() -> String
@@ -56,8 +56,8 @@ class Calculator{
     func setProfile(income: Double, province: String){
         self.strategy.setProfile(income, province: province)
     }
-    func retrieveData(){
-        self.strategy.retrieveData()
+    func retrieveData() -> ([String],[Double],[[String]]){
+        return self.strategy.retrieveData()
     }
     
 

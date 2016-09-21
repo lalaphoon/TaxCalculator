@@ -58,8 +58,28 @@ class RRSP: Formula{
         return "Dividend income of $" + String(contribution.text!) + " results in additional taxes payable of the current year of"
     }
     
-    func retrieveData(){
+    func retrieveData() -> ([String],[Double],[[String]]) {
+        var output2 = [Double]() // We have to keep this for [Double?]/[Double!] -> [Double]
+        var income = profileIncome
+        var contribution = Double(self.contribution.text!)
+        var vary = income! - contribution!
+        var output1 = ["Income", "Contribution"]
+        output2 = [Double(profileIncome), Double(self.contribution.text!)!]
+        //var another:[Double] = output2 as! [Double]
         
+        var surtax = TP.getSurtax(vary,income, profileProvince)
+        var interestthreshold = ["73145","86176"]
+        var output3 = [["Income","","", "\(profileIncome)"],
+                       ["Province","","",profileProvince],
+                       ["Contribution","","",self.contribution.text!],
+                       ["Federal","","","\(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))"],
+                       ["Province","","","\(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[profileProvince!]!))"],
+                       ["Surtax","%","Threshold",""],
+                       ["","20%","\(interestthreshold[0])","\(surtax[0])"],
+                       ["","36%","\(interestthreshold[1])", "\(surtax[1])"],
+                       ["Result","","",String(self.getResult())]]
+       // return(output1, another,[["Tested","","","\(12.3)"]])
+        return (output1 , output2  , output3)
     }
     func getTip() -> String {
         return "If an individual is a first-time home buyer, consider withdrawing funds from RRSP under the Home Buyers' Plan (HBP) of up to $25,000 given the funds are tax-deferred. The funds shall remain in the RRSP for at least 90 days before withdrawing under the HBP to avoid adverse tax consequences."

@@ -164,6 +164,24 @@ class TaxPro {
         }
         return (result, process)
     }
+    func getSurtax(lower: Double, _ higher: Double, _ province: String) -> [Double]{
+        var result = [Double]()
+        var counter:Int = InterestThreshold.count
+        for var i = 0; i < counter; ++i {
+            var byIndex: (Int, Double) = InterestThreshold[i]
+            var keyCode = byIndex.0
+            var finalStep = Double()
+            if lower < Double(keyCode){
+                finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                result.append(finalStep)
+            } else {
+                finalStep = calculateTheDifference(lower, higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                result.append(finalStep)
+            }
+        }
+        return result
+        
+    }
     
     //=====================helper end=======================================
     

@@ -32,7 +32,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         self.scrollView.addSubview(containerView)
         //self.view.addSubview(scrollView)
        // initProcessUI()
-        
+        /*
         let xValues = ["Income", "Interest income", "Others"]
         let yValues = [20.0,30.0, 40.0]
         let tableData = [["Interest Income","","", "$123.0"],
@@ -41,6 +41,11 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
                          ["Federal Tax","","","$123"],
                          ["Provincial Tax","","","$12345"],
                             ["Total Tax","","","$123"]]
+*/
+        var xValues : [String]
+        var yValues : [Double]
+        var tableData : [[String]]
+        (xValues,yValues,tableData) = formula.retrieveData()
         
         initPieChart(xValues,values: yValues)
         initTable(tableData)

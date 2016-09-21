@@ -57,8 +57,24 @@ class InterestIncome: Formula{
         return "Dividend Income of $" + String(interest.text!) + " results in additional taxed payable for the current year of"
     }
     
-    func retrieveData(){
-        
+    func retrieveData() -> ([String],[Double],[[String]]){
+        var income = profileIncome
+        var interest = Double(self.interest.text!)
+        var total = income! + interest!
+        var output1 = ["Income", "Interest income"]
+        var output2 = [profileIncome, Double(self.interest.text!)]
+        var surtax = TP.getSurtax(income, total, profileProvince)
+        var output3 = [["Income","","", "\(profileIncome)"],
+            ["Province","","",profileProvince],
+            ["Contribution","","",self.interest.text!],
+            ["Federal","","","\(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))"],
+            ["Province","","","\(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[profileProvince!]!))"],
+            ["Surtax","%","Threshold",""],
+            ["","20%","73145","\(surtax[0])"],
+            ["","36%","86176", "\(surtax[1])"],
+            ["Result","","",String(self.getResult())]]
+        return (output1 , output2 as! [Double] , output3)
+
     }
     func getTip() -> String {
         return "No tips."

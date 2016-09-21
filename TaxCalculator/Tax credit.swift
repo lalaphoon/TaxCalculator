@@ -43,8 +43,18 @@ class Adoption_Tax_Credit: Formula{
     func getInstruction() -> String {
         return "What do we need to say here?"
     }
-    func retrieveData() {
-        
+    func retrieveData() -> ([String],[Double],[[String]]) {
+        var input = Double(self.Adoption_Expense.text!)
+        if input > Double(maximum) {
+            input = Double( maximum)
+        }
+        var output1 = ["Adoption expense", "Tax Credit"]
+        var output2 = [Double(Adoption_Expense.text!),getResult() ]
+        var output3 = [ ["Adoption expense","","","\(Adoption_Expense.text!)"],
+                        ["Province","","",profileProvince],
+                        ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * input!)"],
+                        ["\(profileProvince) tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * input!)"]]
+        return (output1, output2 as! [Double], output3)
     }
     func getTip() -> String {
         return "Maximum adoption expenses eligible for tax credit is $15,255. Eligible adoption expenses include: fees paid to an adoption agency licensed by the government, legal expenses relating to adoption order, other reasonable expenses. Child must be under 18 years of age at the time the adoption order is issued by Government of Canada. "
@@ -103,8 +113,18 @@ class Pension_Tax_Credit: Formula{
     func getInstruction() -> String {
         return "What do we need to say here?"
     }
-    func retrieveData() {
-        
+    func retrieveData() -> ([String],[Double],[[String]]) {
+        var input = Double(self.Pension_income.text!)
+        if input > Double(maximum) {
+            input = Double( maximum)
+        }
+        var output1 = ["Pension income", "Tax Credit"]
+        var output2 = [Double(Pension_income.text!),getResult() ]
+        var output3 = [ ["Pension income","","","\(Pension_income.text!)"],
+            ["Province","","",profileProvince],
+            ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * input!)"],
+            ["\(profileProvince) tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * input!)"]]
+        return (output1, output2 as! [Double], output3)
     }
     func getTip() -> String {
         return "Maximum pension income eligible for tax credit is $2,000. Pension income eligible for pension tax credit will depend on your age. For individuals 65 and over, all pension income are eligible. For individuals under 65, 'eligible pension income' includes life annuity from a pension plan and pension income received due to death of spouse or common-law partner."
@@ -161,8 +181,16 @@ class Interest_Paid_on_Student_Loan: Formula{
     func getInstruction() -> String {
         return "What do we need to say here?"
     }
-    func retrieveData() {
+    func retrieveData() -> ([String],[Double],[[String]]) {
+        var input = Double(self.Interest_expense.text!)
         
+        var output1 = ["Interest expense", "Tax Credit"]
+        var output2 = [Double(Interest_expense.text!),getResult() ]
+        var output3 = [ ["Adoption expense","","","\(Interest_expense.text!)"],
+            ["Province","","",profileProvince],
+            ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * input!)"],
+            ["\(profileProvince) tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * input!)"]]
+        return (output1, output2 as! [Double], output3)
     }
     func getTip() -> String {
         return "Repayment on principal portion of the loan is not tax deductible, only the interest is eligible for tax credit. Student can only claim interest on student loans under the Canada Student Loans Program or a provinancial student loans program. Unused credits may be carried forward for up to 5 years."
@@ -231,8 +259,27 @@ class Tuition_Education_TextbookCredits : Formula {
     func getInstruction() -> String {
         return "What do we need to say here?"
     }
-    func retrieveData() {
+    func retrieveData() -> ([String],[Double],[[String]]) {
+        var output1 = ["Tuition fees", "non-refundable tax credit"]
+        var output2 = [Double(self.TuitionFees.text!), getResult()]
+        var A = Double(400) * Double(numFullTimeStudent.text!)!
+        var B = Double(120) * Double(numPartTimeStudent.text!)!
         
+        var C = Double(65) * Double(numFullTimeStudent.text!)!
+        var D = Double(20) * Double(numPartTimeStudent.text!)!
+        var sum = A+B+C+D
+        var output3 = [["Tuition fees","","",TuitionFees.text!],
+                       ["Number of months","as full-time student","",numFullTimeStudent.text!],
+                       ["Number of months","as part-time student","",numPartTimeStudent.text!],
+                       ["Education credit","400","","\(A)"],
+                       ["","120","","\(B)"],
+                       ["Textbook credit","65","","\(C)"],
+                       ["","20","","\(D)"],
+                       ["sum","","","\(sum)"],
+                       ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * sum)"],
+                       ["Province tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * sum)"],
+                        ["Non-refundable tax credit","","","\(getResult())"]]
+        return (output1, output2 as! [Double],output3)
     }
     func getTip() -> String {
         return "Students are required to claim their tuition tax credit first on their own return to reduce their taxes to zero. Students may then transfer any unused tuition credit to their spouse, common-law partner, parents, or grandparents. Maximum amount that can be transferred is $5,000. Any unused tuition credit that are not used and are not transferred can be carried forward to a future year."
@@ -265,7 +312,7 @@ class Tuition_Education_TextbookCredits : Formula {
 
 }
 
-class Medical_Expense : Formula {
+/*class Medical_Expense : Formula {
     static let sharedInstance = Medical_Expense()
     var TP = TaxPro()
     
@@ -312,7 +359,7 @@ class Medical_Expense : Formula {
     func getInstruction() -> String {
         return "What do we need to say here?"
     }
-    func retrieveData() {
+    func retrieveData() -> ([String],[Double],[[String]]) {
         
     }
     func getTip() -> String {
@@ -351,7 +398,7 @@ class Medical_Expense : Formula {
     }
     
 }
-
+*/
 
 
 
