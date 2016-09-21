@@ -16,6 +16,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pieChart: PieChartView!
     @IBOutlet weak var resultChart: UITableView!
+    var showData = [[String]]()
     let reuseIdentifier = "TableCell"
     
     var formula : Calculator!
@@ -33,11 +34,16 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
        // initProcessUI()
         
         let xValues = ["Income", "Interest income", "Others"]
-        
         let yValues = [20.0,30.0, 40.0]
+        let tableData = [["Interest Income","","", "$123.0"],
+                         ["Province","","","Ontario"],
+                         ["Total Income","Exclude Interest Income","","$12345"],
+                         ["Federal Tax","","","$123"],
+                         ["Provincial Tax","","","$12345"],
+                            ["Total Tax","","","$123"]]
         
         initPieChart(xValues,values: yValues)
-        initTable()
+        initTable(tableData)
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -116,27 +122,29 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
 
 extension ProcessViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func initTable(){
+    
+    func initTable(input: [[String]]){
         resultChart.dataSource = self
         resultChart.delegate = self
         let cellCollNib = UINib (nibName: "TableCell", bundle: NSBundle.mainBundle())
         resultChart.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         resultChart.tableFooterView =  UIView()
+        showData = input
         //resultChart.tableHeaderView = UIView()
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return showData.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ResultTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ResultTableCell
-        cell.Title1.text = "changed"
-        cell.Title2.text = "changed"
-        cell.Title3.text = "changed"
-        cell.Value.text = "0"
-        
+        let item = showData[indexPath.row]
+        cell.Title1.text = item[0]
+        cell.Title2.text = item[1]
+        cell.Title3.text = item[2]
+        cell.Value.text = item[3]
         return cell
     }
 }
