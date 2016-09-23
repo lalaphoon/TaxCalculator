@@ -65,8 +65,6 @@ class RRSP: Formula{
         var vary = income! - contribution!
         var output1 = ["Income", "Contribution"]
         output2 = [Double(profileIncome), Double(self.contribution.text!)!]
-        //var another:[Double] = output2 as! [Double]
-        
         var surtax = TP.getSurtax(vary,income, profileProvince)
         var interestthreshold = ["73145","86176"]
         var output3 = [["Income","","", "\(profileIncome)"],
@@ -83,6 +81,9 @@ class RRSP: Formula{
     }
     func getTip() -> String {
         return "If an individual is a first-time home buyer, consider withdrawing funds from RRSP under the Home Buyers' Plan (HBP) of up to $25,000 given the funds are tax-deferred. The funds shall remain in the RRSP for at least 90 days before withdrawing under the HBP to avoid adverse tax consequences."
+    }
+    func getDefinition() -> String {
+        return "Registered Retirement Savings Plan (RRSP) is a plan designed to assist employed, self-employed and other individuals to defer tax on a limited part of their income for the purpose of retirement savings. Individuals may take a tax deduction in the current year for the RRSP contributions made if they have sufficient contribution room.\n\nYou can find your RRSP contribution room by checking your latest Notice of Assessment of by calling the CRA."
     }
     func displayProcess() -> String {
         var process = String()

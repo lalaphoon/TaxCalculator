@@ -16,8 +16,6 @@ case Income, Deduction, Credit
 //We probably should use Template Design Pattern
 
 protocol Formula {
-    
-    
    // var containerView:UIView {set get}
     //init()
     func initUI(VC:UIViewController)->UIView
@@ -26,6 +24,7 @@ protocol Formula {
     
     func getResult() -> Double
     func getTip() -> String
+    func getDefinition() -> String
     func getInstruction() -> String
     func displayProcess() -> String
     //factory
@@ -59,7 +58,8 @@ class Calculator{
     func retrieveData() -> ([String],[Double],[[String]]){
         return self.strategy.retrieveData()
     }
-    
-
+    func getDefinition() -> String {
+        return self.strategy.getDefinition()
+    }
 }
 

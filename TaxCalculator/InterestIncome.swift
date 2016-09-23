@@ -61,8 +61,9 @@ class InterestIncome: Formula{
         var income = profileIncome
         var interest = Double(self.interest.text!)
         var total = income! + interest!
+        var output2 = [Double]()
         var output1 = ["Income", "Interest income"]
-        var output2 = [profileIncome, Double(self.interest.text!)]
+        output2 = [Double(profileIncome), Double(self.interest.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
         var output3 = [["Income","","", "\(profileIncome)"],
             ["Province","","",profileProvince],
@@ -73,11 +74,14 @@ class InterestIncome: Formula{
             ["","20%","73145","\(surtax[0])"],
             ["","36%","86176", "\(surtax[1])"],
             ["Result","","",String(self.getResult())]]
-        return (output1 , output2 as! [Double] , output3)
+        return (output1 , output2, output3)
 
     }
     func getTip() -> String {
-        return "No tips."
+        return "Interest income is taxed at the full marginal rate. Investments taxed at a higher rate should be kept in a registered account such as a RRSP or a TFSA. If there are no contribution room left in your RRSP or TFSA, consider investing money where you will earn a dividend income which may attract a lower tax rate due to the dividend tax credit. Profits from sale of capital property (such as stock portfolio) is entitled to preferential tax treatment as well since only 50% of the gain will be taxed by the government. \n\nTalk to a Canada Revenue Agency (CRA) agent to find out how much contribution room you have for RRSP and TFSA. Set up a registered account with your financial advisor and ensure your investment does not exceed the cumulative contribution limit otherwise you may be subject to a penalty."
+    }
+    func getDefinition() -> String {
+        return "Interest income is the income earned for setting aside your money in vehicles such as bank deposits, loans, bonds, debentures, promissory notes, treasury bills (T-Bills), guaranteed investment certificate (GIC), and other similar instruments."
     }
     func displayProcess() -> String {
         var process = String()

@@ -218,8 +218,8 @@ extension UIView {
         label.font = UIFont(name: THINFONT, size: 18)
         label.textColor =  UIColor.grayColor()
         //label.backgroundColor = UIColor.customLabelGreen()
-        label.lineBreakMode = .ByTruncatingMiddle
-        //label.lineBreakMode = .ByWordWrapping
+        //label.lineBreakMode = .ByTruncatingMiddle
+        label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 0
         self.addSubview(label)
         

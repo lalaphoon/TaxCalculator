@@ -59,6 +59,9 @@ class Adoption_Tax_Credit: Formula{
     func getTip() -> String {
         return "Maximum adoption expenses eligible for tax credit is $15,255. Eligible adoption expenses include: fees paid to an adoption agency licensed by the government, legal expenses relating to adoption order, other reasonable expenses. Child must be under 18 years of age at the time the adoption order is issued by Government of Canada. "
     }
+    func getDefinition() -> String {
+        return ""
+    }
     func displayProcess() -> String {
         var input = Double(self.Adoption_Expense.text!)
         if input > Double(maximum) {
@@ -129,6 +132,9 @@ class Pension_Tax_Credit: Formula{
     func getTip() -> String {
         return "Maximum pension income eligible for tax credit is $2,000. Pension income eligible for pension tax credit will depend on your age. For individuals 65 and over, all pension income are eligible. For individuals under 65, 'eligible pension income' includes life annuity from a pension plan and pension income received due to death of spouse or common-law partner."
     }
+    func getDefinition() -> String {
+        return ""
+    }
     func displayProcess() -> String {
         var input = Double(self.Pension_income.text!)
         if input > Double(maximum) {
@@ -194,6 +200,9 @@ class Interest_Paid_on_Student_Loan: Formula{
     }
     func getTip() -> String {
         return "Repayment on principal portion of the loan is not tax deductible, only the interest is eligible for tax credit. Student can only claim interest on student loans under the Canada Student Loans Program or a provinancial student loans program. Unused credits may be carried forward for up to 5 years."
+    }
+    func getDefinition() -> String {
+        return ""
     }
     func displayProcess() -> String {
         var input = Double(self.Interest_expense.text!)
@@ -283,6 +292,9 @@ class Tuition_Education_TextbookCredits : Formula {
     }
     func getTip() -> String {
         return "Students are required to claim their tuition tax credit first on their own return to reduce their taxes to zero. Students may then transfer any unused tuition credit to their spouse, common-law partner, parents, or grandparents. Maximum amount that can be transferred is $5,000. Any unused tuition credit that are not used and are not transferred can be carried forward to a future year."
+    }
+    func getDefinition() -> String {
+        return ""
     }
     func displayProcess() -> String {
         var input = Double(self.TuitionFees.text!)

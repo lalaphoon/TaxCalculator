@@ -155,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="6270" y="439"/>
         </scene>
-        <!--View Controller-->
+        <!--Definition View Controller-->
         <scene sceneID="PCG-KG-c2p">
             <objects>
-                <viewController id="Qnp-F4-5a4" sceneMemberID="viewController">
+                <viewController id="Qnp-F4-5a4" customClass="DefinitionViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FNu-wE-9pg"/>
                         <viewControllerLayoutGuide type="bottom" id="0gf-LV-xNZ"/>

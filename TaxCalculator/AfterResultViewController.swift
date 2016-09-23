@@ -33,8 +33,9 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
     func initTipUI(){
         let offset: CGFloat = -63
        containerView.addImage("Title_light.png", self.view.bounds.width/2 - 65,93 + offset)
-       containerView.addHeader("Tax Tip:", self.view.bounds.width/2, 253 + offset, self.view.bounds.width-86,100)
+       containerView.addHeader("Tax Tip", self.view.bounds.width/2, 253 + offset, self.view.bounds.width-86,100)
        containerView.addText(formula.getTip(),self.view.bounds.width/2, 390 + offset, self.view.bounds.width-86, 300)
+      
        containerView.addYellowButton("Get General Help", "goHelp", 43, 650 + offset, self.view.bounds.width - (43*2), 36, self)
     }
     func goHelp(){
@@ -55,6 +56,9 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
     }
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC: DefinitionViewController = segue.destinationViewController as! DefinitionViewController
+        DestinyVC.formula = formula
+    }
 
 }
