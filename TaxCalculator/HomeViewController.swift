@@ -10,6 +10,10 @@ import UIKit
 import PureLayout
 //reference: http://www.benmeline.com/search-bar-animation-with-swift/
 
+protocol MainViewDelegate: class {
+    func gotoNextView()
+}
+
 class MainView: UIView{
 
  private var searchBar: UISearchBar!
@@ -40,7 +44,9 @@ class MainView: UIView{
     
     var filteredMenus = [Menu]()
     var formula : Menu!
-    var HomeView: HomeViewController!
+    // var HomeView: HomeViewController!
+    weak var delegate: MainViewDelegate?
+    
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -263,18 +269,16 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
         }
         self.formula = menu
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        HomeView.performSegueWithIdentifier("MoveIntoCalculation", sender: HomeView)
+        // HomeView.performSegueWithIdentifier("MoveIntoCalculation", sender: HomeView)
+        delegate?.gotoNextView()
         //HomeViewController.gotoNextView()
-        // HomeViewController.performSegueWithIdentifier(HomeViewController)
-        //HomeViewController.p
-        // performSegueWithIdentifier("MoveIntoCalc
     }
    
 }
 
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, MainViewDelegate {
     
     private var mainView: MainView!
     private var didSetupConstraints = false
@@ -288,7 +292,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         initBackground()
         mainView = MainView.newAutoLayoutView()
-        mainView.HomeView = self
+        mainView.delegate = self
         //self.hideKeyboardWhenTappedAround()
         //mainView.hideKeyboard()
         setupEmptyBackgroundView()
@@ -336,6 +340,11 @@ class HomeViewController: UIViewController {
     self.view.darken(60)
    // self.addLabel("Never be blinded sided by personal tax again")
     self.addImage("logo.png",self.view.bounds.width/2-42, 200, 84,20.5)
+    }
+    
+    
+    func gotoNextView(){
+     performSegueWithIdentifier("MoveIntoCalculation", sender: self)
     }
     
 
