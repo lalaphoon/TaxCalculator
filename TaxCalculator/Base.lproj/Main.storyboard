@@ -50,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLK-Fd-nKi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3638" y="-514"/>
+            <point key="canvasLocation" x="4046" y="-766"/>
         </scene>
         <!--Option View Controller-->
         <scene sceneID="vvA-nf-0iw">
@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3k9-IF-DTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4304" y="-506"/>
+            <point key="canvasLocation" x="4680" y="-766"/>
         </scene>
         <!--Basic Inputs View Controller-->
         <scene sceneID="QJu-vi-xAa">
@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4147" y="439"/>
+            <point key="canvasLocation" x="4095" y="439"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="9dN-2n-avi">
@@ -287,6 +287,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uti-FH-67j"/>
+                    <connections>
+                        <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoCalculation" id="6AX-G0-4bH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDc-T0-iTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -715,5 +718,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="es3-NR-LsR"/>
+        <segue reference="6AX-G0-4bH"/>
     </inferredMetricsTieBreakers>
 </document>

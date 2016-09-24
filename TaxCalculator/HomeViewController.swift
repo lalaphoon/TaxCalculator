@@ -39,6 +39,8 @@ class MainView: UIView{
     private var searchButtonEdgeConstraint: NSLayoutConstraint?
     
     var filteredMenus = [Menu]()
+    var formula : Menu!
+    var HomeView: HomeViewController!
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -186,8 +188,6 @@ class MainView: UIView{
         })
        resultsTable.reloadData()
     }
-
-
 }
 
 
@@ -253,9 +253,23 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
         cell.textLabel?.text = menu.name
         return cell
     }
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("YOuselected cell \(indexPath.row)")
+        let menu:Menu
+        if searchBar.text != "" && searchActive {
+            menu = filteredMenus[indexPath.row]
+        } else {
+            menu = taxMenuBook[indexPath.row]
+        }
+        self.formula = menu
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        HomeView.performSegueWithIdentifier("MoveIntoCalculation", sender: HomeView)
+        //HomeViewController.gotoNextView()
+        // HomeViewController.performSegueWithIdentifier(HomeViewController)
+        //HomeViewController.p
+        // performSegueWithIdentifier("MoveIntoCalc
     }
+   
 }
 
 
@@ -269,12 +283,12 @@ class HomeViewController: UIViewController {
     private let topMessage = "Oops!"
     private let bottomMessage = "There is no records in our database!"
     //Mark: - View Lifecycle
-    
        
     override func viewDidLoad() {
         super.viewDidLoad()
         initBackground()
         mainView = MainView.newAutoLayoutView()
+        mainView.HomeView = self
         //self.hideKeyboardWhenTappedAround()
         //mainView.hideKeyboard()
         setupEmptyBackgroundView()
@@ -302,8 +316,19 @@ class HomeViewController: UIViewController {
         
         super.updateViewConstraints()
     }
-    
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        //let cell = sender as! UITableViewCell
+        //cell.textLabel?.text
+        if (segue.identifier == "MoveIntoCalculation"){
+            if mainView.formula != nil {
+                var DestinyVC: BasicInputsViewController = segue.destinationViewController as! BasicInputsViewController
+                DestinyVC.menu = mainView.formula
+                DestinyVC.category = 1
+                DestinyVC.topic = 1
+                DestinyVC.option = 1
+            }
+        }
+    }
     
     func initBackground(){
    

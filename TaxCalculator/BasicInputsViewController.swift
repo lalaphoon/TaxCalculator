@@ -17,6 +17,8 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     var topic = Int()
     var option = Int()
     
+    var menu : Menu!
+    
     var c = Calculator(algorithm: RRSP.sharedInstance)
     
     

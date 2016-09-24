@@ -215,7 +215,7 @@ extension UIView {
         label.textAlignment = NSTextAlignment.Center
         //label.textAlignment = NSTextAlignment.Left
         label.text = what
-        label.font = UIFont(name: THINFONT, size: 18)
+        label.font = UIFont(name: SMALLTITLE, size: 18)
         label.textColor =  UIColor.grayColor()
         //label.backgroundColor = UIColor.customLabelGreen()
         //label.lineBreakMode = .ByTruncatingMiddle
