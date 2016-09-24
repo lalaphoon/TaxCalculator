@@ -21,7 +21,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 550)
         
         self.containerView =  UIView()
         self.scrollView.userInteractionEnabled = true
@@ -34,24 +34,27 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
 
         // Do any additional setup after loading the view.
     }
+ 
     func initContainerUI(){
+        let offset : CGFloat = -63
+        
         //1.Setting up the title image
-        containerView.addImage("Title_completed.png", self.view.bounds.width/2 - 65,93)
+        containerView.addImage("Title_completed.png", self.view.bounds.width/2 - 65,93 + offset)
         
         //2.setting up the instruction
         var str = formula.getInstruction()
-        containerView.addText(str,self.view.bounds.width/2, 274, self.view.bounds.width-86, 100)
+        containerView.addText(str,self.view.bounds.width/2, 274 + offset, self.view.bounds.width-86, 100)
         
         //3.setting up the result for the green box
         var re = "$ " + String(formula.getResult())
        // containerView.addGreenLabel(re, self.view.bounds.width/2, 345, self.view.bounds.width-86, 49)
-        containerView.addLabelGreenButton(re, "viewProcess", 43, 325, self.view.bounds.width-86, 49, self)
+        containerView.addLabelGreenButton(re, "viewProcess", 43, 325 + offset, self.view.bounds.width-86, 49, self)
         
         //4.setting up the tips
        // containerView.addText(c.getTip(), self.view.bounds.width/2, 440, self.view.bounds.width-86, 100)
        // containerView.addYellowButton("Tax Tip", "viewTip", 43, 420, 100, 50, self)
-        containerView.addImageButton("Tax Tip", "viewTip", "light_small.png", 43, 400, 130, 50, self)
-        containerView.addImageButton("View Details", "viewProcess", "light_small.png",40, 455, 180,50,self)
+        containerView.addImageButton("Tax Tip", "viewTip", "light_small.png", 43, 400 + offset, 130, 50, self)
+        containerView.addImageButton("View Details", "viewProcess", "light_small.png",40, 455 + offset, 180,50,self)
         
         //5.Setting up the the start new calculat buttion
         //containerView.addYellowButton("Start a new search", "StartNewCalculation", (self.view.bounds.width-169)/2, 565, 169, 50, self)
