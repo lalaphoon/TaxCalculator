@@ -20,7 +20,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 1000)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 650)
         
         self.containerView =  UIView()
         self.scrollView.userInteractionEnabled = true
@@ -36,7 +36,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
        containerView.addHeader("Tax Tip", self.view.bounds.width/2, 253 + offset, self.view.bounds.width-86,100)
        containerView.addText(formula.getTip(),self.view.bounds.width/2, 390 + offset, self.view.bounds.width-86, 300)
       
-       containerView.addYellowButton("Get General Help", "goHelp", 43, 650 + offset, self.view.bounds.width - (43*2), 36, self)
+       containerView.addYellowButton("Get General Help", "goHelp", 43, 550 + offset, self.view.bounds.width - (43*2), 36, self)
     }
     func goHelp(){
         performSegueWithIdentifier("goHelp", sender: self)
