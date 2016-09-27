@@ -225,10 +225,23 @@
                     <view key="view" contentMode="scaleToFill" id="yBx-7b-zoa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oyg-e5-ofu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rw4-SH-E18" firstAttribute="top" secondItem="Oyg-e5-ofu" secondAttribute="bottom" id="KWH-cl-jSL"/>
+                            <constraint firstItem="Oyg-e5-ofu" firstAttribute="leading" secondItem="yBx-7b-zoa" secondAttribute="leadingMargin" constant="-20" id="mke-xA-6by"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oyg-e5-ofu" secondAttribute="trailing" constant="-20" id="oHe-of-FqW"/>
+                            <constraint firstItem="Oyg-e5-ofu" firstAttribute="top" secondItem="yBx-7b-zoa" secondAttribute="topMargin" id="rwp-zL-aia"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e88-vL-QeJ"/>
                     <connections>
+                        <outlet property="savedTableView" destination="Oyg-e5-ofu" id="NzK-lc-8cU"/>
                         <segue destination="qym-hU-jyQ" kind="show" id="XJ0-QP-abF"/>
                     </connections>
                 </viewController>
