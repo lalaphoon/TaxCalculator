@@ -15,6 +15,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var savedTableView: UITableView!
     let reuseIdentifier = "ResultCell"
+    var numOfCells = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,15 +38,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : RecordTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! RecordTableCell
-        cell.HeaderTitle.text = "Test"
-        cell.Body.text = "Test"
+        cell.HeaderTitle.text = "Interest Income"
+        cell.Body.text = "A contribution of $123.00 of will get a ..."
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return numOfCells
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 90
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+           numOfCells -= 1
+           tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
     }
     
 
