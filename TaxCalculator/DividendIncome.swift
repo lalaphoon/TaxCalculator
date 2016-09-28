@@ -21,7 +21,7 @@ class RRSP: Formula{
     var profileProvince: String!
 
     private init(){
-        
+        contribution.text = String(0.00)
     }
     
     func initUI(VC:UIViewController)-> UIView{
@@ -43,6 +43,9 @@ class RRSP: Formula{
         return containerView
     
     }*/
+    func setInputs(input: Double){
+        contribution.text = String(input)
+    }
     func setProfile(income: Double, province: String){
         profileIncome = income
         profileProvince = province

@@ -54,6 +54,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        performSegueWithIdentifier("gotoResult", sender: self)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
+        DestinyVC.formula = Calculator(algorithm: RRSP.sharedInstance)
+        DestinyVC.formula.setProfile(1234.00, province: "Ontario")
+    }
     
 
     /*
