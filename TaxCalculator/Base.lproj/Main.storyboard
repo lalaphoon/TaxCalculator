@@ -333,8 +333,29 @@
                     <view key="view" contentMode="scaleToFill" id="ojo-g7-6SZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oME-k4-ncd" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="28" y="95" width="544" height="212"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kFu-wf-BoS">
+                                <rect key="frame" x="28" y="315" width="544" height="216"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kFu-wf-BoS" firstAttribute="top" secondItem="oME-k4-ncd" secondAttribute="bottom" constant="8" id="0jy-l1-p8e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oME-k4-ncd" secondAttribute="trailing" constant="8" id="7Fs-Pq-5vo"/>
+                            <constraint firstItem="kFu-wf-BoS" firstAttribute="leading" secondItem="ojo-g7-6SZ" secondAttribute="leadingMargin" constant="8" id="OgH-OV-xSw"/>
+                            <constraint firstItem="oME-k4-ncd" firstAttribute="leading" secondItem="ojo-g7-6SZ" secondAttribute="leadingMargin" constant="8" id="U8X-ge-TME"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kFu-wf-BoS" secondAttribute="trailing" constant="8" id="X0h-A1-bbD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pieChart" destination="oME-k4-ncd" id="bPd-Sn-X3s"/>
+                        <outlet property="resultChart" destination="kFu-wf-BoS" id="yYk-sb-mVM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Fo-6X-az3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
