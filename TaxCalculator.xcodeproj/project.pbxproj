@@ -63,6 +63,7 @@
 		46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */; };
 		46E972871D6BE4A1007AAD82 /* TaxBaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E972861D6BE4A1007AAD82 /* TaxBaseClasses.swift */; };
 		46E972891D6BF28F007AAD82 /* Employment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E972881D6BF28F007AAD82 /* Employment.swift */; };
+		46FDB8CE1D9D4831005DE2EF /* SavedHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FDB8CD1D9D4831005DE2EF /* SavedHistoryViewController.swift */; };
 		46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */; };
 		46FE9DCA1D72096A005A9E2D /* AfterResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DC91D72096A005A9E2D /* AfterResultViewController.swift */; };
 		46FE9DCC1D723041005A9E2D /* ProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE9DCB1D723041005A9E2D /* ProcessViewController.swift */; };
@@ -171,6 +172,7 @@
 		46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTabBarViewController.swift; sourceTree = "<group>"; };
 		46E972861D6BE4A1007AAD82 /* TaxBaseClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxBaseClasses.swift; sourceTree = "<group>"; };
 		46E972881D6BF28F007AAD82 /* Employment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Employment.swift; sourceTree = "<group>"; };
+		46FDB8CD1D9D4831005DE2EF /* SavedHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedHistoryViewController.swift; sourceTree = "<group>"; };
 		46FE9DC41D7081E0005A9E2D /* BasicInputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInputsViewController.swift; sourceTree = "<group>"; };
 		46FE9DC91D72096A005A9E2D /* AfterResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterResultViewController.swift; sourceTree = "<group>"; };
 		46FE9DCB1D723041005A9E2D /* ProcessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				465C74FC1D62A3F100F9572A /* HistoryViewController.swift */,
+				46FDB8CD1D9D4831005DE2EF /* SavedHistoryViewController.swift */,
 			);
 			name = History;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				46FF4E2F1D43E3980028C96E /* TaxPro.swift in Sources */,
 				467EFC421D36EE3700D3358D /* StepZero.swift in Sources */,
 				46369E051D4912E700456B69 /* OrderedDictionary.swift in Sources */,
+				46FDB8CE1D9D4831005DE2EF /* SavedHistoryViewController.swift in Sources */,
 				46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -59,9 +59,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         performSegueWithIdentifier("gotoResult", sender: self)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
-        DestinyVC.formula = Calculator(algorithm: RRSP.sharedInstance)
-        DestinyVC.formula.setProfile(1234.00, province: "Ontario")
+        var DestinyVC : SavedHistoryViewController = segue.destinationViewController as! SavedHistoryViewController
+       // DestinyVC.formula = Calculator(algorithm: RRSP.sharedInstance)
+       // DestinyVC.formula.setProfile(1234.00, province: "Ontario")
     }
     
 
