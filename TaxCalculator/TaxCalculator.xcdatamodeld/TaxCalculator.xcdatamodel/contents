@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Automatic">
+    <entity name="Record" representedClassName=".Record" syncable="YES">
+        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="help" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tableData" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TableCellData" inverseName="record" inverseEntity="TableCellData" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Value" inverseName="record" inverseEntity="Value" syncable="YES"/>
+    </entity>
+    <entity name="TableCellData" representedClassName=".TableCellData" syncable="YES">
+        <attribute name="first" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="forth" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="second" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="third" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="tableData" inverseEntity="Record" syncable="YES"/>
+    </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="income" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -7,7 +21,15 @@
         <attribute name="maritalstatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="province" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Value" representedClassName=".Value" syncable="YES">
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="record" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="values" inverseEntity="Record" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="Record" positionX="117" positionY="-252" width="128" height="28"/>
+        <element name="TableCellData" positionX="297" positionY="-285" width="128" height="28"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Value" positionX="297" positionY="-162" width="128" height="28"/>
     </elements>
 </model>

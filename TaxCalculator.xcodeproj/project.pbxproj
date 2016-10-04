@@ -27,11 +27,16 @@
 		460911021D428C69003C6A65 /* StepFour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460911011D428C69003C6A65 /* StepFour.swift */; };
 		460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460911031D42C364003C6A65 /* UserSettingsViewController.swift */; };
 		4615EF911D9502F2007CDEAA /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */; };
-		4615EF931D98B5B0007CDEAA /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615EF921D98B5B0007CDEAA /* Record.swift */; };
-		4615EF951D98B62A007CDEAA /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615EF941D98B62A007CDEAA /* Record+CoreDataProperties.swift */; };
 		4615EF971D990B9E007CDEAA /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4615EF961D990B9E007CDEAA /* ResultCell.xib */; };
 		4629A86B1D777D4A006533BC /* InterestIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86A1D777D4A006533BC /* InterestIncome.swift */; };
 		4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86C1D7B622C006533BC /* Tax credit.swift */; };
+		462A71791DA0E0510032444E /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A71771DA0E0510032444E /* Record+CoreDataProperties.swift */; };
+		462A717A1DA0E0510032444E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A71781DA0E0510032444E /* Record.swift */; };
+		462A717D1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A717B1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift */; };
+		462A717E1DA0E0AE0032444E /* TableCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A717C1DA0E0AE0032444E /* TableCellData.swift */; };
+		462A71811DA0E0CC0032444E /* Value+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A717F1DA0E0CC0032444E /* Value+CoreDataProperties.swift */; };
+		462A71821DA0E0CC0032444E /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A71801DA0E0CC0032444E /* Value.swift */; };
+		462A71841DA0E55A0032444E /* README - Core Data Turotial in Resources */ = {isa = PBXBuildFile; fileRef = 462A71831DA0E55A0032444E /* README - Core Data Turotial */; };
 		462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62641D33279000D4FE94 /* AppDelegate.swift */; };
 		462D626A1D33279000D4FE94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462D62681D33279000D4FE94 /* Main.storyboard */; };
 		462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462D626B1D33279000D4FE94 /* TaxCalculator.xcdatamodeld */; };
@@ -128,11 +133,16 @@
 		460911011D428C69003C6A65 /* StepFour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepFour.swift; sourceTree = "<group>"; };
 		460911031D42C364003C6A65 /* UserSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
-		4615EF921D98B5B0007CDEAA /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		4615EF941D98B62A007CDEAA /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4615EF961D990B9E007CDEAA /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		4629A86A1D777D4A006533BC /* InterestIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestIncome.swift; sourceTree = "<group>"; };
 		4629A86C1D7B622C006533BC /* Tax credit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tax credit.swift"; sourceTree = "<group>"; };
+		462A71771DA0E0510032444E /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		462A71781DA0E0510032444E /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		462A717B1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableCellData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		462A717C1DA0E0AE0032444E /* TableCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellData.swift; sourceTree = "<group>"; };
+		462A717F1DA0E0CC0032444E /* Value+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Value+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		462A71801DA0E0CC0032444E /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		462A71831DA0E55A0032444E /* README - Core Data Turotial */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "README - Core Data Turotial"; sourceTree = "<group>"; };
 		462D62611D33279000D4FE94 /* TaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		462D62641D33279000D4FE94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		462D62691D33279000D4FE94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -238,10 +248,15 @@
 		460910F41D41789B003C6A65 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				462A71831DA0E55A0032444E /* README - Core Data Turotial */,
+				462A717F1DA0E0CC0032444E /* Value+CoreDataProperties.swift */,
+				462A71801DA0E0CC0032444E /* Value.swift */,
+				462A717B1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift */,
+				462A717C1DA0E0AE0032444E /* TableCellData.swift */,
+				462A71771DA0E0510032444E /* Record+CoreDataProperties.swift */,
+				462A71781DA0E0510032444E /* Record.swift */,
 				460910F81D41A4C1003C6A65 /* User.swift */,
 				460910FA1D41A6C7003C6A65 /* User+CoreDataProperties.swift */,
-				4615EF921D98B5B0007CDEAA /* Record.swift */,
-				4615EF941D98B62A007CDEAA /* Record+CoreDataProperties.swift */,
 				460910FC1D41A97E003C6A65 /* Fetcher */,
 				460910F51D4178B1003C6A65 /* Saver */,
 			);
@@ -622,6 +637,7 @@
 				462D626F1D33279000D4FE94 /* Assets.xcassets in Resources */,
 				46006C9D1D82363500CCBFFE /* SwitchCell.xib in Resources */,
 				462D626A1D33279000D4FE94 /* Main.storyboard in Resources */,
+				462A71841DA0E55A0032444E /* README - Core Data Turotial in Resources */,
 				4615EF971D990B9E007CDEAA /* ResultCell.xib in Resources */,
 				46006C9F1D82363C00CCBFFE /* ValuePickerCell.xib in Resources */,
 			);
@@ -773,17 +789,19 @@
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
+				462A717A1DA0E0510032444E /* Record.swift in Sources */,
 				46006C921D82346F00CCBFFE /* CustomCell.swift in Sources */,
 				46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */,
 				4615EF911D9502F2007CDEAA /* DefinitionViewController.swift in Sources */,
 				465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */,
+				462A71811DA0E0CC0032444E /* Value+CoreDataProperties.swift in Sources */,
+				462A71791DA0E0510032444E /* Record+CoreDataProperties.swift in Sources */,
 				465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */,
 				46E972871D6BE4A1007AAD82 /* TaxBaseClasses.swift in Sources */,
 				460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */,
 				46FE9DC51D7081E0005A9E2D /* BasicInputsViewController.swift in Sources */,
 				460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */,
 				46006C901D82332900CCBFFE /* SubMenuViewController.swift in Sources */,
-				4615EF931D98B5B0007CDEAA /* Record.swift in Sources */,
 				4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */,
 				462D62961D332FCE00D4FE94 /* Colors.swift in Sources */,
 				468E07451D6E1B8300290D70 /* DividendIncome.swift in Sources */,
@@ -793,7 +811,6 @@
 				460911001D428C0F003C6A65 /* StepThree.swift in Sources */,
 				460910FE1D41A999003C6A65 /* CoreDataFetcher.swift in Sources */,
 				46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */,
-				4615EF951D98B62A007CDEAA /* Record+CoreDataProperties.swift in Sources */,
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
 				46E972891D6BF28F007AAD82 /* Employment.swift in Sources */,
 				460910F91D41A4C1003C6A65 /* User.swift in Sources */,
@@ -803,9 +820,11 @@
 				4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */,
 				467D34961D380110008D820B /* StartViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
+				462A717E1DA0E0AE0032444E /* TableCellData.swift in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
 				467033201D612F8900688802 /* ProfileViewController.swift in Sources */,
 				46FE9DCA1D72096A005A9E2D /* AfterResultViewController.swift in Sources */,
+				462A717D1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift in Sources */,
 				46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */,
 				460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */,
 				4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */,
@@ -819,6 +838,7 @@
 				46369E051D4912E700456B69 /* OrderedDictionary.swift in Sources */,
 				46FDB8CE1D9D4831005DE2EF /* SavedHistoryViewController.swift in Sources */,
 				46DD94711D3D65F800EC6294 /* SWRevealViewController.m in Sources */,
+				462A71821DA0E0CC0032444E /* Value.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

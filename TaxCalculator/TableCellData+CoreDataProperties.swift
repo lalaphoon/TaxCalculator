@@ -1,5 +1,5 @@
 //
-//  Record+CoreDataProperties.swift
+//  TableCellData+CoreDataProperties.swift
 //  TaxCalculator
 //
 //  Created by Mengyi LUO on 2016-10-02.
@@ -12,12 +12,12 @@
 import Foundation
 import CoreData
 
-extension Record {
+extension TableCellData {
 
-    @NSManaged var descrip: String?
-    @NSManaged var help: String?
-    @NSManaged var title: String?
-    @NSManaged var tableData: NSOrderedSet?
-    @NSManaged var values: NSOrderedSet?
+    @NSManaged var first: String?
+    @NSManaged var forth: String?
+    @NSManaged var second: String?
+    @NSManaged var third: String?
+    @NSManaged var record: Record?
 
 }

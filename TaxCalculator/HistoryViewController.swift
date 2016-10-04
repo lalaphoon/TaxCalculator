@@ -15,17 +15,23 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var savedTableView: UITableView!
     let reuseIdentifier = "ResultCell"
-    var numOfCells = 5
+    var recordCells = [Record]()
+    //var numOfCells = recordCells.count
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         savedTableView.delegate = self
         savedTableView.dataSource = self
         let cellCollNib = UINib(nibName: "ResultCell", bundle: NSBundle.mainBundle())
         savedTableView.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         savedTableView.tableFooterView = UIView()
-        
+        recordCells = CoreDataFetcher.fetch_records()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        recordCells = CoreDataFetcher.fetch_records()
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -38,19 +44,19 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : RecordTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! RecordTableCell
-        cell.HeaderTitle.text = "Interest Income"
-        cell.Body.text = "A contribution of $123.00 of will get a ..."
+        cell.HeaderTitle.text = recordCells[indexPath.row].getTitle()
+        cell.Body.text = recordCells[indexPath.row].getDescription()
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numOfCells
+        return recordCells.count
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 90
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-           numOfCells -= 1
+           //numOfCells -= 1
            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
     }

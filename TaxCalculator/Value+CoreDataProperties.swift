@@ -1,5 +1,5 @@
 //
-//  Record+CoreDataProperties.swift
+//  Value+CoreDataProperties.swift
 //  TaxCalculator
 //
 //  Created by Mengyi LUO on 2016-10-02.
@@ -12,12 +12,10 @@
 import Foundation
 import CoreData
 
-extension Record {
+extension Value {
 
-    @NSManaged var descrip: String?
-    @NSManaged var help: String?
-    @NSManaged var title: String?
-    @NSManaged var tableData: NSOrderedSet?
-    @NSManaged var values: NSOrderedSet?
+    @NSManaged var key: String?
+    @NSManaged var value: NSNumber?
+    @NSManaged var record: Record?
 
 }

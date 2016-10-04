@@ -26,4 +26,20 @@ class CoreDataFetcher {
             fatalError("Fetch Failed")
         }
     }
+    static func fetch_records() -> [Record]{
+        //let defaultFetchSize = 1
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context : NSManagedObjectContext = appDel.managedObjectContext
+        let request = NSFetchRequest(entityName: "Record")
+        //request.predicate = NSPredicate()
+        request.returnsObjectsAsFaults = false
+        // request.fetchLimit = defaultFetchSize
+        do{
+            let results =  try context.executeFetchRequest(request) as! [Record]
+            return results
+        } catch {
+            fatalError("Fetch Failed")
+        }
+
+    }
 }

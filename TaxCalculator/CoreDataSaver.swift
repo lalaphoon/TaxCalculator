@@ -29,7 +29,7 @@ static func save_a_user (firstname: String, _ lastname : String, _ province: Str
     }
     
  }
-  static  func save_a_user_withUser(user: User){
+  static func save_a_user_withUser(user: User){
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let context : NSManagedObjectContext = appDel.managedObjectContext
         var newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context)
@@ -44,6 +44,18 @@ static func save_a_user (firstname: String, _ lastname : String, _ province: Str
             print("Saving a user occurs an error, with user func")
         }
         
+    }
+    static func save_a_value(value: Value){
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        var newValue = NSEntityDescription.insertNewObjectForEntityForName("Value", inManagedObjectContext: context)
+        newValue.setValue(value.key, forKey: "key")
+        newValue.setValue(value.value, forKey: "value")
+        do {
+            try context.save()
+        } catch {
+            print("Saving a value occurs an error")
+        }
     }
     
 }

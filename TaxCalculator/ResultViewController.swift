@@ -57,12 +57,35 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         containerView.addImageButton("View Details", "viewProcess", "calculator_icon_small.png",40, 465 + offset, 180,70,self)
         //485
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "save")
         //5.Setting up the the start new calculat buttion
         //containerView.addYellowButton("Start a new search", "StartNewCalculation", (self.view.bounds.width-169)/2, 565, 169, 50, self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func save(){
+        var xValues : [String]
+        var yValues : [Double]
+        var tableData : [[String]]
+        (xValues,yValues,tableData) = formula.retrieveData()
+        var r : Record = Record(title: "A Title..." , descrip: formula.getDefinition(), helpInstruction: formula.getTip())!
+        var v  = [Value]()
+        for index in 0..<xValues.count {
+            let iv : Value = Value(key: xValues[index], value: yValues[index])!
+            v.append(iv)
+        }
+        var td = [TableCellData]()
+        for index in 0..<tableData.count {
+            let itd : TableCellData = TableCellData(first: tableData[index][0], second: tableData[index][1], third: tableData[index][2], forth: tableData[index][3])!
+           td.append(itd)
+            
+        }
+        r.attachTableDataSet(td)
+        r.attachValueSet(v)
+        r.save()
+        
     }
     func viewProcess(){
         performSegueWithIdentifier("MoveIntoProcess", sender: self)
