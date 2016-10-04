@@ -16,6 +16,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     var recordCells = [Record]()
     //next Record is used to transfer record
     var nextRecord : Record!
+    
+    private let image = UIImage(named: "star-large")!.imageWithRenderingMode(.AlwaysTemplate)
+    private let topMessage = "Hi!"
+    private let bottomMessage = "You havn't saved any records yet~"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +29,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         savedTableView.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         savedTableView.tableFooterView = UIView()
         recordCells = CoreDataFetcher.fetch_records()
-        savedTableView.reloadData()
+        setupEmptyBackgroundView()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -49,6 +53,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if recordCells.count == 0 {
+            savedTableView.backgroundView?.hidden = false
+        } else {
+            savedTableView.backgroundView?.hidden = true
+        }
+        
         return recordCells.count
     }
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -62,7 +72,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
            //numOfCells -= 1
            recordCells[indexPath.row].delete()
            recordCells.removeAtIndex(indexPath.row)
-           print("record is deleting.....")
+           print("a record is deleting.....")
            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         tableView.reloadData()
@@ -76,7 +86,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         var DestinyVC : SavedHistoryViewController = segue.destinationViewController as! SavedHistoryViewController
         DestinyVC.record = nextRecord
     }
-    
+    func setupEmptyBackgroundView() {
+        let emptyBackgroundView = EmptyBackgroundView(image: image, top: topMessage, bottom: bottomMessage)
+        self.savedTableView.backgroundView = emptyBackgroundView
+    }
 
     /*
     // MARK: - Navigation
