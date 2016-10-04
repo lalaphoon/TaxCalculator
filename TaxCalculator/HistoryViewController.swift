@@ -7,17 +7,15 @@
 //
 
 import UIKit
-
-
+//reference: core data and uitableview: http://www.starming.com/index.php?v=index&view=30
+//           core data : http://blog.csdn.net/yamingwu/article/details/42215541
+//           core data relationship: http://www.jianshu.com/p/8e3b64f16fc3
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
- 
-    
     @IBOutlet weak var savedTableView: UITableView!
     let reuseIdentifier = "ResultCell"
     var recordCells = [Record]()
-    //var numOfCells = recordCells.count
-    
+    //next Record is used to transfer record
+    var nextRecord : Record!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,11 +25,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         savedTableView.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         savedTableView.tableFooterView = UIView()
         recordCells = CoreDataFetcher.fetch_records()
+        savedTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         recordCells = CoreDataFetcher.fetch_records()
+        savedTableView.reloadData()
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -62,12 +62,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        nextRecord = recordCells[indexPath.row]
         performSegueWithIdentifier("gotoResult", sender: self)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var DestinyVC : SavedHistoryViewController = segue.destinationViewController as! SavedHistoryViewController
-       // DestinyVC.formula = Calculator(algorithm: RRSP.sharedInstance)
-       // DestinyVC.formula.setProfile(1234.00, province: "Ontario")
+        DestinyVC.record = nextRecord
     }
     
 

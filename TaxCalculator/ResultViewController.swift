@@ -66,6 +66,9 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     func save(){
+        //navigationItem.rightBarButtonItem?.title = "saved"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
+        navigationItem.rightBarButtonItem?.enabled = false
         var xValues : [String]
         var yValues : [Double]
         var tableData : [[String]]

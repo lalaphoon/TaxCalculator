@@ -53,6 +53,15 @@ class Record: NSManagedObject {
     func getHelp() -> String {
         return self.help!
     }
+    func getValues() -> [Value]{
+        //reference: http://stackoverflow.com/questions/30690582/getting-objects-from-to-many-relationship-in-swift-core-data
+        let result = self.values?.array as! [Value]
+        return result
+    }
+    func getTableDatas() -> [TableCellData] {
+        let result = self.tableData?.array as! [TableCellData]
+        return result
+    }
     //================End of getter===============
     //================Attach Objects===============
     func addValueObject(value: Value){

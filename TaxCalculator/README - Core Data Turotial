@@ -104,3 +104,6 @@ Delete a relationship:
 newPerson.setValue(nil, forKey: "addresses")
 
 NOTE: for one to one, you can simply do newPerson.setValue(item, forKey: "oneToOneRelationship")
+
+=====================
+reference: https://realm.io/news/jesse-squires-core-data-swift/

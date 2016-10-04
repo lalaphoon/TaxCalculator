@@ -17,6 +17,7 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
     var showData = [[String]]()
     let reuseIdentifier = "HistoryTableCell"
     
+    var record: Record!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
@@ -26,16 +27,20 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
         self.containerView = UIView()
         self.scrollView.userInteractionEnabled = true
         self.containerView.userInteractionEnabled = true
-        
-        let xValues = ["Income", "Interest Income", "Others"]
-        let yValues = [20.0, 30.0, 40.0]
-        let tableData = [["Interest Income", "","", "$123.0"],
+        var xValues : [String]
+        var yValues : [Double]
+        var tableData : [[String]]
+        /*xValues = ["Income", "Interest Income", "Others"]
+        yValues = [20.0, 30.0, 40.0]
+        tableData = [["Interest Income", "","", "$123.0"],
             ["Province","","","Ontario"],
             ["Total Income","Exclude Interest Income","","$12345"],
             ["Federal Tax","","","$123"],
             ["Provincial Tax","","","$12345"],
             ["Total Tax","","","$123"]
-        ]
+        ]*/
+        
+        (xValues,yValues,tableData) = initDatas()
         initPieChart(xValues, values:yValues)
         initTable(tableData)
         // Do any additional setup after loading the view.
@@ -49,6 +54,28 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(animated: Bool) {
          super.viewWillAppear(animated)
          pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
+    }
+    func initDatas()->([String],[Double],[[String]]){
+        var output1 = [String]()
+        var output2 = [Double]()
+        var output3 = [[String]]()
+        let v = record.getValues()
+        for index in v {
+            let key : String = index.key!
+            let value: Double = Double(index.value!)
+            output1.append(key)
+            output2.append(value)
+        }
+        let td = record.getTableDatas()
+        for index in td {
+             var i_id = [String]()
+            i_id.append(index.first!)
+            i_id.append(index.second!)
+            i_id.append(index.third!)
+            i_id.append(index.forth!)
+            output3.append(i_id)
+        }
+        return (output1, output2,output3)
     }
     func initPieChart(dataPoints:[String], values: [Double]){
         var dataEntries:[ChartDataEntry] = []
