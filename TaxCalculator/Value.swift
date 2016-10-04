@@ -58,4 +58,15 @@ class Value: NSManagedObject {
             }
         }
     }
+    func delete() {
+            if let context = self.managedObjectContext {
+                context.deleteObject(self)
+                do {
+                    try context.save()
+                    
+                } catch {
+                    print("ERROR: fail to delete a value")
+                }
+            }
+    }
 }

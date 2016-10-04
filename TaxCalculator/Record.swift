@@ -94,5 +94,27 @@ class Record: NSManagedObject {
             }
         }
     }
+    func delete() {
+        //reference : http://stackoverflow.com/questions/28374922/core-data-with-swift-how-to-delete-object-from-relationship-entity
+        if let context = self.managedObjectContext {
+            let containedValues = self.mutableOrderedSetValueForKey("values")
+            let containedTableDatas = self.mutableOrderedSetValueForKey("tableData")
+            for item in containedValues {
+                context.deleteObject(item as! Value)
+            }
+
+            for item in containedTableDatas {
+               context.deleteObject(item as! TableCellData)
+            }
+            
+            context.deleteObject(self)
+            do {
+                try context.save()
+                
+            } catch {
+                print("ERROR: fail to delete a value")
+            }
+        }
+    }
 
 }

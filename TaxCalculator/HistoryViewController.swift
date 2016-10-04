@@ -51,14 +51,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recordCells.count
     }
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 90
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
            //numOfCells -= 1
-           tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+           recordCells[indexPath.row].delete()
+           recordCells.removeAtIndex(indexPath.row)
+           print("record is deleting.....")
+           tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
+        tableView.reloadData()
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
