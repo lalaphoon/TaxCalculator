@@ -22,6 +22,7 @@ class SettingsTableViewController: UITableViewController {
         self.tableView.tableFooterView =  UIView()
        // self.tableView.backgroundColor = UIColor(red: 249/255.0, green: 235/255.0, blue: 210/255.0, alpha: 1.0)
         
+        self.navigationItem.title = "Settings"
        
        
     }
