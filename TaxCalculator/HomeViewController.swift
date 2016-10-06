@@ -280,6 +280,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
 
 class HomeViewController: UIViewController, MainViewDelegate {
     
+    @IBOutlet weak var mainMenu: UIBarButtonItem!
     private var mainView: MainView!
     private var didSetupConstraints = false
     
@@ -297,6 +298,11 @@ class HomeViewController: UIViewController, MainViewDelegate {
         //mainView.hideKeyboard()
         setupEmptyBackgroundView()
         view.addSubview(mainView)
+        if self.revealViewController() != nil {
+            mainMenu.target = self.revealViewController()
+            mainMenu.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
         // Do any additional setup after loading the view.
     }
 

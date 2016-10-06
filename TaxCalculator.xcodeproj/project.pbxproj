@@ -37,6 +37,7 @@
 		462A71811DA0E0CC0032444E /* Value+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A717F1DA0E0CC0032444E /* Value+CoreDataProperties.swift */; };
 		462A71821DA0E0CC0032444E /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A71801DA0E0CC0032444E /* Value.swift */; };
 		462A71841DA0E55A0032444E /* README - Core Data Turotial in Resources */ = {isa = PBXBuildFile; fileRef = 462A71831DA0E55A0032444E /* README - Core Data Turotial */; };
+		462A71871DA65F860032444E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A71861DA65F860032444E /* SettingsTableViewController.swift */; };
 		462D62651D33279000D4FE94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62641D33279000D4FE94 /* AppDelegate.swift */; };
 		462D626A1D33279000D4FE94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 462D62681D33279000D4FE94 /* Main.storyboard */; };
 		462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 462D626B1D33279000D4FE94 /* TaxCalculator.xcdatamodeld */; };
@@ -143,6 +144,7 @@
 		462A717F1DA0E0CC0032444E /* Value+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Value+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		462A71801DA0E0CC0032444E /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		462A71831DA0E55A0032444E /* README - Core Data Turotial */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "README - Core Data Turotial"; sourceTree = "<group>"; };
+		462A71861DA65F860032444E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		462D62611D33279000D4FE94 /* TaxCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		462D62641D33279000D4FE94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		462D62691D33279000D4FE94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -279,6 +281,15 @@
 			name = Fetcher;
 			sourceTree = "<group>";
 		};
+		462A71851DA65F500032444E /* Submenus */ = {
+			isa = PBXGroup;
+			children = (
+				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
+				462A71861DA65F860032444E /* SettingsTableViewController.swift */,
+			);
+			name = Submenus;
+			sourceTree = "<group>";
+		};
 		462D62581D33279000D4FE94 = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +361,7 @@
 		467D34941D3800AF008D820B /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				462A71851DA65F500032444E /* Submenus */,
 				46B9E1C11D67A76200B80106 /* Message */,
 				46B9E1C01D67A71C00B80106 /* Home-Search */,
 				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
@@ -358,7 +370,6 @@
 				46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */,
 				4684CA721D5D5A48009B0598 /* Topics */,
 				465C74FB1D62A3CA00F9572A /* History */,
-				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -825,6 +836,7 @@
 				467033201D612F8900688802 /* ProfileViewController.swift in Sources */,
 				46FE9DCA1D72096A005A9E2D /* AfterResultViewController.swift in Sources */,
 				462A717D1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift in Sources */,
+				462A71871DA65F860032444E /* SettingsTableViewController.swift in Sources */,
 				46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */,
 				460911041D42C364003C6A65 /* UserSettingsViewController.swift in Sources */,
 				4684CA741D5D5D9B009B0598 /* TopicsViewController.swift in Sources */,

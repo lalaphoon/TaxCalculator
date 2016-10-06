@@ -11,6 +11,7 @@ import MessageUI
 
 class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var mainMenu: UIBarButtonItem!
     var scrollView : UIScrollView!
     var containerView : UIView!
     
@@ -98,6 +99,11 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         // Do any additional setup after loading the view.
        // self.automaticallyAdjustsScrollViewInsets = false;
         self.hideKeyboardWhenTappedAround()
+        if self.revealViewController() != nil {
+            mainMenu.target = self.revealViewController()
+            mainMenu.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        }
        
     }
     override func viewWillLayoutSubviews(){
