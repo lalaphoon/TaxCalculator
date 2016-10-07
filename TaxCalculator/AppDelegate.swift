@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func dotsOnPagesSettings(){
         var pageController = UIPageControl.appearance()
         //pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageController.pageIndicatorTintColor = UIColor.blackColor()
+        pageController.pageIndicatorTintColor = UIColor.orangeColor()
         pageController.backgroundColor = UIColor.customOrangeColor()
     }
  //=====================================================================================

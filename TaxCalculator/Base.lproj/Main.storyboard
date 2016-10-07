@@ -784,7 +784,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Title_calculation" id="NJ9-QW-xj0">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_logo_icon" id="NJ9-QW-xj0">
                                                     <rect key="frame" x="15" y="0.0" width="50" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -1167,6 +1167,7 @@
         <image name="setting_contact_icon" width="113" height="115"/>
         <image name="setting_contract_icon" width="128" height="128"/>
         <image name="setting_lock_icon" width="143" height="143"/>
+        <image name="setting_logo_icon" width="158" height="158"/>
         <image name="setting_paperplane_icon" width="112" height="113"/>
         <image name="setting_profile_icon" width="127" height="126"/>
     </resources>
