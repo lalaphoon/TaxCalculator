@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func setUpFont(){
         //Setup all text font
-       // UILabel.appearance().font = UIFont(name: SMALLTITLE, size: 16)
+        UILabel.appearance().font = UIFont(name: SMALLTITLE, size: 15)
         UITextField.appearance().font =  UIFont(name: SMALLTITLE, size: 18)
         UITextView.appearance().font = UIFont(name: SMALLTITLE, size: 18)
          UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).setTitleTextAttributes([NSFontAttributeName : UIFont(name: SMALLTITLE, size: 15)!], forState: .Normal)
