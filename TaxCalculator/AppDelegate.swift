@@ -50,12 +50,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageController.pageIndicatorTintColor = UIColor.orangeColor()
         pageController.backgroundColor = UIColor.customOrangeColor()
     }
+    func firstLaunchCheck() {
+        let infoDictionary = NSBundle.mainBundle().infoDictionary
+        let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
+        
+        // 取出之前保存的版本号
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let appVersion = userDefaults.stringForKey("appVersion")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // 如果 appVersion 为 nil 说明是第一次启动；如果 appVersion 不等于 currentAppVersion 说明是更新了
+        if appVersion == nil || appVersion != currentAppVersion {
+            // 保存最新的版本号
+            userDefaults.setValue(currentAppVersion, forKey: "appVersion")
+            
+            let guideViewController = storyboard.instantiateViewControllerWithIdentifier("ParentOnboardingPagesViewController") as! ParentOnboardingPagesViewController
+            self.window?.rootViewController = guideViewController
+        }
+    }
  //=====================================================================================
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         setUpColors()
         setUpFont()
         dotsOnPagesSettings()
+        firstLaunchCheck()
         return true
     }
 
