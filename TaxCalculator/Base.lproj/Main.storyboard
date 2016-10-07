@@ -651,6 +651,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="9L3-hX-VeH" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="auG-39-gel"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="iry-mo-hAO">
                                         <rect key="frame" x="0.0" y="315.5" width="600" height="44"/>
@@ -710,7 +713,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Title_calculation" id="shV-SV-sPK">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_profile_icon" id="shV-SV-sPK">
                                                     <rect key="frame" x="15" y="0.0" width="50" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -729,14 +732,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u6j-jX-uJz">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="49.5"/>
+                                                    <rect key="frame" x="79" y="0.0" width="486" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Title_light" id="XAs-1w-cah">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="49.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_paperplane_icon" id="XAs-1w-cah">
+                                                    <rect key="frame" x="15" y="0.0" width="49" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -750,14 +753,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Contact Support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UUQ-FD-6NZ">
-                                                    <rect key="frame" x="80" y="0.0" width="485" height="49.5"/>
+                                                    <rect key="frame" x="79" y="0.0" width="486" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Title_completed" id="fId-wm-B84">
-                                                    <rect key="frame" x="15" y="0.0" width="50" height="49.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_contact_icon" id="fId-wm-B84">
+                                                    <rect key="frame" x="15" y="0.0" width="49" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -802,7 +805,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Title_message" id="DBJ-2Q-QK4">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_contract_icon" id="DBJ-2Q-QK4">
                                                     <rect key="frame" x="15" y="0.0" width="50" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -823,7 +826,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Title_pin" id="Q0N-hx-5zv">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_lock_icon" id="Q0N-hx-5zv">
                                                     <rect key="frame" x="15" y="0.0" width="50" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -832,17 +835,34 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="rAt-eO-OYp">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection id="nWg-Wn-0Mi">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection id="q2b-aN-T6y">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection id="nUu-4H-hmt">
+                                <cells/>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Fdg-2f-1ct" id="N8T-qY-VVF"/>
                             <outlet property="delegate" destination="Fdg-2f-1ct" id="veH-ZY-tKG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gec-TR-14R"/>
+                    <navigationItem key="navigationItem" id="gec-TR-14R">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="pE9-c3-ct4"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="pE9-c3-ct4" id="2Ol-RE-MAP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuk-cn-bT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="1860"/>
+            <point key="canvasLocation" x="640" y="1817"/>
         </scene>
         <!--User Settings View Controller-->
         <scene sceneID="X3B-ld-p6G">
@@ -999,7 +1019,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1O-52-DmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-467" y="1860"/>
+            <point key="canvasLocation" x="6" y="1811"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="WGK-eR-MJw">
@@ -1142,12 +1162,13 @@
     </scenes>
     <resources>
         <image name="Title_calculation" width="267" height="267"/>
-        <image name="Title_completed" width="267" height="267"/>
-        <image name="Title_light" width="267" height="267"/>
-        <image name="Title_message" width="267" height="267"/>
-        <image name="Title_pin" width="267" height="267"/>
         <image name="home" width="41" height="41"/>
         <image name="message_25" width="33" height="25"/>
+        <image name="setting_contact_icon" width="113" height="115"/>
+        <image name="setting_contract_icon" width="128" height="128"/>
+        <image name="setting_lock_icon" width="143" height="143"/>
+        <image name="setting_paperplane_icon" width="112" height="113"/>
+        <image name="setting_profile_icon" width="127" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WLo-ta-FH1"/>
