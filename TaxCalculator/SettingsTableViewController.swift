@@ -54,8 +54,12 @@ class SettingsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 50
+        if section == 0 {
+            return 30
+        } else {
+         return 15
+        }
+       
     }
     /*override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
