@@ -49,7 +49,7 @@ extension UIViewController {
         button.backgroundColor =  UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 0.62)
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+        button.titleLabel!.font = UIFont(name: BIGTITLE, size: 14)
         button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
         self.view.addSubview(button)
     
@@ -188,7 +188,7 @@ extension UIView {
         //label.textAlignment = NSTextAlignment.Left
         label.text = what
         //label.font = UIFont(name: THINFONT, size: 18)
-        label.font = UIFont(name: HEADERFONT, size: 20)
+        label.font = UIFont(name: BIGTITLE , size: 20)
         //label.backgroundColor = UIColor.customLabelGreen()
         label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 0
@@ -250,7 +250,7 @@ extension UIView {
         button.backgroundColor =  UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 0.62)
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+        button.titleLabel!.font = UIFont(name: BIGTITLE, size: 14)
         button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
         self.addSubview(button)
         
@@ -259,7 +259,7 @@ extension UIView {
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.orangeColor(), forState:  .Normal)
-        //button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+        //button.titleLabel!.font = UIFont(name: SMALLTITLE, size: 14)
         button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
         let i:UIImage = UIImage(named: image)!
         button.setImage(i, forState: .Normal)
@@ -288,7 +288,7 @@ extension UIView {
        // button.backgroundColor = UIColor.customGreenColor()
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-       // button.titleLabel!.font = UIFont(name: THINFONT, size: 14)
+       // button.titleLabel!.font = UIFont(name: SMALLTITLE, size: 14)
         button.layer.shadowRadius = 3.0;
         button.layer.shadowColor = UIColor.blueColor().CGColor
         //button.layer.shadowColor = UIColor.chartBlueColor().CGColor

@@ -257,6 +257,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
             menu = taxMenuBook[indexPath.row]
         }
         cell.textLabel?.text = menu.name
+        cell.textLabel?.font = UIFont(name: BIGTITLE, size: 16)
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
