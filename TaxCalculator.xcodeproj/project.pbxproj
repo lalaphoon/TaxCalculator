@@ -18,6 +18,7 @@
 		46006C9F1D82363C00CCBFFE /* ValuePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C9E1D82363C00CCBFFE /* ValuePickerCell.xib */; };
 		46006CA11D82364400CCBFFE /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006CA01D82364400CCBFFE /* SliderCell.xib */; };
 		46006CA31D82365000CCBFFE /* CellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46006CA21D82365000CCBFFE /* CellDescriptor.plist */; };
+		460173751DAD231E002BE015 /* HelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460173741DAD231E002BE015 /* HelperLibrary.swift */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -125,6 +126,7 @@
 		46006C9E1D82363C00CCBFFE /* ValuePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValuePickerCell.xib; sourceTree = "<group>"; };
 		46006CA01D82364400CCBFFE /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		46006CA21D82365000CCBFFE /* CellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CellDescriptor.plist; sourceTree = "<group>"; };
+		460173741DAD231E002BE015 /* HelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLibrary.swift; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 			children = (
 				467EFC451D36F16E00D3358D /* OnboardingPagesViewController.swift */,
 				46FF4E321D446D0E0028C96E /* ParentOnboardingPagesViewController.swift */,
+				460173741DAD231E002BE015 /* HelperLibrary.swift */,
 				467EFC411D36EE3700D3358D /* StepZero.swift */,
 				467EFC3F1D36EE1B00D3358D /* StepOne.swift */,
 				467EFC431D36EEDA00D3358D /* StepTwo.swift */,
@@ -799,6 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
+				460173751DAD231E002BE015 /* HelperLibrary.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
 				462A717A1DA0E0510032444E /* Record.swift in Sources */,
 				46006C921D82346F00CCBFFE /* CustomCell.swift in Sources */,

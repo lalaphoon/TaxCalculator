@@ -51,6 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageController.backgroundColor = UIColor.customOrangeColor()
     }
     func firstLaunchCheck() {
+       //reference: http://www.jianshu.com/p/024dd2d6e6e6
         let infoDictionary = NSBundle.mainBundle().infoDictionary
         let currentAppVersion = infoDictionary!["CFBundleShortVersionString"] as! String
         
