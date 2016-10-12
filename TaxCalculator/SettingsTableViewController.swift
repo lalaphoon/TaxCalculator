@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class SettingsTableViewController: UITableViewController {
 
@@ -39,10 +40,6 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 3
-    }
 
     /*override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -51,7 +48,66 @@ class SettingsTableViewController: UITableViewController {
         else if section == 2 {return 3}
         else { return 0}
     }*/
-
+    
+    //Reference: sharing.......
+    func showAlertMessage(message: String!) {
+        let alertController = UIAlertController(title: "EasyShare", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+       
+        if indexPath.section  == 3 {
+         print("sharing")
+         let actionSheet = UIAlertController(title: "", message: "Share this app", preferredStyle: UIAlertControllerStyle.ActionSheet)
+            // Configure a new action for sharing the note in Twitter.
+            let tweetAction = UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.Default) { (action) -> Void in
+                if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+                    let twitterComposeVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+                    twitterComposeVC.setEditing(true, animated: true)
+                    self.presentViewController(twitterComposeVC, animated: true, completion: nil)
+                } else {
+                    self.showAlertMessage("You are not logged in to your Twitter account")
+                }
+                
+            }
+            
+            // Configure a new action to share on Facebook.
+            let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default) { (action) -> Void in
+                if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+                    let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                    facebookComposeVC.setEditing(true, animated: true)
+                    self.presentViewController(facebookComposeVC, animated: true, completion: nil)
+                } else {
+                    self.showAlertMessage("You are not connected to your Facebook account.")
+                }
+            }
+            
+            // Configure a new action to show the UIActivityViewController
+            let moreAction = UIAlertAction(title: "More", style: UIAlertActionStyle.Default) { (action) -> Void in
+                //第一个参数是一个数组，里面包含了我们想要发送的内容
+                //具体来说，如果我们只有一张图片，那么就不会显示「Add to reading list」!!!
+                //Attach link here!
+                let activityViewController = UIActivityViewController(activityItems: ["Share this app to your friends"], applicationActivities: nil)
+                //activityViewController.excludedActivityTypes = [UIActivityTypeMail]
+                self.presentViewController(activityViewController, animated: true, completion: nil)
+            }
+            
+            
+            let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+                
+            }
+            
+            actionSheet.addAction(tweetAction)
+            actionSheet.addAction(facebookPostAction)
+            actionSheet.addAction(moreAction)
+            actionSheet.addAction(dismissAction)
+            
+            presentViewController(actionSheet, animated: true, completion: nil)
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {

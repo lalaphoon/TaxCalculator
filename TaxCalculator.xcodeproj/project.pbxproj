@@ -19,6 +19,7 @@
 		46006CA11D82364400CCBFFE /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006CA01D82364400CCBFFE /* SliderCell.xib */; };
 		46006CA31D82365000CCBFFE /* CellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46006CA21D82365000CCBFFE /* CellDescriptor.plist */; };
 		460173751DAD231E002BE015 /* HelperLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460173741DAD231E002BE015 /* HelperLibrary.swift */; };
+		460173771DAE76C5002BE015 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460173761DAE76C5002BE015 /* Social.framework */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -127,6 +128,7 @@
 		46006CA01D82364400CCBFFE /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 		46006CA21D82365000CCBFFE /* CellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CellDescriptor.plist; sourceTree = "<group>"; };
 		460173741DAD231E002BE015 /* HelperLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLibrary.swift; sourceTree = "<group>"; };
+		460173761DAE76C5002BE015 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				460173771DAE76C5002BE015 /* Social.framework in Frameworks */,
 				46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */,
 				46369E011D459ACC00456B69 /* MessageUI.framework in Frameworks */,
 				D4166594122906E09DD1779A /* Pods_TaxCalculator.framework in Frameworks */,
@@ -508,6 +511,7 @@
 		AE21AAD6080E1F20151E7A2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				460173761DAE76C5002BE015 /* Social.framework */,
 				77AB9621C7B80B357F3917F4 /* Pods_TaxCalculator.framework */,
 				7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */,
 				8210293436993C27133F2A38 /* Pods_TaxCalculatorUITests.framework */,
