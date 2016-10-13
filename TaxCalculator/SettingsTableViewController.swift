@@ -8,14 +8,23 @@
 
 import UIKit
 import Social
+import MessageUI
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController,MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     let sharingTitle: String = "Let's use TaxPro"
     let sharingImage: UIImage = UIImage(named: "star-large.png")!
     let sharingURL: NSURL = NSURL(string: "www.lalaphoon.me")!
+    
+    
+    
+    
+    let messageTitle: String = "TaxPro-Feedback"
+    let messageBody: String = "\n\n\n System Version：\(SYSTEMVERSION )\n Device Model：\(modelName)"
+    ///let messageBody: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +51,8 @@ class SettingsTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //==================================================Helpers===============================================
     //Reference: sharing.......
     func showAlertMessage(message: String!) {
         let alertController = UIAlertController(title: "Accounts", message: message, preferredStyle: UIAlertControllerStyle.Alert)
@@ -49,7 +60,7 @@ class SettingsTableViewController: UITableViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     func sharing() {
-        let actionSheet = UIAlertController(title: "", message: "Share this app", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionSheet = UIAlertController(title: "", message: "Share TaxPro to your friends!", preferredStyle: UIAlertControllerStyle.ActionSheet)
         // Configure a new action for sharing the note in Twitter.
         let tweetAction = UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.Default) { (action) -> Void in
             if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
@@ -100,11 +111,58 @@ class SettingsTableViewController: UITableViewController {
         
         presentViewController(actionSheet, animated: true, completion: nil)
     }
+    //=======================Sending Message=============================
+    func sendEmail(){
+        print("Sending an email...")
+        print(self.messageBody)
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail(){
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate =  self
+        mailComposerVC.setToRecipients(["lalaphoon@gmail.com", "will@wtctax.ca"])
+        mailComposerVC.setSubject(self.messageTitle)
+        mailComposerVC.setMessageBody(self.messageBody, isHTML: false)
+        return mailComposerVC
+    }
+    func showSendMailErrorAlert(){
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle:  UIAlertControllerStyle.Alert)
+    }
+    func sendAlert(alertTitle : String, alertMessage : String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Cancelled mail")
+            sendAlert("Sending Cancelled", alertMessage: "You have cancelled sending your email!")
+        case MFMailComposeResultSent.rawValue:
+            print("Mail Sent")
+            sendAlert("Mail Sent", alertMessage: "Your email has been sent to us!\n Thank you very much!")
+        case MFMailComposeResultSaved.rawValue:
+            print("You saved a draft of this email")
+            break;
+        default:
+            break
+        }
+        
+    }
+//=======================================================================================================
     
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-       
-        if indexPath.section  == 3 {
+        if indexPath.section == 1 && indexPath.row == 1 {
+            sendEmail()
+        }
+        else if indexPath.section  == 3 && indexPath.row == 0 {
          print("sharing")
          sharing()
         }
