@@ -20,6 +20,7 @@ class TermsViewController: UIViewController {
         Term.text = content
         Term.font = UIFont(name: THINFONT, size: 16)
         Term.textAlignment = .Justified
+        Term.editable = false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
