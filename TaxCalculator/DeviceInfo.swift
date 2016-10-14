@@ -7,16 +7,6 @@
 //
 
 import Foundation
-//
-//  ExtensionForUIDevice.swift
-//  TaxCalculator
-//
-//  Created by Mengyi LUO on 2016-10-13.
-//  Copyright © 2016 WTC Tax. All rights reserved.
-//
-
-import Foundation
-
 
 public extension UIDevice {
     
@@ -69,6 +59,8 @@ let DEVICEMODEL = UIDevice.currentDevice().model
 let DEVICEUUID = UIDevice.currentDevice().identifierForVendor?.UUIDString
 // 调用
 let modelName = UIDevice.currentDevice().modelName
+
+
 
 let infoDic = NSBundle.mainBundle().infoDictionary
 
