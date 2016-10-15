@@ -19,11 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1R1-09-xnE">
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="tel-D3-TxN"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="1R1-09-xnE"/>
                     <connections>
-                        <outlet property="menuButton" destination="tel-D3-TxN" id="H5O-YA-o7P"/>
                         <segue destination="2R2-dU-GWP" kind="show" identifier="MoveIntoSubTopics" id="SO5-Ge-vL1"/>
                     </connections>
                 </viewController>
@@ -89,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgV-Pa-UPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4095" y="439"/>
+            <point key="canvasLocation" x="4237" y="419"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="9dN-2n-avi">
@@ -110,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BuE-AM-Rzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4823" y="439"/>
+            <point key="canvasLocation" x="4865" y="419"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="bkX-H9-0Mt">
@@ -239,11 +236,8 @@
                             <constraint firstItem="Oyg-e5-ofu" firstAttribute="top" secondItem="yBx-7b-zoa" secondAttribute="topMargin" id="rwp-zL-aia"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e88-vL-QeJ">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="dP2-p2-vpL"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="e88-vL-QeJ"/>
                     <connections>
-                        <outlet property="mainMenu" destination="dP2-p2-vpL" id="W1z-8z-Xim"/>
                         <outlet property="savedTableView" destination="Oyg-e5-ofu" id="NzK-lc-8cU"/>
                         <segue destination="tJp-Qq-pYJ" kind="show" identifier="gotoResult" id="yuE-yc-ujX"/>
                     </connections>
@@ -274,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdI-CZ-hqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2792" y="2618"/>
+            <point key="canvasLocation" x="4838" y="-1344"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="w5P-TF-l3M">
@@ -289,11 +283,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Uti-FH-67j">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="bookmarks" id="IFn-l0-h5I"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Uti-FH-67j"/>
                     <connections>
-                        <outlet property="mainMenu" destination="IFn-l0-h5I" id="8Uy-ZG-Qm8"/>
                         <segue destination="3Hk-sh-8TG" kind="show" identifier="MoveIntoCalculation" id="6AX-G0-4bH"/>
                     </connections>
                 </viewController>
@@ -597,9 +588,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <connections>
-                                            <segue destination="v3Q-dl-Pib" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="WLo-ta-FH1"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Dz9-U4-qat">
                                         <rect key="frame" x="0.0" y="139.5" width="600" height="44"/>
@@ -737,6 +725,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="aZa-D7-3Sf" kind="show" id="4dz-wa-IRT"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -909,16 +900,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="MTS-3P-W2D">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="oW6-2t-KKa"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="menuButton" destination="oW6-2t-KKa" id="yHs-tI-UQB"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="MTS-3P-W2D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RT-1Z-9ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2155" y="1885"/>
+            <point key="canvasLocation" x="983" y="1908"/>
         </scene>
         <!--Start Tab Bar View Controller-->
         <scene sceneID="dlU-4y-b7o">
@@ -972,7 +958,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRa-DG-Lvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="2663"/>
+            <point key="canvasLocation" x="657" y="2613"/>
         </scene>
         <!--Privacy View Controller-->
         <scene sceneID="PD8-OK-69C">
@@ -1005,25 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c44-A6-PMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="2663"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bCm-l4-DNm">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="blR-cY-Joh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vui-3G-tQ0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="aZa-D7-3Sf" kind="relationship" relationship="rootViewController" id="gTO-0b-2PK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yn3-jL-X6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1465" y="1826"/>
+            <point key="canvasLocation" x="24" y="2613"/>
         </scene>
         <!--Item-->
         <scene sceneID="ZtH-uw-d7g">
@@ -1061,7 +1029,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axE-mi-zK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2163" y="2618"/>
+            <point key="canvasLocation" x="4231" y="-1332"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hau-cr-TZN">
@@ -1134,9 +1102,8 @@
         <image name="setting_profile_icon" width="127" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="auG-39-gel"/>
         <segue reference="es3-NR-LsR"/>
-        <segue reference="eec-cS-RVW"/>
-        <segue reference="mzz-NE-GJA"/>
         <segue reference="6AX-G0-4bH"/>
     </inferredMetricsTieBreakers>
 </document>

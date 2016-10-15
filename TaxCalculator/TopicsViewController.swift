@@ -14,23 +14,25 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
     var tableView: UITableView =  UITableView()
     let menu: [String] = Array(TaxMenu.keys)
     
-    @IBOutlet weak var menuButton: UIBarButtonItem!
+   // @IBOutlet weak var menuButton: UIBarButtonItem!
     
     
     var category = Int()
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
+       
+        //Hide submenu
+        /*if self.revealViewController() != nil {
             //self.navigationItem.leftBarButtonItem = menuButton
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+        }*/
 
         //initUI()
         //initForUI()
         initTableView()
-        
+        self.navigationItem.title = "Topics"
         // Do any additional setup after loading the view.
     }
    /* override func viewWillAppear(animated: Bool) {

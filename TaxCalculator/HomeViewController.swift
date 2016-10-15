@@ -281,7 +281,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
 
 class HomeViewController: UIViewController, MainViewDelegate {
     
-    @IBOutlet weak var mainMenu: UIBarButtonItem!
+    //@IBOutlet weak var mainMenu: UIBarButtonItem!
     private var mainView: MainView!
     private var didSetupConstraints = false
     
@@ -299,12 +299,13 @@ class HomeViewController: UIViewController, MainViewDelegate {
         //mainView.hideKeyboard()
         setupEmptyBackgroundView()
         view.addSubview(mainView)
-        if self.revealViewController() != nil {
+        
+        //This is used to hide submenu
+        /*if self.revealViewController() != nil {
             mainMenu.target = self.revealViewController()
             mainMenu.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-        // Do any additional setup after loading the view.
+        }*/
     }
 
     override func didReceiveMemoryWarning() {
@@ -342,7 +343,7 @@ class HomeViewController: UIViewController, MainViewDelegate {
     }
     
     func initBackground(){
-   
+   self.navigationItem.title = "Home"
     self.view.addBackground("background.jpg")
     self.view.darken(60)
    // self.addLabel("Never be blinded sided by personal tax again")

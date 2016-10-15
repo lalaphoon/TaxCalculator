@@ -53,7 +53,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         //4.setting up the tips
        // containerView.addText(c.getTip(), self.view.bounds.width/2, 440, self.view.bounds.width-86, 100)
        // containerView.addYellowButton("Tax Tip", "viewTip", 43, 420, 100, 50, self)
-        containerView.addImageButton("Tax Tip", "viewTip", "light_small.png", 43, 400 + offset, 130, 70, self)
+        containerView.addImageButton("Tax Tip", "viewTip", "bulb_icon_small.png", 43, 400 + offset, 130, 70, self)
         containerView.addImageButton("View Details", "viewProcess", "calculator_icon_small.png",40, 465 + offset, 180,70,self)
         //485
         

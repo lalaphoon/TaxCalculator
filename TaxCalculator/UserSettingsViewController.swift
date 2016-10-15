@@ -15,7 +15,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     //var CDS = CoreDataSaver()
     var TP = TaxPro()
-    @IBOutlet weak var menuButton: UIBarButtonItem!
+  //  @IBOutlet weak var menuButton: UIBarButtonItem!
     //var pickOption = [String]()
     var firstnameTextField = UITextField()
     var lastnameTextField = UITextField()
@@ -31,15 +31,18 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Hide submenu
+        /*
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+        }*/
         
         // Do any additional setup after loading the view.
         
         //put layout on the user view
+        self.navigationItem.title = "Profile"
         self.addTextField("Type Your First Name", 1)
         self.addTextField("Type Your Last Name", 2, 20, 160)
         self.addTextField("Type your province", province_tag, 20, 220)

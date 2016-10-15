@@ -16,13 +16,13 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     var recordCells = [Record]()
     //next Record is used to transfer record
     var nextRecord : Record!
-    @IBOutlet weak var mainMenu: UIBarButtonItem!
+   // @IBOutlet weak var mainMenu: UIBarButtonItem!
     private let image = UIImage(named: "star-large")!.imageWithRenderingMode(.AlwaysTemplate)
     private let topMessage = "Hi!"
     private let bottomMessage = "You havn't saved any records yet~"
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = "History"
         savedTableView.delegate = self
         savedTableView.dataSource = self
         let cellCollNib = UINib(nibName: "ResultCell", bundle: NSBundle.mainBundle())
@@ -30,11 +30,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         savedTableView.tableFooterView = UIView()
         recordCells = CoreDataFetcher.fetch_records()
         setupEmptyBackgroundView()
+        
+        //This is used to hide submenu
+        /*
         if self.revealViewController() != nil {
             mainMenu.target = self.revealViewController()
             mainMenu.action = "revealToggle:"
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
+        }*/
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
