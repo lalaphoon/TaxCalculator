@@ -15,12 +15,8 @@ class PrivacyViewController: UIViewController {
     @IBOutlet weak var myWebView: UIWebView!
     
     override func viewDidLoad() {
-        let privacyURL = NSBundle.mainBundle().URLForResource("privacy", withExtension: "html")
-        let requestObj = NSURLRequest(URL: privacyURL!)
-        myWebView.loadRequest(requestObj)
-        myWebView.backgroundColor = UIColor.whiteColor()
         super.viewDidLoad()
-
+        configureWebView()
         // Do any additional setup after loading the view.
     }
 
@@ -28,7 +24,12 @@ class PrivacyViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func configureWebView() {
+        let privacyURL = NSBundle.mainBundle().URLForResource("privacy", withExtension: "html")
+        let requestObj = NSURLRequest(URL: privacyURL!)
+        myWebView.loadRequest(requestObj)
+        myWebView.backgroundColor = UIColor.whiteColor()
+    }
 
     /*
     // MARK: - Navigation

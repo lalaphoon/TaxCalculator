@@ -391,7 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				462A71851DA65F500032444E /* Settings */,
-				46B9E1C11D67A76200B80106 /* Message */,
 				46B9E1C01D67A71C00B80106 /* Home-Search */,
 				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
 				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
@@ -491,14 +490,6 @@
 			name = "Home-Search";
 			sourceTree = "<group>";
 		};
-		46B9E1C11D67A76200B80106 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				46FF4E341D4596D50028C96E /* ContactViewController.swift */,
-			);
-			name = Message;
-			sourceTree = "<group>";
-		};
 		46DD946D1D3D65DA00EC6294 /* SWRevealView */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +514,7 @@
 		46FE9DC81D7148E9005A9E2D /* unused file */ = {
 			isa = PBXGroup;
 			children = (
+				46FF4E341D4596D50028C96E /* ContactViewController.swift */,
 				46006CA21D82365000CCBFFE /* CellDescriptor.plist */,
 				467D34971D381D61008D820B /* CalculatorViewController.swift */,
 				4684CA751D5D5E0B009B0598 /* SubTopicsViewController.swift */,

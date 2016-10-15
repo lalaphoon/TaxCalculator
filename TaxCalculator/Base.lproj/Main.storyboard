@@ -274,7 +274,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdI-CZ-hqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3392" y="1986"/>
+            <point key="canvasLocation" x="2792" y="2618"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="w5P-TF-l3M">
@@ -894,7 +894,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuk-cn-bT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="286" y="1880"/>
+            <point key="canvasLocation" x="306" y="1880"/>
         </scene>
         <!--User Settings View Controller-->
         <scene sceneID="X3B-ld-p6G">
@@ -953,26 +953,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rsy-gj-HfT">
-                                <rect key="frame" x="8" y="0.0" width="584" height="600"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHk-gL-IK7">
+                                <rect key="frame" x="6" y="0.0" width="588" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Rsy-gj-HfT" firstAttribute="leading" secondItem="aI9-b1-7lf" secondAttribute="leadingMargin" constant="-12" id="2I7-PY-0sK"/>
-                            <constraint firstItem="Rsy-gj-HfT" firstAttribute="top" secondItem="aI9-b1-7lf" secondAttribute="topMargin" id="5kw-Jt-CeW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Rsy-gj-HfT" secondAttribute="trailing" constant="-12" id="6nX-jc-S2J"/>
-                            <constraint firstItem="fpG-4w-9pJ" firstAttribute="top" secondItem="Rsy-gj-HfT" secondAttribute="bottom" id="viV-Iu-6Ej"/>
+                            <constraint firstItem="XHk-gL-IK7" firstAttribute="top" secondItem="aI9-b1-7lf" secondAttribute="topMargin" id="QDe-hM-nLd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XHk-gL-IK7" secondAttribute="trailing" constant="-14" id="bRX-tn-RsQ"/>
+                            <constraint firstItem="XHk-gL-IK7" firstAttribute="bottom" secondItem="aI9-b1-7lf" secondAttribute="bottomMargin" id="iO0-nd-XUV"/>
+                            <constraint firstItem="XHk-gL-IK7" firstAttribute="leading" secondItem="aI9-b1-7lf" secondAttribute="leadingMargin" constant="-14" id="uDz-XK-njf"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="myWebView" destination="Rsy-gj-HfT" id="reo-RM-Rrg"/>
+                        <outlet property="myWebView" destination="XHk-gL-IK7" id="cKh-Sn-H73"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRa-DG-Lvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="1866"/>
+            <point key="canvasLocation" x="923" y="2663"/>
         </scene>
         <!--Privacy View Controller-->
         <scene sceneID="PD8-OK-69C">
@@ -986,26 +986,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-yd-4sc">
-                                <rect key="frame" x="7" y="0.0" width="586" height="600"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E84-pF-340">
+                                <rect key="frame" x="6" y="0.0" width="588" height="600"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7u7-yd-4sc" firstAttribute="top" secondItem="V2W-KX-RrF" secondAttribute="topMargin" id="CLa-VT-uhz"/>
-                            <constraint firstItem="AsF-vJ-jaF" firstAttribute="top" secondItem="7u7-yd-4sc" secondAttribute="bottom" id="UML-MM-IgE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7u7-yd-4sc" secondAttribute="trailing" constant="-12" id="g0C-YL-vfX"/>
-                            <constraint firstItem="7u7-yd-4sc" firstAttribute="leading" secondItem="V2W-KX-RrF" secondAttribute="leadingMargin" constant="-12" id="ide-pY-Obv"/>
+                            <constraint firstItem="E84-pF-340" firstAttribute="bottom" secondItem="V2W-KX-RrF" secondAttribute="bottomMargin" id="JVc-kT-0zG"/>
+                            <constraint firstItem="E84-pF-340" firstAttribute="top" secondItem="V2W-KX-RrF" secondAttribute="topMargin" id="OWt-hB-UKk"/>
+                            <constraint firstItem="E84-pF-340" firstAttribute="leading" secondItem="V2W-KX-RrF" secondAttribute="leadingMargin" constant="-14" id="fnM-Zb-QLE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E84-pF-340" secondAttribute="trailing" constant="-14" id="the-wP-OyQ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="myWebView" destination="7u7-yd-4sc" id="SIh-k4-v6I"/>
+                        <outlet property="myWebView" destination="E84-pF-340" id="xJa-zh-pLv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c44-A6-PMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="2518"/>
+            <point key="canvasLocation" x="282" y="2663"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bCm-l4-DNm">
@@ -1023,7 +1023,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yn3-jL-X6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="1885"/>
+            <point key="canvasLocation" x="1465" y="1826"/>
         </scene>
         <!--Item-->
         <scene sceneID="ZtH-uw-d7g">
@@ -1061,7 +1061,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axE-mi-zK4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="1760"/>
+            <point key="canvasLocation" x="2163" y="2618"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hau-cr-TZN">
