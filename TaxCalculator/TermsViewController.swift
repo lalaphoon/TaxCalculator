@@ -11,19 +11,32 @@ import Foundation
 
 class TermsViewController: UIViewController {
     
-    var TP = TaxPro()
-    @IBOutlet weak var Term: UITextView!
-    
+    @IBOutlet weak var myWebView: UIWebView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureWebView()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func configureWebView(){
+        let termsURL = NSBundle.mainBundle().URLForResource("Terms", withExtension: "html")
+        let requestObj = NSURLRequest(URL: termsURL!)
+        myWebView.backgroundColor = UIColor.whiteColor()
+        myWebView.loadRequest(requestObj)
+    }
+    //Unused textview
+    /*
+    func configureTextView(){
+        let TP = TaxPro()
         let content : String = "Terms of Use \n\n" + TP.getTerms()
         Term.text = content
         Term.font = UIFont(name: THINFONT, size: 16)
         Term.textAlignment = .Justified
         Term.editable = false
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+*/
 }

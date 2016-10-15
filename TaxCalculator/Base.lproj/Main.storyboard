@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XPu-Cb-gz9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Uct-1r-2tT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -958,24 +958,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HTW-q5-3II">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rsy-gj-HfT">
                                 <rect key="frame" x="8" y="0.0" width="584" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HTW-q5-3II" firstAttribute="leading" secondItem="aI9-b1-7lf" secondAttribute="leadingMargin" constant="-12" id="JsS-en-MYR"/>
-                            <constraint firstItem="fpG-4w-9pJ" firstAttribute="top" secondItem="HTW-q5-3II" secondAttribute="bottom" id="Mxj-ta-TIO"/>
-                            <constraint firstItem="HTW-q5-3II" firstAttribute="top" secondItem="aI9-b1-7lf" secondAttribute="topMargin" id="dbj-b2-9WA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HTW-q5-3II" secondAttribute="trailing" constant="-12" id="hPy-xG-FWx"/>
+                            <constraint firstItem="Rsy-gj-HfT" firstAttribute="leading" secondItem="aI9-b1-7lf" secondAttribute="leadingMargin" constant="-12" id="2I7-PY-0sK"/>
+                            <constraint firstItem="Rsy-gj-HfT" firstAttribute="top" secondItem="aI9-b1-7lf" secondAttribute="topMargin" id="5kw-Jt-CeW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rsy-gj-HfT" secondAttribute="trailing" constant="-12" id="6nX-jc-S2J"/>
+                            <constraint firstItem="fpG-4w-9pJ" firstAttribute="top" secondItem="Rsy-gj-HfT" secondAttribute="bottom" id="viV-Iu-6Ej"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Term" destination="HTW-q5-3II" id="Izf-qU-7WD"/>
+                        <outlet property="myWebView" destination="Rsy-gj-HfT" id="reo-RM-Rrg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRa-DG-Lvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
