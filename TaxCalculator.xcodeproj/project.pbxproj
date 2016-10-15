@@ -23,6 +23,8 @@
 		4601737B1DAFC7DC002BE015 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601737A1DAFC7DC002BE015 /* DeviceInfo.swift */; };
 		4601737D1DB11411002BE015 /* Terms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601737C1DB11411002BE015 /* Terms.swift */; };
 		4601737F1DB116B5002BE015 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601737E1DB116B5002BE015 /* TermsViewController.swift */; };
+		460173811DB1C2D9002BE015 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460173801DB1C2D9002BE015 /* PrivacyViewController.swift */; };
+		460173831DB1C4C5002BE015 /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 460173821DB1C4C5002BE015 /* privacy.html */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -135,6 +137,8 @@
 		4601737A1DAFC7DC002BE015 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		4601737C1DB11411002BE015 /* Terms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terms.swift; sourceTree = "<group>"; };
 		4601737E1DB116B5002BE015 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		460173801DB1C2D9002BE015 /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		460173821DB1C4C5002BE015 /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -298,6 +302,8 @@
 				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
 				462A71861DA65F860032444E /* SettingsTableViewController.swift */,
 				4601737E1DB116B5002BE015 /* TermsViewController.swift */,
+				460173801DB1C2D9002BE015 /* PrivacyViewController.swift */,
+				460173821DB1C4C5002BE015 /* privacy.html */,
 			);
 			name = Submenus;
 			sourceTree = "<group>";
@@ -665,6 +671,7 @@
 				46006C9D1D82363500CCBFFE /* SwitchCell.xib in Resources */,
 				462D626A1D33279000D4FE94 /* Main.storyboard in Resources */,
 				462A71841DA0E55A0032444E /* README - Core Data Turotial in Resources */,
+				460173831DB1C4C5002BE015 /* privacy.html in Resources */,
 				4615EF971D990B9E007CDEAA /* ResultCell.xib in Resources */,
 				46006C9F1D82363C00CCBFFE /* ValuePickerCell.xib in Resources */,
 			);
@@ -849,6 +856,7 @@
 				460911021D428C69003C6A65 /* StepFour.swift in Sources */,
 				46FE9DD01D7684C8005A9E2D /* OptionsViewController.swift in Sources */,
 				4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */,
+				460173811DB1C2D9002BE015 /* PrivacyViewController.swift in Sources */,
 				467D34961D380110008D820B /* StartViewController.swift in Sources */,
 				462D626D1D33279000D4FE94 /* TaxCalculator.xcdatamodeld in Sources */,
 				462A717E1DA0E0AE0032444E /* TableCellData.swift in Sources */,

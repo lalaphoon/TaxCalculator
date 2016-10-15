@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="S95-jb-GEY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="XPu-Cb-gz9">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -840,7 +840,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t7S-95-eUR">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t7S-95-eUR">
                                                     <rect key="frame" x="74" y="0.0" width="491" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
@@ -853,6 +853,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="XPu-Cb-gz9" kind="show" id="b8m-TL-RaF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -978,6 +981,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRa-DG-Lvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872" y="1866"/>
+        </scene>
+        <!--Privacy View Controller-->
+        <scene sceneID="PD8-OK-69C">
+            <objects>
+                <viewController id="XPu-Cb-gz9" customClass="PrivacyViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GkM-YU-Gvo"/>
+                        <viewControllerLayoutGuide type="bottom" id="AsF-vJ-jaF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V2W-KX-RrF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-yd-4sc">
+                                <rect key="frame" x="7" y="0.0" width="586" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7u7-yd-4sc" firstAttribute="top" secondItem="V2W-KX-RrF" secondAttribute="topMargin" id="CLa-VT-uhz"/>
+                            <constraint firstItem="AsF-vJ-jaF" firstAttribute="top" secondItem="7u7-yd-4sc" secondAttribute="bottom" id="UML-MM-IgE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7u7-yd-4sc" secondAttribute="trailing" constant="-12" id="g0C-YL-vfX"/>
+                            <constraint firstItem="7u7-yd-4sc" firstAttribute="leading" secondItem="V2W-KX-RrF" secondAttribute="leadingMargin" constant="-12" id="ide-pY-Obv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myWebView" destination="7u7-yd-4sc" id="SIh-k4-v6I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c44-A6-PMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872" y="2518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bCm-l4-DNm">
