@@ -264,6 +264,16 @@
 			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
+		460173881DB1FB4C002BE015 /* htmls */ = {
+			isa = PBXGroup;
+			children = (
+				460173861DB1F7F9002BE015 /* Terms.html */,
+				460173821DB1C4C5002BE015 /* privacy.html */,
+				460173841DB1D483002BE015 /* privacyCSS.css */,
+			);
+			name = htmls;
+			sourceTree = "<group>";
+		};
 		460910F41D41789B003C6A65 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,18 +308,16 @@
 			name = Fetcher;
 			sourceTree = "<group>";
 		};
-		462A71851DA65F500032444E /* Submenus */ = {
+		462A71851DA65F500032444E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
+				460173881DB1FB4C002BE015 /* htmls */,
 				462A71861DA65F860032444E /* SettingsTableViewController.swift */,
+				460911031D42C364003C6A65 /* UserSettingsViewController.swift */,
 				4601737E1DB116B5002BE015 /* TermsViewController.swift */,
-				460173861DB1F7F9002BE015 /* Terms.html */,
 				460173801DB1C2D9002BE015 /* PrivacyViewController.swift */,
-				460173821DB1C4C5002BE015 /* privacy.html */,
-				460173841DB1D483002BE015 /* privacyCSS.css */,
 			);
-			name = Submenus;
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		462D62581D33279000D4FE94 = {
@@ -319,7 +327,6 @@
 				462D627B1D33279100D4FE94 /* TaxCalculatorTests */,
 				462D62861D33279100D4FE94 /* TaxCalculatorUITests */,
 				462D62621D33279000D4FE94 /* Products */,
-				46369E021D459ADC00456B69 /* CoreLocation.framework */,
 				DF9C0D8854765E90F6B3F88A /* Pods */,
 				AE21AAD6080E1F20151E7A2B /* Frameworks */,
 			);
@@ -383,7 +390,7 @@
 		467D34941D3800AF008D820B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				462A71851DA65F500032444E /* Submenus */,
+				462A71851DA65F500032444E /* Settings */,
 				46B9E1C11D67A76200B80106 /* Message */,
 				46B9E1C01D67A71C00B80106 /* Home-Search */,
 				467EFC3E1D36EDEF00D3358D /* Onboardingpages */,
@@ -487,7 +494,6 @@
 		46B9E1C11D67A76200B80106 /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				46369E001D459ACC00456B69 /* MessageUI.framework */,
 				46FF4E341D4596D50028C96E /* ContactViewController.swift */,
 			);
 			name = Message;
@@ -529,6 +535,8 @@
 		AE21AAD6080E1F20151E7A2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46369E001D459ACC00456B69 /* MessageUI.framework */,
+				46369E021D459ADC00456B69 /* CoreLocation.framework */,
 				460173761DAE76C5002BE015 /* Social.framework */,
 				77AB9621C7B80B357F3917F4 /* Pods_TaxCalculator.framework */,
 				7737827E1F0141EC1792D492 /* Pods_TaxCalculatorTests.framework */,
