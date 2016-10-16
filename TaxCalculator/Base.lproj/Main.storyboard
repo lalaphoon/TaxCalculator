@@ -993,11 +993,11 @@
             </objects>
             <point key="canvasLocation" x="24" y="2613"/>
         </scene>
-        <!--Item-->
+        <!--Categories-->
         <scene sceneID="ZtH-uw-d7g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S78-Os-m33" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="hKI-XU-Uqy"/>
+                    <tabBarItem key="tabBarItem" title="Categories" image="Tab_Category" id="hKI-XU-Uqy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pcG-m9-1cy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1031,11 +1031,11 @@
             </objects>
             <point key="canvasLocation" x="4231" y="-1332"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favourite-->
         <scene sceneID="Hau-cr-TZN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v3Q-dl-Pib" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="wLP-UG-iSG"/>
+                    <tabBarItem key="tabBarItem" title="Favourite" image="Tab_star" id="wLP-UG-iSG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ajz-tk-77O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1050,11 +1050,11 @@
             </objects>
             <point key="canvasLocation" x="1806" y="1093"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="UbC-rS-ga7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oyp-Qh-HKM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="MNu-c0-Hcr"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Tab_Home" selectedImage="Tab_Home" id="MNu-c0-Hcr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Buh-G5-Rad">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1069,11 +1069,11 @@
             </objects>
             <point key="canvasLocation" x="1777" y="-441"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="wch-rL-3NP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9L3-hX-VeH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Hop-Tg-xBz"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Tab_settings" id="Hop-Tg-xBz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PMe-Ne-prp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1090,6 +1090,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Tab_Category" width="30" height="30"/>
+        <image name="Tab_Home" width="30" height="30"/>
+        <image name="Tab_settings" width="30" height="30"/>
+        <image name="Tab_star" width="30" height="30"/>
         <image name="home" width="41" height="41"/>
         <image name="message_25" width="33" height="25"/>
         <image name="onboarding-guy" width="78" height="190"/>
@@ -1102,8 +1106,8 @@
         <image name="setting_profile_icon" width="127" height="126"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="auG-39-gel"/>
         <segue reference="es3-NR-LsR"/>
+        <segue reference="mzz-NE-GJA"/>
         <segue reference="6AX-G0-4bH"/>
     </inferredMetricsTieBreakers>
 </document>
