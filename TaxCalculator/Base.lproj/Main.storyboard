@@ -741,14 +741,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u6j-jX-uJz">
-                                                    <rect key="frame" x="73" y="0.0" width="492" height="43.5"/>
+                                                    <rect key="frame" x="74" y="0.0" width="491" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_paperplane_icon" id="XAs-1w-cah">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43.5"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="setting_bow_icon" id="XAs-1w-cah">
+                                                    <rect key="frame" x="15" y="0.0" width="44" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -1102,6 +1102,7 @@
         <image name="message_25" width="33" height="25"/>
         <image name="onboarding-guy" width="78" height="190"/>
         <image name="onboarding-tofu" width="100" height="74"/>
+        <image name="setting_bow_icon" width="112" height="112"/>
         <image name="setting_contact_icon" width="113" height="115"/>
         <image name="setting_contract_icon" width="128" height="128"/>
         <image name="setting_lock_icon" width="143" height="143"/>
