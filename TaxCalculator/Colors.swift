@@ -31,6 +31,9 @@ extension UIColor {
     class func customBlackColor() -> UIColor{
         return UIColor(red: 13/255.0, green: 13/255.0, blue: 19/255.0, alpha: 1.0)
     }
+    class func customWhiteColor(alpha: CGFloat) -> UIColor {
+        return UIColor(red: 1, green: 1.0, blue: 1.0, alpha: alpha/100.0);
+    }
     class func customBackgroundColor(alpha: CGFloat) -> UIColor{
         return UIColor(red: 30/255.0, green: 27/255.0, blue: 25/255.0, alpha: alpha/100.0)
     }

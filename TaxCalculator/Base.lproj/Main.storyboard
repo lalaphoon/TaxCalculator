@@ -799,6 +799,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PIN-lL-p79" kind="show" id="dxV-py-U2P"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="8Rm-XF-jwd" imageView="DBJ-2Q-QK4" style="IBUITableViewCellStyleDefault" id="nEg-jK-M5I">
                                         <rect key="frame" x="0.0" y="389.5" width="600" height="44"/>
@@ -904,7 +907,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7RT-1Z-9ip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="983" y="1908"/>
+            <point key="canvasLocation" x="999" y="1306"/>
+        </scene>
+        <!--About View Controller-->
+        <scene sceneID="ktP-Kr-dfw">
+            <objects>
+                <viewController id="PIN-lL-p79" customClass="AboutViewController" customModule="TaxCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L9i-Yb-UeU"/>
+                        <viewControllerLayoutGuide type="bottom" id="2rd-0W-Lxj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nc0-s5-Mar">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PIk-Fz-7yq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="990" y="1961"/>
         </scene>
         <!--Start Tab Bar View Controller-->
         <scene sceneID="dlU-4y-b7o">

@@ -20,11 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        
         //setup status bar colors
         //UIApplication.sharedApplication().statusBarStyle = .LightContent
         UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        
+        
         //setup tab bar colors
-        UITabBar.appearance().barTintColor = UIColor.customBlackColor()
+        UITabBar.appearance().barTintColor = UIColor.whiteColor()
         UITabBar.appearance().tintColor = UIColor.customOrangeColor()
         
         //setup textfield/textview colors

@@ -345,6 +345,13 @@ extension UIView {
         blackCover.layer.opacity = 1.0
         self.addSubview(blackCover)
     }
+    func whiten(opacity: CGFloat){
+        var blackCover: UIView = UIView()
+        blackCover.frame = self.frame
+        blackCover.backgroundColor = UIColor.customWhiteColor(opacity)
+        blackCover.layer.opacity = 1.0
+        self.addSubview(blackCover)
+    }
     func addWhiteButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.backgroundColor = .clearColor()
