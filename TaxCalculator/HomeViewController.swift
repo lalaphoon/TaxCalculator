@@ -346,10 +346,10 @@ class HomeViewController: UIViewController, MainViewDelegate {
    self.navigationItem.title = "Home"
     self.view.addBackground("background.jpg")
     //self.view.darken(60)
-    self.view.whiten(35)
+    self.view.whiten(40)
    // self.addLabel("Never be blinded sided by personal tax again")
     //self.addImage("logo.png",self.view.bounds.width/2-42, 230, 84,20.5)
-    self.addImage("logo.png",33, self.view.bounds.height/2-40, 84, 20.5)
+    self.addImage("logo.png",self.view.bounds.width/2-153, self.view.bounds.height/2-38, 84, 20.5)
     }
     
     
