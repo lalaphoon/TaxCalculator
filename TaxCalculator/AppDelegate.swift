@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //setup Navigation bar colors
         UINavigationBar.appearance().barTintColor = UIColor.orangeColor()
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: BIGTITLE, size: 21)!]
         
         
         //setup status bar colors
@@ -45,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UILabel.appearance().font = UIFont(name: SMALLTITLE, size: 15)
         UITextField.appearance().font =  UIFont(name: SMALLTITLE, size: 18)
         UITextView.appearance().font = UIFont(name: SMALLTITLE, size: 18)
+        
          UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).setTitleTextAttributes([NSFontAttributeName : UIFont(name: SMALLTITLE, size: 15)!], forState: .Normal)
     
     }

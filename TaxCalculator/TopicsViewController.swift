@@ -70,6 +70,7 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
         let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         cell.textLabel!.text = menu[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.textLabel?.font = UIFont(name: SMALLTITLE, size: 17)
         //cell.backgroundColor = UIColor.yellowColor()
         //cell.tintColor = UIColor.customRedButton()
         return cell
