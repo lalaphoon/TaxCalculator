@@ -255,6 +255,25 @@ extension UIView {
         self.addSubview(button)
         
     }
+    func addLinkButton(title: String, _ buttonaction: Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50, _ target: UIViewController){
+        let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+        button.setTitle(title, forState: .Normal)
+        button.setTitleColor(UIColor.customOrangeColor(), forState: .Normal)
+        button.titleLabel!.font = UIFont(name: BIGTITLE, size:14)
+        button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
+       // button.layer.borderWidth = 1.0
+       // button.layer.borderColor = UIColor.customOrangeColor().CGColor
+        let border = CALayer()
+        let width = CGFloat(2.5)
+        border.borderColor = UIColor.customOrangeColor().CGColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width,   width:  self.frame.size.width, height: self.frame.size.height)
+        
+        border.borderWidth = width
+        button.layer.addSublayer(border)
+        button.layer.masksToBounds = true
+
+        self.addSubview(button)
+    }
     func addImageButton(title: String, _ buttonaction: Selector, _ image: String, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50, _ target: UIViewController){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         button.setTitle(title, forState: .Normal)

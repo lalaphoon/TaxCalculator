@@ -8,6 +8,8 @@
 
 import UIKit
 import PureLayout
+import MessageUI
+
 //reference: http://www.benmeline.com/search-bar-animation-with-swift/
 
 protocol MainViewDelegate: class {
@@ -279,7 +281,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
 
 
 
-class HomeViewController: UIViewController, MainViewDelegate {
+class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewControllerDelegate  {
     
     //@IBOutlet weak var mainMenu: UIBarButtonItem!
     private var mainView: MainView!
@@ -287,9 +289,12 @@ class HomeViewController: UIViewController, MainViewDelegate {
     
     private let image = UIImage(named: "star-large")!.imageWithRenderingMode(.AlwaysTemplate)
     private let topMessage = "Oops!"
-    private let bottomMessage = "There is no records in our database!"
+    private let bottomMessage = "There are no matches for your search. Contact one of our tax specialist to answer your question!"
     //Mark: - View Lifecycle
-       
+    
+    let messageTitle: String = "TaxPro-Topics' Questions."
+    let messageBody: String = "\n\n\n System Version：\(SYSTEMVERSION )\n Device Model：\(modelName)"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initBackground()
@@ -315,8 +320,58 @@ class HomeViewController: UIViewController, MainViewDelegate {
     // MARK: - Layout
     func setupEmptyBackgroundView() {
         let emptyBackgroundView = EmptyBackgroundView(image: image, top: topMessage, bottom: bottomMessage)
+        emptyBackgroundView.addLinkButton("Contact Us", "sendEmail", self.view.bounds.width/2-50, self.view.bounds.height/2 + 10, 100, 20, self)
         mainView.resultsTable.backgroundView = emptyBackgroundView
     }
+    func sendEmail(){
+        print("Sending email on Home view")
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail(){
+            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate =  self
+        mailComposerVC.setToRecipients(["lalaphoon@gmail.com", "will@wtctax.ca"])
+        mailComposerVC.setSubject(self.messageTitle)
+        mailComposerVC.setMessageBody(self.messageBody, isHTML: false)
+        return mailComposerVC
+    }
+    func showSendMailErrorAlert(){
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle:  UIAlertControllerStyle.Alert)
+    }
+    func sendAlert(alertTitle : String, alertMessage : String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        switch result.rawValue {
+        case MFMailComposeResultCancelled.rawValue:
+            print("Cancelled mail")
+            sendAlert("Sending Cancelled", alertMessage: "You have cancelled sending your email!")
+        case MFMailComposeResultSent.rawValue:
+            print("Mail Sent")
+            sendAlert("Mail Sent", alertMessage: "Your email has been sent to us!\n Thank you very much!")
+        case MFMailComposeResultSaved.rawValue:
+            print("You saved a draft of this email")
+            break;
+        default:
+            break
+        }
+        
+    }
+
+    
+    
+    
+    
+    
+    
     override func updateViewConstraints() {
         if !didSetupConstraints {
             mainView.autoPinToTopLayoutGuideOfViewController(self, withInset: 0)
@@ -349,7 +404,7 @@ class HomeViewController: UIViewController, MainViewDelegate {
     self.view.whiten(40)
    // self.addLabel("Never be blinded sided by personal tax again")
     //self.addImage("logo.png",self.view.bounds.width/2-42, 230, 84,20.5)
-    self.addImage("logo.png",self.view.bounds.width/2-153, self.view.bounds.height/2-38, 84, 20.5)
+    self.addImage("logo.png",self.view.bounds.width/2-153, self.view.bounds.height/2-40, 84, 20.5)
     }
     
     
