@@ -287,7 +287,7 @@ class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewCo
     private var mainView: MainView!
     private var didSetupConstraints = false
     
-    private let image = UIImage(named: "star-large")!.imageWithRenderingMode(.AlwaysTemplate)
+    private let image = UIImage(named: "box")!.imageWithRenderingMode(.AlwaysTemplate)
     private let topMessage = "Oops!"
     private let bottomMessage = "There are no matches for your search. Contact one of our tax specialist to answer your question!"
     //Mark: - View Lifecycle
@@ -320,7 +320,7 @@ class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewCo
     // MARK: - Layout
     func setupEmptyBackgroundView() {
         let emptyBackgroundView = EmptyBackgroundView(image: image, top: topMessage, bottom: bottomMessage)
-        emptyBackgroundView.addLinkButton("Contact Us", "sendEmail", self.view.bounds.width/2-50, self.view.bounds.height/2 + 10, 100, 20, self)
+        emptyBackgroundView.addLinkButton("Contact Us", "sendEmail", self.view.bounds.width/2-50, self.view.bounds.height/2, 100, 20, self)
         mainView.resultsTable.backgroundView = emptyBackgroundView
     }
     func sendEmail(){

@@ -21,7 +21,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lp" translatesAutoresizingMaskIntoConstraints="NO" id="WIP-4I-j2f">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Trx-aO-A2v">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="logo1" translatesAutoresizingMaskIntoConstraints="NO" id="Trx-aO-A2v">
                                 <rect key="frame" x="258" y="233" width="84" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="84" id="IA1-Ez-GL7"/>
@@ -45,7 +45,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="168" height="41"/>
+        <image name="logo1" width="168" height="41"/>
         <image name="lp" width="1300" height="1300"/>
     </resources>
 </document>
