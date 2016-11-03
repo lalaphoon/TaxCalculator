@@ -26,7 +26,7 @@ class Adoption_Tax_Credit: Formula{
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         Adoption_Expense = containerView.returnTextField("Adoption expense", 43, 274 + num, VC.view.bounds.width - (43*2))
         Adoption_Expense.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -99,7 +99,7 @@ class Pension_Tax_Credit: Formula{
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         Pension_income = containerView.returnTextField("Pension income", 43, 274 + num, VC.view.bounds.width - (43*2))
         Pension_income.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -172,7 +172,7 @@ class Interest_Paid_on_Student_Loan: Formula{
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         Interest_expense = containerView.returnTextField("Interest Expense", 43, 274 + num, VC.view.bounds.width - (43*2))
         Interest_expense.keyboardType = .DecimalPad
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {
@@ -246,7 +246,7 @@ class Tuition_Education_TextbookCredits : Formula {
         numPartTimeStudent = containerView.returnTextField("Number of months as part time students", 43, 394 + num, VC.view.bounds.width - (43*2))
         numPartTimeStudent.keyboardType = .DecimalPad
         
-        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, 567 + num, 87, 36, VC)
+        containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
     func setProfile(income: Double, province: String) {

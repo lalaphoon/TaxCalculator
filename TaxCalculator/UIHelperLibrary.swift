@@ -506,6 +506,7 @@ extension UIButton {
         contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
     }
     
+    //这个function可能会不好使，还会crash程序本身。
     func installConstraints(parentView: UIView){
         
         let floatButtonRadius = 50
