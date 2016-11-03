@@ -51,6 +51,7 @@ extension UIViewController {
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.titleLabel!.font = UIFont(name: BIGTITLE, size: 14)
         button.addTarget(self, action: buttonaction, forControlEvents: .TouchUpInside)
+       // button.installConstraints(self.view)
         self.view.addSubview(button)
     
     }
@@ -252,6 +253,7 @@ extension UIView {
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.titleLabel!.font = UIFont(name: BIGTITLE, size: 14)
         button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
+        //button.installConstraints(self)
         self.addSubview(button)
         
     }
@@ -503,5 +505,22 @@ extension UIButton {
         titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: -insetAmount)
         contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
     }
+    
+    func installConstraints(parentView: UIView){
+        
+        let floatButtonRadius = 50
+        let views = ["floatButton": self, "parentView": parentView]
+        let width = NSLayoutConstraint.constraintsWithVisualFormat("H:[floatButton(\(floatButtonRadius))]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        let height = NSLayoutConstraint.constraintsWithVisualFormat("V:[floatButton(\(floatButtonRadius))]", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        self.addConstraints(width)
+        self.addConstraints(height)
+        
+        let trailingSpacing = NSLayoutConstraint.constraintsWithVisualFormat("V:[floatButton]-50-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        let bottomSpacing = NSLayoutConstraint.constraintsWithVisualFormat("H:[floatButton]-50-|", options: NSLayoutFormatOptions.AlignAllCenterX, metrics: nil, views: views)
+        parentView.addConstraints(trailingSpacing)
+        parentView.addConstraints(bottomSpacing)
+        
+    }
+
 }
 

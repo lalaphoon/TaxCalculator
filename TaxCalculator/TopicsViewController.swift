@@ -34,11 +34,14 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
         initTableView()
         self.navigationItem.title = "Topics"
         // Do any additional setup after loading the view.
+        //self.addYellowButton("Next", "printsth")
     }
    /* override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     }*/
-    
+    func printsth(){
+        print("clicked")
+    }
     func initTableView(){
         tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
         tableView.delegate = self

@@ -31,7 +31,8 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         //self.category = INCOME
         self.Topics = TP.getTopics_IDByCategory(self.category)
         TopicsChanged = false
-        
+        //  self.addYellowButton("Next", "MoveIntoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
+        self.addYellowButton("Next", "MoveIntoNext",43, self.view.bounds.height - 100, self.view.bounds.width-86,36)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -42,9 +43,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         configureTableView()
         
         loadCellDescriptors()
-        self.addYellowButton("Next", "MoveIntoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
         
-        print(cellDescriptors)
+        //self.addYellowButton("Next", "MoveIntoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
+        //print(cellDescriptors)
     }
     
     func MoveIntoNext(){
