@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
 
     var TP =  TaxPro()
     var choice = Int()
@@ -66,6 +66,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     func retrieveContainer(){
         incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
         provinceTextField = self.view.viewWithTag(province_tag) as! UITextField
+        provinceTextField.delegate = self
     }
     func moveToNext(){
         //translate choice to option
@@ -98,6 +99,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
     }
+    
+    
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -114,6 +117,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         
         provinceTextField.text = TP.province_list[row]
         
+    }
+  
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if textField == provinceTextField {
+            provinceTextField.text = TP.province_list[0]
+        }
+        return true
     }
 
     /*
