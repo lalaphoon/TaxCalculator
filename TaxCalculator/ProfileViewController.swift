@@ -61,12 +61,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
        containerView.addImage("Title_profile.png", self.view.bounds.width/2 - 65,93 + num)
        containerView.addTextField("Your Income", income_tag, 43,274 + num, self.view.bounds.width-86)
        containerView.addTextField("Province/Territory of Residence", province_tag, 43, 334 + num, self.view.bounds.width-86)
-       containerView.addYellowButton("Calculate", "moveToNext", 43, 567 + num ,self.view.bounds.width-86,36,self)
+       containerView.addYellowButton("Calculate", "moveToNext", 43, self.view.bounds.height - 100 + num ,self.view.bounds.width-86,36,self)
     }
     func retrieveContainer(){
         incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
         provinceTextField = self.view.viewWithTag(province_tag) as! UITextField
         provinceTextField.delegate = self
+        incomeTextField.delegate = self
     }
     func moveToNext(){
         //translate choice to option
@@ -125,6 +126,43 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         }
         return true
     }
+    
+    /*
+    func keyboardWillShow(notification: NSNotification){
+        let myScreenRect : CGRect = UIScreen.mainScreen().bounds
+        let info:NSDictionary = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+
+    }*/
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        let myScreenRect : CGRect = UIScreen.mainScreen().bounds
+        
+        let keyboardHeight: CGFloat = 260
+        
+        UIView.beginAnimations("animateView", context: nil)
+        var movementDuration: NSTimeInterval = 0.35
+        var needToMove: CGFloat = 0
+        
+        var frame: CGRect = self.view.frame
+        if (textField.frame.origin.y + textField.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height > (myScreenRect.size.height - keyboardHeight) ) {
+            needToMove = (textField.frame.origin.y + textField.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height) - (myScreenRect.size.height - keyboardHeight)
+            
+        }
+        frame.origin.y = -needToMove
+        self.view.frame = frame
+        UIView.commitAnimations()
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        UIView.beginAnimations("animateView", context: nil)
+        var movementDuration: NSTimeInterval = 0.35
+        var frame: CGRect = self.view.frame
+        frame.origin.y = 0
+        self.view.frame = frame
+        UIView.commitAnimations()
+    }
+    
 
     /*
     // MARK: - Navigation
