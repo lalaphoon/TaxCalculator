@@ -35,7 +35,7 @@ class DefinitionViewController: UIViewController, UIScrollViewDelegate {
         let offset: CGFloat = -63
         containerView.addImage("Title_openedbook.png",self.view.bounds.width/2 - 65, 93 + offset)
         containerView.addHeader("General Help", self.view.bounds.width/2, 243 + offset, self.view.bounds.width-86, 100)
-        containerView.addText(formula.getDefinition(), self.view.bounds.width/2, 500 + offset, self.view.bounds.width-86,700)
+        containerView.addText(formula.getDefinition(), self.view.bounds.width/2, 410 + offset, self.view.bounds.width-86,700)
     
     }
 

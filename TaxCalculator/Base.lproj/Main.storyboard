@@ -1014,11 +1014,11 @@
             </objects>
             <point key="canvasLocation" x="24" y="2613"/>
         </scene>
-        <!--Categories-->
+        <!--Topics-->
         <scene sceneID="ZtH-uw-d7g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S78-Os-m33" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Categories" image="Tab_Category" selectedImage="Tab_Category_selected" id="hKI-XU-Uqy"/>
+                    <tabBarItem key="tabBarItem" title="Topics" image="Tab_Category" selectedImage="Tab_Category_selected" id="hKI-XU-Uqy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pcG-m9-1cy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

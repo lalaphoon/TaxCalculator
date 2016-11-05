@@ -22,7 +22,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private let bottomMessage = "You havn't saved any records yet~"
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "History"
+        self.navigationItem.title = "Favourite"
         savedTableView.delegate = self
         savedTableView.dataSource = self
         let cellCollNib = UINib(nibName: "ResultCell", bundle: NSBundle.mainBundle())
