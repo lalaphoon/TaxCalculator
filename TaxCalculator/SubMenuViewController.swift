@@ -55,7 +55,13 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
             if m["cellIdentifier"] as! String == "idCellNormal" {
                 print(m["primaryTitle"] as! String)
-                self.topic = self.Topics[m["primaryTitle"] as! String]!
+                if (((m["primaryTitle"] as! String).isEqual(""))) {
+                   self.addLabel("Please give input for topic")
+                   return
+                }else {
+                   print(m["primaryTitle"])
+                   self.topic = self.Topics[m["primaryTitle"] as! String]!
+                }
             }
         }
         if cellDescriptors.count > 1 {
@@ -63,15 +69,20 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             for item in array {
                 var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
                 if m["cellIdentifier"] as! String == "idCellNormal" {
-                    //print(m["primaryTitle"] as! String)
-                    self.option = TP.lookForMenuID(self.category, self.topic, m["primaryTitle"] as! String)
+                    if (((m["primaryTitle"] as! String).isEqual(""))) {
+                    self.addLabel("Please give input for subtopic")
+                    return
+                    } else {
+                        //self.addLabel("Please give input for subtopic")
+                        self.option = TP.lookForMenuID(self.category, self.topic, m["primaryTitle"] as! String)
+                   
+                    }
                 }
             }
 
         }
+            performSegueWithIdentifier("MoveIntoInputs", sender: self)
         
-        
-        performSegueWithIdentifier("MoveIntoInputs", sender: self)
 
     }
     
@@ -106,7 +117,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func addTopicGroupCell(what: [String]) -> NSMutableArray{
         var guy = NSMutableArray()
-        addNormalCell("Topics", what.count, guy)
+        addNormalCell("Topic", what.count, guy)
         for i in what{
             addValueCell(i, guy)
         }
@@ -127,7 +138,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         var topic_id = self.Topics[topic_name]
         // myNewNSMutableArray.removeAllObjects()
         var list = TP.lookForOptions(self.category, topic_id!)
-            addNormalCell("Options", list.count,guy)
+            addNormalCell("Subtopic", list.count,guy)
             for i in list {
                 addValueCell(i, guy)
             }
@@ -196,10 +207,10 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Please select a topic"
+            return "Please select a Topic"
             
         case 1:
-            return "Please choose an Option"
+            return "Please choose an Subtopic"
             
         default:
             return "Work Experience"
