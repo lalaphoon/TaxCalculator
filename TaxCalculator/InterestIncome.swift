@@ -62,18 +62,18 @@ class InterestIncome: Formula{
         var interest = Double(self.interest.text!)
         var total = income! + interest!
         var output2 = [Double]()
-        var output1 = ["Income", "Interest income"]
+        var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.interest.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
-        var output3 = [["Income","","", "\(profileIncome)"],
-            ["Province","","",profileProvince],
-            ["Contribution","","",self.interest.text!],
-            ["Federal","","","\(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))"],
-            ["Province","","","\(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[profileProvince!]!))"],
+        var output3 = [[" Net Income","","", TP.get2Digits(profileIncome)],
+            ["Province/Territory","","",profileProvince],
+            ["Interest","","",self.interest.text!],
+            ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],
+            ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[profileProvince!]!))],
             ["Surtax","%","Threshold",""],
-            ["","20%","73145","\(surtax[0])"],
-            ["","36%","86176", "\(surtax[1])"],
-            ["Result","","",String(self.getResult())]]
+            ["","20%","73145",TP.get2Digits(surtax[0])],
+            ["","36%","86176", TP.get2Digits(surtax[1])],
+            ["Tax Payable","","",TP.get2Digits(self.getResult())]]
         return (output1 , output2, output3)
 
     }

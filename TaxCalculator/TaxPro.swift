@@ -184,7 +184,9 @@ class TaxPro {
     }
     
     //=====================helper end=======================================
-    
+    func get2Digits(input : Double) ->String {
+        return String(format:"%.2f",input)
+    }
     //=====================Testing code======================================
     
     func RRSP_calculation(income: Double, _ contribution : Double) -> Double{

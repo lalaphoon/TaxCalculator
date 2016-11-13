@@ -1052,11 +1052,11 @@
             </objects>
             <point key="canvasLocation" x="4231" y="-1332"/>
         </scene>
-        <!--Favourite-->
+        <!--Saved-->
         <scene sceneID="Hau-cr-TZN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v3Q-dl-Pib" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favourite" image="Tab_star" selectedImage="Tab_star_selected" id="wLP-UG-iSG"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="Tab_star" selectedImage="Tab_star_selected" id="wLP-UG-iSG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ajz-tk-77O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

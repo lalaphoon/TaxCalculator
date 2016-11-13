@@ -61,6 +61,7 @@ class Calculator{
     func getDefinition() -> String {
         return self.strategy.getDefinition()
     }
+   
     //================================
     
 }
