@@ -22,14 +22,14 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
     var formula : Calculator!
     override func viewDidLoad(){
         super.viewDidLoad()
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        /*self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
         self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
         
         self.containerView =  UIView()
         self.scrollView.userInteractionEnabled = true
-        self.containerView.userInteractionEnabled = true
-        self.scrollView.addSubview(containerView)
+        self.containerView.userInteractionEnabled = true*/
+       // self.scrollView.addSubview(containerView)
         //self.view.addSubview(scrollView)
        // initProcessUI()
         /*
@@ -49,12 +49,14 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         
         initPieChart(xValues,values: yValues)
         initTable(tableData)
+        pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
+
         
     }
-    override func viewWillAppear(animated: Bool) {
+    /*override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
-    }
+        //pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
+    }*/
     func initPieChart(dataPoints:[String],values: [Double]){
         
        //var chartView = PieChartView(frame: view.frame)
@@ -66,7 +68,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
             let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Labels for attributes")
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
         let pieChartData = PieChartData(xVals:dataPoints, dataSet: pieChartDataSet)
         
         pieChartDataSet.sliceSpace = 2.0
@@ -102,15 +104,15 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         
        
     }
-    func initProcessUI(){
+    /*func initProcessUI(){
         containerView.addText(formula.displayProcess(),self.view.bounds.width/2, 200, self.view.bounds.width-86, self.view.bounds.height)
-    }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillLayoutSubviews(){
+    /*override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
         self.scrollView.frame = self.view.bounds
         //self.scrollView.contentSize.height = 3000
@@ -120,7 +122,7 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
-    }
+    }*/
 
     
 }

@@ -66,19 +66,19 @@ class RRSP: Formula{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
         var vary = income! - contribution!
-        var output1 = ["Income", "Contribution"]
+        var output1 = ["Net Income", "Contribution"]
         output2 = [Double(profileIncome), Double(self.contribution.text!)!]
         var surtax = TP.getSurtax(vary,income, profileProvince)
         var interestthreshold = ["73145","86176"]
-        var output3 = [["Income","","", "\(profileIncome)"],
-                       ["Province","","",profileProvince],
-                       ["Contribution","","",self.contribution.text!],
-                       ["Federal","","","\(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))"],
-                       ["Province","","","\(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[profileProvince!]!))"],
+        var output3 = [["Net Income","","", "\(profileIncome)"],
+                       ["Province/Territory","","",profileProvince],
+                       ["RRSP Contribution","","",self.contribution.text!],
+                       ["Federal Tax","","","\(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))"],
+                       ["Province/Territorial Tax","","","\(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[profileProvince!]!))"],
                        ["Surtax","%","Threshold",""],
                        ["","20%","\(interestthreshold[0])","\(surtax[0])"],
                        ["","36%","\(interestthreshold[1])", "\(surtax[1])"],
-                       ["Result","","",String(self.getResult())]]
+                       ["Taxes Payable","","",String(self.getResult())]]
        // return(output1, another,[["Tested","","","\(12.3)"]])
         return (output1 , output2  , output3)
     }

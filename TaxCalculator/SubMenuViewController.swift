@@ -57,20 +57,20 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     func MoveIntoNext(){
-        print(cellDescriptors)
+        //print(cellDescriptors)
         var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
         for item in array {
             var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
             if m["cellIdentifier"] as! String == "idCellNormal" {
-                print(m["primaryTitle"] as! String)
+               // print(m["primaryTitle"] as! String)
                 if (((m["primaryTitle"] as! String).isEqual(""))) {
                   
                    //self.tblExpandable.addWarningButton("Please give input for topic", "hideButton:", self.tblExpandable.bounds.width/2, self.tblExpandable.bounds.height/2-200, 300, 56,self, 1)
                   
-                    showUpAlert("Please give input for topic")
+                    showUpAlert("Please give input for Topic")
                    return
                 }else {
-                   print(m["primaryTitle"])
+                  // print(m["primaryTitle"])
                    self.topic = self.Topics[m["primaryTitle"] as! String]!
                 }
             }
@@ -82,7 +82,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if m["cellIdentifier"] as! String == "idCellNormal" {
                     if (((m["primaryTitle"] as! String).isEqual(""))) {
                     
-                    showUpAlert("Please give input for subtopic")
+                    showUpAlert("Please give input for Subtopic")
                     return
                     } else {
                         
