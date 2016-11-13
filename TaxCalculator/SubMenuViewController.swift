@@ -47,7 +47,15 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         //self.addYellowButton("Next", "MoveIntoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
         //print(cellDescriptors)
     }
-    
+    func showUpAlert(message: String){
+        let alertController = UIAlertController(title: "Missing!",
+            message: message, preferredStyle: .Alert )
+        //let okAction = UIAlertAction(title:"OK", style:., handler:nil)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil)
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
     func MoveIntoNext(){
         print(cellDescriptors)
         var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
@@ -56,7 +64,10 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             if m["cellIdentifier"] as! String == "idCellNormal" {
                 print(m["primaryTitle"] as! String)
                 if (((m["primaryTitle"] as! String).isEqual(""))) {
-                   self.addLabel("Please give input for topic")
+                  
+                   //self.tblExpandable.addWarningButton("Please give input for topic", "hideButton:", self.tblExpandable.bounds.width/2, self.tblExpandable.bounds.height/2-200, 300, 56,self, 1)
+                  
+                    showUpAlert("Please give input for topic")
                    return
                 }else {
                    print(m["primaryTitle"])
@@ -70,10 +81,11 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
                 if m["cellIdentifier"] as! String == "idCellNormal" {
                     if (((m["primaryTitle"] as! String).isEqual(""))) {
-                    self.addLabel("Please give input for subtopic")
+                    
+                    showUpAlert("Please give input for subtopic")
                     return
                     } else {
-                        //self.addLabel("Please give input for subtopic")
+                        
                         self.option = TP.lookForMenuID(self.category, self.topic, m["primaryTitle"] as! String)
                    
                     }

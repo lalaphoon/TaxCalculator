@@ -145,6 +145,7 @@ extension UIViewController {
 
 extension UIView {
     // Add a single label
+   // func addWarningLabel()
     func addGreenLabel(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
         //290, 49
         var h = location_y
@@ -385,6 +386,15 @@ extension UIView {
         //on your viewcontroller page, you should have
         //func buttonaction(sender:UIButton!)
         //{}
+    }
+    func addWarningButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat, _ location_y: CGFloat, _ size_width: CGFloat, _ size_height: CGFloat,_ target : UIViewController!, _ id: Int) -> UIButton{
+    let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
+    button.setTitle(title, forState: .Normal)
+    button.setTitleColor(UIColor.chartRedColor(), forState: .Normal)
+    button.addTarget(target, action: buttonaction, forControlEvents: .TouchUpInside)
+    button.tag = id
+    self.addSubview(button)
+    return button
     }
     
     
