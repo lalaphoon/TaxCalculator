@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
        
         self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 550)
+        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , self.view.bounds.height)
         
         self.containerView =  UIView()
         

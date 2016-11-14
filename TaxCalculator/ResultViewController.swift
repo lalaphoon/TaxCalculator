@@ -46,7 +46,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         containerView.addText(str,self.view.bounds.width/2, 274 + offset, self.view.bounds.width-86, 100)
         
         //3.setting up the result for the green box
-        var re = "$ " + String(formula.getResult())
+        var re = "$ " + TP.get2Digits(formula.getResult())
        // containerView.addGreenLabel(re, self.view.bounds.width/2, 345, self.view.bounds.width-86, 49)
         containerView.addLabelGreenButton(re, "viewProcess", 43, 325 + offset, self.view.bounds.width-86, 49, self)
         

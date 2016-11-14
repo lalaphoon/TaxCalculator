@@ -36,7 +36,7 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLoad()
         self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize =  CGSizeMake(self.view.bounds.width, 550)
+        self.scrollView.contentSize =  CGSizeMake(self.view.bounds.width, self.view.bounds.height)
        // self.containerView = UIView()
         checkCalculation()
         self.containerView = c.initUI(self)
@@ -49,6 +49,7 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     }
     func moveToNext(){
        // c.retrieveData()
+     //   print("tabbed")
         performSegueWithIdentifier("MoveIntoProfile", sender: self)
     }
     override func viewWillLayoutSubviews() {
