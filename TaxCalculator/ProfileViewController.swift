@@ -74,24 +74,22 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         //send option to next view
         
         if (checkProfileInfo()){
-        provinceTextField.text = "Ontario"
-        formula.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
-        performSegueWithIdentifier("MoveIntoResult", sender: self)
+            provinceTextField.text = "Ontario"
+            formula.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
+            performSegueWithIdentifier("MoveIntoResult", sender: self)
         }
         
     }
     func checkProfileInfo() -> Bool{
         if (incomeTextField.text == ""){
             incomeTextField.backgroundColor = UIColor.customWarningColor()
-           
+            incomeTextField.placeholder = "Please enter total income"
         } else {
             incomeTextField.backgroundColor = .clearColor()
-
         }
-        
         if (provinceTextField.text == ""){
             provinceTextField.backgroundColor = UIColor.customWarningColor()
-            
+            provinceTextField.placeholder = "Please select province/territory"
         } else {
             provinceTextField.backgroundColor = .clearColor()
         }
@@ -99,7 +97,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
             return false
         }
         else {
-        return true
+            return true
         }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

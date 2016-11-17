@@ -185,7 +185,7 @@ class TaxPro {
     
     //=====================helper end=======================================
     func get2Digits(input : Double) ->String {
-        return String(format:"%.2f",input)
+        return String(format:"%.0f",input)
     }
     //=====================Testing code======================================
     
