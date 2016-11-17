@@ -54,7 +54,7 @@ class InterestIncome: Formula{
         return TP.foundation(income!, total, profileProvince!).result
     }
     func getInstruction() -> String{
-        return "Dividend Income of $" + String(interest.text!) + " results in additional taxed payable for the current year of"
+        return "Dividend Income of $" + String(interest.text!) + " results in current year additional taxes payable of"
     }
     
     func retrieveData() -> ([String],[Double],[[String]]){
