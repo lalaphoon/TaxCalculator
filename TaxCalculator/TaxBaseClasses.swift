@@ -29,6 +29,7 @@ protocol Formula {
     func displayProcess() -> String
     //factory
     //static func make(string: String) -> Formula
+    func checkBasicInput() -> Bool
 }
 
 class Calculator{
@@ -60,6 +61,9 @@ class Calculator{
     }
     func getDefinition() -> String {
         return self.strategy.getDefinition()
+    }
+    func checkBasicInput() -> Bool {
+        return self.strategy.checkBasicInput()
     }
    
     //================================

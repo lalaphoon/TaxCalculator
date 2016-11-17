@@ -12,6 +12,9 @@ extension UIColor {
     class func customGreenColor() ->UIColor{
         return UIColor(red: 80/255.0, green: 227/255.0, blue: 194/255.0, alpha: 1.0)
     }
+    class func customWarningColor() -> UIColor{
+        return UIColor(red: 252/255.0, green: 209/255.0, blue: 194/255.0, alpha: 1.0)
+    }
     class func chartYellowColor() ->UIColor{
         return UIColor(red: 254/255.0, green: 205/255.0, blue: 3/255.0, alpha:1.0)
     }

@@ -77,6 +77,9 @@ class Adoption_Tax_Credit: Formula{
         process = process + "Result :  \(getResult())"
         return process
     }
+    func checkBasicInput() -> Bool {
+        return true
+    }
     
 }
 
@@ -150,6 +153,9 @@ class Pension_Tax_Credit: Formula{
         process = process + "Result :  \(getResult())"
         return process
     }
+    func checkBasicInput() -> Bool {
+        return true
+    }
     
 }
 
@@ -216,6 +222,9 @@ class Interest_Paid_on_Student_Loan: Formula{
         process = process + "\(profileProvince)   \(TP.TaxCredit[profileProvince])    \(TP.TaxCredit[profileProvince]! * input!)\n"
         process = process + "Result :  \(getResult())"
         return process
+    }
+    func checkBasicInput() -> Bool {
+        return true
     }
     
 }
@@ -320,6 +329,9 @@ class Tuition_Education_TextbookCredits : Formula {
         process = process + "\(profileProvince)   \(TP.TaxCredit[profileProvince])    \(TP.TaxCredit[profileProvince]! * input!)\n"
         process = process + "Result :  \(getResult())"
         return process
+    }
+    func checkBasicInput() -> Bool {
+        return true
     }
 
 }

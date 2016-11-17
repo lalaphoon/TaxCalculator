@@ -50,7 +50,9 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     func moveToNext(){
        // c.retrieveData()
      //   print("tabbed")
-        performSegueWithIdentifier("MoveIntoProfile", sender: self)
+        if( c.checkBasicInput()){
+          performSegueWithIdentifier("MoveIntoProfile", sender: self)
+        } 
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()

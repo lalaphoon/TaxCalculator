@@ -102,4 +102,16 @@ class InterestIncome: Formula{
         
         
     }
+    func checkBasicInput() -> Bool {
+        //return true
+        if interest.text == "" {
+            interest.backgroundColor = UIColor.customWarningColor()
+            interest.placeholder="Missing an input for interest"
+            return false
+        } else {
+            interest.backgroundColor = .clearColor()
+            interest.placeholder=""
+            return true
+        }
+    }
 }

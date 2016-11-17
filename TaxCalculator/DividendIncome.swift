@@ -107,4 +107,16 @@ class RRSP: Formula{
       
     
     }
+    func checkBasicInput() -> Bool {
+        //return true
+        if contribution.text == "" {
+            contribution.backgroundColor = UIColor.customWarningColor()
+            contribution.placeholder = "Missing an input for contribution"
+            return false
+        } else {
+            contribution.backgroundColor = .clearColor()
+            contribution.placeholder = ""
+            return true
+        }
+    }
 }
