@@ -198,7 +198,7 @@ extension UIView {
 
     }
     //This is used to add a paragraph
-    func addText(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49){
+    func addText(what: String, _ location_x : CGFloat = 0, _ location_y: CGFloat = 0, _ width : CGFloat = 0 , _ height : CGFloat = 49, _ textAlignment : NSTextAlignment = .Center){
         //290, 49
         var h = location_y
         var w = location_x
@@ -214,7 +214,7 @@ extension UIView {
         }
         var label = UILabel(frame: CGRectMake(0, 0,wd  , height))
         label.center = CGPointMake(w, h)
-        label.textAlignment = NSTextAlignment.Center
+        label.textAlignment = textAlignment
         //label.textAlignment = NSTextAlignment.Left
         label.text = what
         label.font = UIFont(name: SMALLTITLE, size: 18)
