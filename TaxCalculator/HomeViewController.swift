@@ -18,7 +18,7 @@ protocol MainViewDelegate: class {
 
 class MainView: UIView{
 
- private var searchBar: UISearchBar!
+  var searchBar: UISearchBar!
    // searchBar.delegate = self
     
     private var searchButton: UIButton!
@@ -409,6 +409,8 @@ class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewCo
     
     
     func gotoNextView(){
+     mainView.searchBarCancelButtonClicked(mainView.searchBar)
+     mainView.dismissKeyboard()
      performSegueWithIdentifier("MoveIntoCalculation", sender: self)
     }
     
