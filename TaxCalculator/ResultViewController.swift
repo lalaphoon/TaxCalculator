@@ -15,7 +15,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     var scrollView : UIScrollView!
     var containerView: UIView!
     
-    var formula = Calculator(algorithm: RRSP.sharedInstance)
+    var formula : Calculator!
 
     override func viewDidLoad() {
         super.viewDidLoad()

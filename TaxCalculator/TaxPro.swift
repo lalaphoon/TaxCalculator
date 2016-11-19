@@ -98,7 +98,7 @@ class TaxPro {
     // total : higher
     func calculateTheDifference(lower: Double, _ higher : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
         
-        if higher < lower {
+        if higher < lower || lower < 0 {
             return 0
         }
         

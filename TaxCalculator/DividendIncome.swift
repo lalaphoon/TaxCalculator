@@ -54,8 +54,10 @@ class RRSP: Formula{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
         var vary = income! - contribution!
-      
+       // if vary < 0 {
+        //    vary = -vary }
         return TP.foundation(vary, income!, profileProvince!).result
+  
     }
     func getInstruction() -> String{
         return "Dividend income of $" + String(contribution.text!) + " results in current year additional taxes payable of"
