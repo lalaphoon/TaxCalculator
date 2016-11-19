@@ -36,7 +36,7 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
        containerView.addHeader("Tax Tip", self.view.bounds.width/2, 243 + offset, self.view.bounds.width-86,100)
        containerView.addText(formula.getTip(),self.view.bounds.width/2, 410 + offset, self.view.bounds.width-86, 300, NSTextAlignment.Left)
       
-       self.view.addYellowButton("General Definition", "goHelp", 43, self.view.bounds.height - 50 + offset, self.view.bounds.width - (43*2), 36, self)
+       self.view.addYellowButton("General Definition", "goHelp", 43, self.view.bounds.height - 30 + offset, self.view.bounds.width - (43*2), 36, self)
     }
     func goHelp(){
         performSegueWithIdentifier("goHelp", sender: self)
