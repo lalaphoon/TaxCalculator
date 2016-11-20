@@ -46,7 +46,7 @@ extension UIViewController {
     func addYellowButton(title: String, _ buttonaction:Selector, _ location_x: CGFloat = 100, _ location_y: CGFloat = 100, _ size_width: CGFloat = 100, _ size_height: CGFloat = 50){
         let button = UIButton(frame: CGRect(x: location_x, y: location_y, width: size_width, height: size_height))
         //button.backgroundColor = UIColor.customOrangeColor()
-        button.backgroundColor =  UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 0.62)
+        button.backgroundColor =  UIColor(red: 254/255, green: 211/255, blue: 141/255, alpha: 1)
         button.setTitle(title, forState: .Normal)
         button.setTitleColor(UIColor.blackColor(), forState: .Normal)
         button.titleLabel!.font = UIFont(name: BIGTITLE, size: 14)
