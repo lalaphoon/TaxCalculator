@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     var provinceTextField = UITextField()
     var incomeTextField = UITextField()
     
+    let toolBar = UIToolbar()
+    
    // var option = String() // given from inputviewController
    // var input = Double() // given from inputviewcontroller
     
@@ -43,18 +45,37 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         self.view.addSubview(scrollView)
         
         initContainerUI()
-        
+        provincePickerView.backgroundColor = .whiteColor()
+        provincePickerView.showsSelectionIndicator = true
         
         provincePickerView.delegate = self
+        provincePickerView.dataSource = self
         retrieveContainer()
         incomeTextField.keyboardType = .DecimalPad
         provinceTextField.inputView = provincePickerView
+        provinceTextField.inputAccessoryView = toolBar
         
-        
+        initToolBar()
         
         self.hideKeyboardWhenTappedAround()
        
         // Do any additional setup after loading the view.
+    }
+    
+    func initToolBar() {
+        toolBar.barStyle = UIBarStyle.Default
+        toolBar.translucent = true
+        toolBar.tintColor = UIColor.customOrangeColor()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "donePicker")
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "donePicker")
+        
+        toolBar.setItems([spaceButton,doneButton], animated: false)
+        toolBar.userInteractionEnabled = true
+    }
+    func donePicker(){
+        view.endEditing(true)
     }
     func initContainerUI(){
     let num:CGFloat = -63
@@ -161,7 +182,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     func textFieldDidBeginEditing(textField: UITextField) {
         let myScreenRect : CGRect = UIScreen.mainScreen().bounds
         
-        let keyboardHeight: CGFloat = 260
+        let keyboardHeight: CGFloat = 260 + 45
         
         UIView.beginAnimations("animateView", context: nil)
         var movementDuration: NSTimeInterval = 0.35
