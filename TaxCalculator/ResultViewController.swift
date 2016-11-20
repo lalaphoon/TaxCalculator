@@ -59,12 +59,14 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "save")
         //5.Setting up the the start new calculat buttion
-        containerView.addYellowButton("Start a new search", "StartNewCalculation", 100, 540 + offset, self.view.bounds.width - 200, 50, self)
+        containerView.addYellowButton("Start a new search", "StartNewCalculation", 90, 540 + offset, self.view.bounds.width - 180, 50, self)
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func save(){
         //navigationItem.rightBarButtonItem?.title = "saved"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
