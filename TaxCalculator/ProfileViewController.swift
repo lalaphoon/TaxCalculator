@@ -181,9 +181,10 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     
     func textFieldDidBeginEditing(textField: UITextField) {
         let myScreenRect : CGRect = UIScreen.mainScreen().bounds
-        
-        let keyboardHeight: CGFloat = 260 + 45
-        
+        var keyboardHeight: CGFloat = 260
+        if textField == provinceTextField {
+        keyboardHeight += 45
+        }
         UIView.beginAnimations("animateView", context: nil)
         var movementDuration: NSTimeInterval = 0.35
         var needToMove: CGFloat = 0
