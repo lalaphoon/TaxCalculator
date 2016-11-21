@@ -12,8 +12,8 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
 
     let s = NSSelectorFromString("moveIntoNext:")
     var tableView: UITableView =  UITableView()
-    let menu: [String] = Array(TaxMenu.keys)
-    
+   // let menu: [String] = Array(TaxMenu.sort{ $0.1 < $1.1 }.keys)
+    let menu : [String] = ["Income", "Deduction", "Tax Credit"]
    // @IBOutlet weak var menuButton: UIBarButtonItem!
     
     
@@ -33,6 +33,7 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
         //initForUI()
         initTableView()
         self.navigationItem.title = "Topics"
+       
         // Do any additional setup after loading the view.
         //self.addYellowButton("Next", "printsth")
     }
