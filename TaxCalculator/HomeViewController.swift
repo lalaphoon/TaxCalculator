@@ -44,6 +44,7 @@ class MainView: UIView{
     private var searchButtonWidthConstraint: NSLayoutConstraint?
     private var searchButtonEdgeConstraint: NSLayoutConstraint?
     
+    var copyTaxMenuBook : [Menu] = taxMenuBook
     var filteredMenus = [Menu]()
     var formula : Menu!
     // var HomeView: HomeViewController!
@@ -64,6 +65,8 @@ class MainView: UIView{
         setupSearchBar()
         setupSearchButton()
         setupResultsTable()
+        filterList()
+        
     }
     func hideKeyboard(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -72,7 +75,10 @@ class MainView: UIView{
     func dismissKeyboard(){
        searchBar.endEditing(true)
     }
+    func filterList(){
+        copyTaxMenuBook.sortInPlace({$0.name < $1.name})
     
+    }
     func setupSearchBar() {
         searchBar = UISearchBar.newAutoLayoutView()
         searchBar.showsCancelButton = true
@@ -189,7 +195,7 @@ class MainView: UIView{
     }
     func filterContentForSearchText(searchText: String, scope: Int = 0){
        print("scope is\(scope)")
-        filteredMenus = taxMenuBook.filter({(menu: Menu) -> Bool in
+        filteredMenus = copyTaxMenuBook.filter({(menu: Menu) -> Bool in
             let menuMatch = (scope == 0) || (menu.category == scope)
             
             return menuMatch && menu.name.lowercaseString.containsString(searchText.lowercaseString)
@@ -248,7 +254,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
             
             return filteredMenus.count
         }
-        return taxMenuBook.count
+        return copyTaxMenuBook.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
@@ -256,7 +262,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
         if searchBar.text != "" && searchActive {
             menu = filteredMenus[indexPath.row]
         } else {
-            menu = taxMenuBook[indexPath.row]
+            menu = copyTaxMenuBook[indexPath.row]
         }
         cell.textLabel?.text = menu.name
         cell.textLabel?.font = UIFont(name: BIGTITLE, size: 16)
@@ -268,7 +274,7 @@ extension MainView: UITableViewDataSource, UITableViewDelegate{
         if searchBar.text != "" && searchActive {
             menu = filteredMenus[indexPath.row]
         } else {
-            menu = taxMenuBook[indexPath.row]
+            menu = copyTaxMenuBook[indexPath.row]
         }
         self.formula = menu
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
