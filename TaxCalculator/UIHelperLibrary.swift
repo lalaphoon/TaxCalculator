@@ -136,7 +136,7 @@ extension UIViewController {
         textView.tag = textTag
         textView.textColor = UIColor.lightGrayColor()
         
-        textView.setBottomBorder(UIColor.customOrangeColor())
+        //textView.setBottomBorder(UIColor.customOrangeColor())
         
         self.view.addSubview(textView)
     }
@@ -235,14 +235,14 @@ extension UIView {
         self.addSubview(imageView)
         
     }
-    func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat, _ width_w : CGFloat = 300){
+    func addTextView(placeholder: String, _ textTag : Int, _ location_x : CGFloat, _ location_y: CGFloat, _ width_w : CGFloat = 300, _ height_w : CGFloat = 500){
         let textView = UITextView()
-        textView.frame = CGRect(x: location_x, y: location_y, width: width_w, height: 145)
+        textView.frame = CGRect(x: location_x, y: location_y, width: width_w, height: height_w)
         textView.text = placeholder
         textView.tag = textTag
         textView.textColor = UIColor.lightGrayColor()
-        
-        textView.setBottomBorder(UIColor.customOrangeColor())
+   
+        //textView.setBottomBorder(UIColor.customOrangeColor())
         
         self.addSubview(textView)
     }
