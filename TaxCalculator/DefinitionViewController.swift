@@ -11,14 +11,14 @@ import Foundation
 
 class DefinitionViewController: UIViewController, UIScrollViewDelegate {
 
-    var scrollView: UIScrollView!
-    var containerView: UIView!
+  //  var scrollView: UIScrollView!
+  //  var containerView: UIView!
     
     var formula : Calculator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+       /* self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
         self.scrollView.delegate = self
         self.scrollView.contentSize = CGSizeMake(self.view.bounds.width, 650)
         
@@ -27,16 +27,17 @@ class DefinitionViewController: UIViewController, UIScrollViewDelegate {
         self.containerView.userInteractionEnabled = true
         self.scrollView.addSubview(containerView)
         self.view.addSubview(scrollView)
-        
+        */
         initDefinitionUI()
         // Do any additional setup after loading the view.
     }
     func initDefinitionUI(){
-        let offset: CGFloat = -63
-        containerView.addImage("Title_openedbook.png",self.view.bounds.width/2 + offset, 93 + offset)
-        containerView.addHeader("General Help", self.view.bounds.width/2, 243 + offset, self.view.bounds.width-86, 100)
-        containerView.addText(formula.getDefinition(), self.view.bounds.width/2, 400 + offset, self.view.bounds.width-86,300, NSTextAlignment.Left)
-        self.view.addYellowButton("Start a new search", "StartNewCalculation", 90, self.view.bounds.height - 30 + offset, self.view.bounds.width - 180, 50, self)
+        let offset: CGFloat = 0
+       self.view.addImage("Title_openedbook.png",self.view.bounds.width/2 - 65 + offset, 93 + offset)
+        self.view.addHeader("General Help", self.view.bounds.width/2, 243 + offset, self.view.bounds.width-86, 100)
+        //containerView.addText(formula.getDefinition(), self.view.bounds.width/2, 400 + offset, self.view.bounds.width-86,300, NSTextAlignment.Left)
+        self.view.addTextView(formula.getDefinition(), 1, 43, 280 + offset, self.view.bounds.width-86, self.view.bounds.height-280-30-70)
+        self.view.addYellowButton("Start a new search", "StartNewCalculation", 90, self.view.bounds.height - 30 - 70, self.view.bounds.width - 180, 40, self)
     
     }
     func StartNewCalculation() {
