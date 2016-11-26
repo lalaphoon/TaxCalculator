@@ -38,7 +38,7 @@ class Adoption_Tax_Credit: Formula{
         if input > Double(maximum) {
             input = Double( maximum)
         }
-        return TP.TaxCredit["Federal"]! * input! + TP.TaxCredit[profileProvince]! * input!
+        return TP.TaxCredit[Location.Federal]! * input! + TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!
     }
     func getInstruction() -> String {
         return "What do we need to say here?"
@@ -52,8 +52,8 @@ class Adoption_Tax_Credit: Formula{
         var output2 = [Double(Adoption_Expense.text!),getResult() ]
         var output3 = [ ["Adoption expense","","","\(Adoption_Expense.text!)"],
                         ["Province","","",profileProvince],
-                        ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * input!)"],
-                        ["\(profileProvince) tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * input!)"]]
+                        ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * input!)"],
+                        ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
         return (output1, output2 as! [Double], output3)
     }
     func getTip() -> String {
@@ -72,8 +72,8 @@ class Adoption_Tax_Credit: Formula{
         process = process + "Province:    \(profileProvince)\n"
         process = process + "Adoption expense :  \(Adoption_Expense)\n"
         process = "---------------------\n"
-        process = process + "Federal   \(TP.TaxCredit["Federal"])   \(TP.TaxCredit["Federal"]! * input!)\n"
-        process = process + "\(profileProvince)   \(TP.TaxCredit[profileProvince])    \(TP.TaxCredit[profileProvince]! * input!)\n"
+        process = process + "Federal   \(TP.TaxCredit[Location.Federal])   \(TP.TaxCredit[Location.Federal]! * input!)\n"
+        process = process + "\(profileProvince)   \(TP.TaxCredit[Location(rawValue: profileProvince)!])    \(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)\n"
         process = process + "Result :  \(getResult())"
         return process
     }
@@ -114,7 +114,7 @@ class Pension_Tax_Credit: Formula{
         if input > Double(maximum) {
             input = Double( maximum)
         }
-        return TP.TaxCredit["Federal"]! * input! + TP.TaxCredit[profileProvince]! * input!
+        return TP.TaxCredit[Location.Federal]! * input! + TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!
     }
     func getInstruction() -> String {
         return "What do we need to say here?"
@@ -128,8 +128,8 @@ class Pension_Tax_Credit: Formula{
         var output2 = [Double(Pension_income.text!),getResult() ]
         var output3 = [ ["Pension income","","","\(Pension_income.text!)"],
             ["Province","","",profileProvince],
-            ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * input!)"],
-            ["\(profileProvince) tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * input!)"]]
+            ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * input!)"],
+            ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
         return (output1, output2 as! [Double], output3)
     }
     func getTip() -> String {
@@ -148,8 +148,8 @@ class Pension_Tax_Credit: Formula{
         process = process + "Province:    \(profileProvince)\n"
         process = process + "Pension income :  \(Pension_income)\n"
         process = "---------------------\n"
-        process = process + "Federal   \(TP.TaxCredit["Federal"])   \(TP.TaxCredit["Federal"]! * input!)\n"
-        process = process + "\(profileProvince)   \(TP.TaxCredit[profileProvince])    \(TP.TaxCredit[profileProvince]! * input!)\n"
+        process = process + "Federal   \(TP.TaxCredit[Location.Federal])   \(TP.TaxCredit[Location.Federal]! * input!)\n"
+        process = process + "\(profileProvince)   \(TP.TaxCredit[Location(rawValue: profileProvince)!])    \(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)\n"
         process = process + "Result :  \(getResult())"
         return process
     }
@@ -188,7 +188,7 @@ class Interest_Paid_on_Student_Loan: Formula{
     func getResult() -> Double {
         var input = Double(self.Interest_expense.text!)
        
-        return TP.TaxCredit["Federal"]! * input! + TP.TaxCredit[profileProvince]! * input!
+        return TP.TaxCredit[Location.Federal]! * input! + TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!
     }
     func getInstruction() -> String {
         return "What do we need to say here?"
@@ -200,8 +200,8 @@ class Interest_Paid_on_Student_Loan: Formula{
         var output2 = [Double(Interest_expense.text!),getResult() ]
         var output3 = [ ["Adoption expense","","","\(Interest_expense.text!)"],
             ["Province","","",profileProvince],
-            ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * input!)"],
-            ["\(profileProvince) tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * input!)"]]
+            ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * input!)"],
+            ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
         return (output1, output2 as! [Double], output3)
     }
     func getTip() -> String {
@@ -218,8 +218,8 @@ class Interest_Paid_on_Student_Loan: Formula{
         process = process + "Province:    \(profileProvince)\n"
         process = process + "Interest Expense :  \(Interest_expense)\n"
         process = "---------------------\n"
-        process = process + "Federal   \(TP.TaxCredit["Federal"])   \(TP.TaxCredit["Federal"]! * input!)\n"
-        process = process + "\(profileProvince)   \(TP.TaxCredit[profileProvince])    \(TP.TaxCredit[profileProvince]! * input!)\n"
+        process = process + "Federal   \(TP.TaxCredit[Location.Federal])   \(TP.TaxCredit[Location.Federal]! * input!)\n"
+        process = process + "\(profileProvince)   \(TP.TaxCredit[Location(rawValue: profileProvince)!])    \(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)\n"
         process = process + "Result :  \(getResult())"
         return process
     }
@@ -272,7 +272,7 @@ class Tuition_Education_TextbookCredits : Formula {
          A = Double(65) * Double(numFullTimeStudent.text!)!
          B = Double(20) * Double(numPartTimeStudent.text!)!
         input = input! + A + B
-        return TP.TaxCredit["Federal"]! * input! + TP.TaxCredit[profileProvince]! * input!
+        return TP.TaxCredit[Location.Federal]! * input! + TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!
     }
     func getInstruction() -> String {
         return "What do we need to say here?"
@@ -294,8 +294,8 @@ class Tuition_Education_TextbookCredits : Formula {
                        ["Textbook credit","65","","\(C)"],
                        ["","20","","\(D)"],
                        ["sum","","","\(sum)"],
-                       ["Federal tax credit","\(TP.TaxCredit["Federal"])","","\(TP.TaxCredit["Federal"]! * sum)"],
-                       ["Province tax credit","\(TP.TaxCredit[profileProvince])","","\(TP.TaxCredit[profileProvince]! * sum)"],
+                       ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * sum)"],
+                       ["Province tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * sum)"],
                         ["Non-refundable tax credit","","","\(getResult())"]]
         return (output1, output2 as! [Double],output3)
     }
@@ -325,8 +325,8 @@ class Tuition_Education_TextbookCredits : Formula {
         process = process + "Textbook credit        65          \(A)\n"
         process = process + "                       20          \(B)\n"
         input = input! + A + B
-        process = process + "Federal   \(TP.TaxCredit["Federal"])   \(TP.TaxCredit["Federal"]! * input!)\n"
-        process = process + "\(profileProvince)   \(TP.TaxCredit[profileProvince])    \(TP.TaxCredit[profileProvince]! * input!)\n"
+        process = process + "Federal   \(TP.TaxCredit[Location.Federal])   \(TP.TaxCredit[Location.Federal]! * input!)\n"
+        process = process + "\(profileProvince)   \(TP.TaxCredit[Location(rawValue: profileProvince)!])    \(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)\n"
         process = process + "Result :  \(getResult())"
         return process
     }

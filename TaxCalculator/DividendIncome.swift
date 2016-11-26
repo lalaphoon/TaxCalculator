@@ -63,27 +63,17 @@ class RRSP: Formula{
     func getInstruction() -> String{
         return "Dividend income of $" + String(contribution.text!) + " results in current year additional taxes payable of"
     }
-    func BasicPersonalAmount(mode: String) -> Double{
+    func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
         var vary = income! - contribution!
-        var percentage = Double()
-        var basicPersonalAmount = Double()
-        var province = profileProvince
-        if mode == "Federal" {
-            var index : Int = TP.flag_a_group(income, TP.FederalBracketDictionary)
-            var byIndex :(Int, Double) = TP.FederalBracketDictionary[TP.FederalBracketDictionary.count - index]
-            var money :  Double = Double(byIndex.0)
-            percentage = TP.FederalBracketDictionary[Int(money)]!
-            basicPersonalAmount = 11474
-        } else {
-            var index : Int = TP.flag_a_group(income, TP.ProvincialBracketDictionary[province]!)
-            var byIndex :(Int, Double) = TP.ProvincialBracketDictionary[province]![TP.ProvincialBracketDictionary[province]!.count - index]
-            var money :  Double = Double(byIndex.0)
-            percentage = TP.ProvincialBracketDictionary[province]![Int(money)]!
-            basicPersonalAmount = 10011
-            
-        }
+      
+        var percentage : Double = TP.TaxCredit[mode]!
+    
+        var basicPersonalAmount : Double = TP.BasicPersonalAmount[mode]!
+        var province = Location(rawValue: profileProvince)
+        
+       
         //percentage should be 15% always
         if income > basicPersonalAmount {
             if vary >= basicPersonalAmount {
@@ -108,9 +98,9 @@ class RRSP: Formula{
                        ["Province/Territory","","",profileProvince],
                        ["RRSP Contribution","","",self.contribution.text!],
                        ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
-                       ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount("Federal"))],
+                       ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
                        ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[profileProvince!]!))],
-                       ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount("Province"))],
+                       ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
                        ["Surtax","%","Threshold",""],
                        ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],
                        ["","36%","\(interestthreshold[1])", TP.get2Digits(surtax[1])],

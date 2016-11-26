@@ -7,7 +7,22 @@
 //
 
 import Foundation
-
+enum Location: String {
+    case Ontario = "Ontario"
+    case British_Columbia = "British Columbia"
+    case Alberta = "Alberta"
+    case Saskatchewan = "Saskatchewan"
+    case Manitoba = "Manitoba"
+    case Yukon = "Yukon"
+    case Newfoundl_and_AndLabrador = "Newfoundland and Labrador"
+    case New_Brunswick = "New Brunswick"
+    case Nova_Scotia = "Nova Scotia"
+    case Prince_Edward_Island = "Prince Edward Island"
+    case Nunavut = "Nunavut"
+    case Northwest_Territories = "Northwest Territories"
+    case Quebec = "Quebec"
+    case Federal = "Federal"
+}
 
 class TaxPro {
     
@@ -19,11 +34,15 @@ class TaxPro {
     
     var InterestThreshold = OrderedDictionary<Int, Double>()
     
-    var TaxCredit =  [String: Double]()
+    var TaxCredit =  [Location : Double]()
+    
+    var BasicPersonalAmount = [Location : Double]()
     
     init() {
         initLists()
         initBracket()
+        initTaxCredit()
+        initBasicPersonalAmount()
     }
     
     func initLists() {
@@ -34,8 +53,8 @@ class TaxPro {
             "Single",
             "Common-Law"]
         
-        province_list = ["Ontario",
-            "British Columbia",
+        province_list = [Location.Ontario.rawValue ,
+            Location.British_Columbia.rawValue,
             "Alberta",
             "Saskatchewan",
             "Manitoba",
@@ -49,7 +68,7 @@ class TaxPro {
             "Quebec"]
     }
     func initTaxCredit(){
-        TaxCredit = ["Federal": 0.15 , "Ontario":0.0505 ]
+        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505 ]
     }
     func initBracket() {
         //================Interest/income calculation===============================
@@ -71,6 +90,9 @@ class TaxPro {
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
         InterestThreshold.insert(0.36, forKey: 86176, atIndex: 1)
         //===========================================================================
+    }
+    func initBasicPersonalAmount(){
+        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011]
     }
    
 
