@@ -111,8 +111,9 @@ class TaxPro {
         for var i = top ; i > bottom - 1; --i {
             var byIndex: (Int, Double) = group[group.count - i]
             var level : Double = Double(byIndex.0)
-           // print("level is \(level)")
+           // level is the money
             var byKey: Double = group[Int(level)]!
+           // bykey is the percentage
             if i == bottom {
                 //level = income
                 

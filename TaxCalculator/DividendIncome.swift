@@ -20,6 +20,7 @@ class RRSP: Formula{
     var profileIncome : Double!
     var profileProvince: String!
 
+   
     private init(){
         contribution.text = String(0.00)
     }
@@ -62,7 +63,38 @@ class RRSP: Formula{
     func getInstruction() -> String{
         return "Dividend income of $" + String(contribution.text!) + " results in current year additional taxes payable of"
     }
-    
+    func BasicPersonalAmount(mode: String) -> Double{
+        var income = profileIncome
+        var contribution = Double(self.contribution.text!)
+        var vary = income! - contribution!
+        var percentage = Double()
+        var basicPersonalAmount = Double()
+        var province = profileProvince
+        if mode == "Federal" {
+            var index : Int = TP.flag_a_group(income, TP.FederalBracketDictionary)
+            var byIndex :(Int, Double) = TP.FederalBracketDictionary[TP.FederalBracketDictionary.count - index]
+            var money :  Double = Double(byIndex.0)
+            percentage = TP.FederalBracketDictionary[Int(money)]!
+            basicPersonalAmount = 11474
+        } else {
+            var index : Int = TP.flag_a_group(income, TP.ProvincialBracketDictionary[province]!)
+            var byIndex :(Int, Double) = TP.ProvincialBracketDictionary[province]![TP.ProvincialBracketDictionary[province]!.count - index]
+            var money :  Double = Double(byIndex.0)
+            percentage = TP.ProvincialBracketDictionary[province]![Int(money)]!
+            basicPersonalAmount = 10011
+            
+        }
+        //percentage should be 15% always
+        if income > basicPersonalAmount {
+            if vary >= basicPersonalAmount {
+                return 0.0
+            } else {
+                return (basicPersonalAmount - vary ) * percentage
+            }
+        } else {
+            return contribution!  * percentage
+        }
+    }
     func retrieveData() -> ([String],[Double],[[String]]) {
         var output2 = [Double]() // We have to keep this for [Double?]/[Double!] -> [Double]
         var income = profileIncome
@@ -76,7 +108,9 @@ class RRSP: Formula{
                        ["Province/Territory","","",profileProvince],
                        ["RRSP Contribution","","",self.contribution.text!],
                        ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
+                       ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount("Federal"))],
                        ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[profileProvince!]!))],
+                       ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount("Province"))],
                        ["Surtax","%","Threshold",""],
                        ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],
                        ["","36%","\(interestthreshold[1])", TP.get2Digits(surtax[1])],

@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+//name
+//email(why we need email?)
+//password(Don't do it)
+//net income
+//Province Territory of resident
 
 //var CDF = CoreDataFetcher()
 class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -43,27 +48,27 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         //put layout on the user view
         self.navigationItem.title = "Profile"
-        self.addTextField("Type Your First Name", 1)
-        self.addTextField("Type Your Last Name", 2, 20, 160)
-        self.addTextField("Type your province", province_tag, 20, 220)
-        self.addTextField("Select your marital status", marital_tag, 20, 280)
-        self.addTextField("Income", income_tag, 20, 340)
+        self.addTextField("First Name", 1, 43)
+       // self.addTextField("Last Name", 2, 43, 160)
+        self.addTextField("Province", province_tag, 43, 220)
+       // self.addTextField("Select your marital status", marital_tag, 43, 280)
+        self.addTextField("Net Income", income_tag, 43, 340)
         
         self.addGreenButton("Save", "save", 20, 500, self.view.bounds.width - 50, 50)
         
         //set up picker for these two textfields
         firstnameTextField = self.view.viewWithTag(1) as! UITextField
-        lastnameTextField = self.view.viewWithTag(2) as! UITextField
+       // lastnameTextField = self.view.viewWithTag(2) as! UITextField
         provinceTextField =  self.view.viewWithTag(province_tag) as! UITextField
-        maritalTextField = self.view.viewWithTag(marital_tag) as! UITextField
+       // maritalTextField = self.view.viewWithTag(marital_tag) as! UITextField
         incomeTextField = self.view.viewWithTag(income_tag) as! UITextField
         
         //setup picker view
         province_pickerView.delegate = self
         province_pickerView.tag = province_tag
         
-        marital_pickerView.delegate = self
-        marital_pickerView.tag = marital_tag
+        //marital_pickerView.delegate = self
+        //marital_pickerView.tag = marital_tag
         
         //Set specia keyboard for income
         
@@ -80,7 +85,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         //make the inputview link to picker view
         provinceTextField.inputView = province_pickerView
-        maritalTextField.inputView = marital_pickerView
+        //maritalTextField.inputView = marital_pickerView
         
         initSettings()
         
