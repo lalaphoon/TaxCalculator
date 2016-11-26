@@ -57,7 +57,7 @@ class RRSP: Formula{
         var vary = income! - contribution!
        // if vary < 0 {
         //    vary = -vary }
-        return TP.foundation(vary, income!, profileProvince!).result
+        return TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
   
     }
     func getInstruction() -> String{
@@ -73,7 +73,6 @@ class RRSP: Formula{
         var basicPersonalAmount : Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
         
-       
         //percentage should be 15% always
         if income > basicPersonalAmount {
             if vary >= basicPersonalAmount {

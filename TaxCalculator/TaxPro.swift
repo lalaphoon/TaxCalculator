@@ -55,17 +55,17 @@ class TaxPro {
         
         province_list = [Location.Ontario.rawValue ,
             Location.British_Columbia.rawValue,
-            "Alberta",
-            "Saskatchewan",
-            "Manitoba",
-            "Yukon",
-            "Newfoundland and Labrador",
-            "New Brunswick",
-            "Nova Scotia",
-            "Prince Edward Island",
-            "Nunavut",
-            "Northwest Territories",
-            "Quebec"]
+            Location.Alberta.rawValue ,
+            Location.Saskatchewan.rawValue,
+            Location.Manitoba.rawValue,
+            Location.Yukon.rawValue,
+            Location.Newfoundl_and_AndLabrador.rawValue,
+            Location.New_Brunswick.rawValue,
+            Location.Nova_Scotia.rawValue,
+            Location.Prince_Edward_Island.rawValue,
+            Location.Nunavut.rawValue,
+            Location.Northwest_Territories.rawValue,
+            Location.Quebec.rawValue]
     }
     func initTaxCredit(){
         TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505 ]
