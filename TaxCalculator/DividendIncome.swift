@@ -63,6 +63,7 @@ class RRSP: Formula{
     func getInstruction() -> String{
         return "Dividend income of $" + String(contribution.text!) + " results in current year additional taxes payable of"
     }
+    //====================================Extra Calculation==============================================
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
@@ -84,6 +85,7 @@ class RRSP: Formula{
             return contribution!  * percentage
         }
     }
+    //==================================Extra Calculation=================================================
     func retrieveData() -> ([String],[Double],[[String]]) {
         var output2 = [Double]() // We have to keep this for [Double?]/[Double!] -> [Double]
         var income = profileIncome
