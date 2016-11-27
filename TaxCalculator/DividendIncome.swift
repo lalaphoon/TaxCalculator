@@ -98,7 +98,7 @@ class RRSP: Formula{
                        ["RRSP Contribution","","",self.contribution.text!],
                        ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
                        ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
-                       ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[profileProvince!]!))],
+                       ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                        ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
                        ["Surtax","%","Threshold",""],
                        ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],

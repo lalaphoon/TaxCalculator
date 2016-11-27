@@ -30,7 +30,7 @@ class TaxPro {
     var marital_status : [String] = []
     
     var FederalBracketDictionary = OrderedDictionary<Int,Double>()
-    var ProvincialBracketDictionary =  [String :  OrderedDictionary <Int,Double>] ()
+    var ProvincialBracketDictionary =  [Location :  OrderedDictionary <Int,Double>] ()
     
     var InterestThreshold = OrderedDictionary<Int, Double>()
     
@@ -53,7 +53,8 @@ class TaxPro {
             "Single",
             "Common-Law"]
         
-        province_list = [Location.Ontario.rawValue ,
+        province_list = [
+            Location.Ontario.rawValue ,
             Location.British_Columbia.rawValue,
             Location.Alberta.rawValue ,
             Location.Saskatchewan.rawValue,
@@ -79,12 +80,12 @@ class TaxPro {
         FederalBracketDictionary.insert(0.15, forKey: 0, atIndex: 4)
         
         //Init provincial bracket
-        ProvincialBracketDictionary = ["Ontario" : OrderedDictionary()]
-        ProvincialBracketDictionary["Ontario"]?.insert(0.1316, forKey: 220000, atIndex: 0)
-        ProvincialBracketDictionary["Ontario"]?.insert(0.1216, forKey: 150000, atIndex: 1)
-        ProvincialBracketDictionary["Ontario"]?.insert(0.1116, forKey: 83075, atIndex: 2)
-        ProvincialBracketDictionary["Ontario"]?.insert(0.0915, forKey: 41536, atIndex: 3)
-        ProvincialBracketDictionary["Ontario"]?.insert(0.0505, forKey: 0, atIndex: 4)
+        ProvincialBracketDictionary = [Location.Ontario : OrderedDictionary()]
+        ProvincialBracketDictionary[Location.Ontario]?.insert(0.1316, forKey: 220000, atIndex: 0)
+        ProvincialBracketDictionary[Location.Ontario]?.insert(0.1216, forKey: 150000, atIndex: 1)
+        ProvincialBracketDictionary[Location.Ontario]?.insert(0.1116, forKey: 83075, atIndex: 2)
+        ProvincialBracketDictionary[Location.Ontario]?.insert(0.0915, forKey: 41536, atIndex: 3)
+        ProvincialBracketDictionary[Location.Ontario]?.insert(0.0505, forKey: 0, atIndex: 4)
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
@@ -159,7 +160,7 @@ class TaxPro {
         process =  "Federal:  \(StepOne)  \n"
         
         //step Two
-        let StepTwo = calculateTheDifference(lower, higher , ProvincialBracketDictionary[province]!)
+        let StepTwo = calculateTheDifference(lower, higher , ProvincialBracketDictionary[Location(rawValue: province)!]!)
         result = result + StepTwo
         process = process + "Provincial: \(StepTwo)  \n"
         
@@ -174,11 +175,11 @@ class TaxPro {
             var keyCode = byIndex.0
             var finalStep = Double()
             if lower < Double(keyCode){
-                finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[Location(rawValue: province)!]! )  * byIndex.1
 
                 result = result + finalStep
             } else {
-                finalStep = calculateTheDifference(lower, higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                finalStep = calculateTheDifference(lower, higher,ProvincialBracketDictionary[Location(rawValue: province)!]! )  * byIndex.1
                 result = result + finalStep
             }
            
@@ -195,10 +196,10 @@ class TaxPro {
             var keyCode = byIndex.0
             var finalStep = Double()
             if lower < Double(keyCode){
-                finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[Location(rawValue: province)!]! )  * byIndex.1
                 result.append(finalStep)
             } else {
-                finalStep = calculateTheDifference(lower, higher,ProvincialBracketDictionary[province]! )  * byIndex.1
+                finalStep = calculateTheDifference(lower, higher,ProvincialBracketDictionary[Location(rawValue: province)!]! )  * byIndex.1
                 result.append(finalStep)
             }
         }
@@ -220,19 +221,19 @@ class TaxPro {
         print(Float(calculateTheDifference(vary, income, FederalBracketDictionary)))
         result = result + calculateTheDifference(vary, income, FederalBracketDictionary)
         //Step 2
-        print(Float(calculateTheDifference(vary, income, ProvincialBracketDictionary["Ontario"]!)))
-        result = result + calculateTheDifference(vary,income , ProvincialBracketDictionary["Ontario"]!)
+        print(Float(calculateTheDifference(vary, income, ProvincialBracketDictionary[Location.Ontario]!)))
+        result = result + calculateTheDifference(vary,income , ProvincialBracketDictionary[Location.Ontario]!)
         var counter: Int = InterestThreshold.count
          for var i = 0 ; i < counter; ++i {
             var byIndex: (Int, Double) = InterestThreshold[i]
             var keyCode = byIndex.0
         //for keyCode in InterestThreshold.keys {
             if vary < Double(keyCode) {
-                print(calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
-                result = result + calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
+                print(calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!
             } else {
-                print(calculateTheDifference(vary, income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
-                result = result + calculateTheDifference(vary, income,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
+                print(calculateTheDifference(vary, income,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(vary, income,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!
             }
         }
         
@@ -254,8 +255,8 @@ class TaxPro {
         print(Float(calculateTheDifference(income, total_1, FederalBracketDictionary)))
         result = result + calculateTheDifference(income, total_1, FederalBracketDictionary)
         //Step 2
-        print(Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)))
-        result = result + calculateTheDifference(income, total_1, ProvincialBracketDictionary["Ontario"]!)
+        print(Float(calculateTheDifference(income, total_1, ProvincialBracketDictionary[Location.Ontario]!)))
+        result = result + calculateTheDifference(income, total_1, ProvincialBracketDictionary[Location.Ontario]!)
         
         //Step 3
        /*
@@ -282,11 +283,11 @@ class TaxPro {
             var byIndex: (Int, Double) = InterestThreshold[i]
             var keyCode = byIndex.0
             if income < Double(keyCode) {
-                print(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
-                result = result + calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
+                print(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!
             } else {
-                print(calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!)
-                result = result + calculateTheDifference(income, total_1,ProvincialBracketDictionary["Ontario"]! )  * InterestThreshold[keyCode]!
+                print(calculateTheDifference(income, total_1,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!)
+                result = result + calculateTheDifference(income, total_1,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!
             }
         }
         
