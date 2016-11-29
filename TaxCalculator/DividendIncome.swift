@@ -35,6 +35,7 @@ class RRSP: Formula{
         return containerView
         
     }
+    
     /*func initProfile(VC: UIViewController) -> UIView{
         var containerView = UIView()
         containerView.addImage("Title_profile.png", VC.view.bounds.width/2 - 65,93)
@@ -57,7 +58,8 @@ class RRSP: Formula{
         var vary = income! - contribution!
        // if vary < 0 {
         //    vary = -vary }
-        return TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        return TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!)
+        
   
     }
     func getInstruction() -> String{
@@ -85,6 +87,29 @@ class RRSP: Formula{
             return contribution!  * percentage
         }
     }
+    func getBasicReduction(netincome: Double, _ contribution: Double) -> Double{
+        return getSingleReduction(netincome) - getSingleReduction(netincome-contribution)
+    }
+    func getSingleReduction(val: Double) -> Double{
+        var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
+        var b = Double()
+        if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
+            b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+        } else {
+            b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+        }
+        b = a - b
+        if b <= 0 {
+            b = 0
+        }
+        var c = TP.BasicReduction[Location(rawValue: profileProvince)!]! - b
+        if (c < 0) {
+            c = 0
+        }
+        var result = min(c, b)
+        return result
+        
+    }
     //==================================Extra Calculation=================================================
     func retrieveData() -> ([String],[Double],[[String]]) {
         var output2 = [Double]() // We have to keep this for [Double?]/[Double!] -> [Double]
@@ -102,6 +127,7 @@ class RRSP: Formula{
                        ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
                        ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                        ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                        ["Basic Reduction", profileProvince , "" , TP.get2Digits(getBasicReduction(income, contribution!))],
                        ["Surtax","%","Threshold",""],
                        ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],
                        ["","36%","\(interestthreshold[1])", TP.get2Digits(surtax[1])],

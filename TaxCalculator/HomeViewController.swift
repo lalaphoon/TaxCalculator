@@ -301,6 +301,8 @@ class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewCo
     let messageTitle: String = "TaxPro-Topics' Questions."
     let messageBody: String = "\n\n\n System Version：\(SYSTEMVERSION )\n Device Model：\(modelName)"
     
+    var TP = TaxPro()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initBackground()
@@ -311,6 +313,8 @@ class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewCo
         setupEmptyBackgroundView()
         view.addSubview(mainView)
         
+        //print(TP.flag_a_group(0, TP.ProvincialBracketDictionary[Location.Ontario]!))
+        //print(TP.flag_a_group(12, TP.ProvincialBracketDictionary[Location.Ontario]!))
         //This is used to hide submenu
         /*if self.revealViewController() != nil {
             mainMenu.target = self.revealViewController()

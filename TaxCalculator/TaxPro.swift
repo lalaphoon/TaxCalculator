@@ -38,11 +38,14 @@ class TaxPro {
     
     var BasicPersonalAmount = [Location : Double]()
     
+    var BasicReduction = [Location: Double]()
+    
     init() {
         initLists()
         initBracket()
         initTaxCredit()
         initBasicPersonalAmount()
+        initBasicReduction()
     }
     
     func initLists() {
@@ -95,6 +98,9 @@ class TaxPro {
     func initBasicPersonalAmount(){
         BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011]
     }
+    func initBasicReduction(){
+        BasicReduction = [Location.Ontario: 456]
+    }
    
 
     func getProvinces() -> [String]{
@@ -113,7 +119,7 @@ class TaxPro {
                 return counter - i
             }
         }
-        return 0
+        return 1
         
     }
   
@@ -121,7 +127,7 @@ class TaxPro {
     // total : higher
     func calculateTheDifference(lower: Double, _ higher : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
         
-        if higher < lower || lower <= 0 {
+        if higher < lower || lower < 0 {
             return 0
         }
         

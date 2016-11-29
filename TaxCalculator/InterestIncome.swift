@@ -51,7 +51,7 @@ class InterestIncome: Formula{
         var interest = Double(self.interest.text!)
         var total = income! + interest!
         
-        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!)
     }
     func getInstruction() -> String{
         return "Dividend Income of $" + String(interest.text!) + " results in current year additional taxes payable of"
@@ -76,6 +76,39 @@ class InterestIncome: Formula{
             }
         }
     }
+    
+    func getBasicReduction(netincome: Double, _ interest: Double) -> Double{
+        return getSingleReduction(netincome) - getSingleReduction(netincome + interest)
+    }
+    func getSingleReduction(val: Double) -> Double{
+        var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
+        print("a is \(a)")
+        var b = Double()
+        if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
+            b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+        } else {
+            b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+        }
+        print("b1 is \(b)")
+        b = a - b
+        print("b2 is \(b)")
+        if b <= 0 {
+            b = 0
+        }
+        var c = TP.BasicReduction[Location(rawValue: profileProvince)!]! - b
+        if (c < 0) {
+            c = 0
+        }
+        print("c is \(c)")
+        var result = min(c, b)
+        print("result is \(result)")
+        return result
+        
+    }
+
+    
+    
+    
     //==================================Extra Calculation==============================================================
     func retrieveData() -> ([String],[Double],[[String]]){
         var income = profileIncome
@@ -92,6 +125,7 @@ class InterestIncome: Formula{
             ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
             ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
             ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+            ["Basic Reduction", profileProvince, "" , TP.get2Digits(getBasicReduction(income, interest!))],
             ["Surtax","%","Threshold",""],
             ["","20%","73145",TP.get2Digits(surtax[0])],
             ["","36%","86176", TP.get2Digits(surtax[1])],
