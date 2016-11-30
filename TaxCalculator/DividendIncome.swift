@@ -58,7 +58,7 @@ class RRSP: Formula{
         var vary = income! - contribution!
        // if vary < 0 {
         //    vary = -vary }
-        return TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!)
+        return TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
         
   
     }
@@ -110,6 +110,14 @@ class RRSP: Formula{
         return result
         
     }
+    func getHealthPremium() -> Double{
+        var income = profileIncome
+        var contribution = Double(self.contribution.text!)
+        var vary = income! - contribution!
+        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var contributionPremium = TP.calculateTheDifference(0, vary, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        return incomeHealthPremium - contributionPremium
+    }
     //==================================Extra Calculation=================================================
     func retrieveData() -> ([String],[Double],[[String]]) {
         var output2 = [Double]() // We have to keep this for [Double?]/[Double!] -> [Double]
@@ -128,6 +136,7 @@ class RRSP: Formula{
                        ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                        ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
                         ["Basic Reduction", profileProvince , "" , TP.get2Digits(getBasicReduction(income, contribution!))],
+                       ["Health Premium", profileProvince,"",TP.get2Digits(getHealthPremium())],
                        ["Surtax","%","Threshold",""],
                        ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],
                        ["","36%","\(interestthreshold[1])", TP.get2Digits(surtax[1])],

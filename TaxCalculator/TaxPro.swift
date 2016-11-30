@@ -39,6 +39,7 @@ class TaxPro {
     var BasicPersonalAmount = [Location : Double]()
     
     var BasicReduction = [Location: Double]()
+    var HealthPremium = [Location : OrderedDictionary <Int, Double>]()
     
     init() {
         initLists()
@@ -94,6 +95,21 @@ class TaxPro {
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
         InterestThreshold.insert(0.36, forKey: 86176, atIndex: 1)
         //===========================================================================
+        
+        //init HealthPremium
+        HealthPremium = [Location.Ontario : OrderedDictionary()]
+        HealthPremium[Location.Ontario]?.insert(0.0, forKey: 200600, atIndex: 0)
+        HealthPremium[Location.Ontario]?.insert(0.25, forKey: 200000, atIndex: 1)
+        HealthPremium[Location.Ontario]?.insert(0.0, forKey: 72600, atIndex: 2)
+        HealthPremium[Location.Ontario]?.insert(0.25, forKey: 72000, atIndex: 3)
+        HealthPremium[Location.Ontario]?.insert(0.0, forKey: 48600, atIndex: 4)
+        HealthPremium[Location.Ontario]?.insert(0.25, forKey: 48000, atIndex: 5)
+        HealthPremium[Location.Ontario]?.insert(0.0, forKey: 38500, atIndex: 6)
+        HealthPremium[Location.Ontario]?.insert(0.06, forKey: 36000, atIndex: 7)
+        HealthPremium[Location.Ontario]?.insert(0.0, forKey: 25000, atIndex: 8)
+        HealthPremium[Location.Ontario]?.insert(0.06, forKey: 20000, atIndex: 9)
+        HealthPremium[Location.Ontario]?.insert(0.0, forKey: 0, atIndex: 10)
+        
     }
     func initBasicPersonalAmount(){
         BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011]
