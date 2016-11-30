@@ -399,7 +399,7 @@
 				46DD946D1D3D65DA00EC6294 /* SWRevealView */,
 				467D34951D380110008D820B /* StartViewController.swift */,
 				46DD94741D3D76EF00EC6294 /* StartTabBarViewController.swift */,
-				4684CA721D5D5A48009B0598 /* Topics */,
+				4684CA721D5D5A48009B0598 /* Calculation */,
 				465C74FB1D62A3CA00F9572A /* History */,
 			);
 			name = Main;
@@ -435,7 +435,7 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
-		4684CA721D5D5A48009B0598 /* Topics */ = {
+		4684CA721D5D5A48009B0598 /* Calculation */ = {
 			isa = PBXGroup;
 			children = (
 				4684CA731D5D5D9B009B0598 /* TopicsViewController.swift */,
@@ -447,7 +447,7 @@
 				4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */,
 				46FE9DCB1D723041005A9E2D /* ProcessViewController.swift */,
 			);
-			name = Topics;
+			name = Calculation;
 			sourceTree = "<group>";
 		};
 		468E07401D6D3C5500290D70 /* Strategies */ = {
