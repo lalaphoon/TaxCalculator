@@ -51,7 +51,7 @@ class InterestIncome: Formula{
         var interest = Double(self.interest.text!)
         var total = income! + interest!
         
-        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!)
+        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getHealthPremium()
     }
     func getInstruction() -> String{
         return "Dividend Income of $" + String(interest.text!) + " results in current year additional taxes payable of"
@@ -105,7 +105,14 @@ class InterestIncome: Formula{
         return result
         
     }
-
+    func getHealthPremium() -> Double{
+        var income = profileIncome
+        var interest = Double(self.interest.text!)
+        var total = income! + interest!
+        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var totalPremium = TP.calculateTheDifference(0, total, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        return totalPremium - incomeHealthPremium
+    }
     
     
     
@@ -126,6 +133,7 @@ class InterestIncome: Formula{
             ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
             ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
             ["Basic Reduction", profileProvince, "" , TP.get2Digits(getBasicReduction(income, interest!))],
+             ["Health Premium", profileProvince,"",TP.get2Digits(getHealthPremium())],
             ["Surtax","%","Threshold",""],
             ["","20%","73145",TP.get2Digits(surtax[0])],
             ["","36%","86176", TP.get2Digits(surtax[1])],
