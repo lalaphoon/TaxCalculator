@@ -126,12 +126,12 @@ class Pension_Tax_Credit: Formula{
             input = Double( maximum)
         }
         var output1 = ["Pension income", "Tax Credit"]
-        var output2 = [Double(Pension_income.text!),getResult() ]
-        var output3 = [ ["Pension income","","","\(Pension_income.text!)"],
+        var output2 : [Double] = [ Double(Pension_income.text!)!,getResult() ]
+        var output3 = [ ["Pension income","","","\(Pension_income.text!)!"],
             ["Province","","",profileProvince],
-            ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * input!)"],
-            ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
-        return (output1, output2 as! [Double], output3)
+            ["Federal tax credit","\(TP.TaxCredit[Location.Federal]!)","","\(TP.TaxCredit[Location.Federal]! * input!)"],
+            ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!]!)","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
+        return (output1, output2, output3)
     }
     func getTip() -> String {
         return "Maximum pension income eligible for tax credit is $2,000. Pension income eligible for pension tax credit will depend on your age. For individuals 65 and over, all pension income are eligible. For individuals under 65, 'eligible pension income' includes life annuity from a pension plan and pension income received due to death of spouse or common-law partner."
