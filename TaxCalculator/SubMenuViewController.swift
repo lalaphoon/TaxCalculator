@@ -44,7 +44,6 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         loadCellDescriptors()
         
-        //self.addYellowButton("Next", "MoveIntoNext", 43, tblExpandable.bounds.height + 16, self.view.bounds.width-86, 36)
         //print(cellDescriptors)
     }
     func showUpAlert(message: String){
@@ -225,7 +224,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             return "Please choose an Subtopic"
             
         default:
-            return "Work Experience"
+            return ""
         }
     }
     
@@ -419,6 +418,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         DestinyVC.category = category
         DestinyVC.topic = topic
         DestinyVC.option = option
+        DestinyVC.menu = TP.lookForAMenu(self.category, self.topic, self.option)
     }
 
 

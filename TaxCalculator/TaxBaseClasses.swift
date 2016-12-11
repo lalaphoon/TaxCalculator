@@ -26,7 +26,7 @@ protocol Formula {
     func getTip() -> String
     func getDefinition() -> String
     func getInstruction() -> String
-    func displayProcess() -> String
+    //func displayProcess() -> String //  <----  Not gonna use this
     //factory
     //static func make(string: String) -> Formula
     func checkBasicInput() -> Bool
@@ -47,9 +47,9 @@ class Calculator{
     func getInstruction() -> String{
         return self.strategy.getInstruction()
     }
-    func displayProcess() -> String{
+   /* func displayProcess() -> String{
         return self.strategy.displayProcess()
-    }
+    }*/
     func initUI(VC: UIViewController)->UIView{
         return self.strategy.initUI(VC)
     }

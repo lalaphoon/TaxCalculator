@@ -17,12 +17,14 @@ class Menu {
     var category : Int
     var topic : Int
     var id: Int
+    var formula : Formula
     //var formula: Formula
-    init(category: Int,  topic: Int,  name: String, id : Int){
+    init(category: Int,  topic: Int,  name: String, id : Int, formula: Formula){
         self.name = name
         self.category = category
         self.topic = topic
         self.id = id
+        self.formula = formula
     }
     /*
     init(category: Int, _ topic: Int, _ name: String, _ formula){
@@ -222,179 +224,179 @@ let Credit_subMenu = ["CPP contribution through employment": 1,
                         "Spouse credit":23]
 //========================End of Tax==================================
 let taxMenuBook = [
-    Menu(category: INCOME, topic: EMPLOYMENT, name:"Employment income", id: 1),
-    Menu(category: INCOME, topic: EMPLOYMENT, name: "Employer-provided automobile and vehicle benefits", id: 2),
-    Menu(category: INCOME, topic: EMPLOYMENT, name: "Allowances", id: 3),
-    Menu(category: INCOME, topic: EMPLOYMENT, name: "Expense reimbursement", id: 4),
-    Menu(category: INCOME, topic: EMPLOYMENT, name: "Stock option", id: 5),
+    Menu(category: INCOME, topic: EMPLOYMENT, name:"Employment income", id: 1, formula: InterestIncome.sharedInstance),
+    Menu(category: INCOME, topic: EMPLOYMENT, name: "Employer-provided automobile and vehicle benefits", id: 2, formula:InterestIncome.sharedInstance),
+    Menu(category: INCOME, topic: EMPLOYMENT, name: "Allowances", id: 3, formula: InterestIncome.sharedInstance),
+    Menu(category: INCOME, topic: EMPLOYMENT, name: "Expense reimbursement", id: 4, formula: InterestIncome.sharedInstance),
+    Menu(category: INCOME, topic: EMPLOYMENT, name: "Stock option", id: 5, formula: InterestIncome.sharedInstance),
     
     
-    Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income from securities(stock, mutual funds, etc.)", id: 1),
-    Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income business", id: 2),
-     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income (non-eligible only)", id: 3),
-     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income from TFSA", id: 4),
-     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income from RRSP", id: 5),
-     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Other types of dividend income", id: 6),
-     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Capital Gains Dividends", id: 7),
-    
-    
-    
-     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from bank deposits", id: 1),
-    Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from money loaned", id: 2),
-    Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from bonds", id: 3),
-     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from GIC", id: 4),
-     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from Treasury Bills", id: 5),
-     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from TFSA", id: 6),
-     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from RRSP", id: 7),
-     Menu(category: INCOME, topic: INTERESTINCOME, name: "Other types of interest income", id: 8),
+    Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income from securities(stock, mutual funds, etc.)", id: 1, formula: DividendIncome.sharedInstance),
+    Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income business", id: 2, formula: DividendIncome.sharedInstance),
+     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income (non-eligible only)", id: 3, formula: DividendIncome.sharedInstance),
+     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income from TFSA", id: 4, formula: DividendIncome.sharedInstance),
+     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Dividend income from RRSP", id: 5, formula: DividendIncome.sharedInstance),
+     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Other types of dividend income", id: 6, formula: DividendIncome.sharedInstance),
+     Menu(category: INCOME, topic: DIVIDENDINCOME, name: "Capital Gains Dividends", id: 7, formula: DividendIncome.sharedInstance),
     
     
     
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of publicly traded shares(eg.Stock market trading)", id: 1),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of mutual fund units", id: 2),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of real estate property(eg. Home, vacation home)", id: 3),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of depreciable properties", id: 4),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of bonds, debentures, promissory notes", id: 5),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of other properties", id: 6),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of personal-use property", id: 7),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of listed personal property", id: 8),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of shares of a private company", id: 9),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Exchange one property for another", id: 10),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Donates a property as a gift", id: 11),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Settles a debt denominated in foreign currency", id: 12),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Foreign exchange gain", id: 13),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "An option to buy or sell a property has expired", id: 14),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Owns a property that was expropriated, sholen, or destroyed", id: 15),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Owns a securities that a corporation redeems or cancels", id: 16),
-Menu(category: INCOME, topic: CAPITALGAIN, name: "Changes all or part of the property's use", id: 17),
+     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from bank deposits", id: 1, formula: InterestIncome.sharedInstance ),
+    Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from money loaned", id: 2, formula: InterestIncome.sharedInstance),
+    Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from bonds", id: 3, formula: InterestIncome.sharedInstance),
+     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from GIC", id: 4, formula: InterestIncome.sharedInstance),
+     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from Treasury Bills", id: 5, formula: InterestIncome.sharedInstance),
+     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from TFSA", id: 6, formula: InterestIncome.sharedInstance),
+     Menu(category: INCOME, topic: INTERESTINCOME, name: "Interest income from RRSP", id: 7, formula: InterestIncome.sharedInstance),
+     Menu(category: INCOME, topic: INTERESTINCOME, name: "Other types of interest income", id: 8, formula: InterestIncome.sharedInstance),
+    
+    
+    
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of publicly traded shares(eg.Stock market trading)", id: 1,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of mutual fund units", id: 2,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of real estate property(eg. Home, vacation home)", id: 3,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of depreciable properties", id: 4,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of bonds, debentures, promissory notes", id: 5,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of other properties", id: 6,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of personal-use property", id: 7,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of listed personal property", id: 8,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Sale of shares of a private company", id: 9,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Exchange one property for another", id: 10,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Donates a property as a gift", id: 11,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Settles a debt denominated in foreign currency", id: 12,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Foreign exchange gain", id: 13,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "An option to buy or sell a property has expired", id: 14,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Owns a property that was expropriated, sholen, or destroyed", id: 15,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Owns a securities that a corporation redeems or cancels", id: 16,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: CAPITALGAIN, name: "Changes all or part of the property's use", id: 17,formula: InterestIncome.sharedInstance),
 
     
     
     
-Menu(category: INCOME, topic: RENTALINCOME, name: "Income from rental property(eg. Vacation home, investment property, etc.)", id: 1),
-
-    
-    
-    
-    
-Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from Business", id: 1),
-Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from rendering professional services", id: 2),
+Menu(category: INCOME, topic: RENTALINCOME, name: "Income from rental property(eg. Vacation home, investment property, etc.)", id: 1,formula: InterestIncome.sharedInstance),
 
     
     
     
     
-Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Annuities", id: 1),
-Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Life Insurance", id: 2),
-Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Mutual Fund income", id: 3),
-Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Foreign investment income(and foreign tax credit)", id: 4),
-
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Old Age Security", id: 1),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "CPP benefits", id: 2),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Other pension income", id: 3),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Universal Child Care Benefit", id: 4),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Canada Child Benefit", id: 5),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Employment insurance", id: 6),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "RRSP income", id: 7),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "RDSP income", id: 8),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Support payment", id: 9),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Worker's compensation", id: 10),
-Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Social assistance payments", id: 11),
+Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from Business", id: 1,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from rendering professional services", id: 2,formula: InterestIncome.sharedInstance),
 
     
     
     
     
+Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Annuities", id: 1,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Life Insurance", id: 2,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Mutual Fund income", id: 3,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Foreign investment income(and foreign tax credit)", id: 4,formula: InterestIncome.sharedInstance),
+
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Old Age Security", id: 1,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "CPP benefits", id: 2,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Other pension income", id: 3,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Universal Child Care Benefit", id: 4,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Canada Child Benefit", id: 5,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Employment insurance", id: 6,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "RRSP income", id: 7,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "RDSP income", id: 8,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Support payment", id: 9,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Worker's compensation", id: 10,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Social assistance payments", id: 11,formula: InterestIncome.sharedInstance),
+
     
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Investment counsel fees and custodial fees", id: 1),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment record-keeping", id: 2),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment administrative services", id: 3),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment advice on buying or selling investments", id: 4),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Interest Expense", id: 5),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for safety deposit box", id: 6),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment advice and administrative services for registered investments(RRSP, TFSAs, RPPs, etc.)", id: 7),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Subscription fees paid for financial newspapers, magazines or newsletters", id: 8),
-Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Brokerage fees for buying and selling securites", id: 9),
+    
+    
+    
+    
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Investment counsel fees and custodial fees", id: 1,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment record-keeping", id: 2,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment administrative services", id: 3,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment advice on buying or selling investments", id: 4,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Interest Expense", id: 5,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for safety deposit box", id: 6,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Fees paid for investment advice and administrative services for registered investments(RRSP, TFSAs, RPPs, etc.)", id: 7,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Subscription fees paid for financial newspapers, magazines or newsletters", id: 8,formula: InterestIncome.sharedInstance),
+Menu(category: DEDUCTION, topic: COMPUTINGINVESTMENTINCOME, name: "Brokerage fees for buying and selling securites", id: 9,formula: InterestIncome.sharedInstance),
   
     
     
     
     
-Menu(category: DEDUCTION, topic: CAPITALTRANSACTION, name: "Capital loss", id: 1),
-Menu(category: DEDUCTION, topic: CAPITALTRANSACTION, name: "Allowable business investment loss", id: 2),
+    Menu(category: DEDUCTION, topic: CAPITALTRANSACTION, name: "Capital loss", id: 1, formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: CAPITALTRANSACTION, name: "Allowable business investment loss", id: 2,formula: RRSP.sharedInstance),
     
     
     
     
     
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Rental loss", id: 1),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of rental property", id: 2),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of furnitures for rental property", id: 3),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of fixtures for rental property", id: 4),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Mortgage payment for rental property", id: 5),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Property taxes for rental property", id: 6),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Utility costs for rental property", id: 7),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Home insurance costs for rental property", id: 8),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Maintenance and repaire costs for rental property", id: 9),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Other expenses paid for rental property", id: 10),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Legal fees for rental property", id: 11),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Accounting fees for rental property", id: 12),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Landscaping costs for rental property", id: 13),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Lease inducement paid on rental property", id: 14),
-Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Costs on construction and renovation of a building", id: 15),
-Menu(category: DEDUCTION, topic: BUSINESSINCOME, name: "Meals and Entertainment", id: 1),
-Menu(category: DEDUCTION, topic: BUSINESSINCOME, name: "CCA", id: 2),
-Menu(category: DEDUCTION, topic: BUSINESSINCOME, name: "Eligible capital property", id: 3),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Rental loss", id: 1,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of rental property", id: 2,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of furnitures for rental property", id: 3,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Purchase of fixtures for rental property", id: 4,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Mortgage payment for rental property", id: 5,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Property taxes for rental property", id: 6,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Utility costs for rental property", id: 7,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Home insurance costs for rental property", id: 8,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Maintenance and repaire costs for rental property", id: 9,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Other expenses paid for rental property", id: 10,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Legal fees for rental property", id: 11,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Accounting fees for rental property", id: 12,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Landscaping costs for rental property", id: 13,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Lease inducement paid on rental property", id: 14,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: RENTALPROPERTY, name: "Costs on construction and renovation of a building", id: 15,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: BUSINESSINCOME, name: "Meals and Entertainment", id: 1,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: BUSINESSINCOME, name: "CCA", id: 2,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: BUSINESSINCOME, name: "Eligible capital property", id: 3,formula: RRSP.sharedInstance),
     
-Menu(category: DEDUCTION, topic: OTHER, name: "Pension adjustment", id: 1),
-Menu(category: DEDUCTION, topic: OTHER, name: "Registered Pension Plan(RPP)deduction", id: 2),
-Menu(category: DEDUCTION, topic: OTHER, name: "Registered Retirement Savings Plan(RRSP) deduction", id: 3),
-Menu(category: DEDUCTION, topic: OTHER, name: "Union/Professinal dues", id: 4),
-Menu(category: DEDUCTION, topic: OTHER, name: "Universal Child Care Benefit repaymet", id: 5),
-Menu(category: DEDUCTION, topic: OTHER, name: "Child care expense", id: 6),
-Menu(category: DEDUCTION, topic: OTHER, name: "Disability supports deduction", id: 7),
-Menu(category: DEDUCTION, topic: OTHER, name: "Business investment loss", id: 8),
-Menu(category: DEDUCTION, topic: OTHER, name: "Moving expense", id: 9),
-Menu(category: DEDUCTION, topic: OTHER, name: "Carrying charges & interest expense", id: 10),
-Menu(category: DEDUCTION, topic: OTHER, name: "Canada Pension Plan(CPP) deduction for self-employment", id: 11),
-Menu(category: DEDUCTION, topic: OTHER, name: "Other employment expense", id: 12),
-Menu(category: DEDUCTION, topic: OTHER, name: "Other deductions", id: 13),
-Menu(category: DEDUCTION, topic: OTHER, name: "Social benefit repayment", id: 14),
-Menu(category: DEDUCTION, topic: OTHER, name: "Employee home relocation loan deduction", id: 15),
-Menu(category: DEDUCTION, topic: OTHER, name: "Security options deductions", id: 16),
-Menu(category: DEDUCTION, topic: OTHER, name: "Other payment deductions", id: 17),
-Menu(category: DEDUCTION, topic: OTHER, name: "Non-capital loss of other years", id: 18),
-Menu(category: DEDUCTION, topic: OTHER, name: "Net capital loss of other years", id: 19),
-Menu(category: DEDUCTION, topic: OTHER, name: "Capital gains deductions", id: 20),
-Menu(category: DEDUCTION, topic: OTHER, name: "Additional deductions", id: 21),
-Menu(category: DEDUCTION, topic: OTHER, name: "Meals & Entertainment", id: 22),
-Menu(category: DEDUCTION, topic: OTHER, name: "Moving expenses", id: 23),
-Menu(category: DEDUCTION, topic: OTHER, name: "Professional membership dues", id: 24),
+Menu(category: DEDUCTION, topic: OTHER, name: "Pension adjustment", id: 1,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Registered Pension Plan(RPP)deduction", id: 2,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Registered Retirement Savings Plan(RRSP) deduction", id: 3,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Union/Professinal dues", id: 4,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Universal Child Care Benefit repaymet", id: 5,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Child care expense", id: 6,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Disability supports deduction", id: 7,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Business investment loss", id: 8,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Moving expense", id: 9,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Carrying charges & interest expense", id: 10,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Canada Pension Plan(CPP) deduction for self-employment", id: 11,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Other employment expense", id: 12,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Other deductions", id: 13,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Social benefit repayment", id: 14,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Employee home relocation loan deduction", id: 15,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Security options deductions", id: 16,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Other payment deductions", id: 17,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Non-capital loss of other years", id: 18,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Net capital loss of other years", id: 19,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Capital gains deductions", id: 20,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Additional deductions", id: 21,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Meals & Entertainment", id: 22,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Moving expenses", id: 23,formula: RRSP.sharedInstance),
+Menu(category: DEDUCTION, topic: OTHER, name: "Professional membership dues", id: 24,formula: RRSP.sharedInstance),
     
-Menu(category: TAXCREDIT, topic: 0, name: "CPP contribution through employment", id: 1),
-Menu(category: TAXCREDIT, topic: 0, name: "CPP contribution on self-employment", id: 2),
-    Menu(category: TAXCREDIT, topic: 0, name: "Employment insurance(EI) premiums through employment", id: 3),
-    Menu(category: TAXCREDIT, topic: 0, name: "Employment insurance(EI) premiums on self-employment", id: 4),
-    Menu(category: TAXCREDIT, topic: 0, name: "Adoption expense", id: 5),
-    Menu(category: TAXCREDIT, topic: 0, name: "Pension income amount", id: 6),
-    Menu(category: TAXCREDIT, topic: 0, name: "Caregiver amount", id: 7),
-    Menu(category: TAXCREDIT, topic: 0, name: "Disability amount", id: 8),
-    Menu(category: TAXCREDIT, topic: 0, name: "Interest paid on student loans", id: 9),
-    Menu(category: TAXCREDIT, topic: 0, name: "Tuition, education, and textbook amounts", id: 10),
-    Menu(category: TAXCREDIT, topic: 0, name: "Medical expense for self, spouse, and dependant children", id: 11),
-    Menu(category: TAXCREDIT, topic: 0, name: "Volunteer firefighters' amounts", id: 12),
-    Menu(category: TAXCREDIT, topic: 0, name: "Canada employment amount", id: 13),
-    Menu(category: TAXCREDIT, topic: 0, name: "Public transit amount", id: 14),
-    Menu(category: TAXCREDIT, topic: 0, name: "Children's fitness amount", id: 15),
-    Menu(category: TAXCREDIT, topic: 0, name: "Family caregiver amount for children under 18 years of age", id: 16),
-    Menu(category: TAXCREDIT, topic: 0, name: "Home buyer's amount", id: 17),
-    Menu(category: TAXCREDIT, topic: 0, name: "Children art's amount", id: 18),
-    Menu(category: TAXCREDIT, topic: 0, name: "Search and rescue volunteer tax credit", id: 19),
-    Menu(category: TAXCREDIT, topic: 0, name: "Home accessbility tax credit", id: 20),
-    Menu(category: TAXCREDIT, topic: 0, name: "Investment tax credit", id: 21),
-    Menu(category: TAXCREDIT, topic: 0, name: "Children's fitness tax credit", id: 22),
-    Menu(category: TAXCREDIT, topic: 0, name: "Age credit", id: 23),
-    Menu(category: TAXCREDIT, topic: 0, name: "Spouse credit", id: 24)
+Menu(category: TAXCREDIT, topic: 1, name: "CPP contribution through employment", id: 0, formula: Adoption_Tax_Credit.sharedInstance ),
+Menu(category: TAXCREDIT, topic: 2, name: "CPP contribution on self-employment", id: 0, formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 3, name: "Employment insurance(EI) premiums through employment", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 4, name: "Employment insurance(EI) premiums on self-employment", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 5, name: "Adoption expense", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 6, name: "Pension income amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 7, name: "Caregiver amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 8, name: "Disability amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 9, name: "Interest paid on student loans", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 10, name: "Tuition, education, and textbook amounts", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 11, name: "Medical expense for self, spouse, and dependant children", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 12, name: "Volunteer firefighters' amounts", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 13, name: "Canada employment amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 14, name: "Public transit amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 15, name: "Children's fitness amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 16, name: "Family caregiver amount for children under 18 years of age", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 17, name: "Home buyer's amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 18, name: "Children art's amount", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 19, name: "Search and rescue volunteer tax credit", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 20, name: "Home accessbility tax credit", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 21, name: "Investment tax credit", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 22, name: "Children's fitness tax credit", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 23, name: "Age credit", id: 0,formula: Adoption_Tax_Credit.sharedInstance),
+    Menu(category: TAXCREDIT, topic: 24, name: "Spouse credit", id: 0,formula: Adoption_Tax_Credit.sharedInstance)
 ]
 
 

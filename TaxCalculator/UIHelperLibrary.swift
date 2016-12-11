@@ -289,6 +289,7 @@ extension UIView {
         button.centerTextAndImage(10)
         self.addSubview(button)
     }
+    
     //http://stackoverflow.com/questions/2451223/uibutton-how-to-center-an-image-and-a-text-using-imageedgeinsets-and-titleedgei
     //=========This is used for aling image with a button ===========
     func setupButton(button: UIButton) {
@@ -397,9 +398,27 @@ extension UIView {
     return button
     }
     
-    
+    //This is used to return an uiswitch
+    func returnSwitch(buttonAction: Selector, _ location_x : CGFloat, _ location_y: CGFloat) -> UISwitch{
+        let switchDemo = UISwitch(frame: CGRectMake(location_x,location_y,0,0))
+        switchDemo.on = false
+        switchDemo.setOn(false, animated: true)
+        switchDemo.addTarget(self, action: buttonAction, forControlEvents: .ValueChanged)
+        self.addSubview(switchDemo)
+        return switchDemo
+    }
+    //=======================================
+    /*
+    func switchValueDidChange(sender: UISwitch!){
+        if (sender.on == true) {
+            prinln("on")
+        } else {
+            prinln("off")
+        }
+    }
+    //=======================================
+    */
     //This is just used to return a value
-    
     func returnTextField(placeholder: String = "Enter your value",  _ location_x: CGFloat = 20, _ location_y: CGFloat = 100, _ width : CGFloat = 300)->UITextField{
         let sampleTextField = UITextField(frame: CGRectMake(location_x, location_y, width , 40))
         // sampleTextField.tintColor = UIColor.customOrangeColor()

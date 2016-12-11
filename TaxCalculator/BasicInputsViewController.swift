@@ -23,12 +23,15 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     
     
     func checkCalculation(){
-     let start = String(self.category)+"-"+String(topic)+"-"+String(option)
+     /*let start = String(self.category)+"-"+String(topic)+"-"+String(option)
          print("start is \(start)")
         if start == "1-1-1" {
            print("I'm in12")
         c = Calculator(algorithm: InterestIncome.sharedInstance)
-        }
+        }*/
+        
+        c = Calculator(algorithm: menu.formula)
+        print("Menu is \(menu.name)")
     }
     
    

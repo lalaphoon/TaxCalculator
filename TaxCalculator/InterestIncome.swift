@@ -82,16 +82,16 @@ class InterestIncome: Formula{
     }
     func getSingleReduction(val: Double) -> Double{
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
-        print("a is \(a)")
+        //print("a is \(a)")
         var b = Double()
         if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
             b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
         } else {
             b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
         }
-        print("b1 is \(b)")
+       // print("b1 is \(b)")
         b = a - b
-        print("b2 is \(b)")
+       // print("b2 is \(b)")
         if b <= 0 {
             b = 0
         }
@@ -99,9 +99,9 @@ class InterestIncome: Formula{
         if (c < 0) {
             c = 0
         }
-        print("c is \(c)")
+        //print("c is \(c)")
         var result = min(c, b)
-        print("result is \(result)")
+        //print("result is \(result)")
         return result
         
     }
@@ -125,7 +125,7 @@ class InterestIncome: Formula{
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.interest.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
-        var output3 = [[" Net Income","","", TP.get2Digits(profileIncome)],
+        var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["Interest","","",self.interest.text!],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],

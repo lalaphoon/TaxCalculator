@@ -400,9 +400,9 @@ class HomeViewController: UIViewController, MainViewDelegate,MFMailComposeViewCo
             if mainView.formula != nil {
                 var DestinyVC: BasicInputsViewController = segue.destinationViewController as! BasicInputsViewController
                 DestinyVC.menu = mainView.formula
-                DestinyVC.category = 1
-                DestinyVC.topic = 1
-                DestinyVC.option = 1
+               // DestinyVC.category = 1
+               // DestinyVC.topic = 1
+               // DestinyVC.option = 1
             }
         }
     }

@@ -49,12 +49,13 @@ class Adoption_Tax_Credit: Formula{
             input = Double( maximum)
         }
         var output1 = ["Adoption expense", "Tax Credit"]
-        var output2 = [Double(Adoption_Expense.text!),getResult() ]
+        var output2: [Double] = [ Double(Adoption_Expense.text!)!,getResult() ]
         var output3 = [ ["Adoption expense","","","\(Adoption_Expense.text!)"],
                         ["Province","","",profileProvince],
-                        ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * input!)"],
-                        ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
-        return (output1, output2 as! [Double], output3)
+                        ["Federal tax credit","\(TP.TaxCredit[Location.Federal]!)","","\(TP.TaxCredit[Location.Federal]! * input!)"],
+                        ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!]!)","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
+       // var output3 = [["","","",""]]
+        return (output1, output2, output3)
     }
     func getTip() -> String {
         return "Maximum adoption expenses eligible for tax credit is $15,255. Eligible adoption expenses include: fees paid to an adoption agency licensed by the government, legal expenses relating to adoption order, other reasonable expenses. Child must be under 18 years of age at the time the adoption order is issued by Government of Canada. "
