@@ -399,11 +399,11 @@ extension UIView {
     }
     
     //This is used to return an uiswitch
-    func returnSwitch(buttonAction: Selector, _ location_x : CGFloat, _ location_y: CGFloat) -> UISwitch{
+    func returnSwitch(buttonAction: Selector, _ target : UIViewController, _ location_x : CGFloat, _ location_y: CGFloat) -> UISwitch{
         let switchDemo = UISwitch(frame: CGRectMake(location_x,location_y,0,0))
         switchDemo.on = false
         switchDemo.setOn(false, animated: true)
-        switchDemo.addTarget(self, action: buttonAction, forControlEvents: .ValueChanged)
+        //switchDemo.addTarget(target, action: buttonAction, forControlEvents: .ValueChanged)
         self.addSubview(switchDemo)
         return switchDemo
     }

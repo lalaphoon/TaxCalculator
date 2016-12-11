@@ -32,18 +32,21 @@ class DividendIncome : Formula {
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
-        DivInc = containerView.returnTextField("Contribution", 43, 274 + num, VC.view.bounds.width - (43*2))
+        DivInc = containerView.returnTextField("Dividend Income", 43, 274 + num, VC.view.bounds.width - (43*2))
         DivInc.keyboardType = .DecimalPad
-        containerView.addText("Canadian Corporation", 43, 300 + num, 100, 50)
-        CanadianCorporation = containerView.returnSwitch("isCanadianCorporation:", VC.view.bounds.width-86, 300 + num)
-        containerView.addText("Company trade in stock market", 43, 330 + num, 100, 50)
-        StockMarket = containerView.returnSwitch("isStockMarket:", VC.view.bounds.width-86, 330 + num)
-        containerView.addText("In US Stock", 43, 360, 100, 50)
-        USStock = containerView.returnSwitch("isUSStock:", VC.view.bounds.width-86, 360 + num)
+        containerView.addText("Canadian Corporation", 90, 340 + num, 200, 50)
+        CanadianCorporation = containerView.returnSwitch("isCanadianCorporation:", VC , VC.view.bounds.width-86, 340 + num)
+        containerView.addText("Company trade in stock market", 90, 390 + num, 200, 50)
+        StockMarket = containerView.returnSwitch("isStockMarket:",VC, VC.view.bounds.width-86, 390 + num)
+        containerView.addText("In US Stock", 90, 440, 200, 50)
+        USStock = containerView.returnSwitch("isUSStock:",VC, VC.view.bounds.width-86, 440 + num)
+
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
+        
         return containerView
     }
-    func isCanadianCorporation(sender: UISwitch){
+    //Not gonna use
+    /*func isCanadianCorporation(sender: UISwitch){
         if (sender.on == true) {
             //println()
         } else {
@@ -63,7 +66,7 @@ class DividendIncome : Formula {
         } else {
         
         }
-    }
+    }*/
     func setInputs(input: Double){
         DivInc.text = TP.get2Digits(input)
     }
