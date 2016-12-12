@@ -88,7 +88,7 @@ class DividendIncome : Formula {
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
-        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium()
+        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium() + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!)
         
     }
     //====================================Extra Calculation=============================================================
@@ -147,6 +147,31 @@ class DividendIncome : Formula {
         var totalPremium = TP.calculateTheDifference(0, total, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
+    func getDividendTaxCredit(mode: Location) -> Double{
+        var result : Double = 0.0
+        var dividendIncome = Double(self.DivInc.text!)
+        var income = profileIncome
+        var total = income! + dividendIncome!
+        var compare: Double = 0.0
+        
+        if mode == Location.Federal {
+            compare = TP.calculateTheDifference(income, total, TP.FederalBracketDictionary) + BasicPersonalAmount(mode)
+        } else {
+            compare = TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!) + BasicPersonalAmount(mode)
+        }
+        
+        if CanadianCorporation.on == true {
+            if StockMarket.on == true {
+                result = dividendIncome! * TP.EligibleDividendTaxCredit[mode]!
+            } else {
+                result = dividendIncome! * TP.Non_EligibleDividendTaxCredit[Location(rawValue: profileProvince)!]!
+            }
+        }
+        
+        result = min(result, compare)
+
+        return result * -1
+    }
     //==============================Extra Calculation ended===========================================================
 
     func getInstruction() -> String{
@@ -165,8 +190,10 @@ class DividendIncome : Formula {
             ["Interest","","",self.DivInc.text!],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],
             ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+            ["Dividend Tax Credit","Federal","", TP.get2Digits(getDividendTaxCredit(Location.Federal))],
             ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
             ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+            ["Dividend Tax Credit",profileProvince,"",TP.get2Digits(getDividendTaxCredit(Location(rawValue: profileProvince)!))],
             ["Basic Reduction", profileProvince, "" , TP.get2Digits(getBasicReduction(income, dividendIncome!))],
             ["Health Premium", profileProvince,"",TP.get2Digits(getHealthPremium())],
             ["Surtax","%","Threshold",""],

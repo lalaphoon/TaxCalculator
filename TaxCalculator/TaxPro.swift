@@ -35,6 +35,8 @@ class TaxPro {
     var InterestThreshold = OrderedDictionary<Int, Double>()
     
     var TaxCredit =  [Location : Double]()
+    var EligibleDividendTaxCredit = [Location: Double]()
+    var Non_EligibleDividendTaxCredit = [Location: Double]()
     
     var BasicPersonalAmount = [Location : Double]()
     
@@ -74,6 +76,9 @@ class TaxPro {
     }
     func initTaxCredit(){
         TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505 ]
+        EligibleDividendTaxCredit = [Location.Federal: 0.15, Location.Ontario: 0.1]
+        Non_EligibleDividendTaxCredit = [Location.Federal: 0.105217, Location.Ontario: 0.042863]
+        
     }
     func initBracket() {
         //================Interest/income calculation===============================
