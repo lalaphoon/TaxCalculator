@@ -16,6 +16,7 @@ class DividendIncome : Formula {
     var inStockMarket = Bool()
     
     var DivInc = UITextField()
+    var ForeignTaxPaid = UITextField()
     var CanadianCorporation = UISwitch()
     var StockMarket = UISwitch()
     var USStock = UISwitch()
@@ -40,7 +41,8 @@ class DividendIncome : Formula {
         StockMarket = containerView.returnSwitch("isStockMarket:",VC, VC.view.bounds.width-86, 390 + num)
         containerView.addText("In US Stock", 90, 440, 200, 50)
         USStock = containerView.returnSwitch("isUSStock:",VC, VC.view.bounds.width-86, 440 + num)
-
+        ForeignTaxPaid = containerView.returnTextField("Foreign Tax Paid",43,500 + num, VC.view.bounds.width - (43*2))
+        ForeignTaxPaid.keyboardType = .DecimalPad
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
         
         return containerView
@@ -171,6 +173,36 @@ class DividendIncome : Formula {
         result = min(result, compare)
 
         return result * -1
+    }
+    func getForeignTaxCredit(mode: Location){
+        var NotEligibleForFTC : Double = 0
+        var NetIncome = profileIncome                      //9000
+        var dividendIncome = Double(self.DivInc.text!) //8000
+        var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+        var total = NetIncome! + dividendIncome!
+        var Deduction_2011: Double = 0
+        var Deduction_2012: Double = 0
+        var ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
+        var BasicFederalTax : Double = BasicPersonalAmount(Location.Federal)
+        var BasicPersonalTax : Double = BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        if USStock.on == true {
+            if ForeignTax!/dividendIncome! > 0.15 {
+                NotEligibleForFTC = ForeignTax! - (dividendIncome!*0.15)
+                NotEligibleForFTC = NotEligibleForFTC * -1
+            }
+        
+        }
+        for var i = 0; i < Int(dividendIncome!); i++ {
+            //var i: Double = 861
+            var ratio : Double = (dividendIncome! - NotEligibleForFTC - Double(i))/(NetIncome + dividendIncome! - Double(i))
+            var FTCLimitation = BasicFederalTax * ratio
+            var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+            var balance : Double = abs(Double(i) - right)
+            if (balance<0.09){Deduction_2012 = Double(i)}
+            
+        }
+        
+    
     }
     //==============================Extra Calculation ended===========================================================
 
