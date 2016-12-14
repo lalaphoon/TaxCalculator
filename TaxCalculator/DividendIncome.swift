@@ -177,7 +177,7 @@ class DividendIncome : Formula {
     func getForeignTaxCredit(mode: Location){
         var NotEligibleForFTC : Double = 0
         var NetIncome = profileIncome                      //9000
-        var dividendIncome = Double(self.DivInc.text!) //8000
+        var dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
         var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
         var total = NetIncome! + dividendIncome!
         var Deduction_2011: Double = 0
@@ -194,7 +194,7 @@ class DividendIncome : Formula {
         }
         for var i = 0; i < Int(dividendIncome!); i++ {
             //var i: Double = 861
-            var ratio : Double = (dividendIncome! - NotEligibleForFTC - Double(i))/(NetIncome + dividendIncome! - Double(i))
+            var ratio : Double = (dividendIncome! - NotEligibleForFTC - Double(i))/(total - Double(i))
             var FTCLimitation = BasicFederalTax * ratio
             var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
             var balance : Double = abs(Double(i) - right)
