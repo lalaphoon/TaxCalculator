@@ -90,6 +90,7 @@ class DividendIncome : Formula {
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
+        getForeignTaxCredit()
         return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium() + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!)
         
     }
@@ -166,7 +167,7 @@ class DividendIncome : Formula {
             if StockMarket.on == true {
                 result = dividendIncome! * TP.EligibleDividendTaxCredit[mode]!
             } else {
-                result = dividendIncome! * TP.Non_EligibleDividendTaxCredit[Location(rawValue: profileProvince)!]!
+                result = dividendIncome! * TP.Non_EligibleDividendTaxCredit[mode]!
             }
         }
         
@@ -174,7 +175,7 @@ class DividendIncome : Formula {
 
         return result * -1
     }
-    func getForeignTaxCredit(mode: Location){
+    func getForeignTaxCredit(){
         var NotEligibleForFTC : Double = 0
         var NetIncome = profileIncome                      //9000
         var dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
@@ -194,11 +195,16 @@ class DividendIncome : Formula {
         }
         for var i = 0; i < Int(dividendIncome!); i++ {
             //var i: Double = 861
-            var ratio : Double = (dividendIncome! - NotEligibleForFTC - Double(i))/(total - Double(i))
+            var ratio : Double = (dividendIncome! + NotEligibleForFTC - Double(i))/(total - Double(i))
             var FTCLimitation = BasicFederalTax * ratio
             var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
             var balance : Double = abs(Double(i) - right)
-            if (balance<0.09){Deduction_2012 = Double(i)}
+            if (balance<0.09){
+                Deduction_2012 = Double(i)
+                print(ratio)
+                print(Deduction_2012)
+                break
+            }
             
         }
         
