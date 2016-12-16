@@ -95,7 +95,7 @@ class DividendIncome : Formula {
         
     }
     //====================================Extra Calculation=============================================================
-    func BasicPersonalAmount(mode: Location) -> Double{
+    func BasicPersonalAmount(mode: Location, _ totalDeduction : Double = 0.0) -> Double{
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
@@ -103,14 +103,17 @@ class DividendIncome : Formula {
         var percentage: Double = TP.TaxCredit[mode]!
         var basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
-        
+        var totalDed : Double = 0.0
         if income >= basicPersonalAmount {
             return 0
         } else {
-            if total > basicPersonalAmount {
+            if CanadianCorporation.on == false {
+                totalDed = totalDeduction
+            }
+            if total + totalDed > basicPersonalAmount {
                 return (basicPersonalAmount-income) * percentage * -1
             } else {
-                return dividendIncome! * percentage * -1
+                return (dividendIncome! + totalDed) * percentage * -1
             }
         }
     }
@@ -119,16 +122,16 @@ class DividendIncome : Formula {
     }
     func getSingleReduction(val: Double) -> Double{
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
-        //print("a is \(a)")
+       
         var b = Double()
         if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
             b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
         } else {
             b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
         }
-        // print("b1 is \(b)")
+        
         b = a - b
-        // print("b2 is \(b)")
+        
         if b <= 0 {
             b = 0
         }
@@ -136,9 +139,9 @@ class DividendIncome : Formula {
         if (c < 0) {
             c = 0
         }
-        //print("c is \(c)")
+       
         var result = min(c, b)
-        //print("result is \(result)")
+       
         return result
         
     }
@@ -175,6 +178,22 @@ class DividendIncome : Formula {
 
         return result * -1
     }
+    func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
+        var a  : Double = Double()
+        if mode == Location.Federal{
+            a = TP.calculateTheDifference(0, value, TP.FederalBracketDictionary)
+        } else {
+            a = TP.calculateTheDifference(0, value, TP.ProvincialBracketDictionary[mode]!)
+        }
+        var b = Double()
+        if value < TP.BasicPersonalAmount[mode]! {
+            b = value * TP.TaxCredit[mode]!
+        } else {
+            b = TP.BasicPersonalAmount[mode]! * TP.TaxCredit[mode]!
+        }
+        return a - b
+        
+    }
     func getForeignTaxCredit(){
         var NotEligibleForFTC : Double = 0
         var NetIncome = profileIncome                      //9000
@@ -184,22 +203,47 @@ class DividendIncome : Formula {
         var Deduction_2011: Double = 0
         var Deduction_2012: Double = 0
         var ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
-        var BasicFederalTax : Double = BasicPersonalAmount(Location.Federal)
-        var BasicPersonalTax : Double = BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        
+        
         if USStock.on == true {
             if ForeignTax!/dividendIncome! > 0.15 {
                 NotEligibleForFTC = ForeignTax! - (dividendIncome!*0.15)
                 NotEligibleForFTC = NotEligibleForFTC * -1
+                
             }
         
         }
         for var i = 0; i < Int(dividendIncome!); i++ {
             //var i: Double = 861
+          
+            var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i), Location.Federal)
+          
+            
+            var instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i), Location(rawValue: profileProvince)!)
+                       var surtax1 : Double = 0
+            var surtax2 : Double = 0
+            if instanceBasicPersonalTax >  4484 {
+                surtax1 = (instanceBasicPersonalTax - 4484) * 0.2
+            }
+            if instanceBasicPersonalTax > 5739 {
+                surtax2 = (instanceBasicPersonalTax - 5739) * 0.36
+            }
+            var basicReduction : Double = 0
+            if TP.BasicReduction[Location(rawValue: profileProvince)!] >= instanceBasicPersonalTax {
+                basicReduction = min(TP.BasicReduction[Location(rawValue: profileProvince)!]!-instanceBasicPersonalTax, instanceBasicPersonalTax)
+                
+            }
+            var BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
+
             var ratio : Double = (dividendIncome! + NotEligibleForFTC - Double(i))/(total - Double(i))
+
             var FTCLimitation = BasicFederalTax * ratio
+          
             var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+      
             var balance : Double = abs(Double(i) - right)
-            if (balance<0.09){
+            
+            if (balance < 1){
                 Deduction_2012 = Double(i)
                 print(ratio)
                 print(Deduction_2012)
