@@ -21,6 +21,12 @@ class DividendIncome : Formula {
     var StockMarket = UISwitch()
     var USStock = UISwitch()
     
+    var Deduction_2012 : Double = 0
+    var Deduction_2011 : Double = 0
+    var ProportionOfNetForeignBusinessIncome: Double = 0
+    var FederalForeignTaxCredit : Double = 0
+    var ProvincialForeignTaxCredit : Double = 0
+    
     
     var profileIncome : Double!
     var profileProvince : String!
@@ -90,8 +96,11 @@ class DividendIncome : Formula {
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
-        getForeignTaxCredit()
-        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium() + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!)
+        if (CanadianCorporation.on == false) {
+           operationBeforGettingResult()
+        }
+        return TP.foundation(income!, total-Deduction_2012, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium() + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+        
         
     }
     //====================================Extra Calculation=============================================================
@@ -118,7 +127,7 @@ class DividendIncome : Formula {
         }
     }
     func getBasicReduction(netincome: Double, _ dividendIncome: Double) -> Double{
-        return getSingleReduction(netincome) - getSingleReduction(netincome + dividendIncome)
+        return getSingleReduction(netincome) - getSingleReduction(netincome + dividendIncome - Deduction_2012)
     }
     func getSingleReduction(val: Double) -> Double{
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
@@ -194,16 +203,29 @@ class DividendIncome : Formula {
         return a - b
         
     }
-    func getForeignTaxCredit(){
+    func getForeignTaxCredit(mode : Location) -> Double{
+        var result : Double = 0
+        var income = profileIncome
+        var dividendIncome = Double(self.DivInc.text!)
+        var total = income! + dividendIncome!
+        if CanadianCorporation.on == false {
+            if mode == Location.Federal {
+            result = -1 * min( TP.calculateTheDifference(income, total-Deduction_2012, TP.FederalBracketDictionary) + BasicPersonalAmount(Location.Federal) + getDividendTaxCredit(Location.Federal),FederalForeignTaxCredit)
+            } else {
+            result = -1 * min(TP.calculateTheDifference(income, total-Deduction_2012, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + BasicPersonalAmount(Location(rawValue: profileProvince!)!) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) ,ProvincialForeignTaxCredit)
+            }
+        }
+        return result
+    }
+    func operationBeforGettingResult(){
         var NotEligibleForFTC : Double = 0
         var NetIncome = profileIncome                      //9000
         var dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
         var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
         var total = NetIncome! + dividendIncome!
         var Deduction_2011: Double = 0
-        var Deduction_2012: Double = 0
+       // var Deduction_2012: Double = 0
         var ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
-        
         
         if USStock.on == true {
             if ForeignTax!/dividendIncome! > 0.15 {
@@ -245,8 +267,9 @@ class DividendIncome : Formula {
             
             if (balance < 1){
                 Deduction_2012 = Double(i)
-                print(ratio)
-                print(Deduction_2012)
+                ProportionOfNetForeignBusinessIncome = ratio
+                FederalForeignTaxCredit = min(ForeignTaxPaid,FTCLimitation)
+                ProvincialForeignTaxCredit = min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
                 break
             }
             
@@ -270,12 +293,14 @@ class DividendIncome : Formula {
         var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["Interest","","",self.DivInc.text!],
-            ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],
+            ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012, TP.FederalBracketDictionary))],
             ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
             ["Dividend Tax Credit","Federal","", TP.get2Digits(getDividendTaxCredit(Location.Federal))],
-            ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+            ["Foreign Tax Credit", "Federal", "",TP.get2Digits(getForeignTaxCredit(Location.Federal))],
+            ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
             ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
             ["Dividend Tax Credit",profileProvince,"",TP.get2Digits(getDividendTaxCredit(Location(rawValue: profileProvince)!))],
+            ["Foreign Tax Credit", profileProvince,"",TP.get2Digits(getForeignTaxCredit(Location(rawValue: profileProvince)!))],
             ["Basic Reduction", profileProvince, "" , TP.get2Digits(getBasicReduction(income, dividendIncome!))],
             ["Health Premium", profileProvince,"",TP.get2Digits(getHealthPremium())],
             ["Surtax","%","Threshold",""],
