@@ -29,19 +29,21 @@ var test: Double = TaxCredit[Location.Federal]!
 */
 var ForeignIncome: Double = 8000
 var NetIncome : Double = 9000
-var nonEligibleFTC : Double = 800 // if  Tax Paid Income 2000/Dividend Income > 15%, TaxPaidIncome2000-(DividendIncome * 15%)
+var nonEligibleFTC : Double = 0 // if  Tax Paid Income 2000/Dividend Income > 15%, TaxPaidIncome2000-(DividendIncome * 15%)
+var Deduction_2011 : Double = 800
 var ForeignTaxPaid : Double = 1200 //min(Tax Paid Income 2000, Dividend Income 8000 * 15%)
-var BasicFederalTax : Double = 700
-var BasicPersonalTax : Double = 163
+var BasicFederalTax : Double = 568
+var BasicPersonalTax : Double = 75
 
 
 for var i = 0; i < Int(ForeignIncome); i++ {
-//var i: Double = 861
-    var ratio : Double = (ForeignIncome - nonEligibleFTC - Double(i))/(NetIncome + ForeignIncome - Double(i))
+//var i: Double = 936
+    var ratio : Double = (ForeignIncome - nonEligibleFTC - Double(i) - Deduction_2011)/(NetIncome + ForeignIncome - Double(i)-Deduction_2011)
     var FTCLimitation = BasicFederalTax * ratio
     var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
-    var balance : Double = abs(Double(i) - right)
-    if (balance<0.09){print(i)}
+    var balance : Double = abs(Double(i)  - right)
+   if (balance<1){print(i)
+    break}
 
 }
 
