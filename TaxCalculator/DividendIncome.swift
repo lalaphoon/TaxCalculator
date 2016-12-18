@@ -127,9 +127,9 @@ class DividendIncome : Formula {
         }
     }
     func getBasicReduction(netincome: Double, _ dividendIncome: Double) -> Double{
-        return getSingleReduction(netincome) - getSingleReduction(netincome + dividendIncome - Deduction_2012)
+        return getSingleReduction(netincome) - getSingleReduction(netincome + dividendIncome - Deduction_2012, true,-1 * getDividendTaxCredit(Location(rawValue: profileProvince!)!))
     }
-    func getSingleReduction(val: Double) -> Double{
+    func getSingleReduction(val: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
        
         var b = Double()
@@ -144,10 +144,18 @@ class DividendIncome : Formula {
         if b <= 0 {
             b = 0
         }
+        if (special == true){
+            if (b - di) <= 0 {
+                b = 0
+            } else {
+                b = b-di
+            }
+        }
         var c = TP.BasicReduction[Location(rawValue: profileProvince)!]! - b
         if (c < 0) {
             c = 0
         }
+       
        
         var result = min(c, b)
        
