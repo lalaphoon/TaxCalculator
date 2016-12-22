@@ -289,7 +289,7 @@ Menu(category: INCOME, topic: BUSINESSANDPROFESSIONALINCOME, name: "Income from 
 Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Annuities", id: 1,formula: InterestIncome.sharedInstance),
 Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Life Insurance", id: 2,formula: InterestIncome.sharedInstance),
 Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Mutual Fund income", id: 3,formula: InterestIncome.sharedInstance),
-Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Foreign investment income(and foreign tax credit)", id: 4,formula: InterestIncome.sharedInstance),
+Menu(category: INCOME, topic: INVESTMENTINCOME, name: "Foreign investment income(and foreign tax credit)", id: 4,formula: ForeignInvestmentIncome.sharedInstance),
 
 Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "Old Age Security", id: 1,formula: InterestIncome.sharedInstance),
 Menu(category: INCOME, topic: PENSIONOTHERINCOME, name: "CPP benefits", id: 2,formula: InterestIncome.sharedInstance),

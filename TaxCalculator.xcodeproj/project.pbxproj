@@ -27,6 +27,7 @@
 		460173851DB1D483002BE015 /* privacyCSS.css in Resources */ = {isa = PBXBuildFile; fileRef = 460173841DB1D483002BE015 /* privacyCSS.css */; };
 		460173871DB1F7F9002BE015 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 460173861DB1F7F9002BE015 /* Terms.html */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
+		46069F681E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46069F671E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
 		460910FB1D41A6C7003C6A65 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910FA1D41A6C7003C6A65 /* User+CoreDataProperties.swift */; };
@@ -144,6 +145,7 @@
 		460173841DB1D483002BE015 /* privacyCSS.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = privacyCSS.css; sourceTree = "<group>"; };
 		460173861DB1F7F9002BE015 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		46069F671E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForeignInvestmentIncome.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		460910FA1D41A6C7003C6A65 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				46E972881D6BF28F007AAD82 /* Employment.swift */,
+				46069F671E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift */,
 				468E07441D6E1B8300290D70 /* DividendIncome.swift */,
 				4629A86A1D777D4A006533BC /* InterestIncome.swift */,
 			);
@@ -866,6 +869,7 @@
 				4670331E1D5FC75900688802 /* InputsViewController.swift in Sources */,
 				460911021D428C69003C6A65 /* StepFour.swift in Sources */,
 				46FE9DD01D7684C8005A9E2D /* OptionsViewController.swift in Sources */,
+				46069F681E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift in Sources */,
 				4684CA761D5D5E0B009B0598 /* SubTopicsViewController.swift in Sources */,
 				460173811DB1C2D9002BE015 /* PrivacyViewController.swift in Sources */,
 				467D34961D380110008D820B /* StartViewController.swift in Sources */,
