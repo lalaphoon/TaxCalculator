@@ -318,7 +318,8 @@ class DividendIncome : Formula {
         var surtax = TP.getSurtax(income, total, profileProvince)
         var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
-            ["Interest","","",self.DivInc.text!],
+            ["Dividend Income","","",self.DivInc.text!],
+            ["Foreign Tax Paid","","",self.ForeignTaxPaid.text!],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary))],
             ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
             ["Dividend Tax Credit","Federal","", TP.get2Digits(getDividendTaxCredit(Location.Federal))],

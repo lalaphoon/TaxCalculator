@@ -59,6 +59,7 @@
 		46369E011D459ACC00456B69 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E001D459ACC00456B69 /* MessageUI.framework */; };
 		46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E021D459ADC00456B69 /* CoreLocation.framework */; };
 		46369E051D4912E700456B69 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46369E041D4912E700456B69 /* OrderedDictionary.swift */; };
+		463CDAD21E0FAD760096076F /* OldAgeSecurityPension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463CDAD11E0FAD760096076F /* OldAgeSecurityPension.swift */; };
 		465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C74F91D62282800F9572A /* ResultViewController.swift */; };
 		465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C74FC1D62A3F100F9572A /* HistoryViewController.swift */; };
 		4670331E1D5FC75900688802 /* InputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331D1D5FC75900688802 /* InputsViewController.swift */; };
@@ -183,6 +184,7 @@
 		46369E001D459ACC00456B69 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		46369E021D459ADC00456B69 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46369E041D4912E700456B69 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
+		463CDAD11E0FAD760096076F /* OldAgeSecurityPension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldAgeSecurityPension.swift; sourceTree = "<group>"; };
 		465C74F91D62282800F9572A /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		465C74FC1D62A3F100F9572A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		4670331D1D5FC75900688802 /* InputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputsViewController.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				46E972881D6BF28F007AAD82 /* Employment.swift */,
+				463CDAD11E0FAD760096076F /* OldAgeSecurityPension.swift */,
 				46069F671E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift */,
 				468E07441D6E1B8300290D70 /* DividendIncome.swift */,
 				4629A86A1D777D4A006533BC /* InterestIncome.swift */,
@@ -846,6 +849,7 @@
 				465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */,
 				462A71811DA0E0CC0032444E /* Value+CoreDataProperties.swift in Sources */,
 				4601737F1DB116B5002BE015 /* TermsViewController.swift in Sources */,
+				463CDAD21E0FAD760096076F /* OldAgeSecurityPension.swift in Sources */,
 				462A71791DA0E0510032444E /* Record+CoreDataProperties.swift in Sources */,
 				465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */,
 				46E972871D6BE4A1007AAD82 /* TaxBaseClasses.swift in Sources */,
