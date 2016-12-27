@@ -50,8 +50,13 @@ class InterestIncome: Formula{
         var income = profileIncome
         var interest = Double(self.interest.text!)
         var total = income! + interest!
-        
-        return TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getHealthPremium()
+        var result:Double = 0.0
+        if profileProvince == Location.Alberta.rawValue {
+            result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        } else if profileProvince == Location.Ontario.rawValue {
+            result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getHealthPremium()
+        }
+        return result
     }
     func getInstruction() -> String{
         return "Dividend Income of $" + String(interest.text!) + " results in current year additional taxes payable of"
@@ -125,7 +130,9 @@ class InterestIncome: Formula{
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.interest.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
-        var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+        var output3 = [["","","",""]]
+        if profileProvince == Location.Ontario.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["Interest","","",self.interest.text!],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],
@@ -138,6 +145,15 @@ class InterestIncome: Formula{
             ["","20%","73145",TP.get2Digits(surtax[0])],
             ["","36%","86176", TP.get2Digits(surtax[1])],
             ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.Alberta.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Interest","","",self.interest.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))]]
+        }
         return (output1 , output2, output3)
 
     }
