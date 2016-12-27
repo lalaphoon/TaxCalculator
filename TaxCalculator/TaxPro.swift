@@ -75,7 +75,7 @@ class TaxPro {
             Location.Quebec.rawValue]
     }
     func initTaxCredit(){
-        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505 ]
+        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 ]
         EligibleDividendTaxCredit = [Location.Federal: 0.15, Location.Ontario: 0.1]
         Non_EligibleDividendTaxCredit = [Location.Federal: 0.105217, Location.Ontario: 0.042863]
         
@@ -89,12 +89,21 @@ class TaxPro {
         FederalBracketDictionary.insert(0.15, forKey: 0, atIndex: 4)
         
         //Init provincial bracket
-        ProvincialBracketDictionary = [Location.Ontario : OrderedDictionary()]
+        ProvincialBracketDictionary = [Location.Ontario : OrderedDictionary(),
+                                       Location.Alberta : OrderedDictionary()]
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1316, forKey: 220000, atIndex: 0)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1216, forKey: 150000, atIndex: 1)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1116, forKey: 83075, atIndex: 2)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.0915, forKey: 41536, atIndex: 3)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.0505, forKey: 0, atIndex: 4)
+        
+        //ProvincialBracketDictionary = [Location.Alberta : OrderedDictionary()]
+        ProvincialBracketDictionary[Location.Alberta]?.insert(0.15, forKey: 300000, atIndex: 0)
+        ProvincialBracketDictionary[Location.Alberta]?.insert(0.14, forKey: 200000, atIndex: 1)
+        ProvincialBracketDictionary[Location.Alberta]?.insert(0.13, forKey: 150000, atIndex: 2)
+        ProvincialBracketDictionary[Location.Alberta]?.insert(0.12, forKey: 125000, atIndex: 3)
+        ProvincialBracketDictionary[Location.Alberta]?.insert(0.10, forKey: 0, atIndex: 4)
+        
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
@@ -117,7 +126,7 @@ class TaxPro {
         
     }
     func initBasicPersonalAmount(){
-        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011]
+        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451]
     }
     func initBasicReduction(){
         BasicReduction = [Location.Ontario: 456]
@@ -196,6 +205,7 @@ class TaxPro {
         
         
         //StepThree & StepFour
+        if province == Location.Ontario.rawValue { // Adding surtax seems only works for Ontario
         var counter:Int = InterestThreshold.count
         for var i = 0; i < counter; ++i {
             var byIndex: (Int, Double) = InterestThreshold[i]
@@ -212,6 +222,7 @@ class TaxPro {
            
                 process = process + "\(byIndex.1*100)%       \(byIndex.0)      \(finalStep)\n"
             
+          }
         }
         return (result, process)
     }

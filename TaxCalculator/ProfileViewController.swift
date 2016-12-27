@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         view.endEditing(true)
     }
     func initContainerUI(){
-    let num:CGFloat = -63
+        let num:CGFloat = -63
        containerView.addImage("Title_profile.png", self.view.bounds.width/2 - 65,93 + num)
        containerView.addTextField("Your Income", income_tag, 43,274 + num, self.view.bounds.width-86)
        containerView.addTextField("Province/Territory of Residence", province_tag, 43, 334 + num, self.view.bounds.width-86)
@@ -95,7 +95,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         //send option to next view
         
         if (checkProfileInfo()){
-            provinceTextField.text = "Ontario"
+            //provinceTextField.text = "Ontario"
             formula.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
             performSegueWithIdentifier("MoveIntoResult", sender: self)
         }
@@ -166,7 +166,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
   
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if textField == provinceTextField {
-            provinceTextField.text = TP.province_list[0]
+            if provinceTextField.text == ""{
+                provinceTextField.text = TP.province_list[0]
+            }
         }
         return true
     }

@@ -60,7 +60,13 @@ class RRSP: Formula{
         var vary = income! - contribution!
         // if vary < 0 {
         //    vary = -vary }
-        return TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
+        var result :Double = 0.0
+        if profileProvince == Location.Alberta.rawValue {
+            result =  TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        } else if profileProvince == Location.Ontario.rawValue {
+            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
+        }
+        return result
         
         
     }
@@ -68,6 +74,7 @@ class RRSP: Formula{
         return "Dividend income of $" + String(contribution.text!) + " results in current year additional taxes payable of"
     }
     //====================================Extra Calculation==============================================
+    //ON,AB
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
@@ -83,12 +90,13 @@ class RRSP: Formula{
             if vary >= basicPersonalAmount {
                 return 0.0
             } else {
-                return (basicPersonalAmount - vary ) * percentage
+                return (basicPersonalAmount - vary ) * percentage * -1
             }
         } else {
-            return contribution!  * percentage
+            return contribution!  * percentage * -1
         }
     }
+    //ON
     func getBasicReduction(netincome: Double, _ contribution: Double) -> Double{
         return getSingleReduction(netincome) - getSingleReduction(netincome-contribution)
     }
@@ -112,6 +120,7 @@ class RRSP: Formula{
         return result
         
     }
+    //ON
     func getHealthPremium() -> Double{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
@@ -130,7 +139,9 @@ class RRSP: Formula{
         output2 = [Double(profileIncome), Double(self.contribution.text!)!]
         var surtax = TP.getSurtax(vary,income, profileProvince)
         var interestthreshold = ["73145","86176"]
-        var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+        var output3 = [["","","",""]]
+        if profileProvince == Location.Ontario.rawValue {
+         output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["RRSP Contribution","","",self.contribution.text!],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
@@ -143,6 +154,17 @@ class RRSP: Formula{
             ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],
             ["","36%","\(interestthreshold[1])", TP.get2Digits(surtax[1])],
             ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
+            
+        } else if profileProvince == Location.Alberta.rawValue {
+            
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["RRSP Contribution","","",self.contribution.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
+                ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))]]
+        }
         // return(output1, another,[["Tested","","","\(12.3)"]])
         return (output1 , output2  , output3)
     }
