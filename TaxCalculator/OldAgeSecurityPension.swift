@@ -138,6 +138,7 @@ class Old_Age_Security_Pension : Formula{
             ["Surtax","%","Threshold",""],
             ["","20%","73145",TP.get2Digits(surtax[0])],
             ["","36%","86176", TP.get2Digits(surtax[1])],
+            ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
             ["Tax Payable","","",TP.get2Digits(self.getResult())]]
         return (output1 , output2, output3)
         
@@ -152,7 +153,7 @@ class Old_Age_Security_Pension : Formula{
         //return true
         if OASPension.text == "" {
             OASPension.backgroundColor = UIColor.customWarningColor()
-            OASPension.placeholder="Missing an input for foreign income"
+            OASPension.placeholder="Missing an input for OAS Pension"
             return false
         } else {
             OASPension.backgroundColor = .clearColor()

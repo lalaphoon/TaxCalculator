@@ -247,7 +247,9 @@ class TaxPro {
     
     //=====================helper end=======================================
     func get2Digits(input : Double) ->String {
-        return String(format:"%.0f",input)
+        //return String(format:"%.0f",input) //due to odd/even digit issues, this one cannot be used
+        return String(format:"%.0f",input.roundTo(0))
+        
     }
     //=====================Testing code======================================
     

@@ -1,6 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
+import Foundation
 
 var str = "Hello, playground"
 /*
@@ -27,6 +28,7 @@ TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505 ]
 var test: Double = TaxCredit[Location.Federal]!
 1 * test
 */
+/*
 var ForeignIncome: Double = 8000
 var NetIncome : Double = 9000
 var nonEligibleFTC : Double = 0 // if  Tax Paid Income 2000/Dividend Income > 15%, TaxPaidIncome2000-(DividendIncome * 15%)
@@ -46,6 +48,20 @@ for var i = 0; i < Int(ForeignIncome); i++ {
     break}
 
 }
+*/
 
+
+
+//String(format:"%.2f", 26.505)
+//String(format:"%.2f", 91.515)
+
+extension Double {
+    func roundTo( places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(self * divisor) / divisor
+    }
+}
+
+String(26.505.roundTo(0))
 
 

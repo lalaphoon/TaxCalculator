@@ -27,6 +27,7 @@
 		460173851DB1D483002BE015 /* privacyCSS.css in Resources */ = {isa = PBXBuildFile; fileRef = 460173841DB1D483002BE015 /* privacyCSS.css */; };
 		460173871DB1F7F9002BE015 /* Terms.html in Resources */ = {isa = PBXBuildFile; fileRef = 460173861DB1F7F9002BE015 /* Terms.html */; };
 		46020E0B1D5791AE0050C400 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46020E0A1D5791AE0050C400 /* Fonts.swift */; };
+		460417451E1350A2003D5C9A /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460417441E1350A2003D5C9A /* DataHelper.swift */; };
 		46069F681E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46069F671E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift */; };
 		460910F71D4178D5003C6A65 /* CoreDataSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F61D4178D5003C6A65 /* CoreDataSaver.swift */; };
 		460910F91D41A4C1003C6A65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460910F81D41A4C1003C6A65 /* User.swift */; };
@@ -146,6 +147,7 @@
 		460173841DB1D483002BE015 /* privacyCSS.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = privacyCSS.css; sourceTree = "<group>"; };
 		460173861DB1F7F9002BE015 /* Terms.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Terms.html; sourceTree = "<group>"; };
 		46020E0A1D5791AE0050C400 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		460417441E1350A2003D5C9A /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		46069F671E0ABBFF00AA5A98 /* ForeignInvestmentIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForeignInvestmentIncome.swift; sourceTree = "<group>"; };
 		460910F61D4178D5003C6A65 /* CoreDataSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataSaver.swift; sourceTree = "<group>"; };
 		460910F81D41A4C1003C6A65 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				46006C911D82346F00CCBFFE /* CustomCell.swift */,
 				46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */,
 				4601737A1DAFC7DC002BE015 /* DeviceInfo.swift */,
+				460417441E1350A2003D5C9A /* DataHelper.swift */,
 				46006C931D8234A600CCBFFE /* Custom Cells */,
 			);
 			name = Utility;
@@ -881,6 +884,7 @@
 				462A717E1DA0E0AE0032444E /* TableCellData.swift in Sources */,
 				467EFC481D36F1BA00D3358D /* UIHelperLibrary.swift in Sources */,
 				467033201D612F8900688802 /* ProfileViewController.swift in Sources */,
+				460417451E1350A2003D5C9A /* DataHelper.swift in Sources */,
 				46FE9DCA1D72096A005A9E2D /* AfterResultViewController.swift in Sources */,
 				462A717D1DA0E0AE0032444E /* TableCellData+CoreDataProperties.swift in Sources */,
 				462A71871DA65F860032444E /* SettingsTableViewController.swift in Sources */,
