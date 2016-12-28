@@ -100,7 +100,20 @@ class DividendIncome : Formula {
         if (CanadianCorporation.on == false) {
            operationBeforGettingResult()
         }
-        return TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium() + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+        
+        var result : Double = 0.0
+        
+        if profileProvince == Location.Ontario.rawValue {
+            
+            result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getHealthPremium() + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+            
+        } else if profileProvince == Location.Alberta.rawValue {
+            
+            result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+        }
+        
+        
+        return result
         
         
     }
@@ -316,7 +329,10 @@ class DividendIncome : Formula {
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.DivInc.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
-        var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+        var output3 = [["","","",""]]
+        
+        if profileProvince == Location.Ontario.rawValue {
+         output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["Dividend Income","","",self.DivInc.text!],
             ["Foreign Tax Paid","","",self.ForeignTaxPaid.text!],
@@ -334,6 +350,21 @@ class DividendIncome : Formula {
             ["","20%","73145",TP.get2Digits(surtax[0])],
             ["","36%","86176", TP.get2Digits(surtax[1])],
             ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.Alberta.rawValue{
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Dividend Income","","",self.DivInc.text!],
+                ["Foreign Tax Paid","","",self.ForeignTaxPaid.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Dividend Tax Credit","Federal","", TP.get2Digits(getDividendTaxCredit(Location.Federal))],
+                ["Foreign Tax Credit", "Federal", "",TP.get2Digits(getForeignTaxCredit(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                ["Dividend Tax Credit",profileProvince,"",TP.get2Digits(getDividendTaxCredit(Location(rawValue: profileProvince)!))],
+                ["Foreign Tax Credit", profileProvince,"",TP.get2Digits(getForeignTaxCredit(Location(rawValue: profileProvince)!))],
+               ]
+        }
         return (output1 , output2, output3)
 
     
