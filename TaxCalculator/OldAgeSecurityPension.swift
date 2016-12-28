@@ -57,7 +57,13 @@ class Old_Age_Security_Pension : Formula{
         
         OASClawback = getOASClawback()
         
-        return TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + getHealthPremium() + OASClawback
+        var result : Double = 0.0
+        if profileProvince == Location.Ontario.rawValue {
+            result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + getHealthPremium() + OASClawback
+        } else if profileProvince == Location.Alberta.rawValue {
+            result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + OASClawback
+        }
+        return result
     }
     func getInstruction() -> String {
         return " OAS Pension of $" + String(OASPension.text!) + " results in current year additional taxes payable of"
@@ -126,7 +132,9 @@ class Old_Age_Security_Pension : Formula{
         var output1 = ["Net Income", "OAS Pension"]
         output2 = [Double(profileIncome), Double(self.OASPension.text!)!]
         var surtax = TP.getSurtax(income, total - OASClawback, profileProvince)
-        var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+        var output3 = [["","","",""]]
+        if profileProvince == Location.Ontario.rawValue{
+          output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["Interest","","",self.OASPension.text!],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total - OASClawback, TP.FederalBracketDictionary))],
@@ -140,6 +148,17 @@ class Old_Age_Security_Pension : Formula{
             ["","36%","86176", TP.get2Digits(surtax[1])],
             ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
             ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.Alberta.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Interest","","",self.OASPension.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total - OASClawback, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total - OASClawback, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
+                ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        }
         return (output1 , output2, output3)
         
     }
