@@ -58,8 +58,13 @@ class ForeignInvestmentIncome: Formula {
         var total = income! + foreignIncome!
         
         operationBeforeGettingResult()
-        
-        return TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, foreignIncome!) + getHealthPremium()  + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+        var result : Double = 0.0
+        if profileProvince == Location.Ontario.rawValue {
+            result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, foreignIncome!) + getHealthPremium()  + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+        } else if profileProvince == Location.Alberta.rawValue {
+            result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
+        }
+        return result
     }
     //====================================Extra Calculation=============================================================
     func BasicPersonalAmount(mode: Location) -> Double{
