@@ -303,7 +303,7 @@ class ForeignInvestmentIncome: Formula {
         //return true
         if ForeignIncome.text == "" {
             ForeignIncome.backgroundColor = UIColor.customWarningColor()
-            ForeignIncome.placeholder="Missing an input for foreign income"
+            ForeignIncome.placeholder="Missing an input for foreign investment income"
             return false
         } else {
             ForeignIncome.backgroundColor = .clearColor()
