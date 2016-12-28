@@ -90,20 +90,26 @@ class TaxPro {
         
         //Init provincial bracket
         ProvincialBracketDictionary = [Location.Ontario : OrderedDictionary(),
-                                       Location.Alberta : OrderedDictionary()]
+                                       Location.Alberta : OrderedDictionary(),
+                                       Location.British_Columbia: OrderedDictionary()]
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1316, forKey: 220000, atIndex: 0)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1216, forKey: 150000, atIndex: 1)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1116, forKey: 83075, atIndex: 2)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.0915, forKey: 41536, atIndex: 3)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.0505, forKey: 0, atIndex: 4)
         
-        //ProvincialBracketDictionary = [Location.Alberta : OrderedDictionary()]
+        
         ProvincialBracketDictionary[Location.Alberta]?.insert(0.15, forKey: 300000, atIndex: 0)
         ProvincialBracketDictionary[Location.Alberta]?.insert(0.14, forKey: 200000, atIndex: 1)
         ProvincialBracketDictionary[Location.Alberta]?.insert(0.13, forKey: 150000, atIndex: 2)
         ProvincialBracketDictionary[Location.Alberta]?.insert(0.12, forKey: 125000, atIndex: 3)
         ProvincialBracketDictionary[Location.Alberta]?.insert(0.10, forKey: 0, atIndex: 4)
         
+        ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.1470, forKey: 106543, atIndex: 0)
+        ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.1229, forKey: 87741, atIndex: 1)
+        ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.1050, forKey: 76421, atIndex: 2)
+        ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.0770, forKey: 38210, atIndex: 3)
+        ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.0506, forKey: 0, atIndex: 4)
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
@@ -126,7 +132,7 @@ class TaxPro {
         
     }
     func initBasicPersonalAmount(){
-        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451]
+        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027]
     }
     func initBasicReduction(){
         BasicReduction = [Location.Ontario: 456]
