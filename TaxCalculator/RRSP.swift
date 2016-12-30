@@ -65,6 +65,8 @@ class RRSP: Formula{
             result =  TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
         } else if profileProvince == Location.Ontario.rawValue {
             result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getProvincialCredit(income, contribution!)
         }
         return result
         
@@ -96,27 +98,53 @@ class RRSP: Formula{
             return contribution!  * percentage * -1
         }
     }
-    //ON
+    //ON,BC
     func getBasicReduction(netincome: Double, _ contribution: Double) -> Double{
-        return getSingleReduction(netincome) - getSingleReduction(netincome-contribution)
+        
+        return getSingleReduction(netincome - contribution) - getSingleReduction(netincome)
+        
     }
     func getSingleReduction(val: Double) -> Double{
-        var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
-        var b = Double()
-        if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
-            b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
-        } else {
-            b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+        var result = 0.0
+        if profileProvince == Location.Ontario.rawValue {
+            var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
+            var b = Double()
+            if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
+                b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            } else {
+                b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            }
+            b = a - b
+            if b <= 0 {
+                b = 0
+            }
+            var c = TP.BasicReduction[Location(rawValue: profileProvince)!]! - b
+            if (c < 0) {
+                c = 0
+            }
+            result = min(c, b)
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
+            var b = Double()
+            if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
+                b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            } else {
+                b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            }
+            b = a - b
+            var c : Double = val - 19000 // where is 19000 coming from? where is 3.5% coming from?
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.035
+            var e = TP.BasicReduction[Location(rawValue: profileProvince)!]! - d
+            if e <= 0 {
+                e = 0
+            }
+            result = min(b, e)
         }
-        b = a - b
-        if b <= 0 {
-            b = 0
-        }
-        var c = TP.BasicReduction[Location(rawValue: profileProvince)!]! - b
-        if (c < 0) {
-            c = 0
-        }
-        var result = min(c, b)
+        
+        
         return result
         
     }
@@ -128,6 +156,24 @@ class RRSP: Formula{
         var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         var contributionPremium = TP.calculateTheDifference(0, vary, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return incomeHealthPremium - contributionPremium
+    }
+    
+    //BC
+    func getProvincialCredit(netincome: Double, _ contribution: Double) -> Double {
+        return getSingleProvincialCredit(netincome -  contribution) - getSingleProvincialCredit(netincome)
+    }
+    func getSingleProvincialCredit(val: Double) -> Double {
+        var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
+        if c <= 0 {
+            c = 0
+        }
+        var d = c * 0.02
+        var e : Double = 75 - d
+        if e <= 0 {
+            e = 0
+        }
+        
+        return e
     }
     //==================================Extra Calculation=================================================
     func retrieveData() -> ([String],[Double],[[String]]) {
@@ -164,6 +210,17 @@ class RRSP: Formula{
                 ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
                 ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                 ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))]]
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["RRSP Contribution","","",self.contribution.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
+                ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                ["Basic Reduction", profileProvince , "" , TP.get2Digits(getBasicReduction(income, contribution!))],
+                ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, contribution!))],
+                ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
         }
         // return(output1, another,[["Tested","","","\(12.3)"]])
         return (output1 , output2  , output3)

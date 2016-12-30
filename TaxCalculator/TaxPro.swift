@@ -41,6 +41,8 @@ class TaxPro {
     var BasicPersonalAmount = [Location : Double]()
     
     var BasicReduction = [Location: Double]()
+    //TODO: Fill in Provincial Tax
+    var ProvincialCredit = [Location: Double]()
     var HealthPremium = [Location : OrderedDictionary <Int, Double>]()
     
     init() {
@@ -75,7 +77,7 @@ class TaxPro {
             Location.Quebec.rawValue]
     }
     func initTaxCredit(){
-        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 ]
+        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506]
         EligibleDividendTaxCredit = [Location.Federal: 0.15, Location.Ontario: 0.1]
         Non_EligibleDividendTaxCredit = [Location.Federal: 0.105217, Location.Ontario: 0.042863]
         
@@ -135,7 +137,7 @@ class TaxPro {
         BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027]
     }
     func initBasicReduction(){
-        BasicReduction = [Location.Ontario: 456]
+        BasicReduction = [Location.Ontario: 456, Location.British_Columbia : 432]
     }
    
 
