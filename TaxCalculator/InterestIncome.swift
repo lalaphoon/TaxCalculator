@@ -91,6 +91,7 @@ class InterestIncome: Formula{
     }
     func getSingleReduction(val: Double) -> Double{
         var result = 0.0
+        //IF PROVINCE IS ONTARIO
         if profileProvince == Location.Ontario.rawValue {
             var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
             //print("a is \(a)")
@@ -112,7 +113,9 @@ class InterestIncome: Formula{
             }
             //print("c is \(c)")
              result = min(c, b)
-        } else if profileProvince == Location.British_Columbia.rawValue {
+        }
+        //IF THE PROVINCE IS BRITISH COLUMBIA
+        else if profileProvince == Location.British_Columbia.rawValue {
             var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
             var b = Double()
             if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {

@@ -28,14 +28,14 @@ TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505 ]
 var test: Double = TaxCredit[Location.Federal]!
 1 * test
 */
-/*
+
 var ForeignIncome: Double = 8000
 var NetIncome : Double = 9000
-var nonEligibleFTC : Double = 0 // if  Tax Paid Income 2000/Dividend Income > 15%, TaxPaidIncome2000-(DividendIncome * 15%)
-var Deduction_2011 : Double = 800
+var nonEligibleFTC : Double = -800 // if  Tax Paid Income 2000/Dividend Income > 15%, TaxPaidIncome2000-(DividendIncome * 15%)
+var Deduction_2011 : Double = 0
 var ForeignTaxPaid : Double = 1200 //min(Tax Paid Income 2000, Dividend Income 8000 * 15%)
-var BasicFederalTax : Double = 568
-var BasicPersonalTax : Double = 75
+var BasicFederalTax : Double = 709
+var BasicPersonalTax : Double = 313
 
 
 for var i = 0; i < Int(ForeignIncome); i++ {
@@ -48,13 +48,14 @@ for var i = 0; i < Int(ForeignIncome); i++ {
     break}
 
 }
-*/
+
 
 
 
 //String(format:"%.2f", 26.505)
 //String(format:"%.2f", 91.515)
 
+/*
 extension Double {
     func roundTo( places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
@@ -63,5 +64,6 @@ extension Double {
 }
 
 String(26.505.roundTo(0))
+*/
 
 
