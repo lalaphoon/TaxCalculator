@@ -64,9 +64,14 @@ class ForeignInvestmentIncome: Formula {
         } else if profileProvince == Location.Alberta.rawValue {
             result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
         }
+        else if profileProvince == Location.British_Columbia.rawValue {
+            result = TP.foundation(income!, total - Deduction_2011 - Deduction_2012, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, foreignIncome!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!) + getProvincialCredit(income, foreignIncome!)
+    
+        }
         return result
     }
     //====================================Extra Calculation=============================================================
+    //ON,AB
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var foreignIncome = Double(self.ForeignIncome.text!)
@@ -88,11 +93,14 @@ class ForeignInvestmentIncome: Formula {
             }
         }
     }
-    func getBasicReduction(netincome: Double, _ dividendIncome: Double) -> Double{
-        return getSingleReduction(netincome) - getSingleReduction(netincome + dividendIncome - Deduction_2012 - Deduction_2011)
+    //ON,BC
+    func getBasicReduction(netincome: Double, _ foreignIncome: Double) -> Double{
+        return getSingleReduction(netincome) - getSingleReduction(netincome + foreignIncome - Deduction_2012 - Deduction_2011)
     }
-    
+    //ON,BC
     func getSingleReduction(val: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
+        var result = 0.0
+        if profileProvince == Location.Ontario.rawValue {
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
         
         var b = Double()
@@ -120,11 +128,38 @@ class ForeignInvestmentIncome: Formula {
         }
         
         
-        var result = min(c, b)
+         result = min(c, b)
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
+            var b = Double()
+            if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
+                b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            } else {
+                b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            }
+            b = a - b
+            var c : Double = val - 19000 // where is 19000 coming from? where is 3.5% coming from?
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.035
+            var e = TP.BasicReduction[Location(rawValue: profileProvince)!]! - d
+            if e <= 0 {
+                e = 0
+            }
+            result = min(b, e)
+          
+               // var stepone = min (result , getDividendTaxCredit(Location(rawValue: profileProvince)!) )
+               // result = result - stepone
+                var steptwo = min (result , -1 * getForeignTaxCredit(Location(rawValue: profileProvince)!))
+                result = result - steptwo
+            
+        }
         
         return result
         
     }
+    //ON
     func getHealthPremium() -> Double{
         var income = profileIncome
         var foreignIncome = Double(self.ForeignIncome.text!)
@@ -133,31 +168,26 @@ class ForeignInvestmentIncome: Formula {
         var totalPremium = TP.calculateTheDifference(0, total - Deduction_2011 - Deduction_2012, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
-    /*func getDividendTaxCredit(mode: Location) -> Double{
-        var result : Double = 0.0
-        var foreignIncome = Double(self.ForeignIncome.text!)
-        var income = profileIncome
-        var total = income! + foreignIncome!
-        var compare: Double = 0.0
-        
-        if mode == Location.Federal {
-            compare = TP.calculateTheDifference(income, total, TP.FederalBracketDictionary) + BasicPersonalAmount(mode)
-        } else {
-            compare = TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!) + BasicPersonalAmount(mode)
+    //BC
+    func getProvincialCredit(netincome: Double, _ interest: Double) -> Double {
+        return getSingleProvincialCredit(netincome ) - getSingleProvincialCredit(netincome + interest - Deduction_2011 -  Deduction_2012)
+    }
+    //BC
+    func getSingleProvincialCredit(val: Double) -> Double {
+        var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
+        if c <= 0 {
+            c = 0
+        }
+        var d = c * 0.02
+        var e : Double = 75 - d
+        if e <= 0 {
+            e = 0
         }
         
-        
-            if isUSStock.on == true {
-                result = foreignIncome! * TP.EligibleDividendTaxCredit[mode]!
-            } else {
-                result = foreignIncome! * TP.Non_EligibleDividendTaxCredit[mode]!
-            }
-        
-        
-        result = min(result, compare)
-        
-        return result * -1
-    }*/
+        return e
+    }
+//This doesn't have dividend credit
+    //ALL
     func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
         if mode == Location.Federal{
@@ -174,6 +204,7 @@ class ForeignInvestmentIncome: Formula {
         return a - b
         
     }
+    //ALL
     func getForeignTaxCredit(mode : Location) -> Double{
         var result : Double = 0
         var income = profileIncome
@@ -190,7 +221,9 @@ class ForeignInvestmentIncome: Formula {
     }
     //only be called when canadian corporation is off
     //Set up a value for Not EligibleFor FTC when usstock is on
+    //ON,BC
     func operationBeforeGettingResult(){
+        if profileProvince == Location.Ontario.rawValue{
         var NotEligibleForFTC : Double = 0
         var NetIncome = profileIncome                      //9000
         var foreignIncome = Double(self.ForeignIncome.text!)     //Foreign Income 8000
@@ -256,7 +289,60 @@ class ForeignInvestmentIncome: Formula {
             }
             
         }
-        
+    }//End of Ontario
+        else if profileProvince == Location.British_Columbia.rawValue {
+            var NotEligibleForFTC : Double = 0
+            var NetIncome = profileIncome                      //9000
+            var foreignIncome = Double(self.ForeignIncome.text!) //Foreign Income 8000
+            var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+            var total = NetIncome! + foreignIncome!
+            //var Deduction_2011: Double = 0
+            // var Deduction_2012: Double = 0
+            var ForeignTaxPaid : Double = min(ForeignTax!, foreignIncome!*0.15) //1200
+            
+            if isUSStock.on == true {
+                if ForeignTax!/foreignIncome! > 0.15 {
+                    NotEligibleForFTC = ForeignTax! - (foreignIncome!*0.15)
+                    NotEligibleForFTC = NotEligibleForFTC * -1
+                    
+                }
+                
+            } else {
+                if ForeignTax!/foreignIncome! > 0.15 {
+                    Deduction_2011 = ForeignTax! - (foreignIncome!*0.15)
+                    // print("Deduction_2011 , the deduction 2011 is \(Deduction_2011)")
+                    //Deduction_2011 =  * -1
+                    
+                }
+            }
+            for var i = 0; i < Int(foreignIncome!); i++ {
+                //var i: Double = 861
+                
+                var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+                
+                // print("Basic Fedral Tax is  \(BasicFederalTax)")
+                var BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
+                
+                var ratio : Double = (foreignIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+                
+                var FTCLimitation = BasicFederalTax * ratio
+                
+                var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+                
+                var balance : Double = abs(Double(i) - right)
+                //print("i is \(i) and balance is \(balance)")
+                if (balance < 1){
+                    
+                    Deduction_2012 = Double(i)
+                    ProportionOfNetForeignBusinessIncome = ratio
+                    FederalForeignTaxCredit = min(ForeignTaxPaid,FTCLimitation)
+                    ProvincialForeignTaxCredit = min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+                    break
+                }
+                
+            }
+
+        }
         
     }
     //==============================Extra Calculation ended===========================================================
@@ -271,7 +357,9 @@ class ForeignInvestmentIncome: Formula {
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.ForeignIncome.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
-        var output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+        var output3 = [["","","",""]]
+        if profileProvince == Location.Ontario.rawValue {
+         output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
             ["Foreign Income","","",self.ForeignIncome.text!],
             ["Foreign Tax Paid","","",self.ForeignTaxPaid.text!],
@@ -288,6 +376,38 @@ class ForeignInvestmentIncome: Formula {
             ["","20%","73145",TP.get2Digits(surtax[0])],
             ["","36%","86176", TP.get2Digits(surtax[1])],
             ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.Alberta.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Foreign Income","","",self.ForeignIncome.text!],
+                ["Foreign Tax Paid","","",self.ForeignTaxPaid.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Foreign Tax Credit", "Federal", "",TP.get2Digits(getForeignTaxCredit(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                
+                ["Foreign Tax Credit", profileProvince,"",TP.get2Digits(getForeignTaxCredit(Location(rawValue: profileProvince)!))],
+                ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Foriegn Income","","",self.ForeignIncome.text!],
+                ["Foreign Tax Paid","","",self.ForeignTaxPaid.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+
+                ["Foreign Tax Credit", "Federal", "",TP.get2Digits(getForeignTaxCredit(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+
+                ["Foreign Tax Credit", profileProvince,"",TP.get2Digits(getForeignTaxCredit(Location(rawValue: profileProvince)!))],
+                ["Basic Reduction", profileProvince, "" , TP.get2Digits(getBasicReduction(income, foreignIncome!))],
+                ["Provincial Credit", profileProvince,"",TP.get2Digits(getProvincialCredit(income, foreignIncome!))],
+                
+                ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+
+        }
         return (output1 , output2, output3)
         
         

@@ -274,6 +274,7 @@ class DividendIncome : Formula {
 
         return result * -1
     }
+    //ALL
     func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
         if mode == Location.Federal{
@@ -290,6 +291,7 @@ class DividendIncome : Formula {
         return a - b
         
     }
+    //ALL
     func getForeignTaxCredit(mode : Location) -> Double{
         var result : Double = 0
         var income = profileIncome
@@ -376,7 +378,8 @@ class DividendIncome : Formula {
                 }
                 
             }
-        } else if profileProvince == Location.British_Columbia.rawValue {
+        }//End of Ontario
+        else if profileProvince == Location.British_Columbia.rawValue {
             var NotEligibleForFTC : Double = 0
             var NetIncome = profileIncome                      //9000
             var dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
