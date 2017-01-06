@@ -77,7 +77,7 @@ class TaxPro {
             Location.Quebec.rawValue]
     }
     func initTaxCredit(){
-        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506]
+        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506, Location.Manitoba : 0.108]
         EligibleDividendTaxCredit = [Location.Federal: 0.15, Location.Ontario: 0.1]
         Non_EligibleDividendTaxCredit = [Location.Federal: 0.105217, Location.Ontario: 0.042863]
         

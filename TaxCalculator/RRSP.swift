@@ -68,7 +68,7 @@ class RRSP: Formula{
         } else if profileProvince == Location.British_Columbia.rawValue {
             result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getProvincialCredit(income, contribution!)
         } else if profileProvince == Location.Manitoba.rawValue{
-           // result = TP.foundation(vary, income!, profileProvince!).result +
+            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getProvincialCredit(income, contribution!)
         }
         return result
         
@@ -161,23 +161,37 @@ class RRSP: Formula{
         return incomeHealthPremium - contributionPremium
     }
     
-    //BC
+    //BC,MB
     func getProvincialCredit(netincome: Double, _ contribution: Double) -> Double {
-        return getSingleProvincialCredit(netincome -  contribution) - getSingleProvincialCredit(netincome)
+        return  getSingleProvincialCredit(netincome) - getSingleProvincialCredit(netincome -  contribution)
     }
-    //BC
+    //BC,MB
     func getSingleProvincialCredit(val: Double) -> Double {
-        var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
-        if c <= 0 {
-            c = 0
+        var result : Double = 0.0
+        if profileProvince ==  Location.British_Columbia.rawValue {
+            var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.02
+            var e : Double = 75 - d
+            if e <= 0 {
+                e = 0
+            }
+            result = e
+        } else if profileProvince == Location.Manitoba.rawValue {
+            var c : Double = val
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.01
+            var e : Double = 195 - d
+            if e <= 0 {
+                e = 0
+            }
+            result = e
         }
-        var d = c * 0.02
-        var e : Double = 75 - d
-        if e <= 0 {
-            e = 0
-        }
-        
-        return e
+        return result
     }
     //==================================Extra Calculation=================================================
     func retrieveData() -> ([String],[Double],[[String]]) {
@@ -204,7 +218,6 @@ class RRSP: Formula{
             ["","20%","\(interestthreshold[0])",TP.get2Digits(surtax[0])],
             ["","36%","\(interestthreshold[1])", TP.get2Digits(surtax[1])],
             ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
-            
         } else if profileProvince == Location.Alberta.rawValue {
             
             output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
@@ -223,6 +236,16 @@ class RRSP: Formula{
                 ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                 ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
                 ["Basic Reduction", profileProvince , "" , TP.get2Digits(getBasicReduction(income, contribution!))],
+                ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, contribution!))],
+                ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.Manitoba.rawValue{
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["RRSP Contribution","","",self.contribution.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
+                ["Basic personal amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic personal amount", profileProvince, "", TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
                 ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, contribution!))],
                 ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
         }
