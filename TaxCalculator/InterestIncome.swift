@@ -57,6 +57,8 @@ class InterestIncome: Formula{
             result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getHealthPremium()
         } else if profileProvince == Location.British_Columbia.rawValue {
             result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getProvincialCredit(income!, interest!)
+        } else if profileProvince == Location.Manitoba.rawValue {
+            result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getProvincialCredit(income, interest!)
         }
         
         return result
@@ -65,7 +67,7 @@ class InterestIncome: Formula{
         return "Dividend Income of $" + String(interest.text!) + " results in current year additional taxes payable of"
     }
     //====================================Extra Calculation=============================================================
-    //ON,AB, BC
+    //ON,AB, BC, MB
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var interest = Double(self.interest.text!)
@@ -89,6 +91,7 @@ class InterestIncome: Formula{
     func getBasicReduction(netincome: Double, _ interest: Double) -> Double{
         return getSingleReduction(netincome) - getSingleReduction(netincome + interest)
     }
+    //ON,BC
     func getSingleReduction(val: Double) -> Double{
         var result = 0.0
         //IF PROVINCE IS ONTARIO
@@ -148,22 +151,39 @@ class InterestIncome: Formula{
         var totalPremium = TP.calculateTheDifference(0, total, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
-    //BC
+    //BC,MB
     func getProvincialCredit(netincome: Double, _ interest: Double) -> Double {
-        return getSingleProvincialCredit(netincome ) - getSingleProvincialCredit(netincome + interest)
+        return getSingleProvincialCredit(netincome) - getSingleProvincialCredit(netincome + interest)
     }
+    //BC,MB
     func getSingleProvincialCredit(val: Double) -> Double {
-        var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
-        if c <= 0 {
-            c = 0
-        }
-        var d = c * 0.02
-        var e : Double = 75 - d
-        if e <= 0 {
-            e = 0
+        var result : Double = 0.0
+        if profileProvince == Location.British_Columbia.rawValue {
+            var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.02
+            var e : Double = 75 - d
+            if e <= 0 {
+                e = 0
+            }
+            result = e
+        } else if profileProvince == Location.Manitoba.rawValue {
+            var c : Double = val
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.01
+            var e : Double = 195 - d
+            if e <= 0 {
+                e = 0
+            }
+            //print("result is \(e)")
+            result = e
         }
         
-        return e
+        return result
     }
     
     
@@ -210,6 +230,15 @@ class InterestIncome: Formula{
                 ["Basic Reduction", profileProvince , "" , TP.get2Digits(getBasicReduction(income, interest!))],
                 ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, interest!))],
                 ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.Manitoba.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Interest","","",self.interest.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                ["Provincial Credit", profileProvince, "", TP.get2Digits(getProvincialCredit(income, interest!))]]
         }
         return (output1 , output2, output3)
 
