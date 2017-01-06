@@ -62,12 +62,16 @@ class Old_Age_Security_Pension : Formula{
             result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + getHealthPremium() + OASClawback
         } else if profileProvince == Location.Alberta.rawValue {
             result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + OASClawback
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            result = TP.foundation(income!,total-OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + OASClawback + getProvincialCredit(income, oaspension!)
         }
         return result
     }
     func getInstruction() -> String {
         return " OAS Pension of $" + String(OASPension.text!) + " results in current year additional taxes payable of"
     }
+    //==============================Extra Calculation===========================
+    //ON,AB,BC
     func BasicPersonalAmount(mode : Location) -> Double{
         var income = profileIncome
         var oaspension = Double(self.OASPension.text!)
@@ -87,10 +91,14 @@ class Old_Age_Security_Pension : Formula{
             }
         }
     }
+    //ON,BC
     func getBasicReduction(netincome: Double, _ oaspension: Double) -> Double{
         return getSingleReduction(netincome) - getSingleReduction(netincome + oaspension - OASClawback)
     }
+    //ON,BC
     func getSingleReduction(val: Double) -> Double{
+        var result = 0.0
+        if profileProvince == Location.Ontario.rawValue {
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
         //print("a is \(a)")
         var b = Double()
@@ -110,11 +118,34 @@ class Old_Age_Security_Pension : Formula{
             c = 0
         }
         //print("c is \(c)")
-        var result = min(c, b)
+         result = min(c, b)
         //print("result is \(result)")
+        }
+        else if profileProvince == Location.British_Columbia.rawValue {
+            var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
+            var b = Double()
+            if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
+                b = val * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            } else {
+                b = TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! * TP.TaxCredit[Location(rawValue: profileProvince)!]!
+            }
+            b = a - b
+            var c : Double = val - 19000 // where is 19000 coming from? where is 3.5% coming from?
+            if c <= 0 {
+                c = 0
+            }
+            var d = c * 0.035
+            var e = TP.BasicReduction[Location(rawValue: profileProvince)!]! - d
+            if e <= 0 {
+                e = 0
+            }
+            result = min(b, e)
+
+        }
         return result
         
     }
+    //ON
     func getHealthPremium() -> Double{
         var income = profileIncome
         var oaspension = Double(self.OASPension.text!)
@@ -123,7 +154,25 @@ class Old_Age_Security_Pension : Formula{
         var totalPremium = TP.calculateTheDifference(0, total, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
-    
+    //BC
+    func getProvincialCredit(netincome: Double, _ oaspension: Double) -> Double {
+        return getSingleProvincialCredit(netincome ) - getSingleProvincialCredit(netincome + oaspension - OASClawback)
+    }
+    //BC
+    func getSingleProvincialCredit(val: Double) -> Double {
+        var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
+        if c <= 0 {
+            c = 0
+        }
+        var d = c * 0.02
+        var e : Double = 75 - d
+        if e <= 0 {
+            e = 0
+        }
+        
+        return e
+    }
+ //================================End of Calculation========================================================
     func retrieveData() -> ([String],[Double],[[String]]){
         var income = profileIncome
         var oaspension = Double(self.OASPension.text!)
@@ -156,6 +205,18 @@ class Old_Age_Security_Pension : Formula{
                 ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
                 ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total - OASClawback, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                 ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
+                ["Tax Payable","","",TP.get2Digits(self.getResult())]]
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
+                ["Province/Territory","","",profileProvince],
+                ["Interest","","",self.OASPension.text!],
+                ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total - OASClawback, TP.FederalBracketDictionary))],
+                ["Basic Personal Amount","Federal","",TP.get2Digits(BasicPersonalAmount(Location.Federal))],
+                ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total - OASClawback, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
+                ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
+                ["Basic Reduction", profileProvince, "",TP.get2Digits(getBasicReduction(income, oaspension!))],
+                ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, oaspension!))],
                 ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
                 ["Tax Payable","","",TP.get2Digits(self.getResult())]]
         }

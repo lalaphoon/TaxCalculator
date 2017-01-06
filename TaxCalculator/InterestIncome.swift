@@ -65,7 +65,7 @@ class InterestIncome: Formula{
         return "Dividend Income of $" + String(interest.text!) + " results in current year additional taxes payable of"
     }
     //====================================Extra Calculation=============================================================
-    //ON,AB
+    //ON,AB, BC
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var interest = Double(self.interest.text!)

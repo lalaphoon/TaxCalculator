@@ -122,7 +122,7 @@ class DividendIncome : Formula {
         
     }
     //====================================Extra Calculation=============================================================
-    //ON,AB
+    //ON,AB,BC
     func BasicPersonalAmount(mode: Location, _ totalDeduction : Double = 0.0) -> Double{
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)

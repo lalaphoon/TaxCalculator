@@ -71,7 +71,7 @@ class ForeignInvestmentIncome: Formula {
         return result
     }
     //====================================Extra Calculation=============================================================
-    //ON,AB
+    //ON,AB,BC
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var foreignIncome = Double(self.ForeignIncome.text!)
@@ -129,7 +129,8 @@ class ForeignInvestmentIncome: Formula {
         
         
          result = min(c, b)
-        } else if profileProvince == Location.British_Columbia.rawValue {
+        }
+        else if profileProvince == Location.British_Columbia.rawValue {
             var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
             var b = Double()
             if val < TP.BasicPersonalAmount[Location(rawValue: profileProvince)!]! {
