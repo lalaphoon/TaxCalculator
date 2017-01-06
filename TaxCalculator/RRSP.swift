@@ -67,6 +67,8 @@ class RRSP: Formula{
             result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
         } else if profileProvince == Location.British_Columbia.rawValue {
             result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getProvincialCredit(income, contribution!)
+        } else if profileProvince == Location.Manitoba.rawValue{
+           // result = TP.foundation(vary, income!, profileProvince!).result +
         }
         return result
         
@@ -76,7 +78,7 @@ class RRSP: Formula{
         return "Dividend income of $" + String(contribution.text!) + " results in current year additional taxes payable of"
     }
     //====================================Extra Calculation==============================================
-    //ON,AB
+    //ON,AB,BC,MB
     func BasicPersonalAmount(mode: Location) -> Double{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
@@ -104,6 +106,7 @@ class RRSP: Formula{
         return getSingleReduction(netincome - contribution) - getSingleReduction(netincome)
         
     }
+    //ON,BC
     func getSingleReduction(val: Double) -> Double{
         var result = 0.0
         if profileProvince == Location.Ontario.rawValue {
@@ -162,6 +165,7 @@ class RRSP: Formula{
     func getProvincialCredit(netincome: Double, _ contribution: Double) -> Double {
         return getSingleProvincialCredit(netincome -  contribution) - getSingleProvincialCredit(netincome)
     }
+    //BC
     func getSingleProvincialCredit(val: Double) -> Double {
         var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
         if c <= 0 {

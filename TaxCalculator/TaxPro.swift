@@ -93,7 +93,8 @@ class TaxPro {
         //Init provincial bracket
         ProvincialBracketDictionary = [Location.Ontario : OrderedDictionary(),
                                        Location.Alberta : OrderedDictionary(),
-                                       Location.British_Columbia: OrderedDictionary()]
+                                       Location.British_Columbia: OrderedDictionary(),
+                                       Location.Manitoba: OrderedDictionary()]
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1316, forKey: 220000, atIndex: 0)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1216, forKey: 150000, atIndex: 1)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1116, forKey: 83075, atIndex: 2)
@@ -112,6 +113,10 @@ class TaxPro {
         ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.1050, forKey: 76421, atIndex: 2)
         ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.0770, forKey: 38210, atIndex: 3)
         ProvincialBracketDictionary[Location.British_Columbia]?.insert(0.0506, forKey: 0, atIndex: 4)
+        
+        ProvincialBracketDictionary[Location.Manitoba]?.insert(0.1740, forKey: 67000, atIndex: 0)
+        ProvincialBracketDictionary[Location.Manitoba]?.insert(0.1275, forKey: 31000, atIndex: 1)
+        ProvincialBracketDictionary[Location.Manitoba]?.insert(0.1080, forKey: 0, atIndex: 2)
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
@@ -134,7 +139,7 @@ class TaxPro {
         
     }
     func initBasicPersonalAmount(){
-        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027]
+        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027, Location.Manitoba: 9134]
     }
     func initBasicReduction(){
         BasicReduction = [Location.Ontario: 456, Location.British_Columbia : 432]
