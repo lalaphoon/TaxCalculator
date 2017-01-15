@@ -258,6 +258,57 @@ class TaxPro {
         
     }
     
+    
+    //helper functions
+    //rrsp: income, contribution, vary = income-contribution
+    //interest:
+    //mode: Federal/Other province
+    //selection: pos/true: interest income,  neg/false: rrsp
+    func BasicPersonalAmount(profileIncome: Double, _ other: Double, _ mode: Location, _ selection: Bool) -> Double{
+        
+        if selection == false {
+            var income = profileIncome
+            var contribution = other
+            var vary = income - contribution
+            var percentage : Double = self.TaxCredit[mode]!
+            var basicPersonalAmount : Double = self.BasicPersonalAmount[mode]!
+            
+            //percentage should be 15% always
+            if income > basicPersonalAmount {
+                if vary >= basicPersonalAmount {
+                    return 0.0
+                } else {
+                    return (basicPersonalAmount - vary ) * percentage * -1
+                }
+            } else {
+                return contribution  * percentage * -1
+            }
+        } else { // It is for interest income
+            // for oas, let other equals oaspension - oasclawback
+            // for foreignincome, other should exquals foreignIncome
+            var income = profileIncome
+            var interest = other
+            var total = income + interest
+            
+            var percentage: Double = self.TaxCredit[mode]!
+            var basicPersonalAmount :  Double = self.BasicPersonalAmount[mode]!
+            
+            
+            if income >= basicPersonalAmount {
+                return 0
+            } else {
+                if total > basicPersonalAmount {
+                    return (basicPersonalAmount-income) * percentage * -1
+                } else {
+                    return interest * percentage * -1
+                }
+            }
+            
+            
+        }
+    }
+
+    
     //=====================helper end=======================================
     func get2Digits(input : Double) ->String {
         //return String(format:"%.0f",input) //due to odd/even digit issues, this one cannot be used
