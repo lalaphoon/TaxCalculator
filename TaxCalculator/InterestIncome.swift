@@ -51,7 +51,8 @@ class InterestIncome: Formula{
         var interest = Double(self.interest.text!)
         var total = income! + interest!
         var result:Double = 0.0
-        if profileProvince == Location.Alberta.rawValue {
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getInterestIncome(income!, interest!).result)!
+        /*if profileProvince == Location.Alberta.rawValue {
             result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
         } else if profileProvince == Location.Ontario.rawValue {
             result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getHealthPremium()
@@ -59,7 +60,7 @@ class InterestIncome: Formula{
             result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, interest!) + getProvincialCredit(income!, interest!)
         } else if profileProvince == Location.Manitoba.rawValue {
             result = TP.foundation(income!, total, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getProvincialCredit(income, interest!)
-        }
+        }*/
         
         return result
     }
@@ -197,6 +198,7 @@ class InterestIncome: Formula{
         output2 = [Double(profileIncome), Double(self.interest.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
         var output3 = [["","","",""]]
+        /*
         if profileProvince == Location.Ontario.rawValue {
             output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
@@ -239,7 +241,9 @@ class InterestIncome: Formula{
                 ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!))],
                 ["Basic Personal Amount",profileProvince,"",TP.get2Digits(BasicPersonalAmount(Location(rawValue: profileProvince)!))],
                 ["Provincial Credit", profileProvince, "", TP.get2Digits(getProvincialCredit(income, interest!))]]
-        }
+        }*/
+        
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getInterestIncome(income!, interest!).process)!
         return (output1 , output2, output3)
 
     }

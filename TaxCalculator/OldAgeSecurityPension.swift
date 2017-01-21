@@ -58,13 +58,15 @@ class Old_Age_Security_Pension : Formula{
         OASClawback = getOASClawback()
         
         var result : Double = 0.0
+        /*
         if profileProvince == Location.Ontario.rawValue {
             result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + getHealthPremium() + OASClawback
         } else if profileProvince == Location.Alberta.rawValue {
             result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + OASClawback
         } else if profileProvince == Location.British_Columbia.rawValue {
             result = TP.foundation(income!,total-OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + OASClawback + getProvincialCredit(income, oaspension!)
-        }
+        }*/
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).result)!
         return result
     }
     func getInstruction() -> String {
@@ -182,6 +184,7 @@ class Old_Age_Security_Pension : Formula{
         output2 = [Double(profileIncome), Double(self.OASPension.text!)!]
         var surtax = TP.getSurtax(income, total - OASClawback, profileProvince)
         var output3 = [["","","",""]]
+        /*
         if profileProvince == Location.Ontario.rawValue{
           output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
@@ -219,7 +222,8 @@ class Old_Age_Security_Pension : Formula{
                 ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, oaspension!))],
                 ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
                 ["Tax Payable","","",TP.get2Digits(self.getResult())]]
-        }
+        }*/
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).process)!
         return (output1 , output2, output3)
         
     }

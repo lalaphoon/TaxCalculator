@@ -17,6 +17,7 @@ class RRSP: Formula{
     
     var TP = TaxPro()
     
+    
     var contribution = UITextField()
     
     var profileIncome : Double!
@@ -61,6 +62,7 @@ class RRSP: Formula{
         // if vary < 0 {
         //    vary = -vary }
         var result :Double = 0.0
+       /*
         if profileProvince == Location.Alberta.rawValue {
             result =  TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
         } else if profileProvince == Location.Ontario.rawValue {
@@ -69,7 +71,8 @@ class RRSP: Formula{
             result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getProvincialCredit(income, contribution!)
         } else if profileProvince == Location.Manitoba.rawValue{
             result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getProvincialCredit(income, contribution!)
-        }
+        }*/
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getRRSP(income!, contribution!).result)!
         return result
         
         
@@ -204,6 +207,7 @@ class RRSP: Formula{
         var surtax = TP.getSurtax(vary,income, profileProvince)
         var interestthreshold = ["73145","86176"]
         var output3 = [["","","",""]]
+/*
         if profileProvince == Location.Ontario.rawValue {
          output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
@@ -249,7 +253,9 @@ class RRSP: Formula{
                 ["Provincial Credit", profileProvince,"", TP.get2Digits(getProvincialCredit(income, contribution!))],
                 ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
         }
-        // return(output1, another,[["Tested","","","\(12.3)"]])
+*/
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getRRSP(income!, contribution!).process)!
+       
         return (output1 , output2  , output3)
     }
     func getTip() -> String {

@@ -103,6 +103,10 @@ class DividendIncome : Formula {
         print("Deduction 2011 is ...\(Deduction_2011)")
         print("Deduction 2012 is ...\(Deduction_2012)")
         var result : Double = 0.0
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getDividendIncome(income!, dividendIncome: dividendIncome!, ForeignTaxPaid: Double(self.ForeignTaxPaid.text!)!, CanadianCorporation: CanadianCorporation.on, StockMarket: StockMarket.on, isUSStock: USStock.on).result)!
+        
+        
+        /*
         
         if profileProvince == Location.Ontario.rawValue {
             
@@ -115,7 +119,7 @@ class DividendIncome : Formula {
         else if profileProvince == Location.British_Columbia.rawValue {
             result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, dividendIncome!) + getProvincialCredit(income, dividendIncome!) + getDividendTaxCredit(Location.Federal) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
         }
-        
+        */
         
         return result
         
@@ -447,7 +451,8 @@ class DividendIncome : Formula {
         output2 = [Double(profileIncome), Double(self.DivInc.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
         var output3 = [["","","",""]]
-        
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getDividendIncome(income!, dividendIncome: dividendIncome!, ForeignTaxPaid: Double(self.ForeignTaxPaid.text!)!, CanadianCorporation: CanadianCorporation.on, StockMarket: StockMarket.on, isUSStock: USStock.on).process)!
+        /*
         if profileProvince == Location.Ontario.rawValue {
          output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
@@ -498,7 +503,8 @@ class DividendIncome : Formula {
                 ["Provincial Credit", profileProvince,"",TP.get2Digits(getProvincialCredit(income, dividendIncome!))],
                 
                 ["Tax Payable","","",TP.get2Digits(self.getResult())]]
-        }
+
+        }*/
         return (output1 , output2, output3)
 
     

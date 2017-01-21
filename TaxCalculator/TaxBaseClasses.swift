@@ -34,6 +34,7 @@ protocol Formula {
 
 class Calculator{
     let strategy : Formula
+    //let provincialTax : ProvincialTax
     
     init (algorithm:  Formula){
         self.strategy = algorithm

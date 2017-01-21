@@ -57,8 +57,14 @@ class ForeignInvestmentIncome: Formula {
         var foreignIncome = Double(self.ForeignIncome.text!)
         var total = income! + foreignIncome!
         
-        operationBeforeGettingResult()
+        //Necessary step
+        //operationBeforeGettingResult()
+        
+        
         var result : Double = 0.0
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getForeignInvestmentIncome(income, foreignIncome: foreignIncome!, foreignTaxPaid: Double(self.ForeignTaxPaid.text!)!, isUSStock: isUSStock.on).result)!
+        
+        /*
         if profileProvince == Location.Ontario.rawValue {
             result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, foreignIncome!) + getHealthPremium()  + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
         } else if profileProvince == Location.Alberta.rawValue {
@@ -67,7 +73,8 @@ class ForeignInvestmentIncome: Formula {
         else if profileProvince == Location.British_Columbia.rawValue {
             result = TP.foundation(income!, total - Deduction_2011 - Deduction_2012, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, foreignIncome!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!) + getProvincialCredit(income, foreignIncome!)
     
-        }
+        }*/
+        
         return result
     }
     //====================================Extra Calculation=============================================================
@@ -213,9 +220,9 @@ class ForeignInvestmentIncome: Formula {
         var total = income! + foreignIncome!
      
             if mode == Location.Federal {
-                result = -1 * min( TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary) + BasicPersonalAmount(Location.Federal) ,FederalForeignTaxCredit)
+                result = -1 * min( TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, foreignIncome!, Location.Federal, true) ,FederalForeignTaxCredit)
             } else {
-                result = -1 * min(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + BasicPersonalAmount(Location(rawValue: profileProvince!)!)  ,ProvincialForeignTaxCredit)
+                result = -1 * min(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + TP.BasicPersonalAmount(income, foreignIncome!, Location.Ontario, true)  ,ProvincialForeignTaxCredit)
             }
         
         return result
@@ -359,6 +366,9 @@ class ForeignInvestmentIncome: Formula {
         output2 = [Double(profileIncome), Double(self.ForeignIncome.text!)!]
         var surtax = TP.getSurtax(income, total, profileProvince)
         var output3 = [["","","",""]]
+        
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getForeignInvestmentIncome(income, foreignIncome: foreignIncome!, foreignTaxPaid: Double(self.ForeignTaxPaid.text!)!, isUSStock: isUSStock.on).process)!
+        /*
         if profileProvince == Location.Ontario.rawValue {
          output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
@@ -408,7 +418,7 @@ class ForeignInvestmentIncome: Formula {
                 
                 ["Tax Payable","","",TP.get2Digits(self.getResult())]]
 
-        }
+        }*/
         return (output1 , output2, output3)
         
         
