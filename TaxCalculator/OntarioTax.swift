@@ -125,7 +125,7 @@ class OntarioTax : ProvincialTax {
     }
     
     
-    func getDividendIncome(netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool) -> (result:Double, process:[[String]]) {
+    func getDividendIncome(netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool, dividF : Double, dividP : Double) -> (result:Double, process:[[String]]) {
         var income = netIncome
         var total = income + dividendIncome
         var Deduction_2012 : Double = 0
@@ -140,11 +140,15 @@ class OntarioTax : ProvincialTax {
         var provincial_ForeignTaxCredit : Double = 0.0
         var extraF : Double = 0.0
         var extraP : Double = 0.0
+        //var dividF = f.getDividendTaxCredit(income, dividendIncome: dividendIncome, mode:Location.Federal,CanadianCorporation: CanadianCorporation, StockMarket:  StockMarket)
+        //var dividP = f.getDividendTaxCredit(income, dividendIncome: dividendIncome, mode:Location.Ontario,CanadianCorporation: CanadianCorporation, StockMarket:  StockMarket)
+        
         
         if CanadianCorporation == false {
             (Deduction_2012,Deduction_2011,ProportionOfNetForeignBusinessIncome,FederalForeignTaxCredit, ProvincialForeignTaxCredit) = operationBeforeGettingResult(income, foreignIncome: dividendIncome, ForeignTax: ForeignTaxPaid , isUSStock: isUSStock)
-             extraF = getDividendTaxCredit(income, dividendIncome: dividendIncome, mode:Location.Federal,CanadianCorporation: CanadianCorporation, StockMarket:  StockMarket)
-             extraP = getDividendTaxCredit(income, dividendIncome: dividendIncome, mode:Location.Ontario,CanadianCorporation: CanadianCorporation, StockMarket:  StockMarket)
+            
+             extraF = dividF
+             extraP = dividP
             //result = result +
             federal_ForeignTaxCredit =  getForeignTaxCredit(income, dividendIncome, Deduction_2012, Deduction_2011, FederalForeignTaxCredit, ProvincialForeignTaxCredit, Location.Federal, extraF)
             provincial_ForeignTaxCredit =  getForeignTaxCredit(income, dividendIncome, Deduction_2012, Deduction_2011, FederalForeignTaxCredit, ProvincialForeignTaxCredit, Location.Ontario, extraP)
@@ -155,8 +159,8 @@ class OntarioTax : ProvincialTax {
             TP.BasicPersonalAmount(income, dividendIncome, Location.Ontario, true) +
             getBasicReduction(income, total - Deduction_2011 - Deduction_2012, true, -1 * extraP) +
             getHealthPremium(total - Deduction_2012 - Deduction_2011, income) +
-            extraF +
-            extraP
+            dividF +
+            dividP
         
         
         result = result + federal_ForeignTaxCredit + provincial_ForeignTaxCredit
@@ -166,13 +170,13 @@ class OntarioTax : ProvincialTax {
             ["Foreign Tax Paid","","",TP.get2Digits(ForeignTaxPaid)],
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary))],
             ["Basic Personal Amount","Federal","",TP.get2Digits(TP.BasicPersonalAmount(income, dividendIncome, Location.Federal, true))],
-            ["Dividend Tax Credit","Federal","", TP.get2Digits(getDividendTaxCredit(income, dividendIncome: dividendIncome, mode:Location.Federal,CanadianCorporation: CanadianCorporation, StockMarket:  StockMarket))],
+            ["Dividend Tax Credit","Federal","", TP.get2Digits(dividF)],
             ["Foreign Tax Credit", "Federal", "",TP.get2Digits(federal_ForeignTaxCredit)],
             ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location.Ontario]!))],
             ["Basic Personal Amount",Location.Ontario.rawValue,"",TP.get2Digits(TP.BasicPersonalAmount(income, dividendIncome, Location.Ontario, true))],
-            ["Dividend Tax Credit",Location.Ontario.rawValue,"",TP.get2Digits(getDividendTaxCredit(income, dividendIncome: dividendIncome, mode:Location.Ontario,CanadianCorporation: CanadianCorporation, StockMarket:  StockMarket))],
+            ["Dividend Tax Credit",Location.Ontario.rawValue,"",TP.get2Digits(dividP)],
             ["Foreign Tax Credit", Location.Ontario.rawValue,"",TP.get2Digits(provincial_ForeignTaxCredit)],
-            ["Basic Reduction", Location.Ontario.rawValue, "" , TP.get2Digits(getBasicReduction(income, total - Deduction_2011 - Deduction_2012, true, -1 * getDividendTaxCredit(income, dividendIncome: dividendIncome,mode: Location.Ontario, CanadianCorporation: CanadianCorporation, StockMarket: StockMarket)))],
+            ["Basic Reduction", Location.Ontario.rawValue, "" , TP.get2Digits(getBasicReduction(income, total - Deduction_2011 - Deduction_2012, true, -1 * dividP))],
             ["Health Premium", Location.Ontario.rawValue,"",TP.get2Digits(getHealthPremium(total - Deduction_2012 - Deduction_2011, income))],
             ["Surtax","%","Threshold",""],
             ["","20%","73145",TP.get2Digits(surtax[0])],
@@ -183,7 +187,7 @@ class OntarioTax : ProvincialTax {
     
     
     
-    func getDividendTaxCredit(netIncome : Double, dividendIncome : Double, mode: Location, CanadianCorporation : Bool, StockMarket : Bool) -> Double {
+    /*func getDividendTaxCredit(netIncome : Double, dividendIncome : Double, mode: Location, CanadianCorporation : Bool, StockMarket : Bool) -> Double {
         var result : Double = 0.0
         //var dividendIncome = Double(self.DivInc.text!)
         var income = netIncome
@@ -208,14 +212,14 @@ class OntarioTax : ProvincialTax {
         
         return result * -1
         
-    }
+    }*/
     
-    func getForeignTaxCredit(income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividendProvincial : Double = 0.0, _extraDividendProvincial : Double = 0.0) -> Double {
+    func getForeignTaxCredit(income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividend : Double = 0.0) -> Double {
         var result : Double = 0
         
         var total = income + foreignIncome
-        var extraDividendFederal : Double = 0.0
-        var extraDividendProvincial : Double = 0.0
+       // var extraDividendFederal : Double = 0.0
+       // var extraDividendProvincial : Double = 0.0
         
         /*
         if DividendIncomeMode {
@@ -224,9 +228,9 @@ class OntarioTax : ProvincialTax {
         }*/
         
         if mode == Location.Federal {
-            result = -1 * min( TP.calculateTheDifference(income, total - Deduction_2012 - Deduction_2011, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, foreignIncome, Location.Federal, true) + extraDividendFederal ,FederalForeignTaxCredit)
+            result = -1 * min( TP.calculateTheDifference(income, total - Deduction_2012 - Deduction_2011, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, foreignIncome, Location.Federal, true) + extraDividend ,FederalForeignTaxCredit)
         } else {
-            result = -1 * min(TP.calculateTheDifference(income, total - Deduction_2012 - Deduction_2011, TP.ProvincialBracketDictionary[mode]!) + TP.BasicPersonalAmount(income, foreignIncome, Location.Ontario, true) + extraDividendProvincial  ,ProvincialForeignTaxCredit)
+            result = -1 * min(TP.calculateTheDifference(income, total - Deduction_2012 - Deduction_2011, TP.ProvincialBracketDictionary[mode]!) + TP.BasicPersonalAmount(income, foreignIncome, mode, true) + extraDividend ,ProvincialForeignTaxCredit)
         }
         
         return result

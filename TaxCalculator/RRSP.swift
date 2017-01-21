@@ -62,16 +62,7 @@ class RRSP: Formula{
         // if vary < 0 {
         //    vary = -vary }
         var result :Double = 0.0
-       /*
-        if profileProvince == Location.Alberta.rawValue {
-            result =  TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
-        } else if profileProvince == Location.Ontario.rawValue {
-            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
-        } else if profileProvince == Location.British_Columbia.rawValue {
-            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getProvincialCredit(income, contribution!)
-        } else if profileProvince == Location.Manitoba.rawValue{
-            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getProvincialCredit(income, contribution!)
-        }*/
+     
         result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getRRSP(income!, contribution!).result)!
         return result
         
@@ -204,9 +195,54 @@ class RRSP: Formula{
         var vary = income! - contribution!
         var output1 = ["Net Income", "Contribution"]
         output2 = [Double(profileIncome), Double(self.contribution.text!)!]
-        var surtax = TP.getSurtax(vary,income, profileProvince)
-        var interestthreshold = ["73145","86176"]
+       
         var output3 = [["","","",""]]
+
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getRRSP(income!, contribution!).process)!
+       
+        return (output1 , output2  , output3)
+    }
+    func getTip() -> String {
+        return "If an individual is a first-time home buyer, consider withdrawing funds from RRSP under the Home Buyers' Plan (HBP) of up to $25,000 given the funds are tax-deferred. The funds shall remain in the RRSP for at least 90 days before withdrawing under the HBP to avoid adverse tax consequences."
+    }
+    func getDefinition() -> String {
+        return "Registered Retirement Savings Plan (RRSP) is a plan designed to assist employed, self-employed and other individuals to defer tax on a limited part of their income for the purpose of retirement savings. Individuals may take a tax deduction in the current year for the RRSP contributions made if they have sufficient contribution room.\n\nYou can find your RRSP contribution room by checking your latest Notice of Assessment of by calling the CRA."
+    }
+    func displayProcess() -> String {
+        var process = String()
+        process =           "-------------------------\n"
+        process = process + "Income:       \(profileIncome)\n"
+        process = process + "Province:     \(profileProvince)\n"
+        process = process + "Contribution: \(self.contribution.text!)\n"
+        process = process + "--------------------------\n"
+        
+        var income = profileIncome
+        var contribution = Double(self.contribution.text!)
+        var vary = income! - contribution!
+        process = process + "\(TP.foundation(vary, income!, profileProvince!).process)\n"
+        process = process + "--------------------------\n"
+        process = process + "result: \(self.getResult())\n"
+        
+        return process
+        
+        
+    }
+    func checkBasicInput() -> Bool {
+        //return true
+        if contribution.text == "" {
+            contribution.backgroundColor = UIColor.customWarningColor()
+            contribution.placeholder = "Missing an input for contribution"
+            return false
+        } else {
+            contribution.backgroundColor = .clearColor()
+            contribution.placeholder = ""
+            return true
+        }
+    }
+}
+
+
+
 /*
         if profileProvince == Location.Ontario.rawValue {
          output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
@@ -254,45 +290,13 @@ class RRSP: Formula{
                 ["Taxes Payable","","", TP.get2Digits(self.getResult())]]
         }
 */
-        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getRRSP(income!, contribution!).process)!
-       
-        return (output1 , output2  , output3)
-    }
-    func getTip() -> String {
-        return "If an individual is a first-time home buyer, consider withdrawing funds from RRSP under the Home Buyers' Plan (HBP) of up to $25,000 given the funds are tax-deferred. The funds shall remain in the RRSP for at least 90 days before withdrawing under the HBP to avoid adverse tax consequences."
-    }
-    func getDefinition() -> String {
-        return "Registered Retirement Savings Plan (RRSP) is a plan designed to assist employed, self-employed and other individuals to defer tax on a limited part of their income for the purpose of retirement savings. Individuals may take a tax deduction in the current year for the RRSP contributions made if they have sufficient contribution room.\n\nYou can find your RRSP contribution room by checking your latest Notice of Assessment of by calling the CRA."
-    }
-    func displayProcess() -> String {
-        var process = String()
-        process =           "-------------------------\n"
-        process = process + "Income:       \(profileIncome)\n"
-        process = process + "Province:     \(profileProvince)\n"
-        process = process + "Contribution: \(self.contribution.text!)\n"
-        process = process + "--------------------------\n"
-        
-        var income = profileIncome
-        var contribution = Double(self.contribution.text!)
-        var vary = income! - contribution!
-        process = process + "\(TP.foundation(vary, income!, profileProvince!).process)\n"
-        process = process + "--------------------------\n"
-        process = process + "result: \(self.getResult())\n"
-        
-        return process
-        
-        
-    }
-    func checkBasicInput() -> Bool {
-        //return true
-        if contribution.text == "" {
-            contribution.backgroundColor = UIColor.customWarningColor()
-            contribution.placeholder = "Missing an input for contribution"
-            return false
-        } else {
-            contribution.backgroundColor = .clearColor()
-            contribution.placeholder = ""
-            return true
-        }
-    }
-}
+/*
+        if profileProvince == Location.Alberta.rawValue {
+            result =  TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)
+        } else if profileProvince == Location.Ontario.rawValue {
+            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getHealthPremium()
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, contribution!) + getProvincialCredit(income, contribution!)
+        } else if profileProvince == Location.Manitoba.rawValue{
+            result = TP.foundation(vary, income!, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getProvincialCredit(income, contribution!)
+        }*/
