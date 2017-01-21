@@ -39,6 +39,7 @@
 		4609F8281DF058F300BC9ED8 /* RRSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4609F8271DF058F300BC9ED8 /* RRSP.swift */; };
 		460A25AE1E33569A0051C11C /* OntarioTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A25AD1E33569A0051C11C /* OntarioTax.swift */; };
 		460A25B11E3376FE0051C11C /* AlbertaTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A25B01E3376FE0051C11C /* AlbertaTax.swift */; };
+		460A25B31E33CB430051C11C /* BritishColumbiaTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A25B21E33CB430051C11C /* BritishColumbiaTax.swift */; };
 		460D32B11E29655800A31D3E /* ProvincialTaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */; };
 		4615EF911D9502F2007CDEAA /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */; };
 		4615EF971D990B9E007CDEAA /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4615EF961D990B9E007CDEAA /* ResultCell.xib */; };
@@ -162,6 +163,7 @@
 		4609F8271DF058F300BC9ED8 /* RRSP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RRSP.swift; sourceTree = "<group>"; };
 		460A25AD1E33569A0051C11C /* OntarioTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OntarioTax.swift; sourceTree = "<group>"; };
 		460A25B01E3376FE0051C11C /* AlbertaTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbertaTax.swift; sourceTree = "<group>"; };
+		460A25B21E33CB430051C11C /* BritishColumbiaTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BritishColumbiaTax.swift; sourceTree = "<group>"; };
 		460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvincialTaxPro.swift; sourceTree = "<group>"; };
 		4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
 		4615EF961D990B9E007CDEAA /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */,
 				460A25AD1E33569A0051C11C /* OntarioTax.swift */,
 				460A25B01E3376FE0051C11C /* AlbertaTax.swift */,
+				460A25B21E33CB430051C11C /* BritishColumbiaTax.swift */,
 			);
 			name = ProvincialTax;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46DD94751D3D76EF00EC6294 /* StartTabBarViewController.swift in Sources */,
+				460A25B31E33CB430051C11C /* BritishColumbiaTax.swift in Sources */,
 				460D32B11E29655800A31D3E /* ProvincialTaxPro.swift in Sources */,
 				460173751DAD231E002BE015 /* HelperLibrary.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,

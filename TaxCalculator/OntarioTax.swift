@@ -16,7 +16,11 @@ class OntarioTax : ProvincialTax {
         var vary = income - contribution
         var result : Double = 0.0
         var surtax = TP.getSurtax(vary,income, Location.Ontario.rawValue)
-        result = TP.foundation(vary, income, Location.Ontario.rawValue).result + TP.BasicPersonalAmount(income, contribution,Location.Federal,false) + TP.BasicPersonalAmount(income,contribution,Location.Ontario,false) + getBasicReduction(vary, income) + getHealthPremium(income, vary)
+        result = TP.foundation(vary, income, Location.Ontario.rawValue).result +
+            TP.BasicPersonalAmount(income, contribution,Location.Federal,false) +
+            TP.BasicPersonalAmount(income,contribution,Location.Ontario,false) +
+            getBasicReduction(vary, income) +
+            getHealthPremium(income, vary)
         //============================The rest process
         var process = [["","","",""]]
         process = [["Net Income","","", TP.get2Digits(income)],
@@ -63,7 +67,12 @@ class OntarioTax : ProvincialTax {
         var oaspension = OASPension
         var total = income + oaspension
         //var OASClawback: Double = getOASClawback(income, OASPension: oaspension)
-        var result = TP.foundation(income, total - OASClawback, Location.Ontario.rawValue).result + TP.BasicPersonalAmount(income, oaspension - OASClawback, Location.Federal, true) + TP.BasicPersonalAmount(income, oaspension - OASClawback, Location.Ontario, true) + getBasicReduction(income, total - OASClawback) + getHealthPremium(total - OASClawback, income) + OASClawback
+        var result = TP.foundation(income, total - OASClawback, Location.Ontario.rawValue).result +
+            TP.BasicPersonalAmount(income, oaspension - OASClawback, Location.Federal, true) +
+            TP.BasicPersonalAmount(income, oaspension - OASClawback, Location.Ontario, true) +
+            getBasicReduction(income, total - OASClawback) +
+            getHealthPremium(total - OASClawback, income) +
+            OASClawback
         var surtax = TP.getSurtax(income, total - OASClawback, Location.Ontario.rawValue)
         var process = [["","","",""]]
         process = [["Net Income","","", TP.get2Digits(income)],
@@ -394,7 +403,7 @@ class OntarioTax : ProvincialTax {
         return resultA - resultB
     }
     
-    func getProvincialCredit() -> Double {
+    func getProvincialCredit(A : Double, _ B: Double) -> Double {
         return 0
     }
     

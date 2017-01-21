@@ -71,7 +71,13 @@ class ForeignInvestmentIncome: Formula {
             result = TP.foundation(income!, total-Deduction_2012-Deduction_2011, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!)
         }
         else if profileProvince == Location.British_Columbia.rawValue {
-            result = TP.foundation(income!, total - Deduction_2011 - Deduction_2012, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, foreignIncome!) + getForeignTaxCredit(Location.Federal) + getForeignTaxCredit(Location(rawValue: profileProvince)!) + getProvincialCredit(income, foreignIncome!)
+            result = TP.foundation(income!, total - Deduction_2011 - Deduction_2012, profileProvince!).result + 
+                        BasicPersonalAmount(Location.Federal) +
+                        BasicPersonalAmount(Location(rawValue: profileProvince)!) + 
+                        getBasicReduction(income, foreignIncome!) + 
+                        getForeignTaxCredit(Location.Federal) + 
+                        getForeignTaxCredit(Location(rawValue: profileProvince)!) + 
+                        getProvincialCredit(income, foreignIncome!)
     
         }*/
         

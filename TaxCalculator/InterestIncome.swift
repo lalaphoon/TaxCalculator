@@ -138,6 +138,7 @@ class InterestIncome: Formula{
                 e = 0
             }
             result = min(b, e)
+            
         }
         
         return result
