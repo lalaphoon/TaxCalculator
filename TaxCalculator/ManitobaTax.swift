@@ -234,11 +234,7 @@ class ManitobaTax : ProvincialTax {
         
         var NotEligibleForFTC : Double = 0
         var NetIncome = income                     //9000
-        // var foreignIncome = Double(self.ForeignIncome.text!) //Foreign Income 8000
-        // var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
         var total = NetIncome + foreignIncome
-        //var Deduction_2011: Double = 0
-        // var Deduction_2012: Double = 0
         var ForeignTaxPaid : Double = min(ForeignTax, foreignIncome*0.15) //1200
         
         if isUSStock == true {
@@ -282,6 +278,7 @@ class ManitobaTax : ProvincialTax {
             }
             
         }
+       // print("Deduction_2012 is \(Deduction_2012), Deduction_2011 is \(Deduction_2011), percentage is \(ProportionOfNetForeignBusinessIncome), FederalForeignTaxCredit is \(FederalForeignTaxCredit), ProportionOfNetForeignBusinessIncome is \(ProvincialForeignTaxCredit) ")
         return (Deduction_2012, Deduction_2011, ProportionOfNetForeignBusinessIncome, FederalForeignTaxCredit, ProvincialForeignTaxCredit)
     }
 
