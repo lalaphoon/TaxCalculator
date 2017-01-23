@@ -249,12 +249,14 @@ class BritishColumbiaTax : ProvincialTax {
             e = 0
         }
         result = min(b, e)
+        print("first result is \(result)")
         switch ( special) {
         case .DividendIncome:
-            var stepone = min (result , di )
+            var stepone = min (result , -1 * di )
             result = result - stepone
             var steptwo = min (result , -1 * fo)
             result = result - steptwo
+            print("di is \(di), fo is \(fo), result is \(result)")
 
            case .ForeignIncome :
              var steptwo = min (result , -1 * di)
