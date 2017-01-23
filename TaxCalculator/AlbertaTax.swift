@@ -141,9 +141,9 @@ class AlbertaTax : ProvincialTax {
             ["Dividend Tax Credit","Federal","", TP.get2Digits(dividF)],
             ["Foreign Tax Credit", "Federal", "",TP.get2Digits(federal_ForeignTaxCredit)],
             ["Province/Territorial Tax","","", TP.get2Digits(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[location]!))],
-            ["Basic Personal Amount",Location.Ontario.rawValue,"",TP.get2Digits(TP.BasicPersonalAmount(income, dividendIncome, location, true))],
-            ["Dividend Tax Credit",Location.Ontario.rawValue,"",TP.get2Digits(dividP)],
-            ["Foreign Tax Credit", Location.Ontario.rawValue,"",TP.get2Digits(provincial_ForeignTaxCredit)],
+            ["Basic Personal Amount",location.rawValue,"",TP.get2Digits(TP.BasicPersonalAmount(income, dividendIncome, location, true))],
+            ["Dividend Tax Credit",location.rawValue,"",TP.get2Digits(dividP)],
+            ["Foreign Tax Credit", location.rawValue,"",TP.get2Digits(provincial_ForeignTaxCredit)],
 
             ["Tax Payable","","",TP.get2Digits(result)]]
         return (result,process)

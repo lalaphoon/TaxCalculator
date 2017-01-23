@@ -31,6 +31,8 @@ enum CurrentProvince {
                 return BritishColumbiaTax()
             case .Manitoba :
                 return ManitobaTax()
+            case .Saskatchewan :
+                return SaskatchewanTax()
         default:
                 return nil
         }
