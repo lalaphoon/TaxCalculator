@@ -29,6 +29,8 @@ enum CurrentProvince {
                 return AlbertaTax()
             case .British_Columbia :
                 return BritishColumbiaTax()
+            case .Manitoba :
+                return ManitobaTax()
         default:
                 return nil
         }

@@ -58,14 +58,7 @@ class Old_Age_Security_Pension : Formula{
         OASClawback = getOASClawback()
         
         var result : Double = 0.0
-        /*
-        if profileProvince == Location.Ontario.rawValue {
-            result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + getHealthPremium() + OASClawback
-        } else if profileProvince == Location.Alberta.rawValue {
-            result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + OASClawback
-        } else if profileProvince == Location.British_Columbia.rawValue {
-            result = TP.foundation(income!,total-OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + OASClawback + getProvincialCredit(income, oaspension!)
-        }*/
+       
         result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).result)!
         return result
     }
@@ -184,7 +177,33 @@ class Old_Age_Security_Pension : Formula{
         output2 = [Double(profileIncome), Double(self.OASPension.text!)!]
         var surtax = TP.getSurtax(income, total - OASClawback, profileProvince)
         var output3 = [["","","",""]]
-        /*
+                output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).process)!
+        return (output1 , output2, output3)
+        
+    }
+    func getTip() -> String {
+        return "If your net income exceeds $74,789, you will be required to pay back all or a portion of their OAS. This is known as the “OAS clawback”. The repayment is considered taxes payable which is 15% of the excess over $74,789, to a maximum of the total amount of OAS received.\n\n You should note that capital gain can increase the amount of OAS clawback, even if you have capital loss carried forward that will eliminate capital gain. This is because OAS clawback is calculated without factoring in capital loss carried forward from prior years. Therefore, if you have current year capital loss and also have unrealized gains, you should realize some of these capital gains to offset the losses in the same year.\n\n Government allows for the voluntary deferral of OAS pension for up to 5 years to receive a higher annual pension.  OAS pension will be increased by 0.6% for each month that it is deferred past the usual starting age of 65.  This is 7.2% for each full year that it is deferred.  If it is deferred for the maximum length of time, to age 70, it will be increased by 36%."
+    }
+    func getDefinition() -> String {
+        return "Old Age Security (OAS) pension is a monthly social security payment available to most Canadians age 65 or older. \n\n You would generally qualify for OAS if you are a Canadian who have lived in Canada for at least 10 years after age 18. For Canadian living outside Canada, OAS is still available for those who were Canadian citizens or legal residents at the time they left the country, as long as they lived at least 20 years in Canada after age 18."
+    }
+    func checkBasicInput() -> Bool {
+        //return true
+        if OASPension.text == "" {
+            OASPension.backgroundColor = UIColor.customWarningColor()
+            OASPension.placeholder="Missing an input for OAS Pension"
+            return false
+        } else {
+            OASPension.backgroundColor = .clearColor()
+            OASPension.placeholder=""
+            return true
+        }
+        
+    }
+    
+    
+    
+}/*
         if profileProvince == Location.Ontario.rawValue{
           output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
             ["Province/Territory","","",profileProvince],
@@ -223,30 +242,12 @@ class Old_Age_Security_Pension : Formula{
                 ["OAS Pension", "", "", TP.get2Digits(OASClawback)],
                 ["Tax Payable","","",TP.get2Digits(self.getResult())]]
         }*/
-        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).process)!
-        return (output1 , output2, output3)
-        
-    }
-    func getTip() -> String {
-        return "If your net income exceeds $74,789, you will be required to pay back all or a portion of their OAS. This is known as the “OAS clawback”. The repayment is considered taxes payable which is 15% of the excess over $74,789, to a maximum of the total amount of OAS received.\n\n You should note that capital gain can increase the amount of OAS clawback, even if you have capital loss carried forward that will eliminate capital gain. This is because OAS clawback is calculated without factoring in capital loss carried forward from prior years. Therefore, if you have current year capital loss and also have unrealized gains, you should realize some of these capital gains to offset the losses in the same year.\n\n Government allows for the voluntary deferral of OAS pension for up to 5 years to receive a higher annual pension.  OAS pension will be increased by 0.6% for each month that it is deferred past the usual starting age of 65.  This is 7.2% for each full year that it is deferred.  If it is deferred for the maximum length of time, to age 70, it will be increased by 36%."
-    }
-    func getDefinition() -> String {
-        return "Old Age Security (OAS) pension is a monthly social security payment available to most Canadians age 65 or older. \n\n You would generally qualify for OAS if you are a Canadian who have lived in Canada for at least 10 years after age 18. For Canadian living outside Canada, OAS is still available for those who were Canadian citizens or legal residents at the time they left the country, as long as they lived at least 20 years in Canada after age 18."
-    }
-    func checkBasicInput() -> Bool {
-        //return true
-        if OASPension.text == "" {
-            OASPension.backgroundColor = UIColor.customWarningColor()
-            OASPension.placeholder="Missing an input for OAS Pension"
-            return false
-        } else {
-            OASPension.backgroundColor = .clearColor()
-            OASPension.placeholder=""
-            return true
-        }
-        
-    }
-    
-    
-    
-}
+
+/*
+        if profileProvince == Location.Ontario.rawValue {
+            result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + getHealthPremium() + OASClawback
+        } else if profileProvince == Location.Alberta.rawValue {
+            result = TP.foundation(income!, total - OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!)  + OASClawback
+        } else if profileProvince == Location.British_Columbia.rawValue {
+            result = TP.foundation(income!,total-OASClawback, profileProvince!).result + BasicPersonalAmount(Location.Federal) + BasicPersonalAmount(Location(rawValue: profileProvince)!) + getBasicReduction(income, oaspension!) + OASClawback + getProvincialCredit(income, oaspension!)
+        }*/
