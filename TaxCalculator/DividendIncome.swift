@@ -270,10 +270,13 @@ class DividendIncome : Formula {
         if mode == Location.Federal {
             compare = TP.calculateTheDifference(income, total, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, dividendIncome ,mode, true)
         } else {
-            compare = TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!) + TP.BasicPersonalAmount(income, dividendIncome ,mode,true)
+           // compare = TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!) + TP.BasicPersonalAmount(income, dividendIncome ,mode,true)
            // print("A is \(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!))")
            // print("B is \(TP.BasicPersonalAmount(income, dividendIncome ,mode,true))")
            // print("compare is A+B \(compare)")
+            //if (mode == Location.Yukon || mod){
+                compare = TP.calculateTheDifference(0, total, TP.ProvincialBracketDictionary[mode]!) - TP.TaxCredit[mode]! * TP.BasicPersonalAmount[mode]!
+           // }
         }
         
         if CanadianCorporation == true {

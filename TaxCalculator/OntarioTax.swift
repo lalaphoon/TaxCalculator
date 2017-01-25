@@ -166,7 +166,7 @@ class OntarioTax : ProvincialTax {
         result = TP.foundation(income, total-Deduction_2012-Deduction_2011, Location.Ontario.rawValue).result +
             TP.BasicPersonalAmount(income, dividendIncome, Location.Federal, true) +
             TP.BasicPersonalAmount(income, dividendIncome, Location.Ontario, true) +
-            getBasicReduction(income, total - Deduction_2011 - Deduction_2012, true, -1 * extraP) +
+            getBasicReduction(income, total - Deduction_2011 - Deduction_2012, true, -1 * dividP) +
             getHealthPremium(total - Deduction_2012 - Deduction_2011, income) +
             dividF +
             dividP
