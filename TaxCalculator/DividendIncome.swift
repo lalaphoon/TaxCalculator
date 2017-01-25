@@ -271,11 +271,15 @@ class DividendIncome : Formula {
             compare = TP.calculateTheDifference(income, total, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, dividendIncome ,mode, true)
         } else {
             compare = TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!) + TP.BasicPersonalAmount(income, dividendIncome ,mode,true)
+           // print("A is \(TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!))")
+           // print("B is \(TP.BasicPersonalAmount(income, dividendIncome ,mode,true))")
+           // print("compare is A+B \(compare)")
         }
         
         if CanadianCorporation == true {
             if StockMarket == true {
                 result = dividendIncome * TP.EligibleDividendTaxCredit[mode]!
+             //   print("dividendIncome is \(dividendIncome) and TP.EligibleDividend[mode] \(TP.EligibleDividendTaxCredit[mode])")
             } else {
                 result = dividendIncome * TP.Non_EligibleDividendTaxCredit[mode]!
             }

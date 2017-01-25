@@ -1,16 +1,16 @@
 //
-//  AlbertaTax.swift
+//  YukonTax.swift
 //  TaxCalculator
 //
-//  Created by Mengyi LUO on 2017-01-21.
+//  Created by Mengyi LUO on 2017-01-24.
 //  Copyright © 2017 WTC Tax. All rights reserved.
 //
 
 import Foundation
-class AlbertaTax : ProvincialTax {
+class YukonTax : ProvincialTax {
     var TP = TaxPro()
-    let location = Location.Alberta
-    
+    var location = Location.Yukon
+    let profileProvince : String = Location.Yukon.rawValue
     func getRRSP(netIncome: Double, _ contribution: Double) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var vary = income - contribution
@@ -23,9 +23,10 @@ class AlbertaTax : ProvincialTax {
             ["Federal Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.FederalBracketDictionary))],
             ["Basic personal amount","Federal","",TP.get2Digits(TP.BasicPersonalAmount(income, contribution,Location.Federal,false))],
             ["Province/Territorial Tax","","",TP.get2Digits(TP.calculateTheDifference(vary, income, TP.ProvincialBracketDictionary[location]!))],
-            ["Basic personal amount", location.rawValue, "", TP.get2Digits(TP.BasicPersonalAmount(income,contribution, location,false))],
+            ["Basic personal amount", location.rawValue, "", TP.get2Digits(TP.BasicPersonalAmount(income,contribution,location,false))],
             ["Tax Payable", "","", TP.get2Digits(result)]]
         return (result, process)
+
     }
     func getInterestIncome(netIncome: Double, _ interestIncome: Double) -> (result: Double, process: [[String]]) {
         var income = netIncome
@@ -93,7 +94,6 @@ class AlbertaTax : ProvincialTax {
         return (result, process)
         
     }
-    
     func getDividendIncome(netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool, dividF : Double, dividP : Double) -> (result:Double, process:[[String]]) {
         var income = netIncome
         var total = income + dividendIncome
@@ -126,9 +126,9 @@ class AlbertaTax : ProvincialTax {
         result = TP.foundation(income, total-Deduction_2012-Deduction_2011, location.rawValue).result +
             TP.BasicPersonalAmount(income, dividendIncome, Location.Federal, true) +
             TP.BasicPersonalAmount(income, dividendIncome, location, true) +
-
+            
             dividF +
-           dividP
+        dividP
         
         
         result = result + federal_ForeignTaxCredit + provincial_ForeignTaxCredit
@@ -144,24 +144,14 @@ class AlbertaTax : ProvincialTax {
             ["Basic Personal Amount",location.rawValue,"",TP.get2Digits(TP.BasicPersonalAmount(income, dividendIncome, location, true))],
             ["Dividend Tax Credit",location.rawValue,"",TP.get2Digits(dividP)],
             ["Foreign Tax Credit", location.rawValue,"",TP.get2Digits(provincial_ForeignTaxCredit)],
-
+            
             ["Tax Payable","","",TP.get2Digits(result)]]
         return (result,process)
     }
-    
-    
     func getForeignTaxCredit(income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividend : Double = 0.0) -> Double {
         var result : Double = 0
         
         var total = income + foreignIncome
-        // var extraDividendFederal : Double = 0.0
-        // var extraDividendProvincial : Double = 0.0
-        
-        /*
-        if DividendIncomeMode {
-        extraDividendProvincial = getDividendTaxCredit(income, dividendIncome: foreignIncome, mode: Location.Ontario, CanadianCorporation: CanadianCorporation, StockMarket: StockMarket)
-        extraDividendFederal = getDividendTaxCredit(income, dividendIncome: foreignIncome, mode: Location.Federal, CanadianCorporation: CanadianCorporation, StockMarket: StockMarket)
-        }*/
         
         if mode == Location.Federal {
             result = -1 * min( TP.calculateTheDifference(income, total - Deduction_2012 - Deduction_2011, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, foreignIncome, Location.Federal, true) + extraDividend ,FederalForeignTaxCredit)
@@ -174,16 +164,10 @@ class AlbertaTax : ProvincialTax {
     func getBasicReduction(A: Double, _ B: Double, _ special: Bool, _ di: Double) -> Double {
         return 0
     }
-   
+    
     func getProvincialCredit(A : Double, _ B: Double) -> Double {
         return 0
     }
-    
-    
-    
-    
-    
-    
     //repeated now with ON
     func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
@@ -211,8 +195,8 @@ class AlbertaTax : ProvincialTax {
         
         var NotEligibleForFTC : Double = 0
         var NetIncome = income                     //9000
-       // var foreignIncome = Double(self.ForeignIncome.text!) //Foreign Income 8000
-       // var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+        // var foreignIncome = Double(self.ForeignIncome.text!) //Foreign Income 8000
+        // var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
         var total = NetIncome + foreignIncome
         //var Deduction_2011: Double = 0
         // var Deduction_2012: Double = 0
@@ -259,7 +243,6 @@ class AlbertaTax : ProvincialTax {
             }
             
         }
-         return (Deduction_2012, Deduction_2011, ProportionOfNetForeignBusinessIncome, FederalForeignTaxCredit, ProvincialForeignTaxCredit)
+        return (Deduction_2012, Deduction_2011, ProportionOfNetForeignBusinessIncome, FederalForeignTaxCredit, ProvincialForeignTaxCredit)
     }
-    
 }

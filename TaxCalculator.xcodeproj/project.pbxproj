@@ -45,6 +45,7 @@
 		460D32B11E29655800A31D3E /* ProvincialTaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */; };
 		4615EF911D9502F2007CDEAA /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */; };
 		4615EF971D990B9E007CDEAA /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4615EF961D990B9E007CDEAA /* ResultCell.xib */; };
+		4615F8EC1E3842E000444E48 /* YukonTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615F8EB1E3842E000444E48 /* YukonTax.swift */; };
 		4629A86B1D777D4A006533BC /* InterestIncome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86A1D777D4A006533BC /* InterestIncome.swift */; };
 		4629A86D1D7B622C006533BC /* Tax credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4629A86C1D7B622C006533BC /* Tax credit.swift */; };
 		462A71791DA0E0510032444E /* Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A71771DA0E0510032444E /* Record+CoreDataProperties.swift */; };
@@ -171,6 +172,7 @@
 		460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvincialTaxPro.swift; sourceTree = "<group>"; };
 		4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
 		4615EF961D990B9E007CDEAA /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
+		4615F8EB1E3842E000444E48 /* YukonTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YukonTax.swift; sourceTree = "<group>"; };
 		4629A86A1D777D4A006533BC /* InterestIncome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestIncome.swift; sourceTree = "<group>"; };
 		4629A86C1D7B622C006533BC /* Tax credit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tax credit.swift"; sourceTree = "<group>"; };
 		462A71771DA0E0510032444E /* Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				460A25AD1E33569A0051C11C /* OntarioTax.swift */,
+				4615F8EB1E3842E000444E48 /* YukonTax.swift */,
 				460BDEBB1E3680990023C04E /* Sasketchewan.swift */,
 				460A25B01E3376FE0051C11C /* AlbertaTax.swift */,
 				460A25B21E33CB430051C11C /* BritishColumbiaTax.swift */,
@@ -879,6 +882,7 @@
 				460A25B31E33CB430051C11C /* BritishColumbiaTax.swift in Sources */,
 				460D32B11E29655800A31D3E /* ProvincialTaxPro.swift in Sources */,
 				460173751DAD231E002BE015 /* HelperLibrary.swift in Sources */,
+				4615F8EC1E3842E000444E48 /* YukonTax.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
 				462A717A1DA0E0510032444E /* Record.swift in Sources */,
 				4601737B1DAFC7DC002BE015 /* DeviceInfo.swift in Sources */,
