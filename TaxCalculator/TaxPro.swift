@@ -77,21 +77,23 @@ class TaxPro {
             Location.Quebec.rawValue]
     }
     func initTaxCredit(){
-        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506, Location.Manitoba : 0.108, Location.Saskatchewan : 0.11, Location.Yukon: 0.064]
+        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506, Location.Manitoba : 0.108, Location.Saskatchewan : 0.11, Location.Yukon: 0.064, Location.New_Brunswick : 0.0968]
         EligibleDividendTaxCredit = [Location.Federal: 0.1502,
             Location.Ontario: 0.1,
             Location.Saskatchewan: 0.11,
             Location.British_Columbia: 0.1,
             Location.Manitoba: 0.08,
             Location.Alberta : 0.1,
-            Location.Yukon: 0.15]
+            Location.Yukon: 0.15,
+            Location.New_Brunswick : 0.12]
         Non_EligibleDividendTaxCredit = [Location.Federal: 0.105217,
             Location.Ontario: 0.042863,
             Location.Saskatchewan: 0.03367,
             Location.British_Columbia: 0.0247,
             Location.Manitoba: 0.0083,
             Location.Alberta : 0.0308,
-            Location.Yukon : 0.0314]
+            Location.Yukon : 0.0314,
+            Location.New_Brunswick :0.04]
         
     }
     func initBracket() {
@@ -108,7 +110,8 @@ class TaxPro {
                                        Location.British_Columbia: OrderedDictionary(),
                                        Location.Manitoba: OrderedDictionary(),
                                        Location.Saskatchewan : OrderedDictionary(),
-                                       Location.Yukon : OrderedDictionary()]
+                                       Location.Yukon : OrderedDictionary(),
+                                       Location.New_Brunswick : OrderedDictionary()]
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1316, forKey: 220000, atIndex: 0)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1216, forKey: 150000, atIndex: 1)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1116, forKey: 83075, atIndex: 2)
@@ -142,6 +145,12 @@ class TaxPro {
         ProvincialBracketDictionary[Location.Yukon]?.insert(0.09, forKey: 45282, atIndex: 3)
         ProvincialBracketDictionary[Location.Yukon]?.insert(0.064, forKey: 0, atIndex: 4)
         
+        ProvincialBracketDictionary[Location.New_Brunswick]?.insert(0.203, forKey: 150000, atIndex: 0)
+        ProvincialBracketDictionary[Location.New_Brunswick]?.insert(0.1784, forKey: 131664, atIndex: 1)
+        ProvincialBracketDictionary[Location.New_Brunswick]?.insert(0.1652, forKey: 80985, atIndex: 2)
+        ProvincialBracketDictionary[Location.New_Brunswick]?.insert(0.1482, forKey: 40492, atIndex: 3)
+        ProvincialBracketDictionary[Location.New_Brunswick]?.insert(0.0968, forKey: 0, atIndex: 4)
+        
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
         InterestThreshold.insert(0.2, forKey: 73145, atIndex: 0)
@@ -164,10 +173,11 @@ class TaxPro {
         
     }
     func initBasicPersonalAmount(){
-        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027, Location.Manitoba: 9134, Location.Saskatchewan: 15843, Location.Yukon: 11474]
+        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027, Location.Manitoba: 9134, Location.Saskatchewan: 15843, Location.Yukon: 11474, Location.New_Brunswick : 9758]
     }
     func initBasicReduction(){
-        BasicReduction = [Location.Ontario: 456, Location.British_Columbia : 432]
+        // This is Basix Reduction Threshold
+        BasicReduction = [Location.Ontario: 456, Location.British_Columbia : 432, Location.New_Brunswick: 624]
     }
    
 
