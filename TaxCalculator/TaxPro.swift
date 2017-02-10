@@ -14,7 +14,7 @@ enum Location: String {
     case Saskatchewan = "Saskatchewan"
     case Manitoba = "Manitoba"
     case Yukon = "Yukon"
-    case Newfoundl_and_AndLabrador = "Newfoundland and Labrador"
+    case Newfoundl_and_Labrador = "Newfoundland and Labrador"
     case New_Brunswick = "New Brunswick"
     case Nova_Scotia = "Nova Scotia"
     case Prince_Edward_Island = "Prince Edward Island"
@@ -68,7 +68,7 @@ class TaxPro {
             Location.Saskatchewan.rawValue,
             Location.Manitoba.rawValue,
             Location.Yukon.rawValue,
-            Location.Newfoundl_and_AndLabrador.rawValue,
+            Location.Newfoundl_and_Labrador.rawValue,
             Location.New_Brunswick.rawValue,
             Location.Nova_Scotia.rawValue,
             Location.Prince_Edward_Island.rawValue,

@@ -39,7 +39,8 @@ enum CurrentProvince {
                 return NewBrunswickTax()
         case .Nova_Scotia :
                 return NovaScotiaTax()
-    
+        case .Northwest_Territories :
+                return NorthwestTerritoriesTax()
         default:
                 return nil
         }

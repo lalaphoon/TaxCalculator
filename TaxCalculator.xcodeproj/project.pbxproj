@@ -43,6 +43,7 @@
 		460BDEB91E35D0EB0023C04E /* ManitobaTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460BDEB81E35D0EB0023C04E /* ManitobaTax.swift */; };
 		460BDEBC1E3680990023C04E /* Sasketchewan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460BDEBB1E3680990023C04E /* Sasketchewan.swift */; };
 		460D32B11E29655800A31D3E /* ProvincialTaxPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */; };
+		4613227D1E4E6C3900371F75 /* NorthwestTerritoriesTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4613227C1E4E6C3900371F75 /* NorthwestTerritoriesTax.swift */; };
 		4615EF911D9502F2007CDEAA /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */; };
 		4615EF971D990B9E007CDEAA /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4615EF961D990B9E007CDEAA /* ResultCell.xib */; };
 		4615F8EC1E3842E000444E48 /* YukonTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4615F8EB1E3842E000444E48 /* YukonTax.swift */; };
@@ -172,6 +173,7 @@
 		460BDEB81E35D0EB0023C04E /* ManitobaTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManitobaTax.swift; sourceTree = "<group>"; };
 		460BDEBB1E3680990023C04E /* Sasketchewan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sasketchewan.swift; sourceTree = "<group>"; };
 		460D32B01E29655800A31D3E /* ProvincialTaxPro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvincialTaxPro.swift; sourceTree = "<group>"; };
+		4613227C1E4E6C3900371F75 /* NorthwestTerritoriesTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NorthwestTerritoriesTax.swift; sourceTree = "<group>"; };
 		4615EF901D9502F2007CDEAA /* DefinitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
 		4615EF961D990B9E007CDEAA /* ResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		4615F8EB1E3842E000444E48 /* YukonTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YukonTax.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				460A25B01E3376FE0051C11C /* AlbertaTax.swift */,
 				460A25B21E33CB430051C11C /* BritishColumbiaTax.swift */,
 				460BDEB81E35D0EB0023C04E /* ManitobaTax.swift */,
+				4613227C1E4E6C3900371F75 /* NorthwestTerritoriesTax.swift */,
 			);
 			name = "All Provinces";
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				4615F8EC1E3842E000444E48 /* YukonTax.swift in Sources */,
 				467EFC441D36EEDA00D3358D /* StepTwo.swift in Sources */,
 				462A717A1DA0E0510032444E /* Record.swift in Sources */,
+				4613227D1E4E6C3900371F75 /* NorthwestTerritoriesTax.swift in Sources */,
 				4601737B1DAFC7DC002BE015 /* DeviceInfo.swift in Sources */,
 				46006C921D82346F00CCBFFE /* CustomCell.swift in Sources */,
 				46B9E1C31D67A7A400B80106 /* HomeViewController.swift in Sources */,
