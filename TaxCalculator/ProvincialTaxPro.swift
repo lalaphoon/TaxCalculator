@@ -39,6 +39,7 @@ enum CurrentProvince {
                 return NewBrunswickTax()
         case .Nova_Scotia :
                 return NovaScotiaTax()
+    
         default:
                 return nil
         }

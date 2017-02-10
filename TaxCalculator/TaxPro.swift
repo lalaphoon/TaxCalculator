@@ -77,7 +77,7 @@ class TaxPro {
             Location.Quebec.rawValue]
     }
     func initTaxCredit(){
-        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506, Location.Manitoba : 0.108, Location.Saskatchewan : 0.11, Location.Yukon: 0.064, Location.New_Brunswick : 0.0968, Location.Nova_Scotia: 0.0879, Location.Sasketchewan: 0.11]
+        TaxCredit = [Location.Federal: 0.15 , Location.Ontario: 0.0505, Location.Alberta : 0.10 , Location.British_Columbia : 0.0506, Location.Manitoba : 0.108, Location.Saskatchewan : 0.11, Location.Yukon: 0.064, Location.New_Brunswick : 0.0968, Location.Nova_Scotia: 0.0879,Location.Northwest_Territories: 0.059 ]
         EligibleDividendTaxCredit = [Location.Federal: 0.1502,
             Location.Ontario: 0.1,
             Location.Saskatchewan: 0.11,
@@ -87,7 +87,8 @@ class TaxPro {
             Location.Yukon: 0.15,
             Location.New_Brunswick : 0.12,
             Location.Nova_Scotia : 0.0885,
-            Location.Saskatchewan: o.11]
+            Location.Northwest_Territories: 0.115
+           ]
         Non_EligibleDividendTaxCredit = [Location.Federal: 0.105217,
             Location.Ontario: 0.042863,
             Location.Saskatchewan: 0.03367,
@@ -97,7 +98,8 @@ class TaxPro {
             Location.Yukon : 0.0314,
             Location.New_Brunswick :0.04,
             Location.Nova_Scotia: 0.0333,
-            Location.Saskatchewan: 0.03367]
+            Location.Northwest_Territories: 0.06
+           ]
         
     }
     func initBracket() {
@@ -117,7 +119,7 @@ class TaxPro {
                                        Location.Yukon : OrderedDictionary(),
                                        Location.New_Brunswick : OrderedDictionary(),
                                        Location.Nova_Scotia : OrderedDictionary(),
-                                        Location.Saskatchewan : OrderedDictionary()]
+                                       Location.Northwest_Territories : OrderedDictionary()]
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1316, forKey: 220000, atIndex: 0)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1216, forKey: 150000, atIndex: 1)
         ProvincialBracketDictionary[Location.Ontario]?.insert(0.1116, forKey: 83075, atIndex: 2)
@@ -163,10 +165,12 @@ class TaxPro {
         ProvincialBracketDictionary[Location.Nova_Scotia]?.insert(0.1495, forKey: 29590, atIndex: 3)
         ProvincialBracketDictionary[Location.Nova_Scotia]?.insert(0.0879, forKey: 0, atIndex: 4)
         
-        ProvincialBracketDictionary[Location.Saskatchewan]?.insert(0.15, forKey: 127430, atIndex: 0)
-        ProvincialBracketDictionary[Location.Saskatchewan]?.insert(0.13, forKey: 44601, atIndex: 1)
-        ProvincialBracketDictionary[Location.Saskatchewan]?.insert(0.11, forKey: 0, atIndex: 2)
+        ProvincialBracketDictionary[Location.Northwest_Territories]?.insert(0.1405, forKey: 133353, atIndex: 0)
+        ProvincialBracketDictionary[Location.Northwest_Territories]?.insert(0.122, forKey: 82024, atIndex: 1)
+        ProvincialBracketDictionary[Location.Northwest_Territories]?.insert(0.086, forKey: 41011, atIndex: 2)
+        ProvincialBracketDictionary[Location.Northwest_Territories]?.insert(0.059, forKey: 0, atIndex: 3)
         
+       
         
     
        // InterestThreshold = [73145 : 0.2 , 86176: 0.36]
@@ -190,7 +194,7 @@ class TaxPro {
         
     }
     func initBasicPersonalAmount(){
-        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027, Location.Manitoba: 9134, Location.Saskatchewan: 15843, Location.Yukon: 11474, Location.New_Brunswick : 9758, Location.Nova_Scotia: 8481, Location.Saskatchewan: 15843]
+        BasicPersonalAmount = [Location.Federal: 11474, Location.Ontario:10011, Location.Alberta :18451, Location.British_Columbia : 10027, Location.Manitoba: 9134, Location.Saskatchewan: 15843, Location.Yukon: 11474, Location.New_Brunswick : 9758, Location.Nova_Scotia: 8481, Location.Northwest_Territories: 14081]
     }
     func initBasicReduction(){
         // This is Basix Reduction Threshold
