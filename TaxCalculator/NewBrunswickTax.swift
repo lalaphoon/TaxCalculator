@@ -304,7 +304,7 @@ class NewBrunswickTax : ProvincialTax {
             }
             
         }
-        print("Deduction_2012 \(Deduction_2012) Deduction_2011\(Deduction_2011), ProportionOfNetForeignBu\(ProportionOfNetForeignBusinessIncome) FederalForeignTaxCredit \(FederalForeignTaxCredit) ProvincialForeignTaxCredit \(ProvincialForeignTaxCredit)")
+       // print("Deduction_2012 \(Deduction_2012) Deduction_2011\(Deduction_2011), ProportionOfNetForeignBu\(ProportionOfNetForeignBusinessIncome) FederalForeignTaxCredit \(FederalForeignTaxCredit) ProvincialForeignTaxCredit \(ProvincialForeignTaxCredit)")
         
         return (Deduction_2012, Deduction_2011, ProportionOfNetForeignBusinessIncome, FederalForeignTaxCredit, ProvincialForeignTaxCredit)
     
