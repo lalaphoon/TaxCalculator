@@ -22,21 +22,23 @@ protocol ProvincialTax {
 }
 enum CurrentProvince {
     static func getData(province: Location) -> ProvincialTax? {
-        switch province {
-            case .Ontario :
+      switch province {
+        case .Ontario :
                 return OntarioTax()
-            case .Alberta :
+        case .Alberta :
                 return AlbertaTax()
-            case .British_Columbia :
+        case .British_Columbia :
                 return BritishColumbiaTax()
-            case .Manitoba :
+        case .Manitoba :
                 return ManitobaTax()
-            case .Saskatchewan :
+        case .Saskatchewan :
                 return SaskatchewanTax()
-            case .Yukon :
+        case .Yukon :
                 return YukonTax()
-            case .New_Brunswick :
+        case .New_Brunswick :
                 return NewBrunswickTax()
+        case .Nova_Scotia :
+                return NovaScotiaTax()
         default:
                 return nil
         }
