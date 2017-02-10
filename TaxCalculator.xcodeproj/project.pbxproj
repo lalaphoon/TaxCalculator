@@ -65,6 +65,7 @@
 		462D627D1D33279100D4FE94 /* TaxCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D627C1D33279100D4FE94 /* TaxCalculatorTests.swift */; };
 		462D62881D33279100D4FE94 /* TaxCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */; };
 		462D62961D332FCE00D4FE94 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D62951D332FCE00D4FE94 /* Colors.swift */; };
+		46344BCE1E4E49D1001F6536 /* NovaScotiaTax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46344BCD1E4E49D1001F6536 /* NovaScotiaTax.swift */; };
 		46369E011D459ACC00456B69 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E001D459ACC00456B69 /* MessageUI.framework */; };
 		46369E031D459ADC00456B69 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46369E021D459ADC00456B69 /* CoreLocation.framework */; };
 		46369E051D4912E700456B69 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46369E041D4912E700456B69 /* OrderedDictionary.swift */; };
@@ -199,6 +200,7 @@
 		462D62871D33279100D4FE94 /* TaxCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxCalculatorUITests.swift; sourceTree = "<group>"; };
 		462D62891D33279100D4FE94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		462D62951D332FCE00D4FE94 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		46344BCD1E4E49D1001F6536 /* NovaScotiaTax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NovaScotiaTax.swift; sourceTree = "<group>"; };
 		46369E001D459ACC00456B69 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		46369E021D459ADC00456B69 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46369E041D4912E700456B69 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				460A25AD1E33569A0051C11C /* OntarioTax.swift */,
+				46344BCD1E4E49D1001F6536 /* NovaScotiaTax.swift */,
 				4615F8ED1E395C8000444E48 /* NewBrunswickTax.swift */,
 				4615F8EB1E3842E000444E48 /* YukonTax.swift */,
 				460BDEBB1E3680990023C04E /* Sasketchewan.swift */,
@@ -914,6 +917,7 @@
 				460910FE1D41A999003C6A65 /* CoreDataFetcher.swift in Sources */,
 				4615F8EE1E395C8100444E48 /* NewBrunswickTax.swift in Sources */,
 				46FF63A11DBB998600D2AE97 /* AboutViewController.swift in Sources */,
+				46344BCE1E4E49D1001F6536 /* NovaScotiaTax.swift in Sources */,
 				46FF4E331D446D0E0028C96E /* ParentOnboardingPagesViewController.swift in Sources */,
 				467EFC461D36F16E00D3358D /* OnboardingPagesViewController.swift in Sources */,
 				46E972891D6BF28F007AAD82 /* Employment.swift in Sources */,
