@@ -497,7 +497,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qc6-oi-qWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1142" y="298"/>
+            <point key="canvasLocation" x="-1083" y="314"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="Rw4-sP-iG5">
@@ -753,6 +753,11 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="S95-jb-GEY" kind="popoverPresentation" popoverAnchorView="mf0-IU-2Ms" id="Uxv-V2-V67">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="UUQ-FD-6NZ" imageView="fId-wm-B84" style="IBUITableViewCellStyleDefault" id="gn9-EN-hpg">
                                         <rect key="frame" x="0.0" y="251.5" width="600" height="44"/>
