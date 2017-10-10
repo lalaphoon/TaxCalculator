@@ -40,12 +40,12 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
        self.view.addTextView(formula.getTip(), 1, 43, 280 + offset, self.view.bounds.width-86, self.view.bounds.height-280-30-70)
         
         var text : UITextView = self.view.viewWithTag(1) as! UITextView
-        text.editable = false
+        text.isEditable = false
         
        self.view.addYellowButton("General Definition", "goHelp", 43, self.view.bounds.height - 30 - 63, self.view.bounds.width - (43*2), 36, self)
     }
     func goHelp(){
-        performSegueWithIdentifier("goHelp", sender: self)
+        performSegue(withIdentifier: "goHelp", sender: self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,8 +62,8 @@ class AfterResultViewController: UIViewController, UIScrollViewDelegate{
         scrollView.frame = view.bounds
         containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
     }*/
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC: DefinitionViewController = segue.destinationViewController as! DefinitionViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC: DefinitionViewController = segue.destination as! DefinitionViewController
         DestinyVC.formula = formula
     }
 

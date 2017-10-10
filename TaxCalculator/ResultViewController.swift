@@ -19,13 +19,13 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 550)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width , height: 550)
         
         self.containerView =  UIView()
-        self.scrollView.userInteractionEnabled = true
-        self.containerView.userInteractionEnabled = true
+        self.scrollView.isUserInteractionEnabled = true
+        self.containerView.isUserInteractionEnabled = true
         
         self.scrollView.addSubview(containerView)
         self.view.addSubview(scrollView)
@@ -39,11 +39,11 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         let offset : CGFloat = -63
         
         //1.Setting up the title image
-        containerView.addImage("Title_completed.png", self.view.bounds.width/2 - 65,93 + offset)
+        containerView.addImage( "Title_completed.png", self.view.bounds.width/2 - 65,93 + offset)
         
         //2.setting up the instruction
         var str = formula.getInstruction()
-        containerView.addText(str,self.view.bounds.width/2, 274 + offset, self.view.bounds.width-86, 100)
+        containerView.addText( str,self.view.bounds.width/2, 274 + offset, self.view.bounds.width-86, 100)
         
         //3.setting up the result for the green box
         var re = "$ " + TP.get2Digits(formula.getResult())
@@ -57,7 +57,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         containerView.addImageButton("View Details", "viewProcess", "calculator_icon_small.png",40, 465 + offset, 180,70,self)
         //485
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "save")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(ResultViewController.save))
         //5.Setting up the the start new calculat buttion
         containerView.addYellowButton("Start a new search", "StartNewCalculation", 90, 540 + offset, self.view.bounds.width - 180, 50, self)
     }
@@ -69,8 +69,8 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     
     func save(){
         //navigationItem.rightBarButtonItem?.title = "saved"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved", style: UIBarButtonItemStyle.Plain, target: self, action: "save")
-        navigationItem.rightBarButtonItem?.enabled = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Saved", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ResultViewController.save))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         var xValues : [String]
         var yValues : [Double]
         var tableData : [[String]]
@@ -93,15 +93,15 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         
     }
     func viewProcess(){
-        performSegueWithIdentifier("MoveIntoProcess", sender: self)
+        performSegue(withIdentifier: "MoveIntoProcess", sender: self)
     }
     func viewTip(){
-         performSegueWithIdentifier("MoveIntoAfterResult", sender: self)
+         performSegue(withIdentifier: "MoveIntoAfterResult", sender: self)
     }
     func StartNewCalculation() {
       print("cllicked!")
       //performSegueWithIdentifier("goBack", sender: self)
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController?.popToRootViewController(animated: true)
        // navigationController?.popToViewController(HomeViewController, animated: true)
     //self.dismissViewControllerAnimated(false, completion: nil)
     }
@@ -114,14 +114,14 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MoveIntoAfterResult"{
-        var DestinyVC : AfterResultViewController = segue.destinationViewController as! AfterResultViewController
+        let DestinyVC : AfterResultViewController = segue.destination as! AfterResultViewController
         DestinyVC.formula = formula
         } else {
-        var DesVC: ProcessViewController = segue.destinationViewController as! ProcessViewController
+        let DesVC: ProcessViewController = segue.destination as! ProcessViewController
         DesVC.formula = formula
         }
         //DestinyVC.topic = topic

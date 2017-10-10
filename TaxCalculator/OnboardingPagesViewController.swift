@@ -13,57 +13,57 @@ class OnboardingPagesViewController: UIPageViewController , UIPageViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         //Initial settings
-        setViewControllers([getStepZero()], direction: .Forward, animated: false, completion: nil)
+        setViewControllers([getStepZero()], direction: .forward, animated: false, completion: nil)
         self.dataSource = self
 
         // Do any additional setup after loading the view.
         
     }
     func getStepZero() -> StepZero{
-        return storyboard!.instantiateViewControllerWithIdentifier("StepZero") as! StepZero
+        return storyboard!.instantiateViewController(withIdentifier: "StepZero") as! StepZero
     }
     func getStepOne() -> StepOne {
-        return storyboard!.instantiateViewControllerWithIdentifier("StepOne") as! StepOne
+        return storyboard!.instantiateViewController(withIdentifier: "StepOne") as! StepOne
     }
     func getStepTwo() -> StepTwo {
-        return storyboard!.instantiateViewControllerWithIdentifier("StepTwo") as! StepTwo
+        return storyboard!.instantiateViewController(withIdentifier: "StepTwo") as! StepTwo
     }
     func getStepThree() -> StepThree {
-        return storyboard!.instantiateViewControllerWithIdentifier("StepThree") as! StepThree
+        return storyboard!.instantiateViewController(withIdentifier: "StepThree") as! StepThree
     }
     func getStepFour() -> StepFour {
-        return storyboard!.instantiateViewControllerWithIdentifier("StepFour") as! StepFour
+        return storyboard!.instantiateViewController(withIdentifier: "StepFour") as! StepFour
 
     }
     func getStart() -> StartViewController {
-        return storyboard!.instantiateViewControllerWithIdentifier("StartView") as! StartViewController
+        return storyboard!.instantiateViewController(withIdentifier: "StartView") as! StartViewController
     }
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        if viewController.isKindOfClass(StepFour){
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        if viewController.isKind(of: StepFour.self){
             return getStepThree()
         }
-        else if viewController.isKindOfClass(StepThree){
+        else if viewController.isKind(of: StepThree.self){
             return getStepTwo()
         }
-        else if viewController.isKindOfClass(StepTwo){
+        else if viewController.isKind(of: StepTwo.self){
             return getStepOne()
-        }else if viewController.isKindOfClass(StepOne){
+        }else if viewController.isKind(of: StepOne.self){
             return getStepZero()
         }else{
             return nil
         }
     }
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        if viewController.isKindOfClass(StepZero){
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        if viewController.isKind(of: StepZero.self){
             return getStepOne()
         }
-        else if viewController.isKindOfClass(StepOne){
+        else if viewController.isKind(of: StepOne.self){
             return getStepTwo()
         }
-        else if viewController.isKindOfClass(StepTwo){
+        else if viewController.isKind(of: StepTwo.self){
             return getStepThree()
         }
-        else if viewController.isKindOfClass(StepThree){
+        else if viewController.isKind(of: StepThree.self){
             return getStepFour()
         }
         
@@ -73,10 +73,10 @@ class OnboardingPagesViewController: UIPageViewController , UIPageViewController
         }
         
     }
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         return 5
     }
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return 0
     }
 

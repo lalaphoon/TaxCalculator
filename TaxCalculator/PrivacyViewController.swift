@@ -25,10 +25,10 @@ class PrivacyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     func configureWebView() {
-        let privacyURL = NSBundle.mainBundle().URLForResource("privacy", withExtension: "html")
-        let requestObj = NSURLRequest(URL: privacyURL!)
+        let privacyURL = Bundle.main.url(forResource: "privacy", withExtension: "html")
+        let requestObj = URLRequest(url: privacyURL!)
         myWebView.loadRequest(requestObj)
-        myWebView.backgroundColor = UIColor.whiteColor()
+        myWebView.backgroundColor = UIColor.white
     }
 
     /*

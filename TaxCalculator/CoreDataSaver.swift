@@ -13,10 +13,10 @@ import CoreData
 
 class CoreDataSaver {
     
-static func save_a_user (firstname: String, _ lastname : String, _ province: String, _ marital: Bool, _ income: Double ){
-    let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+static func save_a_user (_ firstname: String, _ lastname : String, _ province: String, _ marital: Bool, _ income: Double ){
+    let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     let context : NSManagedObjectContext = appDel.managedObjectContext
-    var newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context)
+    let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
     newUser.setValue(firstname, forKey:"firstname")
     newUser.setValue(lastname, forKey:"lastname" )
     newUser.setValue(province, forKey: "province")
@@ -29,10 +29,10 @@ static func save_a_user (firstname: String, _ lastname : String, _ province: Str
     }
     
  }
-  static func save_a_user_withUser(user: User){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+  static func save_a_user_withUser(_ user: User){
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context : NSManagedObjectContext = appDel.managedObjectContext
-        var newUser = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context)
+        let newUser = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
         newUser.setValue(user.firstname, forKey:"firstname")
         newUser.setValue(user.lastname, forKey:"lastname" )
         newUser.setValue(user.province, forKey: "province")
@@ -45,10 +45,10 @@ static func save_a_user (firstname: String, _ lastname : String, _ province: Str
         }
         
     }
-    static func save_a_value(value: Value){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    static func save_a_value(_ value: Value){
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
-        var newValue = NSEntityDescription.insertNewObjectForEntityForName("Value", inManagedObjectContext: context)
+        let newValue = NSEntityDescription.insertNewObject(forEntityName: "Value", into: context)
         newValue.setValue(value.key, forKey: "key")
         newValue.setValue(value.value, forKey: "value")
         do {

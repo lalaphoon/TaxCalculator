@@ -11,15 +11,15 @@ import CoreData
 
 
 class TableCellData: NSManagedObject {
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     init?(first: String, second: String, third: String, forth: String){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
-        let entity = NSEntityDescription.entityForName("TableCellData", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "TableCellData", in: context)
         if let entity =  entity {
-            super.init(entity:entity, insertIntoManagedObjectContext: context)
+            super.init(entity:entity, insertInto: context)
             setFirst(first)
             setSecond(second)
             setThird(third)
@@ -32,16 +32,16 @@ class TableCellData: NSManagedObject {
         }
     }
     //=============setter=========================
-    private func setFirst(first: String){
+    fileprivate func setFirst(_ first: String){
         self.first = first
     }
-    private func setSecond(second: String){
+    fileprivate func setSecond(_ second: String){
         self.second = second
     }
-    private func setThird(third: String){
+    fileprivate func setThird(_ third: String){
         self.third = third
     }
-    private func setForth(forth: String){
+    fileprivate func setForth(_ forth: String){
         self.forth = forth
     }
     //===============End of setter================
@@ -70,7 +70,7 @@ class TableCellData: NSManagedObject {
     }
     func delete() {
         if let context = self.managedObjectContext {
-            context.deleteObject(self)
+            context.delete(self)
             do {
                 try context.save()
                 

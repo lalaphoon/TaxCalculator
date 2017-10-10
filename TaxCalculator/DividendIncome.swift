@@ -8,6 +8,30 @@
 
 import Foundation
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class DividendIncome : Formula {
     static let sharedInstance = DividendIncome()
@@ -31,16 +55,16 @@ class DividendIncome : Formula {
     var profileIncome : Double!
     var profileProvince : String!
     
-    private init(){
+    fileprivate init(){
         DivInc.text = String(0.00)
     }
     
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         DivInc = containerView.returnTextField("Dividend Income", 43, 274 + num, VC.view.bounds.width - (43*2))
-        DivInc.keyboardType = .DecimalPad
+        DivInc.keyboardType = .decimalPad
         containerView.addText("Canadian Corporation", 90, 340 + num, 200, 50)
         CanadianCorporation = containerView.returnSwitch("isCanadianCorporation:", VC , VC.view.bounds.width-86, 340 + num)
         containerView.addText("Company trade in stock market", 90, 390 + num, 200, 50)
@@ -48,7 +72,7 @@ class DividendIncome : Formula {
         containerView.addText("In US Stock", 90, 440, 200, 50)
         USStock = containerView.returnSwitch("isUSStock:",VC, VC.view.bounds.width-86, 440 + num)
         ForeignTaxPaid = containerView.returnTextField("Foreign Tax Paid",43,500 + num, VC.view.bounds.width - (43*2))
-        ForeignTaxPaid.keyboardType = .DecimalPad
+        ForeignTaxPaid.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
         
         return containerView
@@ -75,10 +99,10 @@ class DividendIncome : Formula {
         
         }
     }*/
-    func setInputs(input: Double){
+    func setInputs(_ input: Double){
         DivInc.text = TP.get2Digits(input)
     }
-    func setProfile(income: Double, province: String){
+    func setProfile(_ income: Double, province: String){
         profileIncome = income
         profileProvince = province
     }
@@ -97,18 +121,18 @@ class DividendIncome : Formula {
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
         
-        if (CanadianCorporation.on == false) {
+        if (CanadianCorporation.isOn == false) {
            operationBeforGettingResult()
         }
         print("Deduction 2011 is ...\(Deduction_2011)")
         print("Deduction 2012 is ...\(Deduction_2012)")
         var result : Double = 0.0
         
-        var dividF = getDividendTaxCredit(income, dividendIncome: dividendIncome!, mode:Location.Federal,CanadianCorporation: CanadianCorporation.on, StockMarket:  StockMarket.on)
-        var dividP = getDividendTaxCredit(income, dividendIncome: dividendIncome!, mode:Location(rawValue: profileProvince)!,CanadianCorporation: CanadianCorporation.on, StockMarket:  StockMarket.on)
+        var dividF = getDividendTaxCredit(income!, dividendIncome: dividendIncome!, mode:Location.Federal,CanadianCorporation: CanadianCorporation.isOn, StockMarket:  StockMarket.isOn)
+        var dividP = getDividendTaxCredit(income!, dividendIncome: dividendIncome!, mode:Location(rawValue: profileProvince)!,CanadianCorporation: CanadianCorporation.isOn, StockMarket:  StockMarket.isOn)
         
         
-        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getDividendIncome(income!, dividendIncome: dividendIncome!, ForeignTaxPaid: Double(self.ForeignTaxPaid.text!)!, CanadianCorporation: CanadianCorporation.on, StockMarket: StockMarket.on, isUSStock: USStock.on, dividF: dividF, dividP: dividP).result)!
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getDividendIncome(income!, dividendIncome: dividendIncome!, ForeignTaxPaid: Double(self.ForeignTaxPaid.text!)!, CanadianCorporation: CanadianCorporation.isOn, StockMarket: StockMarket.isOn, isUSStock: USStock.isOn, dividF: dividF, dividP: dividP).result)!
         
         
         /*
@@ -132,30 +156,30 @@ class DividendIncome : Formula {
     }
     //====================================Extra Calculation=============================================================
     //ON,AB,BC
-    func BasicPersonalAmount(mode: Location, _ totalDeduction : Double = 0.0) -> Double{
-        var income = profileIncome
-        var dividendIncome = Double(self.DivInc.text!)
-        var total = income! + dividendIncome!
+    func BasicPersonalAmount(_ mode: Location, _ totalDeduction : Double = 0.0) -> Double{
+        let income = profileIncome
+        let dividendIncome = Double(self.DivInc.text!)
+        let total = income! + dividendIncome!
         
-        var percentage: Double = TP.TaxCredit[mode]!
-        var basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
+        let percentage: Double = TP.TaxCredit[mode]!
+        let basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
         var totalDed : Double = 0.0
         if income >= basicPersonalAmount {
             return 0
         } else {
-            if CanadianCorporation.on == false {
+            if CanadianCorporation.isOn == false {
                 totalDed = totalDeduction
             }
             if total + totalDed > basicPersonalAmount {
-                return (basicPersonalAmount-income) * percentage * -1
+                return (basicPersonalAmount-income!) * percentage * -1
             } else {
                 return (dividendIncome! + totalDed) * percentage * -1
             }
         }
     }
     //ON,BC
-    func getBasicReduction(netincome: Double, _ dividendIncome: Double) -> Double{
+    func getBasicReduction(_ netincome: Double, _ dividendIncome: Double) -> Double{
         var result : Double = 0.0
         if profileProvince == Location.Ontario.rawValue{
         result =  getSingleReduction(netincome) - getSingleReduction(netincome + dividendIncome - Deduction_2012 - Deduction_2011, true,-1 * getDividendTaxCredit(Location(rawValue: profileProvince!)!))
@@ -165,7 +189,7 @@ class DividendIncome : Formula {
         return result
     }
     //ON,BC
-    func getSingleReduction(val: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
+    func getSingleReduction(_ val: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
         var result = 0.0
         if profileProvince == Location.Ontario.rawValue{
             var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
@@ -230,22 +254,22 @@ class DividendIncome : Formula {
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
-        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var incomeHealthPremium = TP.calculateTheDifference(0, income!, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         var totalPremium = TP.calculateTheDifference(0, total - Deduction_2011 - Deduction_2012, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
     
     //BC
-    func getProvincialCredit(netincome: Double, _ interest: Double) -> Double {
+    func getProvincialCredit(_ netincome: Double, _ interest: Double) -> Double {
         return getSingleProvincialCredit(netincome ) - getSingleProvincialCredit(netincome + interest - Deduction_2011 -  Deduction_2012)
     }
     //BC
-    func getSingleProvincialCredit(val: Double) -> Double {
+    func getSingleProvincialCredit(_ val: Double) -> Double {
         var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
         if c <= 0 {
             c = 0
         }
-        var d = c * 0.02
+        let d = c * 0.02
         var e : Double = 75 - d
         if e <= 0 {
             e = 0
@@ -260,7 +284,7 @@ class DividendIncome : Formula {
     //==> stock market is off
     //must be kept for all dividendTax
     
-    func getDividendTaxCredit(netIncome : Double, dividendIncome : Double, mode: Location, CanadianCorporation : Bool, StockMarket : Bool) -> Double {
+    func getDividendTaxCredit(_ netIncome : Double, dividendIncome : Double, mode: Location, CanadianCorporation : Bool, StockMarket : Bool) -> Double {
         var result : Double = 0.0
         //var dividendIncome = Double(self.DivInc.text!)
         var income = netIncome
@@ -296,7 +320,7 @@ class DividendIncome : Formula {
     
     
     
-    func getDividendTaxCredit(mode: Location) -> Double{
+    func getDividendTaxCredit(_ mode: Location) -> Double{
         var result : Double = 0.0
         var dividendIncome = Double(self.DivInc.text!)
         var income = profileIncome
@@ -304,13 +328,13 @@ class DividendIncome : Formula {
         var compare: Double = 0.0
         
         if mode == Location.Federal {
-            compare = TP.calculateTheDifference(income, total, TP.FederalBracketDictionary) + BasicPersonalAmount(mode)
+            compare = TP.calculateTheDifference(income!, total, TP.FederalBracketDictionary) + BasicPersonalAmount(mode)
         } else {
-            compare = TP.calculateTheDifference(income, total, TP.ProvincialBracketDictionary[mode]!) + BasicPersonalAmount(mode)
+            compare = TP.calculateTheDifference(income!, total, TP.ProvincialBracketDictionary[mode]!) + BasicPersonalAmount(mode)
         }
         
-        if CanadianCorporation.on == true {
-            if StockMarket.on == true {
+        if CanadianCorporation.isOn == true {
+            if StockMarket.isOn == true {
                 result = dividendIncome! * TP.EligibleDividendTaxCredit[mode]!
             } else {
                 result = dividendIncome! * TP.Non_EligibleDividendTaxCredit[mode]!
@@ -326,7 +350,7 @@ class DividendIncome : Formula {
     
     
     //ALL
-    func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
+    func foreignTaxCreditHelper(_ value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
         if mode == Location.Federal{
             a = TP.calculateTheDifference(0, value, TP.FederalBracketDictionary)
@@ -343,16 +367,16 @@ class DividendIncome : Formula {
         
     }
     //ALL
-    func getForeignTaxCredit(mode : Location) -> Double{
+    func getForeignTaxCredit(_ mode : Location) -> Double{
         var result : Double = 0
         var income = profileIncome
         var dividendIncome = Double(self.DivInc.text!)
         var total = income! + dividendIncome!
-        if CanadianCorporation.on == false {
+        if CanadianCorporation.isOn == false {
             if mode == Location.Federal {
-            result = -1 * min( TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary) + BasicPersonalAmount(Location.Federal) + getDividendTaxCredit(Location.Federal),FederalForeignTaxCredit)
+            result = -1 * min( TP.calculateTheDifference(income!, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary) + BasicPersonalAmount(Location.Federal) + getDividendTaxCredit(Location.Federal),FederalForeignTaxCredit)
             } else {
-            result = -1 * min(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + BasicPersonalAmount(Location(rawValue: profileProvince!)!) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) ,ProvincialForeignTaxCredit)
+            result = -1 * min(TP.calculateTheDifference(income!, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + BasicPersonalAmount(Location(rawValue: profileProvince!)!) + getDividendTaxCredit(Location(rawValue: profileProvince!)!) ,ProvincialForeignTaxCredit)
             }
         }
         return result
@@ -364,15 +388,15 @@ class DividendIncome : Formula {
     func operationBeforGettingResult(){
         if profileProvince ==  Location.Ontario.rawValue{
             var NotEligibleForFTC : Double = 0
-            var NetIncome = profileIncome                      //9000
-            var dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
-            var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
-            var total = NetIncome! + dividendIncome!
+            let NetIncome = profileIncome                      //9000
+            let dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
+            let ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+            let total = NetIncome! + dividendIncome!
             //var Deduction_2011: Double = 0
             // var Deduction_2012: Double = 0
-            var ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
+            let ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
         
-            if USStock.on == true {
+            if USStock.isOn == true {
                 if ForeignTax!/dividendIncome! > 0.15 {
                     NotEligibleForFTC = ForeignTax! - (dividendIncome!*0.15)
                     NotEligibleForFTC = NotEligibleForFTC * -1
@@ -387,13 +411,13 @@ class DividendIncome : Formula {
                 
                 }
             }
-            for var i = 0; i < Int(dividendIncome!); i++ {
+            for i in 0 ..< Int(dividendIncome!) {
                 //var i: Double = 861
           
-                var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+                let BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
           
                 // print("Basic Fedral Tax is  \(BasicFederalTax)")
-                var instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
+                let instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
                 var surtax1 : Double = 0
                 var surtax2 : Double = 0
                 if instanceBasicPersonalTax >  4484 {
@@ -407,15 +431,15 @@ class DividendIncome : Formula {
                     basicReduction = min(TP.BasicReduction[Location(rawValue: profileProvince)!]!-instanceBasicPersonalTax, instanceBasicPersonalTax)
                 
                 }
-                var BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
+                let BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
 
-                var ratio : Double = (dividendIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+                let ratio : Double = (dividendIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
 
-                var FTCLimitation = BasicFederalTax * ratio
+                let FTCLimitation = BasicFederalTax * ratio
           
-                var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+                let right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
       
-                var balance : Double = abs(Double(i) - right)
+                let balance : Double = abs(Double(i) - right)
                 //print("i is \(i) and balance is \(balance)")
                 if (balance < 1){
                 
@@ -432,15 +456,15 @@ class DividendIncome : Formula {
         }//End of Ontario
         else if profileProvince == Location.British_Columbia.rawValue {
             var NotEligibleForFTC : Double = 0
-            var NetIncome = profileIncome                      //9000
-            var dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
-            var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
-            var total = NetIncome! + dividendIncome!
+            let NetIncome = profileIncome                      //9000
+            let dividendIncome = Double(self.DivInc.text!)     //Foreign Income 8000
+            let ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+            let total = NetIncome! + dividendIncome!
             //var Deduction_2011: Double = 0
             // var Deduction_2012: Double = 0
-            var ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
+            let ForeignTaxPaid : Double = min(ForeignTax!, dividendIncome!*0.15) //1200
             
-            if USStock.on == true {
+            if USStock.isOn == true {
                 if ForeignTax!/dividendIncome! > 0.15 {
                     NotEligibleForFTC = ForeignTax! - (dividendIncome!*0.15)
                     NotEligibleForFTC = NotEligibleForFTC * -1
@@ -455,21 +479,21 @@ class DividendIncome : Formula {
                     
                 }
             }
-            for var i = 0; i < Int(dividendIncome!); i++ {
+            for i in 0 ..< Int(dividendIncome!) {
                 //var i: Double = 861
                 
-                var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+                let BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
                 
                 // print("Basic Fedral Tax is  \(BasicFederalTax)")
-                var BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
+                let BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
                 
-                var ratio : Double = (dividendIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+                let ratio : Double = (dividendIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
                 
-                var FTCLimitation = BasicFederalTax * ratio
+                let FTCLimitation = BasicFederalTax * ratio
                 
-                var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+                let right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
                 
-                var balance : Double = abs(Double(i) - right)
+                let balance : Double = abs(Double(i) - right)
                 //print("i is \(i) and balance is \(balance)")
                 if (balance < 1){
                     
@@ -496,11 +520,11 @@ class DividendIncome : Formula {
         var output2 = [Double]()
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.DivInc.text!)!]
-        var surtax = TP.getSurtax(income, total, profileProvince)
+        var surtax = TP.getSurtax(income!, total, profileProvince)
         var output3 = [["","","",""]]
-        var dividF = getDividendTaxCredit(income, dividendIncome: dividendIncome!, mode:Location.Federal,CanadianCorporation: CanadianCorporation.on, StockMarket:  StockMarket.on)
-        var dividP = getDividendTaxCredit(income, dividendIncome: dividendIncome!, mode:Location(rawValue: profileProvince)!,CanadianCorporation: CanadianCorporation.on, StockMarket:  StockMarket.on)
-        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getDividendIncome(income!, dividendIncome: dividendIncome!, ForeignTaxPaid: Double(self.ForeignTaxPaid.text!)!, CanadianCorporation: CanadianCorporation.on, StockMarket: StockMarket.on, isUSStock: USStock.on, dividF: dividF, dividP: dividP).process)!
+        var dividF = getDividendTaxCredit(income!, dividendIncome: dividendIncome!, mode:Location.Federal,CanadianCorporation: CanadianCorporation.isOn, StockMarket:  StockMarket.isOn)
+        var dividP = getDividendTaxCredit(income!, dividendIncome: dividendIncome!, mode:Location(rawValue: profileProvince)!,CanadianCorporation: CanadianCorporation.isOn, StockMarket:  StockMarket.isOn)
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getDividendIncome(income!, dividendIncome: dividendIncome!, ForeignTaxPaid: Double(self.ForeignTaxPaid.text!)!, CanadianCorporation: CanadianCorporation.isOn, StockMarket: StockMarket.isOn, isUSStock: USStock.isOn, dividF: dividF, dividP: dividP).process)!
         /*
         if profileProvince == Location.Ontario.rawValue {
          output3 = [["Net Income","","", TP.get2Digits(profileIncome)],
@@ -573,7 +597,7 @@ class DividendIncome : Formula {
             DivInc.placeholder="Missing an input for dividend income"
             return false
         } else {
-            DivInc.backgroundColor = .clearColor()
+            DivInc.backgroundColor = .clear
             DivInc.placeholder=""
             return true
         }

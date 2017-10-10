@@ -37,9 +37,9 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
    
     override func viewDidLoad(){
         super.viewDidLoad()
-        self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView = UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize =  CGSizeMake(self.view.bounds.width, self.view.bounds.height)
+        self.scrollView.contentSize =  CGSize(width: self.view.bounds.width, height: self.view.bounds.height)
        // self.containerView = UIView()
         checkCalculation()
         self.containerView = c.initUI(self)
@@ -54,7 +54,7 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
        // c.retrieveData()
      //   print("tabbed")
         if( c.checkBasicInput()){
-          performSegueWithIdentifier("MoveIntoProfile", sender: self)
+          performSegue(withIdentifier: "MoveIntoProfile", sender: self)
         } 
     }
     override func viewWillLayoutSubviews() {
@@ -68,10 +68,10 @@ class BasicInputsViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0,0,scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0,y: 0,width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC : ProfileViewController = segue.destination as! ProfileViewController
         DestinyVC.formula = c
         //DestinyVC.topic = topic
         //DestinyVC.option = option

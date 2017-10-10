@@ -72,10 +72,10 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.main.bounds)
         //self.scrollView = UIScrollView(frame: self.view.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,550)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width ,height: 550)
         
         self.containerView =  UIView()
         
@@ -101,7 +101,7 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         self.hideKeyboardWhenTappedAround()
         if self.revealViewController() != nil {
             mainMenu.target = self.revealViewController()
-            mainMenu.action = "revealToggle:"
+            mainMenu.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
        
@@ -116,7 +116,7 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,31 +124,31 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //self.view.endEditing(true) /////<-------------? 
         self.containerView.endEditing(true)
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if messageTextView.textColor == UIColor.lightGrayColor() {
+        if messageTextView.textColor == UIColor.lightGray {
             messageTextView.text = ""
-            messageTextView.textColor = UIColor.blackColor()
+            messageTextView.textColor = UIColor.black
         }
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         if messageTextView.text == "" {
             
             messageTextView.text = "\n\n\n\nYour Message"
-            messageTextView.textColor = UIColor.lightGrayColor()
+            messageTextView.textColor = UIColor.lightGray
         }
     }
     func sendEmail(){
         print("Sending an email...")
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail(){
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
@@ -162,23 +162,23 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
         return mailComposerVC
     }
     func showSendMailErrorAlert(){
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle:  UIAlertControllerStyle.Alert)
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle:  UIAlertControllerStyle.alert)
     }
-    func sendAlert(alertTitle : String, alertMessage : String){
-       let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+    func sendAlert(_ alertTitle : String, alertMessage : String){
+       let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
         switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             print("Cancelled mail")
             sendAlert("Sending Cancelled", alertMessage: "You have cancelled sending your email!")
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.sent.rawValue:
             print("Mail Sent")
             sendAlert("Mail Sent", alertMessage: "Your email has been sent to us!\n Thank you very much!")
-        case MFMailComposeResultSaved.rawValue:
+        case MFMailComposeResult.saved.rawValue:
             print("You saved a draft of this email")
             break;
         default:
@@ -191,7 +191,7 @@ class ContactViewController: UIViewController,UIScrollViewDelegate, UITextViewDe
     }*/
     
     // press return doesn dismiss the keyboard - This is for Done button
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

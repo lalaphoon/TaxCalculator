@@ -19,16 +19,16 @@ class InterestIncome: Formula{
     var profileIncome : Double!
     var profileProvince: String!
     
-    private init(){
+    fileprivate init(){
         
     }
     
-    func initUI(VC:UIViewController)-> UIView{
+    func initUI(_ VC:UIViewController)-> UIView{
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         interest = containerView.returnTextField("Interest income", 43, 274 + num, VC.view.bounds.width - (43*2))
-        interest.keyboardType = .DecimalPad
+        interest.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
         return containerView
         
@@ -42,7 +42,7 @@ class InterestIncome: Formula{
     return containerView
     
     }*/
-    func setProfile(income: Double, province: String){
+    func setProfile(_ income: Double, province: String){
         profileIncome = income
         profileProvince = province
     }
@@ -69,31 +69,31 @@ class InterestIncome: Formula{
     }
     //====================================Extra Calculation=============================================================
     //ON,AB, BC, MB
-    func BasicPersonalAmount(mode: Location) -> Double{
-        var income = profileIncome
-        var interest = Double(self.interest.text!)
-        var total = income! + interest!
+    func BasicPersonalAmount(_ mode: Location) -> Double{
+        let income = profileIncome
+        let interest = Double(self.interest.text!)
+        let total = income! + interest!
         
-        var percentage: Double = TP.TaxCredit[mode]!
-        var basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
+        let percentage: Double = TP.TaxCredit[mode]!
+        let basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
         
-        if income >= basicPersonalAmount {
+        if income! >= basicPersonalAmount {
             return 0
         } else {
             if total > basicPersonalAmount {
-                return (basicPersonalAmount-income) * percentage * -1
+                return (basicPersonalAmount-income!) * percentage * -1
             } else {
                 return interest! * percentage * -1
             }
         }
     }
     //ON,BC
-    func getBasicReduction(netincome: Double, _ interest: Double) -> Double{
+    func getBasicReduction(_ netincome: Double, _ interest: Double) -> Double{
         return getSingleReduction(netincome) - getSingleReduction(netincome + interest)
     }
     //ON,BC
-    func getSingleReduction(val: Double) -> Double{
+    func getSingleReduction(_ val: Double) -> Double{
         var result = 0.0
         //IF PROVINCE IS ONTARIO
         if profileProvince == Location.Ontario.rawValue {
@@ -149,23 +149,23 @@ class InterestIncome: Formula{
         var income = profileIncome
         var interest = Double(self.interest.text!)
         var total = income! + interest!
-        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var incomeHealthPremium = TP.calculateTheDifference(0, income!, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         var totalPremium = TP.calculateTheDifference(0, total, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
     //BC,MB
-    func getProvincialCredit(netincome: Double, _ interest: Double) -> Double {
+    func getProvincialCredit(_ netincome: Double, _ interest: Double) -> Double {
         return getSingleProvincialCredit(netincome) - getSingleProvincialCredit(netincome + interest)
     }
     //BC,MB
-    func getSingleProvincialCredit(val: Double) -> Double {
+    func getSingleProvincialCredit(_ val: Double) -> Double {
         var result : Double = 0.0
         if profileProvince == Location.British_Columbia.rawValue {
             var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
             if c <= 0 {
                 c = 0
             }
-            var d = c * 0.02
+            let d = c * 0.02
             var e : Double = 75 - d
             if e <= 0 {
                 e = 0
@@ -176,7 +176,7 @@ class InterestIncome: Formula{
             if c <= 0 {
                 c = 0
             }
-            var d = c * 0.01
+            let d = c * 0.01
             var e : Double = 195 - d
             if e <= 0 {
                 e = 0
@@ -197,7 +197,7 @@ class InterestIncome: Formula{
         var output2 = [Double]()
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.interest.text!)!]
-        var surtax = TP.getSurtax(income, total, profileProvince)
+        var surtax = TP.getSurtax(income!, total, profileProvince)
         var output3 = [["","","",""]]
         /*
         if profileProvince == Location.Ontario.rawValue {
@@ -280,7 +280,7 @@ class InterestIncome: Formula{
             interest.placeholder="Missing an input for interest"
             return false
         } else {
-            interest.backgroundColor = .clearColor()
+            interest.backgroundColor = .clear
             interest.placeholder=""
             return true
         }

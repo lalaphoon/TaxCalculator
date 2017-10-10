@@ -19,23 +19,23 @@ class OptionViewController: UIViewController, UIScrollViewDelegate{
     var topic = Int()
     var option = Int()
     
-    func moveIntoNext(sender: AnyObject){
+    func moveIntoNext(_ sender: AnyObject){
         option = sender.tag
         print("option is \(option)")
-        performSegueWithIdentifier("MoveIntoInputs", sender: self)
+        performSegue(withIdentifier: "MoveIntoInputs", sender: self)
     }
     
     override func viewDidLoad() {
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,1000)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width ,height: 1000)
         
         self.containerView =  UIView()
         self.scrollView.addSubview(containerView)
         self.view.addSubview(scrollView)
         initContainerUi()
-        containerView.userInteractionEnabled =  true
-        scrollView.userInteractionEnabled = true
+        containerView.isUserInteractionEnabled =  true
+        scrollView.isUserInteractionEnabled = true
     }
     func initContainerUi(){
         var pos_y = 60
@@ -97,14 +97,14 @@ class OptionViewController: UIViewController, UIScrollViewDelegate{
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //self.view.endEditing(true) /////<-------------?
         self.containerView.endEditing(true)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : BasicInputsViewController = segue.destinationViewController as! BasicInputsViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC : BasicInputsViewController = segue.destination as! BasicInputsViewController
         DestinyVC.category = category
         DestinyVC.topic = topic
         DestinyVC.option = option

@@ -44,10 +44,10 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
         print("clicked")
     }
     func initTableView(){
-        tableView = UITableView(frame: UIScreen.mainScreen().bounds, style: UITableViewStyle.Plain)
+        tableView = UITableView(frame: UIScreen.main.bounds, style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView()
         self.view.addSubview(self.tableView)
     
@@ -67,31 +67,31 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menu.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
         cell.textLabel!.text = menu[indexPath.row]
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.textLabel?.font = UIFont(name: SMALLTITLE, size: 17)
         //cell.backgroundColor = UIColor.yellowColor()
         //cell.tintColor = UIColor.customRedButton()
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         category = TaxMenu[menu[indexPath.row]]!
         print(indexPath.row)
         print(menu[indexPath.row])
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "MoveIntoSubTopics", sender: self)
     }
     
-    func moveIntoNext(sender: UIButton){
+    func moveIntoNext(_ sender: UIButton){
       category = sender.tag
       print("category is \(category)")
-      performSegueWithIdentifier("MoveIntoSubTopics", sender: self)
+      performSegue(withIdentifier: "MoveIntoSubTopics", sender: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -99,8 +99,8 @@ class TopicsViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : SubMenuViewController = segue.destinationViewController as! SubMenuViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC : SubMenuViewController = segue.destination as! SubMenuViewController
         DestinyVC.category = category
     }
 

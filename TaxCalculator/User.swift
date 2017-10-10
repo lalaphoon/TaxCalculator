@@ -12,16 +12,16 @@ import CoreData
 
 class User : NSManagedObject {
    
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     
     init?(firstname: String, lastname: String, province: String, income: Double, marital: String){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext =  appDel.managedObjectContext
-        let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
         if let entity = entity {
-            super.init(entity: entity, insertIntoManagedObjectContext: context)
+            super.init(entity: entity, insertInto: context)
             setFirstname(firstname)
             setLastname(lastname)
             setProvince(province)
@@ -38,20 +38,20 @@ class User : NSManagedObject {
     
     
     //========================Setter===============================
-   private func setProvince(province: String){
+   fileprivate func setProvince(_ province: String){
         self.province = province
     }
-   private func setFirstname(first: String){
+   fileprivate func setFirstname(_ first: String){
         self.firstname = first
     }
-   private func setLastname(last: String){
+   fileprivate func setLastname(_ last: String){
         self.lastname = last
     }
-   private func setMaritalStatus(m: String){
+   fileprivate func setMaritalStatus(_ m: String){
         self.maritalstatus = m
     }
-   private func setIncome(income :  Double){
-    self.income = NSNumber(double: income)
+   fileprivate func setIncome(_ income :  Double){
+    self.income = NSNumber(value: income as Double)
     }
     //=========================Getter==============================
     func getIncome() -> Double {
@@ -81,7 +81,7 @@ class User : NSManagedObject {
     }
     func delete() -> Bool {
         if let context = self.managedObjectContext {
-            context.deleteObject(self)
+            context.delete(self)
             do {
                 try context.save()
                 return true

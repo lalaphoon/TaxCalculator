@@ -72,7 +72,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         //Set specia keyboard for income
         
-        incomeTextField.keyboardType = .DecimalPad
+        incomeTextField.keyboardType = .decimalPad
         
         //select particular content for pickOption
         /*
@@ -90,10 +90,10 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         initSettings()
         
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -103,7 +103,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     }
     
     func save(){
-        var i: User = User(firstname: firstnameTextField.text! , lastname: lastnameTextField.text! , province: provinceTextField.text! , income: Double(incomeTextField.text!)!, marital: maritalTextField.text!)!
+        let i: User = User(firstname: firstnameTextField.text! , lastname: lastnameTextField.text! , province: provinceTextField.text! , income: Double(incomeTextField.text!)!, marital: maritalTextField.text!)!
        // CoreDataSaver.save_a_user_withUser(i)
         i.save()
     }
@@ -133,10 +133,10 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
     */
     
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == province_tag
         {
             return TP.province_list.count
@@ -148,7 +148,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         return 0
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == province_tag{
          return TP.province_list[row]
         }
@@ -158,7 +158,7 @@ class UserSettingsViewController: UIViewController, UIPickerViewDataSource, UIPi
         
         return nil
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
      
         if pickerView.tag == province_tag{
             provinceTextField.text = TP.province_list[row]

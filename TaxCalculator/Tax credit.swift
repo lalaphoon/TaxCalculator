@@ -7,6 +7,30 @@
 //
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 class Adoption_Tax_Credit: Formula{
     static let sharedInstance = Adoption_Tax_Credit()
     var TP = TaxPro()
@@ -17,19 +41,19 @@ class Adoption_Tax_Credit: Formula{
     var profileProvince: String!
     
     
-    private init(){
+    fileprivate init(){
     
     }
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         Adoption_Expense = containerView.returnTextField("Adoption expense", 43, 274 + num, VC.view.bounds.width - (43*2))
-        Adoption_Expense.keyboardType = .DecimalPad
+        Adoption_Expense.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
-    func setProfile(income: Double, province: String) {
+    func setProfile(_ income: Double, province: String) {
         profileIncome = income
         profileProvince = province
     }
@@ -48,9 +72,9 @@ class Adoption_Tax_Credit: Formula{
         if input > Double(maximum) {
             input = Double( maximum)
         }
-        var output1 = ["Adoption expense", "Tax Credit"]
-        var output2: [Double] = [ Double(Adoption_Expense.text!)!,getResult() ]
-        var output3 = [ ["Adoption expense","","","\(Adoption_Expense.text!)"],
+        let output1 = ["Adoption expense", "Tax Credit"]
+        let output2: [Double] = [ Double(Adoption_Expense.text!)!,getResult() ]
+        let output3 = [ ["Adoption expense","","","\(Adoption_Expense.text!)"],
                         ["Province","","",profileProvince],
                         ["Federal tax credit","\(TP.TaxCredit[Location.Federal]!)","","\(TP.TaxCredit[Location.Federal]! * input!)"],
                         ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!]!)","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
@@ -94,19 +118,19 @@ class Pension_Tax_Credit: Formula{
     var profileProvince: String!
     
     
-    private init(){
+    fileprivate init(){
         
     }
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         Pension_income = containerView.returnTextField("Pension income", 43, 274 + num, VC.view.bounds.width - (43*2))
-        Pension_income.keyboardType = .DecimalPad
+        Pension_income.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
-    func setProfile(income: Double, province: String) {
+    func setProfile(_ income: Double, province: String) {
         profileIncome = income
         profileProvince = province
     }
@@ -125,9 +149,9 @@ class Pension_Tax_Credit: Formula{
         if input > Double(maximum) {
             input = Double( maximum)
         }
-        var output1 = ["Pension income", "Tax Credit"]
-        var output2 : [Double] = [ Double(Pension_income.text!)!,getResult() ]
-        var output3 = [ ["Pension income","","","\(Pension_income.text!)!"],
+        let output1 = ["Pension income", "Tax Credit"]
+        let output2 : [Double] = [ Double(Pension_income.text!)!,getResult() ]
+        let output3 = [ ["Pension income","","","\(Pension_income.text!)!"],
             ["Province","","",profileProvince],
             ["Federal tax credit","\(TP.TaxCredit[Location.Federal]!)","","\(TP.TaxCredit[Location.Federal]! * input!)"],
             ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!]!)","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
@@ -170,24 +194,24 @@ class Interest_Paid_on_Student_Loan: Formula{
     var profileProvince: String!
     
     
-    private init(){
+    fileprivate init(){
         
     }
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         Interest_expense = containerView.returnTextField("Interest Expense", 43, 274 + num, VC.view.bounds.width - (43*2))
-        Interest_expense.keyboardType = .DecimalPad
+        Interest_expense.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
-    func setProfile(income: Double, province: String) {
+    func setProfile(_ income: Double, province: String) {
         profileIncome = income
         profileProvince = province
     }
     func getResult() -> Double {
-        var input = Double(self.Interest_expense.text!)
+        let input = Double(self.Interest_expense.text!)
        
         return TP.TaxCredit[Location.Federal]! * input! + TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!
     }
@@ -195,11 +219,11 @@ class Interest_Paid_on_Student_Loan: Formula{
         return "What do we need to say here?"
     }
     func retrieveData() -> ([String],[Double],[[String]]) {
-        var input = Double(self.Interest_expense.text!)
+        let input = Double(self.Interest_expense.text!)
         
-        var output1 = ["Interest expense", "Tax Credit"]
-        var output2 = [Double(Interest_expense.text!),getResult() ]
-        var output3 = [ ["Adoption expense","","","\(Interest_expense.text!)"],
+        let output1 = ["Interest expense", "Tax Credit"]
+        let output2 = [Double(Interest_expense.text!),getResult() ]
+        let output3 = [ ["Adoption expense","","","\(Interest_expense.text!)"],
             ["Province","","",profileProvince],
             ["Federal tax credit","\(TP.TaxCredit[Location.Federal])","","\(TP.TaxCredit[Location.Federal]! * input!)"],
             ["\(profileProvince) tax credit","\(TP.TaxCredit[Location(rawValue: profileProvince)!])","","\(TP.TaxCredit[Location(rawValue: profileProvince)!]! * input!)"]]
@@ -212,7 +236,7 @@ class Interest_Paid_on_Student_Loan: Formula{
         return ""
     }
     func displayProcess() -> String {
-        var input = Double(self.Interest_expense.text!)
+        let input = Double(self.Interest_expense.text!)
        
         var process = String()
         process = "--------------------\n"
@@ -242,24 +266,24 @@ class Tuition_Education_TextbookCredits : Formula {
     var profileProvince: String!
     
     
-    private init(){
+    fileprivate init(){
         
     }
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         TuitionFees = containerView.returnTextField("Tuition Fees", 43, 274 + num, VC.view.bounds.width - (43*2))
-        TuitionFees.keyboardType = .DecimalPad
+        TuitionFees.keyboardType = .decimalPad
         numFullTimeStudent = containerView.returnTextField("Number of months as full time students", 43, 334 + num, VC.view.bounds.width - (43*2))
-        numFullTimeStudent.keyboardType = .DecimalPad
+        numFullTimeStudent.keyboardType = .decimalPad
         numPartTimeStudent = containerView.returnTextField("Number of months as part time students", 43, 394 + num, VC.view.bounds.width - (43*2))
-        numPartTimeStudent.keyboardType = .DecimalPad
+        numPartTimeStudent.keyboardType = .decimalPad
         
         containerView.addYellowButton("Next", "moveToNext", VC.view.bounds.width - 100, VC.view.bounds.height - 100 + num, 87, 36, VC)
         return containerView
     }
-    func setProfile(income: Double, province: String) {
+    func setProfile(_ income: Double, province: String) {
         profileIncome = income
         profileProvince = province
     }
@@ -279,15 +303,15 @@ class Tuition_Education_TextbookCredits : Formula {
         return "What do we need to say here?"
     }
     func retrieveData() -> ([String],[Double],[[String]]) {
-        var output1 = ["Tuition fees", "non-refundable tax credit"]
-        var output2 = [Double(self.TuitionFees.text!), getResult()]
-        var A = Double(400) * Double(numFullTimeStudent.text!)!
-        var B = Double(120) * Double(numPartTimeStudent.text!)!
+        let output1 = ["Tuition fees", "non-refundable tax credit"]
+        let output2 = [Double(self.TuitionFees.text!), getResult()]
+        let A = Double(400) * Double(numFullTimeStudent.text!)!
+        let B = Double(120) * Double(numPartTimeStudent.text!)!
         
-        var C = Double(65) * Double(numFullTimeStudent.text!)!
-        var D = Double(20) * Double(numPartTimeStudent.text!)!
-        var sum = A+B+C+D
-        var output3 = [["Tuition fees","","",TuitionFees.text!],
+        let C = Double(65) * Double(numFullTimeStudent.text!)!
+        let D = Double(20) * Double(numPartTimeStudent.text!)!
+        let sum = A+B+C+D
+        let output3 = [["Tuition fees","","",TuitionFees.text!],
                        ["Number of months","as full-time student","",numFullTimeStudent.text!],
                        ["Number of months","as part-time student","",numPartTimeStudent.text!],
                        ["Education credit","400","","\(A)"],

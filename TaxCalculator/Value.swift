@@ -12,15 +12,15 @@ import CoreData
 
 class Value: NSManagedObject {
 
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?){
-        super.init(entity:entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?){
+        super.init(entity:entity, insertInto: context)
     }
     init?(key: String, value: Double){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
-        let entity = NSEntityDescription.entityForName("Value", inManagedObjectContext:context)
+        let entity = NSEntityDescription.entity(forEntityName: "Value", in:context)
         if let entity = entity {
-            super.init(entity: entity, insertIntoManagedObjectContext: context)
+            super.init(entity: entity, insertInto: context)
             setKey(key)
             setValue(value)
             print("Saving a pair of value")
@@ -31,11 +31,11 @@ class Value: NSManagedObject {
         }
     }
     //=============setter=======================
-    private func setKey(key: String){
+    fileprivate func setKey(_ key: String){
         self.key = key
     }
-    private func setValue(value: Double){
-        self.value = value
+    fileprivate func setValue(_ value: Double){
+        self.value = value as NSNumber
     }
     //=============End of setter=================
     //=============getter========================
@@ -60,7 +60,7 @@ class Value: NSManagedObject {
     }
     func delete() {
             if let context = self.managedObjectContext {
-                context.deleteObject(self)
+                context.delete(self)
                 do {
                     try context.save()
                     

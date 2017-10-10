@@ -38,14 +38,14 @@ class DefinitionViewController: UIViewController, UIScrollViewDelegate {
         //containerView.addText(formula.getDefinition(), self.view.bounds.width/2, 400 + offset, self.view.bounds.width-86,300, NSTextAlignment.Left)
         self.view.addTextView(formula.getDefinition(), 1, 43, 280 + offset, self.view.bounds.width-86, self.view.bounds.height-280-30-70)
         var text : UITextView = self.view.viewWithTag(1) as! UITextView
-        text.editable = false
+        text.isEditable = false
         self.view.addYellowButton("Start a new search", "StartNewCalculation", 90, self.view.bounds.height - 30 - 70, self.view.bounds.width - 180, 40, self)
     
     }
     func StartNewCalculation() {
         print("cllicked!")
         //performSegueWithIdentifier("goBack", sender: self)
-        navigationController?.popToRootViewControllerAnimated(true)
+        navigationController?.popToRootViewController(animated: true)
         // navigationController?.popToViewController(HomeViewController, animated: true)
         //self.dismissViewControllerAnimated(false, completion: nil)
     }

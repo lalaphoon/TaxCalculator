@@ -24,16 +24,16 @@ class RRSP: Formula{
     var profileProvince: String!
     
     
-    private init(){
+    fileprivate init(){
         contribution.text = String(0.00)
     }
     
-    func initUI(VC:UIViewController)-> UIView{
+    func initUI(_ VC:UIViewController)-> UIView{
         var containerView = UIView()
         let num: CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         contribution = containerView.returnTextField("Contribution", 43, 274 + num, VC.view.bounds.width - (43*2))
-        contribution.keyboardType = .DecimalPad
+        contribution.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
         return containerView
         
@@ -48,10 +48,10 @@ class RRSP: Formula{
     return containerView
     
     }*/
-    func setInputs(input: Double){
+    func setInputs(_ input: Double){
         contribution.text = TP.get2Digits(input)
     }
-    func setProfile(income: Double, province: String){
+    func setProfile(_ income: Double, province: String){
         profileIncome = income
         profileProvince = province
     }
@@ -73,18 +73,18 @@ class RRSP: Formula{
     }
     //====================================Extra Calculation==============================================
     //ON,AB,BC,MB
-    func BasicPersonalAmount(mode: Location) -> Double{
-        var income = profileIncome
-        var contribution = Double(self.contribution.text!)
-        var vary = income! - contribution!
+    func BasicPersonalAmount(_ mode: Location) -> Double{
+        let income = profileIncome
+        let contribution = Double(self.contribution.text!)
+        let vary = income! - contribution!
         
-        var percentage : Double = TP.TaxCredit[mode]!
+        let percentage : Double = TP.TaxCredit[mode]!
         
-        var basicPersonalAmount : Double = TP.BasicPersonalAmount[mode]!
+        let basicPersonalAmount : Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
         
         //percentage should be 15% always
-        if income > basicPersonalAmount {
+        if income! > basicPersonalAmount {
             if vary >= basicPersonalAmount {
                 return 0.0
             } else {
@@ -95,13 +95,13 @@ class RRSP: Formula{
         }
     }
     //ON,BC
-    func getBasicReduction(netincome: Double, _ contribution: Double) -> Double{
+    func getBasicReduction(_ netincome: Double, _ contribution: Double) -> Double{
         
         return getSingleReduction(netincome - contribution) - getSingleReduction(netincome)
         
     }
     //ON,BC
-    func getSingleReduction(val: Double) -> Double{
+    func getSingleReduction(_ val: Double) -> Double{
         var result = 0.0
         if profileProvince == Location.Ontario.rawValue {
             var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
@@ -150,24 +150,24 @@ class RRSP: Formula{
         var income = profileIncome
         var contribution = Double(self.contribution.text!)
         var vary = income! - contribution!
-        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var incomeHealthPremium = TP.calculateTheDifference(0, income!, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         var contributionPremium = TP.calculateTheDifference(0, vary, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return incomeHealthPremium - contributionPremium
     }
     
     //BC,MB
-    func getProvincialCredit(netincome: Double, _ contribution: Double) -> Double {
+    func getProvincialCredit(_ netincome: Double, _ contribution: Double) -> Double {
         return  getSingleProvincialCredit(netincome) - getSingleProvincialCredit(netincome -  contribution)
     }
     //BC,MB
-    func getSingleProvincialCredit(val: Double) -> Double {
+    func getSingleProvincialCredit(_ val: Double) -> Double {
         var result : Double = 0.0
         if profileProvince ==  Location.British_Columbia.rawValue {
             var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
             if c <= 0 {
                 c = 0
             }
-            var d = c * 0.02
+            let d = c * 0.02
             var e : Double = 75 - d
             if e <= 0 {
                 e = 0
@@ -178,7 +178,7 @@ class RRSP: Formula{
             if c <= 0 {
                 c = 0
             }
-            var d = c * 0.01
+            let d = c * 0.01
             var e : Double = 195 - d
             if e <= 0 {
                 e = 0
@@ -234,7 +234,7 @@ class RRSP: Formula{
             contribution.placeholder = "Missing an input for contribution"
             return false
         } else {
-            contribution.backgroundColor = .clearColor()
+            contribution.backgroundColor = .clear
             contribution.placeholder = ""
             return true
         }

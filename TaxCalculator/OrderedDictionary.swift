@@ -7,6 +7,19 @@
 //
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 //reference: http://timekl.com/blog/2014/06/02/learning-swift-ordered-dictionaries/
 //reference :https://www.raywenderlich.com/82572/swift-generics-tutorial
 
@@ -18,32 +31,32 @@ struct OrderedDictionary<KeyType: Hashable, ValueType>{
     var array = ArrayType()
     var dictionary = DictionaryType()
     
-    mutating func insert(value: ValueType, forKey key: KeyType, atIndex index: Int) -> ValueType?
+    mutating func insert(_ value: ValueType, forKey key: KeyType, atIndex index: Int) -> ValueType?
     {
         var adjustedIndex = index
         
         let existingValue = self.dictionary[key]
         if existingValue != nil {
-            let existingIndex = self.array.indexOf(key)
+            let existingIndex = self.array.index(of: key)
             
             if existingIndex < index {
-                adjustedIndex--
+                adjustedIndex -= 1
             }
-            self.array.removeAtIndex(existingIndex!)
+            self.array.remove(at: existingIndex!)
         }
         
-        self.array.insert(key, atIndex:adjustedIndex)
+        self.array.insert(key, at:adjustedIndex)
         self.dictionary[key] = value
         
         return existingValue
     }
-    mutating func removeAtIndex(index: Int) -> (KeyType, ValueType)
+    mutating func removeAtIndex(_ index: Int) -> (KeyType, ValueType)
     {
         precondition(index < self.array.count, "Index out-of-bounds")
         
-        let key = self.array.removeAtIndex(index)
+        let key = self.array.remove(at: index)
         
-        let value = self.dictionary.removeValueForKey(key)!
+        let value = self.dictionary.removeValue(forKey: key)!
         
         return (key, value)
     }
@@ -55,7 +68,7 @@ struct OrderedDictionary<KeyType: Hashable, ValueType>{
             return self.dictionary[key]
         }
         set {
-            if let index = self.array.indexOf(key) {
+            if let index = self.array.index(of: key) {
             } else {
                 self.array.append(key)
             }

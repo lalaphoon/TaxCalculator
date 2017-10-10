@@ -23,9 +23,9 @@ class TermsViewController: UIViewController {
     }
     
     func configureWebView(){
-        let termsURL = NSBundle.mainBundle().URLForResource("Terms", withExtension: "html")
-        let requestObj = NSURLRequest(URL: termsURL!)
-        myWebView.backgroundColor = UIColor.whiteColor()
+        let termsURL = Bundle.main.url(forResource: "Terms", withExtension: "html")
+        let requestObj = URLRequest(url: termsURL!)
+        myWebView.backgroundColor = UIColor.white
         myWebView.loadRequest(requestObj)
     }
     //Unused textview

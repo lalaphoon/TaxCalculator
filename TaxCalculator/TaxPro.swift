@@ -210,10 +210,10 @@ class TaxPro {
     }
     //=======================helper =======================================
     
-    func flag_a_group(amount : Double , _ collection : OrderedDictionary<Int, Double>) -> Int {
-        var counter: Int = collection.count
-        for var i = 0 ; i < counter; ++i {
-            var byIndex: (Int, Double) = collection[i]
+    func flag_a_group(_ amount : Double , _ collection : OrderedDictionary<Int, Double>) -> Int {
+        let counter: Int = collection.count
+        for  i in 0..<counter {
+            let byIndex: (Int, Double) = collection[i]
             if Int(amount) > byIndex.0 {
                 return counter - i
             }
@@ -224,23 +224,24 @@ class TaxPro {
   
      //income : lower
     // total : higher
-    func calculateTheDifference(lower: Double, _ higher : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
+    func calculateTheDifference(_ lower: Double, _ higher : Double, _ group : OrderedDictionary<Int , Double>) -> Double{
         
         if higher < lower || lower < 0 {
             return 0
         }
         
-        var top = flag_a_group(higher, group)
+        let top = flag_a_group(higher, group)
        // print("Top is \(top)")
-        var bottom = flag_a_group(lower , group)
+        let bottom = flag_a_group(lower , group)
         //print("bottom is \(bottom)")
         var result = Double()
         var total_container : Double = higher
-        for var i = top ; i > bottom - 1; --i {
-            var byIndex: (Int, Double) = group[group.count - i]
-            var level : Double = Double(byIndex.0)
+        //for var i = top ; i > bottom - 1; --i {
+        for i in (bottom...top).reversed(){
+            let byIndex: (Int, Double) = group[group.count - i]
+            let level : Double = Double(byIndex.0)
            // level is the money
-            var byKey: Double = group[Int(level)]!
+            let byKey: Double = group[Int(level)]!
            // bykey is the percentage
             if i == bottom {
                 //level = income
@@ -255,7 +256,7 @@ class TaxPro {
         return Double(result)
         
     }
-    func foundation(lower:Double, _ higher: Double, _ province: String) ->(result: Double, process: String){
+    func foundation(_ lower:Double, _ higher: Double, _ province: String) ->(result: Double, process: String){
         var result = Double(0)
         var process =  String()
         
@@ -275,10 +276,10 @@ class TaxPro {
         
         //StepThree & StepFour
         if province == Location.Ontario.rawValue { // Adding surtax seems only works for Ontario
-        var counter:Int = InterestThreshold.count
-        for var i = 0; i < counter; ++i {
-            var byIndex: (Int, Double) = InterestThreshold[i]
-            var keyCode = byIndex.0
+        let counter:Int = InterestThreshold.count
+        for i in 0 ..< counter  {
+            let byIndex: (Int, Double) = InterestThreshold[i]
+            let keyCode = byIndex.0
             var finalStep = Double()
             if lower < Double(keyCode){
                 finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[Location(rawValue: province)!]! )  * byIndex.1
@@ -295,12 +296,12 @@ class TaxPro {
         }
         return (result, process)
     }
-    func getSurtax(lower: Double, _ higher: Double, _ province: String) -> [Double]{
+    func getSurtax(_ lower: Double, _ higher: Double, _ province: String) -> [Double]{
         var result = [Double]()
-        var counter:Int = InterestThreshold.count
-        for var i = 0; i < counter; ++i {
-            var byIndex: (Int, Double) = InterestThreshold[i]
-            var keyCode = byIndex.0
+        let counter:Int = InterestThreshold.count
+        for i in 0 ..< counter  {
+            let byIndex: (Int, Double) = InterestThreshold[i]
+            let keyCode = byIndex.0
             var finalStep = Double()
             if lower < Double(keyCode){
                 finalStep = calculateTheDifference(Double(keyCode), higher,ProvincialBracketDictionary[Location(rawValue: province)!]! )  * byIndex.1
@@ -320,14 +321,14 @@ class TaxPro {
     //interest:
     //mode: Federal/Other province
     //selection: pos/true: interest income,  neg/false: rrsp
-    func BasicPersonalAmount(profileIncome: Double, _ other: Double, _ mode: Location, _ selection: Bool) -> Double{
+    func BasicPersonalAmount(_ profileIncome: Double, _ other: Double, _ mode: Location, _ selection: Bool) -> Double{
         
         if selection == false {
-            var income = profileIncome
-            var contribution = other
-            var vary = income - contribution
-            var percentage : Double = self.TaxCredit[mode]!
-            var basicPersonalAmount : Double = self.BasicPersonalAmount[mode]!
+            let income = profileIncome
+            let contribution = other
+            let vary = income - contribution
+            let percentage : Double = self.TaxCredit[mode]!
+            let basicPersonalAmount : Double = self.BasicPersonalAmount[mode]!
             
             //percentage should be 15% always
             if income > basicPersonalAmount {
@@ -342,12 +343,12 @@ class TaxPro {
         } else { // It is for interest income
             // for oas, let other equals oaspension - oasclawback
             // for foreignincome, other should exquals foreignIncome
-            var income = profileIncome
-            var interest = other
-            var total = income + interest
+            let income = profileIncome
+            let interest = other
+            let total = income + interest
             
-            var percentage: Double = self.TaxCredit[mode]!
-            var basicPersonalAmount :  Double = self.BasicPersonalAmount[mode]!
+            let percentage: Double = self.TaxCredit[mode]!
+            let basicPersonalAmount :  Double = self.BasicPersonalAmount[mode]!
             
             
             if income >= basicPersonalAmount {
@@ -366,15 +367,15 @@ class TaxPro {
 
     
     //=====================helper end=======================================
-    func get2Digits(input : Double) ->String {
+    func get2Digits(_ input : Double) ->String {
         //return String(format:"%.0f",input) //due to odd/even digit issues, this one cannot be used
-        return String(format:"%.0f",input.roundTo(0))
+        return String(format:"%.0f",input.rounded(toPlaces: 0))
         
     }
     //=====================Testing code======================================
     
-    func RRSP_calculation(income: Double, _ contribution : Double) -> Double{
-        var vary = income - contribution
+    func RRSP_calculation(_ income: Double, _ contribution : Double) -> Double{
+        let vary = income - contribution
         var result  =  Double(0)
         
         //Step 1
@@ -383,10 +384,10 @@ class TaxPro {
         //Step 2
         print(Float(calculateTheDifference(vary, income, ProvincialBracketDictionary[Location.Ontario]!)))
         result = result + calculateTheDifference(vary,income , ProvincialBracketDictionary[Location.Ontario]!)
-        var counter: Int = InterestThreshold.count
-         for var i = 0 ; i < counter; ++i {
-            var byIndex: (Int, Double) = InterestThreshold[i]
-            var keyCode = byIndex.0
+        let counter: Int = InterestThreshold.count
+         for i in 0  ..< counter {
+            let byIndex: (Int, Double) = InterestThreshold[i]
+            let keyCode = byIndex.0
         //for keyCode in InterestThreshold.keys {
             if vary < Double(keyCode) {
                 print(calculateTheDifference(Double(keyCode), income,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!)
@@ -406,8 +407,8 @@ class TaxPro {
     
     
     
-    func Interest_Calculation(income : Double, _ interest : Double) -> Double {
-        var total_1: Double =  income + interest
+    func Interest_Calculation(_ income : Double, _ interest : Double) -> Double {
+        let total_1: Double =  income + interest
         
         var result = Double(0)
        
@@ -438,10 +439,10 @@ class TaxPro {
         
         //Step 3 & 4
        // for keyCode in InterestThreshold.keys {
-        var counter: Int = InterestThreshold.count
-        for var i = 0 ; i < counter; ++i {
-            var byIndex: (Int, Double) = InterestThreshold[i]
-            var keyCode = byIndex.0
+        let counter: Int = InterestThreshold.count
+        for i in 0  ..< counter  {
+            let byIndex: (Int, Double) = InterestThreshold[i]
+            let keyCode = byIndex.0
             if income < Double(keyCode) {
                 print(calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!)
                 result = result + calculateTheDifference(Double(keyCode), total_1,ProvincialBracketDictionary[Location.Ontario]! )  * InterestThreshold[keyCode]!

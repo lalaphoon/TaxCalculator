@@ -16,7 +16,7 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
     
     let sharingTitle: String = "Let's use TaxPro"
     let sharingImage: UIImage = UIImage(named: "star-large.png")!
-    let sharingURL: NSURL = NSURL(string: "www.lalaphoon.me")!
+    let sharingURL: URL = URL(string: "www.lalaphoon.me")!
     
     
     
@@ -56,7 +56,7 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
     }
     
      // MARK: - Table view data source
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 1 {
             sendEmail()
         }
@@ -64,10 +64,10 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
          print("sharing")
          sharing()
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 30
         } else {
@@ -77,21 +77,21 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
     }
     //==================================================Helpers===============================================
     //Reference: sharing.......
-    func showAlertMessage(message: String!) {
-        let alertController = UIAlertController(title: "Accounts", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
+    func showAlertMessage(_ message: String!) {
+        let alertController = UIAlertController(title: "Accounts", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     func sharing() {
-        let actionSheet = UIAlertController(title: "", message: "Share TaxPro to your friends!", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionSheet = UIAlertController(title: "", message: "Share TaxPro to your friends!", preferredStyle: UIAlertControllerStyle.actionSheet)
         // Configure a new action for sharing the note in Twitter.
-        let tweetAction = UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.Default) { (action) -> Void in
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+        let tweetAction = UIAlertAction(title: "Share on Twitter", style: UIAlertActionStyle.default) { (action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
                 let twitterComposeVC = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-                twitterComposeVC.setInitialText(self.sharingTitle)
-                twitterComposeVC.addImage(self.sharingImage)
-                twitterComposeVC.addURL(self.sharingURL)
-                self.presentViewController(twitterComposeVC, animated: true, completion: nil)
+                twitterComposeVC?.setInitialText(self.sharingTitle)
+                twitterComposeVC?.add(self.sharingImage)
+                twitterComposeVC?.add(self.sharingURL)
+                self.present(twitterComposeVC!, animated: true, completion: nil)
             } else {
                 self.showAlertMessage("You are not logged in to your Twitter account")
             }
@@ -99,31 +99,31 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
         }
         
         // Configure a new action to share on Facebook.
-        let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default) { (action) -> Void in
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+        let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.default) { (action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
                 let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
                // facebookComposeVC.setEditing(true, animated: true)
-                facebookComposeVC.setInitialText(self.sharingTitle)
-                facebookComposeVC.addImage(self.sharingImage)
-                facebookComposeVC.addURL(self.sharingURL)
-                self.presentViewController(facebookComposeVC, animated: true, completion: nil)
+                facebookComposeVC?.setInitialText(self.sharingTitle)
+                facebookComposeVC?.add(self.sharingImage)
+                facebookComposeVC?.add(self.sharingURL)
+                self.present(facebookComposeVC!, animated: true, completion: nil)
             } else {
                 self.showAlertMessage("You are not connected to your Facebook account.")
             }
         }
         
         // Configure a new action to show the UIActivityViewController
-        let moreAction = UIAlertAction(title: "More", style: UIAlertActionStyle.Default) { (action) -> Void in
+        let moreAction = UIAlertAction(title: "More", style: UIAlertActionStyle.default) { (action) -> Void in
             //第一个参数是一个数组，里面包含了我们想要发送的内容
             //具体来说，如果我们只有一张图片，那么就不会显示「Add to reading list」!!!
             //Attach link here!
             let activityViewController = UIActivityViewController(activityItems: ["Share this app to your friends"], applicationActivities: nil)
             //activityViewController.excludedActivityTypes = [UIActivityTypeMail]
-            self.presentViewController(activityViewController, animated: true, completion: nil)
+            self.present(activityViewController, animated: true, completion: nil)
         }
         
         
-        let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+        let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel) { (action) -> Void in
             
         }
         
@@ -132,7 +132,7 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
         actionSheet.addAction(moreAction)
         actionSheet.addAction(dismissAction)
         
-        presentViewController(actionSheet, animated: true, completion: nil)
+        present(actionSheet, animated: true, completion: nil)
     }
     //=======================Sending Message=============================
     func sendEmail(){
@@ -140,7 +140,7 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
         print(self.messageBody)
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail(){
-            self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+            self.present(mailComposeViewController, animated: true, completion: nil)
         } else {
             self.showSendMailErrorAlert()
         }
@@ -154,23 +154,23 @@ class SettingsTableViewController: UITableViewController,MFMailComposeViewContro
         return mailComposerVC
     }
     func showSendMailErrorAlert(){
-        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle:  UIAlertControllerStyle.Alert)
+        let sendMailErrorAlert = UIAlertController(title: "Could Not Send Email", message: "Your device could not send e-mail. Please check e-mail configuration and try again.", preferredStyle:  UIAlertControllerStyle.alert)
     }
-    func sendAlert(alertTitle : String, alertMessage : String){
-        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+    func sendAlert(_ alertTitle : String, alertMessage : String){
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
         switch result.rawValue {
-        case MFMailComposeResultCancelled.rawValue:
+        case MFMailComposeResult.cancelled.rawValue:
             print("Cancelled mail")
             sendAlert("Sending Cancelled", alertMessage: "You have cancelled sending your email!")
-        case MFMailComposeResultSent.rawValue:
+        case MFMailComposeResult.sent.rawValue:
             print("Mail Sent")
             sendAlert("Mail Sent", alertMessage: "Your email has been sent to us!\n Thank you very much!")
-        case MFMailComposeResultSaved.rawValue:
+        case MFMailComposeResult.saved.rawValue:
             print("You saved a draft of this email")
             break;
         default:

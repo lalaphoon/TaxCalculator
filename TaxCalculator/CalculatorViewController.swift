@@ -61,9 +61,9 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         
         //Set specia keyboard for income
         
-        incomeTextField.keyboardType = .DecimalPad
+        incomeTextField.keyboardType = .decimalPad
         //interestTextField.keyboardType = .DecimalPad
-        contributionTextField.keyboardType = .DecimalPad
+        contributionTextField.keyboardType = .decimalPad
         
         
         
@@ -79,7 +79,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         
         // Do any additional setup after loading the view.
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     func next(){
@@ -87,7 +87,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
     // self.addLabel(String(re))
         TP.RRSP_calculation(Double(incomeTextField.text!)!, Double(contributionTextField.text!)!)
     }
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
@@ -127,10 +127,10 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
     }
     */
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == province_tag
         {
             return TP.province_list.count
@@ -142,7 +142,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         
         return 0
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == province_tag{
             return TP.province_list[row]
         }
@@ -152,7 +152,7 @@ class CalculatorViewController: UIViewController,UIPickerViewDataSource, UIPicke
         
         return nil
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView.tag == province_tag{
             provinceTextField.text = TP.province_list[row]

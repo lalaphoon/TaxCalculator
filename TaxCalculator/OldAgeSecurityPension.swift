@@ -16,36 +16,36 @@ class Old_Age_Security_Pension : Formula{
     var profileProvince : String!
     
     var OASClawback : Double = 0.0
-    private init(){
+    fileprivate init(){
     }
     
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num:CGFloat = -63
         containerView.addImage("Title_calculation.png",VC.view.bounds.width/2 - 65, 93 + num)
         OASPension = containerView.returnTextField("OAS Pension", 43, 274 + num, VC.view.bounds.width - (43*2))
-        OASPension.keyboardType = .DecimalPad
+        OASPension.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
         return containerView
     }
     
-    func setProfile(income: Double, province: String) {
+    func setProfile(_ income: Double, province: String) {
         profileIncome = income
         profileProvince = province
     }
     func getOASClawback() -> Double {
-        var income = profileIncome
-        var oaspension = Double(self.OASPension.text!)
-        var Threshold: Double = Double(72809)
-        var clawbackPercentage: Double = 0.15
+        let income = profileIncome
+        let oaspension = Double(self.OASPension.text!)
+        let Threshold: Double = Double(72809)
+        let clawbackPercentage: Double = 0.15
         var result1 : Double = 0.0
         var result2 : Double = 0.0
         
-        if income >= Threshold {
+        if income! >= Threshold {
             result1 = oaspension! * clawbackPercentage
         }
-        else if income + oaspension! >= Threshold {
-            result2 = ( income + oaspension! - Threshold ) * clawbackPercentage
+        else if income! + oaspension! >= Threshold {
+            result2 = ( income! + oaspension! - Threshold ) * clawbackPercentage
         }
         
         return result1 + result2
@@ -59,7 +59,7 @@ class Old_Age_Security_Pension : Formula{
         
         var result : Double = 0.0
        
-        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).result)!
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income!, oaspension!, OASClawback).result)!
         return result
     }
     func getInstruction() -> String {
@@ -67,31 +67,31 @@ class Old_Age_Security_Pension : Formula{
     }
     //==============================Extra Calculation===========================
     //ON,AB,BC
-    func BasicPersonalAmount(mode : Location) -> Double{
-        var income = profileIncome
-        var oaspension = Double(self.OASPension.text!)
-        var total = income! + oaspension!
+    func BasicPersonalAmount(_ mode : Location) -> Double{
+        let income = profileIncome
+        let oaspension = Double(self.OASPension.text!)
+        let total = income! + oaspension!
         
-        var percentage : Double = TP.TaxCredit[mode]!
-        var basicPersonalAmount : Double = TP.BasicPersonalAmount[mode]!
+        let percentage : Double = TP.TaxCredit[mode]!
+        let basicPersonalAmount : Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
         
-        if income >= basicPersonalAmount {
+        if income! >= basicPersonalAmount {
             return 0
         } else {
             if total - OASClawback > basicPersonalAmount {
-                return (basicPersonalAmount-income) * percentage * -1
+                return (basicPersonalAmount-income!) * percentage * -1
             } else {
                 return ( oaspension! - OASClawback ) * percentage * -1
             }
         }
     }
     //ON,BC
-    func getBasicReduction(netincome: Double, _ oaspension: Double) -> Double{
+    func getBasicReduction(_ netincome: Double, _ oaspension: Double) -> Double{
         return getSingleReduction(netincome) - getSingleReduction(netincome + oaspension - OASClawback)
     }
     //ON,BC
-    func getSingleReduction(val: Double) -> Double{
+    func getSingleReduction(_ val: Double) -> Double{
         var result = 0.0
         if profileProvince == Location.Ontario.rawValue {
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
@@ -145,21 +145,21 @@ class Old_Age_Security_Pension : Formula{
         var income = profileIncome
         var oaspension = Double(self.OASPension.text!)
         var total = income! + oaspension! - OASClawback
-        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var incomeHealthPremium = TP.calculateTheDifference(0, income!, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         var totalPremium = TP.calculateTheDifference(0, total, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
     //BC
-    func getProvincialCredit(netincome: Double, _ oaspension: Double) -> Double {
+    func getProvincialCredit(_ netincome: Double, _ oaspension: Double) -> Double {
         return getSingleProvincialCredit(netincome ) - getSingleProvincialCredit(netincome + oaspension - OASClawback)
     }
     //BC
-    func getSingleProvincialCredit(val: Double) -> Double {
+    func getSingleProvincialCredit(_ val: Double) -> Double {
         var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
         if c <= 0 {
             c = 0
         }
-        var d = c * 0.02
+        let d = c * 0.02
         var e : Double = 75 - d
         if e <= 0 {
             e = 0
@@ -175,9 +175,9 @@ class Old_Age_Security_Pension : Formula{
         var output2 = [Double]()
         var output1 = ["Net Income", "OAS Pension"]
         output2 = [Double(profileIncome), Double(self.OASPension.text!)!]
-        var surtax = TP.getSurtax(income, total - OASClawback, profileProvince)
+        var surtax = TP.getSurtax(income!, total - OASClawback, profileProvince)
         var output3 = [["","","",""]]
-                output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income, oaspension!, OASClawback).process)!
+                output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getOldAgePension(income!, oaspension!, OASClawback).process)!
         return (output1 , output2, output3)
         
     }
@@ -194,7 +194,7 @@ class Old_Age_Security_Pension : Formula{
             OASPension.placeholder="Missing an input for OAS Pension"
             return false
         } else {
-            OASPension.backgroundColor = .clearColor()
+            OASPension.backgroundColor = .clear
             OASPension.placeholder=""
             return true
         }

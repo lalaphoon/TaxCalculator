@@ -27,11 +27,11 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
     
     let s = NSSelectorFromString("moveIntoNext:")
     
-    func moveIntoNext(sender: AnyObject){
+    func moveIntoNext(_ sender: AnyObject){
         //print("I'm here")
         topic = sender.tag
         print("topic is \(topic)")
-        performSegueWithIdentifier("MoveIntoOptions", sender: self)
+        performSegue(withIdentifier: "MoveIntoOptions", sender: self)
     }
     
     
@@ -41,9 +41,9 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
         super.viewDidLoad()
         
         
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width ,1000)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width ,height: 1000)
         
         self.containerView =  UIView()
     
@@ -55,8 +55,8 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
         self.view.addSubview(scrollView)
         
         initContainerUi()
-        containerView.userInteractionEnabled =  true
-        scrollView.userInteractionEnabled = true
+        containerView.isUserInteractionEnabled =  true
+        scrollView.isUserInteractionEnabled = true
         
         // Do any additional setup after loading the view.
     }
@@ -110,14 +110,14 @@ class SubTopicsViewController: UIViewController, UIScrollViewDelegate  {
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //self.view.endEditing(true) /////<-------------?
         self.containerView.endEditing(true)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : OptionViewController = segue.destinationViewController as! OptionViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC : OptionViewController = segue.destination as! OptionViewController
         DestinyVC.category = category
         DestinyVC.topic = topic
     }

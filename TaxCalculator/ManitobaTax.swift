@@ -11,7 +11,7 @@ class ManitobaTax : ProvincialTax {
     var TP = TaxPro()
     var location = Location.Manitoba
     let profileProvince : String = Location.Manitoba.rawValue
-    func getRRSP(netIncome: Double, _ contribution: Double) -> (result: Double, process: [[String]]) {
+    func getRRSP(_ netIncome: Double, _ contribution: Double) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var vary = income - contribution
         var result : Double = 0.0
@@ -32,7 +32,7 @@ class ManitobaTax : ProvincialTax {
         return (result, process)
 
     }
-    func getInterestIncome(netIncome: Double, _ interestIncome: Double) -> (result: Double, process: [[String]]) {
+    func getInterestIncome(_ netIncome: Double, _ interestIncome: Double) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var interest = interestIncome
         var total = income + interest
@@ -52,7 +52,7 @@ class ManitobaTax : ProvincialTax {
         return (result, process)
         
     }
-    func getOldAgePension(netIncome: Double, _ OASPension: Double, _ OASClawback: Double) -> (result: Double, process: [[String]]) {
+    func getOldAgePension(_ netIncome: Double, _ OASPension: Double, _ OASClawback: Double) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var oaspension = OASPension
         var total = income + oaspension
@@ -75,7 +75,7 @@ class ManitobaTax : ProvincialTax {
         
         return (result, process)
     }
-    func getForeignInvestmentIncome(netIncome: Double, foreignIncome: Double, foreignTaxPaid: Double, isUSStock: Bool) -> (result: Double, process: [[String]]) {
+    func getForeignInvestmentIncome(_ netIncome: Double, foreignIncome: Double, foreignTaxPaid: Double, isUSStock: Bool) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var total = income + foreignIncome
         var Deduction_2012 : Double = 0
@@ -110,7 +110,7 @@ class ManitobaTax : ProvincialTax {
         return (result, process)
         
     }
-    func getDividendIncome(netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool, dividF : Double, dividP : Double) -> (result:Double, process:[[String]]) {
+    func getDividendIncome(_ netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool, dividF : Double, dividP : Double) -> (result:Double, process:[[String]]) {
         var income = netIncome
         var total = income + dividendIncome
         var Deduction_2012 : Double = 0
@@ -164,7 +164,7 @@ class ManitobaTax : ProvincialTax {
             ["Tax Payable","","",TP.get2Digits(result)]]
         return (result,process)
     }
-    func getForeignTaxCredit(income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividend : Double = 0.0) -> Double {
+    func getForeignTaxCredit(_ income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividend : Double = 0.0) -> Double {
         var result : Double = 0
         
         var total = income + foreignIncome
@@ -188,19 +188,19 @@ class ManitobaTax : ProvincialTax {
 
     
     
-    func getBasicReduction(A: Double, _ B: Double, _ special: Bool, _ di: Double) -> Double {
+    func getBasicReduction(_ A: Double, _ B: Double, _ special: Bool, _ di: Double) -> Double {
         return 0
     }
-    func getProvincialCredit(A: Double, _ B: Double) -> Double {
+    func getProvincialCredit(_ A: Double, _ B: Double) -> Double {
         return getSingleProvincialCredit(A) - getSingleProvincialCredit(B)
     }
-    func getSingleProvincialCredit(val : Double) -> Double {
+    func getSingleProvincialCredit(_ val : Double) -> Double {
         var result : Double = 0.0
         var c : Double = val
         if c <= 0 {
             c = 0
         }
-        var d = c * 0.01
+        let d = c * 0.01
         var e : Double = 195 - d
         if e <= 0 {
             e = 0
@@ -208,7 +208,7 @@ class ManitobaTax : ProvincialTax {
         result = e
         return result
     }
-    func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
+    func foreignTaxCreditHelper(_ value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
         if mode == Location.Federal{
             a = TP.calculateTheDifference(0, value, TP.FederalBracketDictionary)
@@ -224,7 +224,7 @@ class ManitobaTax : ProvincialTax {
         return a - b
         
     }
-    func operationBeforeGettingResult(income: Double, foreignIncome: Double, ForeignTax: Double, isUSStock: Bool) -> (Deduction_2012: Double, Deduction_2011: Double, ProportionOfNetForeignBusinessIncome: Double, FederalForeignTaxCredit: Double, ProvincialForeignTaxCredit: Double) {
+    func operationBeforeGettingResult(_ income: Double, foreignIncome: Double, ForeignTax: Double, isUSStock: Bool) -> (Deduction_2012: Double, Deduction_2011: Double, ProportionOfNetForeignBusinessIncome: Double, FederalForeignTaxCredit: Double, ProvincialForeignTaxCredit: Double) {
         var Deduction_2012 : Double = 0
         var Deduction_2011 : Double = 0
         var ProportionOfNetForeignBusinessIncome : Double = 0
@@ -233,9 +233,9 @@ class ManitobaTax : ProvincialTax {
         
         
         var NotEligibleForFTC : Double = 0
-        var NetIncome = income                     //9000
-        var total = NetIncome + foreignIncome
-        var ForeignTaxPaid : Double = min(ForeignTax, foreignIncome*0.15) //1200
+        let NetIncome = income                     //9000
+        let total = NetIncome + foreignIncome
+        let ForeignTaxPaid : Double = min(ForeignTax, foreignIncome*0.15) //1200
         
         if isUSStock == true {
             if ForeignTax/foreignIncome > 0.15 {
@@ -252,21 +252,21 @@ class ManitobaTax : ProvincialTax {
                 
             }
         }
-        for var i = 0; i < Int(foreignIncome); i++ {
+        for i in 0 ..< Int(foreignIncome) {
             //var i: Double = 861
             
-            var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+            let BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
             
             // print("Basic Fedral Tax is  \(BasicFederalTax)")
-            var BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, location)
+            let BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, location)
             
-            var ratio : Double = (foreignIncome + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+            let ratio : Double = (foreignIncome + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
             
-            var FTCLimitation = BasicFederalTax * ratio
+            let FTCLimitation = BasicFederalTax * ratio
             
-            var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+            let right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
             
-            var balance : Double = abs(Double(i) - right)
+            let balance : Double = abs(Double(i) - right)
             //print("i is \(i) and balance is \(balance)")
             if (balance < 1){
                 

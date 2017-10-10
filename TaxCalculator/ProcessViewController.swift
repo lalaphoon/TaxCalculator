@@ -47,9 +47,9 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         var tableData : [[String]]
         (xValues,yValues,tableData) = formula.retrieveData()
         
-        initPieChart(xValues,values: yValues)
-        initTable(tableData)
-        pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
+        initPieChart(dataPoints: xValues,values: yValues)
+        initTable(input: tableData)
+        pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.easeOutSine)
 
         
     }
@@ -65,11 +65,11 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         var dataEntries:[ChartDataEntry] = []
         
         for i in 0..<dataPoints.count{
-            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
-        let pieChartData = PieChartData(xVals:dataPoints, dataSet: pieChartDataSet)
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "")
+        let pieChartData = PieChartData( dataSet: pieChartDataSet)
         
         pieChartDataSet.sliceSpace = 2.0
         pieChartDataSet.colors = ChartColorTemplates.colorful()
@@ -93,10 +93,12 @@ class ProcessViewController: UIViewController, UIScrollViewDelegate {
         
         
         //chartView.data = data
-        pieChart.descriptionText = ""
-        pieChart.descriptionTextAlign = .Center
-        pieChart.descriptionFont = UIFont(name: HEADERFONT, size: 18)
-        pieChart.setDescriptionTextPosition(x: 100.0, y: 0.0)
+        pieChart.chartDescription?.text = ""
+        pieChart.chartDescription?.textAlign = .center
+        pieChart.chartDescription?.font = UIFont(name: HEADERFONT, size: 18)!
+        pieChart.chartDescription?.xOffset = 100.0
+        pieChart.chartDescription?.yOffset = 0.0
+        //pieChart.setDescriptionTextPosition(x: 100.0, y: 0.0)
        // pieChart.highlightPerTapEnabled = false
         //This below is used to save a piechart
         //pieChart.saveToCameraRoll()
@@ -133,20 +135,21 @@ extension ProcessViewController: UITableViewDataSource, UITableViewDelegate {
     func initTable(input: [[String]]){
         resultChart.dataSource = self
         resultChart.delegate = self
-        let cellCollNib = UINib (nibName: "TableCell", bundle: NSBundle.mainBundle())
-        resultChart.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
+        let cellCollNib = UINib (nibName: "TableCell", bundle: Bundle.main)
+        resultChart.register(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         resultChart.tableFooterView =  UIView()
         showData = input
         //resultChart.tableHeaderView = UIView()
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return showData.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: ResultTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ResultTableCell
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: ResultTableCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ResultTableCell
         let item = showData[indexPath.row]
         cell.Title1.text = item[0]
         cell.Title2.text = item[1]
@@ -165,14 +168,14 @@ class ResultTableCell : UITableViewCell {
         super.awakeFromNib()
       
         Title1.font = UIFont(name: BIGTITLE, size: 17.0)
-        Title1.textColor = UIColor.blackColor()
+        Title1.textColor = UIColor.customBlackColor()
         Title2.font = UIFont(name: SMALLTITLE, size: 13.0)
-        Title2.textColor = UIColor.grayColor()
+        Title2.textColor = UIColor.gray
         Title3.font = UIFont(name: SMALLTITLE, size: 13.0)
-        Title3.textColor = UIColor.grayColor()
+        Title3.textColor = UIColor.gray
         Value.font = UIFont(name: BIGTITLE, size: 17.0)
-        Value.textColor = UIColor.blackColor()
-        self.userInteractionEnabled = false
+        Value.textColor = UIColor.black
+        self.isUserInteractionEnabled = false
     }
     /*override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: false)

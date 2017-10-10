@@ -8,6 +8,30 @@
 
 import Foundation
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class ForeignInvestmentIncome: Formula {
     static let sharedInstance = ForeignInvestmentIncome()
@@ -28,27 +52,27 @@ class ForeignInvestmentIncome: Formula {
     var profileIncome : Double!
     var profileProvince : String!
     
-    private init(){
+    fileprivate init(){
         ForeignIncome.text = String(0.00)
         ForeignTaxPaid.text = String(0.00)
     }
-    func initUI(VC: UIViewController) -> UIView {
+    func initUI(_ VC: UIViewController) -> UIView {
         var containerView = UIView()
         let num : CGFloat = -63
         containerView.addImage("Title_calculation.png", VC.view.bounds.width/2 - 65, 93 + num)
         ForeignIncome = containerView.returnTextField("Foreign Income", 43, 274 + num, VC.view.bounds.width - (43*2))
-        ForeignIncome.keyboardType = .DecimalPad
+        ForeignIncome.keyboardType = .decimalPad
         containerView.addText("Is in US Stock", 90, 340 + num, 200, 50)
         isUSStock = containerView.returnSwitch("isUSStock:", VC , VC.view.bounds.width-86, 340 + num)
         ForeignTaxPaid = containerView.returnTextField("Foreign Tax Paid",43,500 + num, VC.view.bounds.width - (43*2))
-        ForeignTaxPaid.keyboardType = .DecimalPad
+        ForeignTaxPaid.keyboardType = .decimalPad
         containerView.addYellowButton("Next", "moveToNext", 43, VC.view.bounds.height - 100 + num, VC.view.bounds.width - (43*2), 36, VC)
         return containerView
     }
-    func setInputs(input: Double){
+    func setInputs(_ input: Double){
         ForeignIncome.text = TP.get2Digits(input)
     }
-    func setProfile(income: Double, province: String) {
+    func setProfile(_ income: Double, province: String) {
         profileIncome = income
         profileProvince = province
     }
@@ -62,7 +86,7 @@ class ForeignInvestmentIncome: Formula {
         
         
         var result : Double = 0.0
-        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getForeignInvestmentIncome(income, foreignIncome: foreignIncome!, foreignTaxPaid: Double(self.ForeignTaxPaid.text!)!, isUSStock: isUSStock.on).result)!
+        result = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getForeignInvestmentIncome(income!, foreignIncome: foreignIncome!, foreignTaxPaid: Double(self.ForeignTaxPaid.text!)!, isUSStock: isUSStock.isOn).result)!
         
       
         
@@ -70,13 +94,13 @@ class ForeignInvestmentIncome: Formula {
     }
     //====================================Extra Calculation=============================================================
     //ON,AB,BC
-    func BasicPersonalAmount(mode: Location) -> Double{
-        var income = profileIncome
-        var foreignIncome = Double(self.ForeignIncome.text!)
-        var total = income! + foreignIncome!
+    func BasicPersonalAmount(_ mode: Location) -> Double{
+        let income = profileIncome
+        let foreignIncome = Double(self.ForeignIncome.text!)
+        let total = income! + foreignIncome!
         
-        var percentage: Double = TP.TaxCredit[mode]!
-        var basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
+        let percentage: Double = TP.TaxCredit[mode]!
+        let basicPersonalAmount :  Double = TP.BasicPersonalAmount[mode]!
         var province = Location(rawValue: profileProvince)
         
         if income >= basicPersonalAmount {
@@ -85,18 +109,18 @@ class ForeignInvestmentIncome: Formula {
             
             
             if total > basicPersonalAmount {
-                return (basicPersonalAmount-income) * percentage * -1
+                return (basicPersonalAmount-income!) * percentage * -1
             } else {
                 return foreignIncome! * percentage * -1
             }
         }
     }
     //ON,BC
-    func getBasicReduction(netincome: Double, _ foreignIncome: Double) -> Double{
+    func getBasicReduction(_ netincome: Double, _ foreignIncome: Double) -> Double{
         return getSingleReduction(netincome) - getSingleReduction(netincome + foreignIncome - Deduction_2012 - Deduction_2011)
     }
     //ON,BC
-    func getSingleReduction(val: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
+    func getSingleReduction(_ val: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
         var result = 0.0
         if profileProvince == Location.Ontario.rawValue {
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince)!]!)
@@ -163,21 +187,21 @@ class ForeignInvestmentIncome: Formula {
         var income = profileIncome
         var foreignIncome = Double(self.ForeignIncome.text!)
         var total = income! + foreignIncome!
-        var incomeHealthPremium = TP.calculateTheDifference(0, income, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
+        var incomeHealthPremium = TP.calculateTheDifference(0, income!, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         var totalPremium = TP.calculateTheDifference(0, total - Deduction_2011 - Deduction_2012, TP.HealthPremium[Location(rawValue: profileProvince)!]!)
         return totalPremium - incomeHealthPremium
     }
     //BC
-    func getProvincialCredit(netincome: Double, _ interest: Double) -> Double {
+    func getProvincialCredit(_ netincome: Double, _ interest: Double) -> Double {
         return getSingleProvincialCredit(netincome ) - getSingleProvincialCredit(netincome + interest - Deduction_2011 -  Deduction_2012)
     }
     //BC
-    func getSingleProvincialCredit(val: Double) -> Double {
+    func getSingleProvincialCredit(_ val: Double) -> Double {
         var c : Double = val - 15000 // where is 19000 coming from? where is 3.5% coming from?
         if c <= 0 {
             c = 0
         }
-        var d = c * 0.02
+        let d = c * 0.02
         var e : Double = 75 - d
         if e <= 0 {
             e = 0
@@ -187,7 +211,7 @@ class ForeignInvestmentIncome: Formula {
     }
 //This doesn't have dividend credit
     //ALL
-    func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
+    func foreignTaxCreditHelper(_ value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
         if mode == Location.Federal{
             a = TP.calculateTheDifference(0, value, TP.FederalBracketDictionary)
@@ -204,16 +228,16 @@ class ForeignInvestmentIncome: Formula {
         
     }
     //ALL
-    func getForeignTaxCredit(mode : Location) -> Double{
+    func getForeignTaxCredit(_ mode : Location) -> Double{
         var result : Double = 0
         var income = profileIncome
         var foreignIncome = Double(self.ForeignIncome.text!)
         var total = income! + foreignIncome!
      
             if mode == Location.Federal {
-                result = -1 * min( TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income, foreignIncome!, Location.Federal, true) ,FederalForeignTaxCredit)
+                result = -1 * min( TP.calculateTheDifference(income!, total-Deduction_2012-Deduction_2011, TP.FederalBracketDictionary) + TP.BasicPersonalAmount(income!, foreignIncome!, Location.Federal, true) ,FederalForeignTaxCredit)
             } else {
-                result = -1 * min(TP.calculateTheDifference(income, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + TP.BasicPersonalAmount(income, foreignIncome!, Location.Ontario, true)  ,ProvincialForeignTaxCredit)
+                result = -1 * min(TP.calculateTheDifference(income!, total-Deduction_2012-Deduction_2011, TP.ProvincialBracketDictionary[Location(rawValue: profileProvince!)!]!) + TP.BasicPersonalAmount(income!, foreignIncome!, Location.Ontario, true)  ,ProvincialForeignTaxCredit)
             }
         
         return result
@@ -224,15 +248,15 @@ class ForeignInvestmentIncome: Formula {
     func operationBeforeGettingResult(){
         if profileProvince == Location.Ontario.rawValue{
         var NotEligibleForFTC : Double = 0
-        var NetIncome = profileIncome                      //9000
-        var foreignIncome = Double(self.ForeignIncome.text!)     //Foreign Income 8000
-        var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
-        var total = NetIncome! + foreignIncome!
+        let NetIncome = profileIncome                      //9000
+        let foreignIncome = Double(self.ForeignIncome.text!)     //Foreign Income 8000
+        let ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+        let total = NetIncome! + foreignIncome!
         //var Deduction_2011: Double = 0
         // var Deduction_2012: Double = 0
-        var ForeignTaxPaid : Double = min(ForeignTax!, foreignIncome!*0.15) //1200
+        let ForeignTaxPaid : Double = min(ForeignTax!, foreignIncome!*0.15) //1200
         
-        if isUSStock.on == true {
+        if isUSStock.isOn == true {
             if ForeignTax!/foreignIncome! > 0.15 {
                 NotEligibleForFTC = ForeignTax! - (foreignIncome!*0.15)
                 NotEligibleForFTC = NotEligibleForFTC * -1
@@ -247,13 +271,13 @@ class ForeignInvestmentIncome: Formula {
                 
             }
         }
-        for var i = 0; i < Int(foreignIncome!); i++ {
+        for i in 0 ..< Int(foreignIncome!) {
             //var i: Double = 861
             
-            var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+            let BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
             
             
-            var instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
+            let instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
             var surtax1 : Double = 0
             var surtax2 : Double = 0
             if instanceBasicPersonalTax >  4484 {
@@ -267,15 +291,15 @@ class ForeignInvestmentIncome: Formula {
                 basicReduction = min(TP.BasicReduction[Location(rawValue: profileProvince)!]!-instanceBasicPersonalTax, instanceBasicPersonalTax)
                 
             }
-            var BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
+            let BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
             
-            var ratio : Double = (foreignIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+            let ratio : Double = (foreignIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
             
-            var FTCLimitation = BasicFederalTax * ratio
+            let FTCLimitation = BasicFederalTax * ratio
             
-            var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+            let right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
             
-            var balance : Double = abs(Double(i) - right)
+            let balance : Double = abs(Double(i) - right)
             
             if (balance < 1){
                 
@@ -291,15 +315,15 @@ class ForeignInvestmentIncome: Formula {
     }//End of Ontario
         else if profileProvince == Location.British_Columbia.rawValue {
             var NotEligibleForFTC : Double = 0
-            var NetIncome = profileIncome                      //9000
-            var foreignIncome = Double(self.ForeignIncome.text!) //Foreign Income 8000
-            var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
-            var total = NetIncome! + foreignIncome!
+            let NetIncome = profileIncome                      //9000
+            let foreignIncome = Double(self.ForeignIncome.text!) //Foreign Income 8000
+            let ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
+            let total = NetIncome! + foreignIncome!
             //var Deduction_2011: Double = 0
             // var Deduction_2012: Double = 0
-            var ForeignTaxPaid : Double = min(ForeignTax!, foreignIncome!*0.15) //1200
+            let ForeignTaxPaid : Double = min(ForeignTax!, foreignIncome!*0.15) //1200
             
-            if isUSStock.on == true {
+            if isUSStock.isOn == true {
                 if ForeignTax!/foreignIncome! > 0.15 {
                     NotEligibleForFTC = ForeignTax! - (foreignIncome!*0.15)
                     NotEligibleForFTC = NotEligibleForFTC * -1
@@ -314,21 +338,21 @@ class ForeignInvestmentIncome: Formula {
                     
                 }
             }
-            for var i = 0; i < Int(foreignIncome!); i++ {
+            for i in 0 ..< Int(foreignIncome!) {
                 //var i: Double = 861
                 
-                var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+                let BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
                 
                 // print("Basic Fedral Tax is  \(BasicFederalTax)")
-                var BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
+                let BasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location(rawValue: profileProvince)!)
                 
-                var ratio : Double = (foreignIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+                let ratio : Double = (foreignIncome! + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
                 
-                var FTCLimitation = BasicFederalTax * ratio
+                let FTCLimitation = BasicFederalTax * ratio
                 
-                var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+                let right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
                 
-                var balance : Double = abs(Double(i) - right)
+                let balance : Double = abs(Double(i) - right)
                 //print("i is \(i) and balance is \(balance)")
                 if (balance < 1){
                     
@@ -355,10 +379,10 @@ class ForeignInvestmentIncome: Formula {
         var output2 = [Double]()
         var output1 = ["Net Income", "Interest income"]
         output2 = [Double(profileIncome), Double(self.ForeignIncome.text!)!]
-        var surtax = TP.getSurtax(income, total, profileProvince)
+        var surtax = TP.getSurtax(income!, total, profileProvince)
         var output3 = [["","","",""]]
         
-        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getForeignInvestmentIncome(income, foreignIncome: foreignIncome!, foreignTaxPaid: Double(self.ForeignTaxPaid.text!)!, isUSStock: isUSStock.on).process)!
+        output3 = (CurrentProvince.getData(Location(rawValue: profileProvince)!)?.getForeignInvestmentIncome(income!, foreignIncome: foreignIncome!, foreignTaxPaid: Double(self.ForeignTaxPaid.text!)!, isUSStock: isUSStock.isOn).process)!
                 return (output1 , output2, output3)
         
         
@@ -377,7 +401,7 @@ class ForeignInvestmentIncome: Formula {
             ForeignIncome.placeholder="Missing an input for foreign investment income"
             return false
         } else {
-            ForeignIncome.backgroundColor = .clearColor()
+            ForeignIncome.backgroundColor = .clear
             ForeignIncome.placeholder=""
             return true
         }

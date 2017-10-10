@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum Category {
-case Income, Deduction, Credit
+case income, deduction, credit
 }
 //All formulars will be writen in Strategy Design Pattern
 //We probably should use Template Design Pattern
@@ -18,8 +18,8 @@ case Income, Deduction, Credit
 protocol Formula {
    // var containerView:UIView {set get}
     //init()
-    func initUI(VC:UIViewController)->UIView
-    func setProfile(income: Double, province: String)
+    func initUI(_ VC:UIViewController)->UIView
+    func setProfile(_ income: Double, province: String)
     func retrieveData() -> ([String],[Double],[[String]])
     
     func getResult() -> Double
@@ -51,10 +51,10 @@ class Calculator{
    /* func displayProcess() -> String{
         return self.strategy.displayProcess()
     }*/
-    func initUI(VC: UIViewController)->UIView{
+    func initUI(_ VC: UIViewController)->UIView{
         return self.strategy.initUI(VC)
     }
-    func setProfile(income: Double, province: String){
+    func setProfile(_ income: Double, province: String){
         self.strategy.setProfile(income, province: province)
     }
     func retrieveData() -> ([String],[Double],[[String]]){

@@ -15,7 +15,7 @@ public extension UIDevice {
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 where value != 0 else { return identifier }
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
@@ -50,19 +50,19 @@ public extension UIDevice {
 }
 // 获取设备名称
 
-let DEVICENAME = UIDevice.currentDevice().name
+let DEVICENAME = UIDevice.current.name
 // 获取系统版本号
-let SYSTEMVERSION = UIDevice.currentDevice().systemVersion
+let SYSTEMVERSION = UIDevice.current.systemVersion
 // 获取设备的型号
-let DEVICEMODEL = UIDevice.currentDevice().model
+let DEVICEMODEL = UIDevice.current.model
 // 获取设备唯一标识符
-let DEVICEUUID = UIDevice.currentDevice().identifierForVendor?.UUIDString
+let DEVICEUUID = UIDevice.current.identifierForVendor?.uuidString
 // 调用
-let modelName = UIDevice.currentDevice().modelName
+let modelName = UIDevice.current.modelName
 
 
 
-let infoDic = NSBundle.mainBundle().infoDictionary
+let infoDic = Bundle.main.infoDictionary
 
 // 获取 App 的版本号
 let appVersion = infoDic?["CFBundleShortVersionString"]

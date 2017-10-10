@@ -17,16 +17,16 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //next Record is used to transfer record
     var nextRecord : Record!
    // @IBOutlet weak var mainMenu: UIBarButtonItem!
-    private let image = UIImage(named: "star-large")!.imageWithRenderingMode(.AlwaysTemplate)
-    private let topMessage = "Hi!"
-    private let bottomMessage = "You havn't saved any records yet~"
+    fileprivate let image = UIImage(named: "star-large")!.withRenderingMode(.alwaysTemplate)
+    fileprivate let topMessage = "Hi!"
+    fileprivate let bottomMessage = "You havn't saved any records yet~"
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Saved"
         savedTableView.delegate = self
         savedTableView.dataSource = self
-        let cellCollNib = UINib(nibName: "ResultCell", bundle: NSBundle.mainBundle())
-        savedTableView.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
+        let cellCollNib = UINib(nibName: "ResultCell", bundle: Bundle.main)
+        savedTableView.register(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         savedTableView.tableFooterView = UIView()
         recordCells = CoreDataFetcher.fetch_records()
         setupEmptyBackgroundView()
@@ -41,12 +41,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recordCells = CoreDataFetcher.fetch_records()
         savedTableView.reloadData()
     }
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
@@ -55,44 +55,44 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Dispose of any resources that can be recreated.
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : RecordTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! RecordTableCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : RecordTableCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! RecordTableCell
         cell.HeaderTitle.text = recordCells[indexPath.row].getTitle()
         cell.Body.text = recordCells[indexPath.row].getDescription()
         return cell
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if recordCells.count == 0 {
-            savedTableView.backgroundView?.hidden = false
+            savedTableView.backgroundView?.isHidden = false
         } else {
-            savedTableView.backgroundView?.hidden = true
+            savedTableView.backgroundView?.isHidden = true
         }
         
         return recordCells.count
     }
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
            //numOfCells -= 1
            recordCells[indexPath.row].delete()
-           recordCells.removeAtIndex(indexPath.row)
+           recordCells.remove(at: indexPath.row)
            print("a record is deleting.....")
-           tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+           tableView.deleteRows(at: [indexPath], with: .fade)
         }
         tableView.reloadData()
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         nextRecord = recordCells[indexPath.row]
-        performSegueWithIdentifier("gotoResult", sender: self)
+        performSegue(withIdentifier: "gotoResult", sender: self)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : SavedHistoryViewController = segue.destinationViewController as! SavedHistoryViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC : SavedHistoryViewController = segue.destination as! SavedHistoryViewController
         DestinyVC.record = nextRecord
     }
     func setupEmptyBackgroundView() {
@@ -122,9 +122,9 @@ class RecordTableCell : UITableViewCell {
         super.awakeFromNib()
         
         HeaderTitle.font = UIFont(name: BIGTITLE, size: 27.0)
-        HeaderTitle.textColor = UIColor.blackColor()
+        HeaderTitle.textColor = UIColor.black
         Body.font = UIFont(name: SMALLTITLE, size: 17.0)
-        Body.textColor = UIColor.grayColor()
+        Body.textColor = UIColor.gray
         iconImage.image = UIImage(named: "bulb_icon_small.png")
     }
     

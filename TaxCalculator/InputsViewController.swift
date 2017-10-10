@@ -21,9 +21,9 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
      
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , 667)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width , height: 667)
     
         self.containerView =  UIView()
         
@@ -36,7 +36,7 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         
         //containerView.
         
-        dividendIncome.keyboardType = .DecimalPad
+        dividendIncome.keyboardType = .decimalPad
         
        // containerView.userInteractionEnabled = true
         //self.view = self.scrollView
@@ -56,10 +56,10 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
     
     }
     func moveToNext(){
-        performSegueWithIdentifier("MoveIntoProfile", sender: self)
+        performSegue(withIdentifier: "MoveIntoProfile", sender: self)
         
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        // var DestinyVC : ProfileViewController = segue.destinationViewController as! ProfileViewController
        // DestinyVC.choice = choice
        //  DestinyVC.option =  optionTextField.text!
@@ -91,7 +91,7 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
    /* override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         //self.view.endEditing(true) /////<-------------?
@@ -108,19 +108,19 @@ class InputsViewController: UIViewController,UIScrollViewDelegate, UIPickerViewD
     }
     */
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
             return dividendIncomeList.count
        
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
             return dividendIncomeList[row]
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
       
            optionTextField.text = dividendIncomeList[row]
        

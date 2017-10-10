@@ -35,9 +35,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        self.scrollView =  UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView =  UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width , self.view.bounds.height)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width , height: self.view.bounds.height)
         
         self.containerView =  UIView()
         
@@ -45,13 +45,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         self.view.addSubview(scrollView)
         
         initContainerUI()
-        provincePickerView.backgroundColor = .whiteColor()
+        provincePickerView.backgroundColor = .white
         provincePickerView.showsSelectionIndicator = true
         
         provincePickerView.delegate = self
         provincePickerView.dataSource = self
         retrieveContainer()
-        incomeTextField.keyboardType = .DecimalPad
+        incomeTextField.keyboardType = .decimalPad
         provinceTextField.inputView = provincePickerView
         provinceTextField.inputAccessoryView = toolBar
         
@@ -63,16 +63,16 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
     }
     
     func initToolBar() {
-        toolBar.barStyle = UIBarStyle.Default
-        toolBar.translucent = true
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
         toolBar.tintColor = UIColor.customOrangeColor()
         toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "donePicker")
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "donePicker")
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ProfileViewController.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ProfileViewController.donePicker))
         
         toolBar.setItems([spaceButton,doneButton], animated: false)
-        toolBar.userInteractionEnabled = true
+        toolBar.isUserInteractionEnabled = true
     }
     func donePicker(){
         view.endEditing(true)
@@ -97,7 +97,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         if (checkProfileInfo()){
             //provinceTextField.text = "Ontario"
             formula.setProfile(Double(incomeTextField.text!)!, province: provinceTextField.text!)
-            performSegueWithIdentifier("MoveIntoResult", sender: self)
+            performSegue(withIdentifier: "MoveIntoResult", sender: self)
         }
         
     }
@@ -106,13 +106,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
             incomeTextField.backgroundColor = UIColor.customWarningColor()
             incomeTextField.placeholder = "Please enter total income"
         } else {
-            incomeTextField.backgroundColor = .clearColor()
+            incomeTextField.backgroundColor = .clear
         }
         if (provinceTextField.text == ""){
             provinceTextField.backgroundColor = UIColor.customWarningColor()
             provinceTextField.placeholder = "Please select province/territory"
         } else {
-            provinceTextField.backgroundColor = .clearColor()
+            provinceTextField.backgroundColor = .clear
         }
         if (incomeTextField.text == "" || provinceTextField.text == ""){
             return false
@@ -121,8 +121,8 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
             return true
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : ResultViewController = segue.destinationViewController as! ResultViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestinyVC : ResultViewController = segue.destination as! ResultViewController
         // DestinyVC.choice = choice
         DestinyVC.formula =  formula
        
@@ -142,29 +142,29 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         super.viewDidLayoutSubviews()
         
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
     
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         return  TP.province_list.count
         
     }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         return TP.province_list[row]
     }
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         provinceTextField.text = TP.province_list[row]
         
     }
   
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == provinceTextField {
             if provinceTextField.text == ""{
                 provinceTextField.text = TP.province_list[0]
@@ -181,19 +181,19 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
 
     }*/
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        let myScreenRect : CGRect = UIScreen.mainScreen().bounds
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let myScreenRect : CGRect = UIScreen.main.bounds
         var keyboardHeight: CGFloat = 260
         if textField == provinceTextField {
         keyboardHeight += 45
         }
         UIView.beginAnimations("animateView", context: nil)
-        var movementDuration: NSTimeInterval = 0.35
+        var movementDuration: TimeInterval = 0.35
         var needToMove: CGFloat = 0
         
         var frame: CGRect = self.view.frame
-        if (textField.frame.origin.y + textField.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height > (myScreenRect.size.height - keyboardHeight) ) {
-            needToMove = (textField.frame.origin.y + textField.frame.size.height + UIApplication.sharedApplication().statusBarFrame.size.height) - (myScreenRect.size.height - keyboardHeight)
+        if (textField.frame.origin.y + textField.frame.size.height + UIApplication.shared.statusBarFrame.size.height > (myScreenRect.size.height - keyboardHeight) ) {
+            needToMove = (textField.frame.origin.y + textField.frame.size.height + UIApplication.shared.statusBarFrame.size.height) - (myScreenRect.size.height - keyboardHeight)
             
         }
         frame.origin.y = -needToMove
@@ -201,9 +201,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UIPickerVie
         UIView.commitAnimations()
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.beginAnimations("animateView", context: nil)
-        var movementDuration: NSTimeInterval = 0.35
+        var movementDuration: TimeInterval = 0.35
         var frame: CGRect = self.view.frame
         frame.origin.y = 0
         self.view.frame = frame

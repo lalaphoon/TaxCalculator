@@ -12,15 +12,15 @@ import CoreData
 
 class Record: NSManagedObject {
 
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     init?(title: String, descrip: String, helpInstruction: String){
-        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDel: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDel.managedObjectContext
-        let entity = NSEntityDescription.entityForName("Record", inManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Record", in: context)
         if let entity =  entity {
-            super.init(entity:entity, insertIntoManagedObjectContext: context)
+            super.init(entity:entity, insertInto: context)
             setTitle(title)
             setDescription(descrip)
             setHelp(helpInstruction)
@@ -33,13 +33,13 @@ class Record: NSManagedObject {
     }
     
     //=================setter======================
-    private func setTitle(title: String){
+    fileprivate func setTitle(_ title: String){
         self.title = title
     }
-    private func setDescription(description: String){
+    fileprivate func setDescription(_ description: String){
         self.descrip = description
     }
-    private func setHelp(helpInstruction: String){
+    fileprivate func setHelp(_ helpInstruction: String){
         self.help = helpInstruction
     }
     //=================End of setter===============
@@ -64,24 +64,24 @@ class Record: NSManagedObject {
     }
     //================End of getter===============
     //================Attach Objects===============
-    func addValueObject(value: Value){
-        var items = self.mutableOrderedSetValueForKey("values")
-        items.addObject(value)
+    func addValueObject(_ value: Value){
+        let items = self.mutableOrderedSetValue(forKey: "values")
+        items.add(value)
     }
-    func removeValueObject(value: Value){
-        var items = self.mutableOrderedSetValueForKey("values")
-        items.addObject(value)
+    func removeValueObject(_ value: Value){
+        let items = self.mutableOrderedSetValue(forKey: "values")
+        items.add(value)
     }
-    func attachValueSet(value: [Value]){
-        var items = self.mutableOrderedSetValueForKey("values")
+    func attachValueSet(_ value: [Value]){
+        let items = self.mutableOrderedSetValue(forKey: "values")
         for i in value {
-            items.addObject(i)
+            items.add(i)
         }
     }
-    func attachTableDataSet(tableDatas: [TableCellData]){
-        var items = self.mutableOrderedSetValueForKey("tableData")
+    func attachTableDataSet(_ tableDatas: [TableCellData]){
+        let items = self.mutableOrderedSetValue(forKey: "tableData")
         for i in tableDatas {
-            items.addObject(i)
+            items.add(i)
         }
     }
     //================End of Object===============
@@ -97,17 +97,17 @@ class Record: NSManagedObject {
     func delete() {
         //reference : http://stackoverflow.com/questions/28374922/core-data-with-swift-how-to-delete-object-from-relationship-entity
         if let context = self.managedObjectContext {
-            let containedValues = self.mutableOrderedSetValueForKey("values")
-            let containedTableDatas = self.mutableOrderedSetValueForKey("tableData")
+            let containedValues = self.mutableOrderedSetValue(forKey: "values")
+            let containedTableDatas = self.mutableOrderedSetValue(forKey: "tableData")
             for item in containedValues {
-                context.deleteObject(item as! Value)
+                context.delete(item as! Value)
             }
 
             for item in containedTableDatas {
-               context.deleteObject(item as! TableCellData)
+               context.delete(item as! TableCellData)
             }
             
-            context.deleteObject(self)
+            context.delete(self)
             do {
                 try context.save()
                 

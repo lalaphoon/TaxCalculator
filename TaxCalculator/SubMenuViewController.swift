@@ -37,7 +37,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         configureTableView()
@@ -46,20 +46,21 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //print(cellDescriptors)
     }
-    func showUpAlert(message: String){
+    func showUpAlert(_ message: String){
         let alertController = UIAlertController(title: "Missing!",
-            message: message, preferredStyle: .Alert )
+            message: message, preferredStyle: .alert )
         //let okAction = UIAlertAction(title:"OK", style:., handler:nil)
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil)
         alertController.addAction(okAction)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
         
     }
     func MoveIntoNext(){
         //print(cellDescriptors)
-        var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
+    //    var array: NSMutableArray = (cellDescriptors[0] as AnyObject).mutableCopy() as! NSMutableArray
+        var array:NSMutableArray = cellDescriptors[0] as! NSMutableArray
         for item in array {
-            var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
+            var m : NSMutableDictionary = item as! NSMutableDictionary
             if m["cellIdentifier"] as! String == "idCellNormal" {
                // print(m["primaryTitle"] as! String)
                 if (((m["primaryTitle"] as! String).isEqual(""))) {
@@ -75,9 +76,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
         if cellDescriptors.count > 1 {
-            array = cellDescriptors[1].mutableCopy() as! NSMutableArray
+            array = cellDescriptors[1]  as! NSMutableArray
             for item in array {
-                var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
+                var m : NSMutableDictionary = item  as! NSMutableDictionary
                 if m["cellIdentifier"] as! String == "idCellNormal" {
                     if (((m["primaryTitle"] as! String).isEqual(""))) {
                     
@@ -92,7 +93,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
 
         }
-            performSegueWithIdentifier("MoveIntoInputs", sender: self)
+            performSegue(withIdentifier: "MoveIntoInputs", sender: self)
         
 
     }
@@ -108,26 +109,26 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     func configureTableView() {
         tblExpandable.delegate = self
         tblExpandable.dataSource = self
-        tblExpandable.tableFooterView = UIView(frame: CGRectZero)
+        tblExpandable.tableFooterView = UIView(frame: CGRect.zero)
         
-        tblExpandable.registerNib(UINib(nibName: "NormalCell", bundle: nil), forCellReuseIdentifier: "idCellNormal")
-        tblExpandable.registerNib(UINib(nibName: "TextfieldCell", bundle: nil), forCellReuseIdentifier: "idCellTextfield")
-        tblExpandable.registerNib(UINib(nibName: "DatePickerCell", bundle: nil), forCellReuseIdentifier: "idCellDatePicker")
-        tblExpandable.registerNib(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "idCellSwitch")
-        tblExpandable.registerNib(UINib(nibName: "ValuePickerCell", bundle: nil), forCellReuseIdentifier: "idCellValuePicker")
-        tblExpandable.registerNib(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "idCellSlider")
+        tblExpandable.register(UINib(nibName: "NormalCell", bundle: nil), forCellReuseIdentifier: "idCellNormal")
+        tblExpandable.register(UINib(nibName: "TextfieldCell", bundle: nil), forCellReuseIdentifier: "idCellTextfield")
+        tblExpandable.register(UINib(nibName: "DatePickerCell", bundle: nil), forCellReuseIdentifier: "idCellDatePicker")
+        tblExpandable.register(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "idCellSwitch")
+        tblExpandable.register(UINib(nibName: "ValuePickerCell", bundle: nil), forCellReuseIdentifier: "idCellValuePicker")
+        tblExpandable.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "idCellSlider")
     }
     
-    func addNormalCell(Title: String, _ child: Int, _ guy: NSMutableArray){
-      guy.addObject(["additionalRows":child, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":Title, "primaryTitle":"", "value":""])
+    func addNormalCell(_ Title: String, _ child: Int, _ guy: NSMutableArray){
+      guy.add(["additionalRows":child, "cellIdentifier":"idCellNormal", "isExpandable": true, "isExpanded": false, "isVisible": true, "secondaryTitle":Title, "primaryTitle":"", "value":""])
     }
     
-    func addValueCell(Title: String, _ guy:  NSMutableArray){
-          guy.addObject(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":Title, "value":""])
+    func addValueCell(_ Title: String, _ guy:  NSMutableArray){
+          guy.add(["additionalRows":0, "cellIdentifier":"idCellValuePicker", "isExpandable": false, "isExpanded": false, "isVisible": false, "secondaryTitle":"", "primaryTitle":Title, "value":""])
     }
     
-    func addTopicGroupCell(what: [String]) -> NSMutableArray{
-        var guy = NSMutableArray()
+    func addTopicGroupCell(_ what: [String]) -> NSMutableArray{
+        let guy = NSMutableArray()
         addNormalCell("Topic", what.count, guy)
         for i in what{
             addValueCell(i, guy)
@@ -137,11 +138,11 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func addOptionGroupCell() -> NSMutableArray{
         var guy = NSMutableArray()
-        var array: NSMutableArray = cellDescriptors[0].mutableCopy() as! NSMutableArray
+        var array: NSMutableArray = cellDescriptors[0]  as! NSMutableArray
         var topic_name : String!
         // var test : NSMutableDictionary = cellDescriptors[0][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
         for item in array {
-            var m : NSMutableDictionary = item.mutableCopy() as! NSMutableDictionary
+            var m : NSMutableDictionary = item  as! NSMutableDictionary
             if m["cellIdentifier"] as! String == "idCellNormal" {
                 topic_name = m["primaryTitle"] as! String
             }
@@ -166,7 +167,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             tblExpandable.reloadData()
         }*/
         if cellDescriptors.count < 2 {
-        cellDescriptors.addObject(addTopicGroupCell(Array(self.Topics.keys)))
+        cellDescriptors.add(addTopicGroupCell(Array(self.Topics.keys)))
         }
         getIndicesOfVisibleRows()
         tblExpandable.reloadData()
@@ -180,8 +181,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         for currentSectionCells in cellDescriptors {
             var visibleRows = [Int]()
             
-            for row in 0...((currentSectionCells as! [[String: AnyObject]]).count - 1) {
-                if currentSectionCells[row]["isVisible"] as! Bool == true {
+            for row in 0...((currentSectionCells as! [[String: Any]]).count - 1) {
+                let what : Bool = currentSectionCells[row]["isVisible"] as! Bool
+                if what == true {
                     visibleRows.append(row)
                 }
             }
@@ -191,16 +193,16 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func getCellDescriptorForIndexPath(indexPath: NSIndexPath) -> [String: AnyObject] {
+    func getCellDescriptorForIndexPath(_ indexPath: IndexPath) -> [String: AnyObject] {
         let indexOfVisibleRow = visibleRowsPerSection[indexPath.section][indexPath.row]
-        let cellDescriptor = cellDescriptors[indexPath.section][indexOfVisibleRow] as! [String: AnyObject]
+        let cellDescriptor = cellDescriptors[indexPath.section][indexOfVisibleRow] as! [String: Any]
         return cellDescriptor
     }
     
     
     // MARK: UITableView Delegate and Datasource Functions
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
        // if cellDescriptors != nil {
             return cellDescriptors.count
        // }
@@ -210,12 +212,12 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return visibleRowsPerSection[section].count
     }
     
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return "Please select a Topic"
@@ -229,9 +231,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
-        let cell = tableView.dequeueReusableCellWithIdentifier(currentCellDescriptor["cellIdentifier"] as! String, forIndexPath: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: currentCellDescriptor["cellIdentifier"] as! String, for: indexPath) as! CustomCell
         
         if currentCellDescriptor["cellIdentifier"] as! String == "idCellNormal" {
             if let primaryTitle = currentCellDescriptor["primaryTitle"] {
@@ -250,7 +252,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.lblSwitchLabel.text = currentCellDescriptor["primaryTitle"] as? String
             
             let value = currentCellDescriptor["value"] as? String
-            cell.swMaritalStatus.on = (value == "true") ? true : false
+            cell.swMaritalStatus.isOn = (value == "true") ? true : false
         }
         else if currentCellDescriptor["cellIdentifier"] as! String == "idCellValuePicker" {
             cell.textLabel?.text = currentCellDescriptor["primaryTitle"] as? String
@@ -266,7 +268,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
         
         switch currentCellDescriptor["cellIdentifier"] as! String {
@@ -282,7 +284,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let indexOfTappedRow = visibleRowsPerSection[indexPath.section][indexPath.row]
         
         if cellDescriptors[indexPath.section][indexOfTappedRow]["isExpandable"] as! Bool == true {
@@ -291,10 +293,10 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 shouldExpandAndShowSubRows = true
             }
             //https://www.appcoda.com/expandable-table-view/
-            var array: NSMutableArray = cellDescriptors[indexPath.section].mutableCopy() as! NSMutableArray
+            var array: NSMutableArray = (cellDescriptors[indexPath.section] as AnyObject).mutableCopy() as! NSMutableArray
             var test : NSMutableDictionary = cellDescriptors[indexPath.section][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
             test.setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
-            array.replaceObjectAtIndex(indexOfTappedRow, withObject: test)
+            array.replaceObject(at: indexOfTappedRow, with: test)
             cellDescriptors[indexPath.section] = array
 
           //  cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
@@ -304,7 +306,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 var array: NSMutableArray = cellDescriptors[indexPath.section].mutableCopy() as! NSMutableArray
                 var test : NSMutableDictionary = cellDescriptors[indexPath.section][i].mutableCopy() as! NSMutableDictionary
                 test.setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
-                array.replaceObjectAtIndex(i, withObject: test)
+                array.replaceObject(at: i, with: test)
                 cellDescriptors[indexPath.section] = array
             }
             
@@ -318,14 +320,14 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 
-                for var i=indexOfTappedRow - 1; i>=0; --i {
+                for var i=indexOfTappedRow - 1; i>=0; i -= 1 {
                     if cellDescriptors[indexPath.section][i]["isExpandable"] as! Bool == true {
                         indexOfParentCell = i
                         break
                     }
                 }
                 
-                cellDescriptors[indexPath.section][indexOfParentCell].setValue((tblExpandable.cellForRowAtIndexPath(indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
+                cellDescriptors[indexPath.section][indexOfParentCell].setValue((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
                 cellDescriptors[indexPath.section][indexOfParentCell].setValue(false, forKey: "isExpanded")
                 
                
@@ -338,11 +340,11 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if cellDescriptors.count > 1 {
                     if TopicsChanged == true {
                         cellDescriptors.removeLastObject()
-                        cellDescriptors.addObject(addOptionGroupCell())
+                        cellDescriptors.add(addOptionGroupCell())
                     }
                 } else {
                 print("Adding a table cell")
-                cellDescriptors.addObject(addOptionGroupCell())
+                cellDescriptors.add(addOptionGroupCell())
                 }
                 getIndicesOfVisibleRows()
                 tblExpandable.reloadData()
@@ -353,14 +355,14 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         getIndicesOfVisibleRows()
-        tblExpandable.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation: UITableViewRowAnimation.Fade)
+        tblExpandable.reloadSections(IndexSet(integer: indexPath.section), with: UITableViewRowAnimation.fade)
     }
     
     
     // MARK: CustomCellDelegate Functions
     //Warning: setValue forKey shouldn't be working here, we have to use a NSMutableDictionary instead
     
-    func dateWasSelected(selectedDateString: String) {
+    func dateWasSelected(_ selectedDateString: String) {
         let dateCellSection = 0
         let dateCellRow = 3
         
@@ -369,7 +371,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func maritalStatusSwitchChangedState(isOn: Bool) {
+    func maritalStatusSwitchChangedState(_ isOn: Bool) {
         let maritalSwitchCellSection = 0
         let maritalSwitchCellRow = 6
         
@@ -382,11 +384,11 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func textfieldTextWasChanged(newText: String, parentCell: CustomCell) {
-        let parentCellIndexPath = tblExpandable.indexPathForCell(parentCell)
+    func textfieldTextWasChanged(_ newText: String, parentCell: CustomCell) {
+        let parentCellIndexPath = tblExpandable.indexPath(for: parentCell)
         
         let currentFullname = cellDescriptors[0][0]["primaryTitle"] as! String
-        let fullnameParts = currentFullname.componentsSeparatedByString(" ")
+        let fullnameParts = currentFullname.components(separatedBy: " ")
         
         var newFullname = ""
         
@@ -407,14 +409,14 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    func sliderDidChangeValue(newSliderValue: String) {
+    func sliderDidChangeValue(_ newSliderValue: String) {
         cellDescriptors[2][0].setValue(newSliderValue, forKey: "primaryTitle")
         cellDescriptors[2][1].setValue(newSliderValue, forKey: "value")
         
-        tblExpandable.reloadSections(NSIndexSet(index: 2), withRowAnimation: UITableViewRowAnimation.None)
+        tblExpandable.reloadSections(IndexSet(integer: 2), with: UITableViewRowAnimation.none)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var DestinyVC : BasicInputsViewController = segue.destinationViewController as! BasicInputsViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var DestinyVC : BasicInputsViewController = segue.destination as! BasicInputsViewController
         DestinyVC.category = category
         DestinyVC.topic = topic
         DestinyVC.option = option

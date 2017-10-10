@@ -546,7 +546,7 @@ let taxBook = [
 "3-24-":"Spouse credit"]
 
 extension TaxPro{
-    func getTopics_IDByCategory(category: Int) -> [String: Int]{
+    func getTopics_IDByCategory(_ category: Int) -> [String: Int]{
         if category == INCOME {
             return Income_subMenu
         } else if category == DEDUCTION {
@@ -555,7 +555,7 @@ extension TaxPro{
             return Credit_subMenu
         }
     }
-    func lookForMenusByCategoryTopic(category: Int, _ topic: Int) -> [Menu] {
+    func lookForMenusByCategoryTopic(_ category: Int, _ topic: Int) -> [Menu] {
         var result =  [Menu]()
         for item in taxMenuBook {
             if item.category == category && item.topic == topic {
@@ -564,7 +564,7 @@ extension TaxPro{
         }
         return result
     }
-    func lookForMenuID(category: Int, _ topic: Int, _ name: String) -> Int {
+    func lookForMenuID(_ category: Int, _ topic: Int, _ name: String) -> Int {
         var result: Menu!
         for item in taxMenuBook {
             if item.category == category && item.topic == topic && item.name == name{
@@ -574,15 +574,15 @@ extension TaxPro{
         }
         return result.id
     }
-    func lookForOptions(category: Int, _ topic:Int) -> [String]{
-        var m = lookForMenusByCategoryTopic(category, topic)
+    func lookForOptions(_ category: Int, _ topic:Int) -> [String]{
+        let m = lookForMenusByCategoryTopic(category, topic)
         var result = [String]()
         for item in m {
             result.append(item.name)
         }
         return result
     }
-    func lookForMenusByCategory(category: Int) -> [Menu]{
+    func lookForMenusByCategory(_ category: Int) -> [Menu]{
         var result = [Menu]()
         for item in taxMenuBook {
             if item.category == category {
@@ -591,7 +591,7 @@ extension TaxPro{
         }
         return result
     }
-    func lookForAMenu(category: Int, _ topic: Int, _ ID: Int) -> Menu{
+    func lookForAMenu(_ category: Int, _ topic: Int, _ ID: Int) -> Menu{
         var result: Menu!
         for item in taxMenuBook {
             if item.category == category && item.topic == topic && item.id == ID{
@@ -603,34 +603,34 @@ extension TaxPro{
         
     }
     //===========================Unused================================
-    func lookForOption(index: String) -> String{
+    func lookForOption(_ index: String) -> String{
         if taxBook[index] != nil{
             return taxBook[index]!
         } else
         {        return ERROR
         }
     }
-    func lookForTopic(category: Int, _ topic: Int) ->[String]{
+    func lookForTopic(_ category: Int, _ topic: Int) ->[String]{
         let index = String(category) + "-" + String(topic) + "-"
         var result = [String]()
         var count = 0
         for item in taxBook{
             if item.0.hasPrefix(index) {
                 
-               result.insert( item.1, atIndex: count)
+               result.insert( item.1, at: count)
                 count+=1
               
             }
         }
         return result
     }
-    func lookForCategory(category: Int) ->[String]{
+    func lookForCategory(_ category: Int) ->[String]{
         let index = String(category) + "-"
         var result = [String]()
         var count = 0
         for item in taxBook{
             if item.0.hasPrefix(index){
-                result.insert(item.1, atIndex: count)
+                result.insert(item.1, at: count)
                 count += 1
             }
         }

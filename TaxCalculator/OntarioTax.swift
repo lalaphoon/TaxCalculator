@@ -7,11 +7,35 @@
 //
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 class OntarioTax : ProvincialTax {
     var TP = TaxPro()
     var interestthreshold = ["73145", "86176"]
     
-    func getRRSP(netIncome: Double = 0, _ contribution: Double = 0) -> (result: Double, process: [[String]]) {
+    func getRRSP(_ netIncome: Double = 0, _ contribution: Double = 0) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var vary = income - contribution
         var result : Double = 0.0
@@ -40,7 +64,7 @@ class OntarioTax : ProvincialTax {
         
         return (result,process)
     }
-    func getInterestIncome(netIncome: Double = 0, _ interestIncome: Double = 0) -> (result: Double, process: [[String]]) {
+    func getInterestIncome(_ netIncome: Double = 0, _ interestIncome: Double = 0) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var interest = interestIncome
         var total = income + interest
@@ -62,7 +86,7 @@ class OntarioTax : ProvincialTax {
             ["Tax Payable","","",TP.get2Digits(result)]]
         return (result, process)
     }
-    func getOldAgePension(netIncome: Double, _ OASPension: Double, _ OASClawback :Double) -> (result: Double, process: [[String]]) {
+    func getOldAgePension(_ netIncome: Double, _ OASPension: Double, _ OASClawback :Double) -> (result: Double, process: [[String]]) {
         var income = netIncome
         var oaspension = OASPension
         var total = income + oaspension
@@ -92,7 +116,7 @@ class OntarioTax : ProvincialTax {
         return (result, process)
     }
     
-    func getForeignInvestmentIncome(netIncome: Double, foreignIncome: Double, foreignTaxPaid : Double, isUSStock : Bool) -> (result:Double, process: [[String]]) {
+    func getForeignInvestmentIncome(_ netIncome: Double, foreignIncome: Double, foreignTaxPaid : Double, isUSStock : Bool) -> (result:Double, process: [[String]]) {
         var income = netIncome
         var total = income + foreignIncome
         var Deduction_2012 : Double = 0
@@ -134,7 +158,7 @@ class OntarioTax : ProvincialTax {
     }
     
     
-    func getDividendIncome(netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool, dividF : Double, dividP : Double) -> (result:Double, process:[[String]]) {
+    func getDividendIncome(_ netIncome: Double, dividendIncome : Double, ForeignTaxPaid: Double, CanadianCorporation : Bool, StockMarket : Bool, isUSStock : Bool, dividF : Double, dividP : Double) -> (result:Double, process:[[String]]) {
         var income = netIncome
         var total = income + dividendIncome
         var Deduction_2012 : Double = 0
@@ -223,7 +247,7 @@ class OntarioTax : ProvincialTax {
         
     }*/
     
-    func getForeignTaxCredit(income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividend : Double = 0.0) -> Double {
+    func getForeignTaxCredit(_ income: Double, _ foreignIncome: Double, _ Deduction_2012 : Double, _ Deduction_2011 : Double, _ FederalForeignTaxCredit: Double, _ ProvincialForeignTaxCredit: Double, _ mode: Location, _ extraDividend : Double = 0.0) -> Double {
         var result : Double = 0
         
         var total = income + foreignIncome
@@ -246,7 +270,7 @@ class OntarioTax : ProvincialTax {
     }
     
     //helper functions
-    func operationBeforeGettingResult(income: Double, foreignIncome: Double, ForeignTax: Double, isUSStock: Bool) -> (Deduction_2012: Double, Deduction_2011: Double, ProportionOfNetForeignBusinessIncome: Double, FederalForeignTaxCredit: Double, ProvincialForeignTaxCredit: Double){
+    func operationBeforeGettingResult(_ income: Double, foreignIncome: Double, ForeignTax: Double, isUSStock: Bool) -> (Deduction_2012: Double, Deduction_2011: Double, ProportionOfNetForeignBusinessIncome: Double, FederalForeignTaxCredit: Double, ProvincialForeignTaxCredit: Double){
         var Deduction_2012 : Double = 0
         var Deduction_2011 : Double = 0
         var ProportionOfNetForeignBusinessIncome : Double = 0
@@ -254,13 +278,13 @@ class OntarioTax : ProvincialTax {
         var ProvincialForeignTaxCredit : Double = 0
         
         var NotEligibleForFTC : Double = 0
-        var NetIncome = income                     //9000
+        let NetIncome = income                     //9000
         // var foreignIncome = Double(self.ForeignIncome.text!)     //Foreign Income 8000
         // var ForeignTax = Double(self.ForeignTaxPaid.text!) //2000
-        var total = NetIncome + foreignIncome
+        let total = NetIncome + foreignIncome
         //var Deduction_2011: Double = 0
         // var Deduction_2012: Double = 0
-        var ForeignTaxPaid : Double = min(ForeignTax, foreignIncome * 0.15) //1200
+        let ForeignTaxPaid : Double = min(ForeignTax, foreignIncome * 0.15) //1200
         
         if isUSStock == true {
             if ForeignTax/foreignIncome  > 0.15 {
@@ -277,13 +301,13 @@ class OntarioTax : ProvincialTax {
                 
             }
         }
-        for var i = 0; i < Int(foreignIncome); i++ {
+        for i in 0 ..< Int(foreignIncome) {
             //var i: Double = 861
             
-            var BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
+            let BasicFederalTax : Double = foreignTaxCreditHelper(total - Double(i) - Deduction_2011, Location.Federal)
             
             
-            var instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location.Ontario)
+            let instanceBasicPersonalTax : Double = foreignTaxCreditHelper(total - Double(i)-Deduction_2011, Location.Ontario)
             var surtax1 : Double = 0
             var surtax2 : Double = 0
             if instanceBasicPersonalTax >  4484 {
@@ -297,15 +321,15 @@ class OntarioTax : ProvincialTax {
                 basicReduction = min(TP.BasicReduction[Location.Ontario]!-instanceBasicPersonalTax, instanceBasicPersonalTax)
                 
             }
-            var BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
+            let BasicPersonalTax = instanceBasicPersonalTax + surtax2 + surtax1 - basicReduction
             
-            var ratio : Double = (foreignIncome + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
+            let ratio : Double = (foreignIncome + NotEligibleForFTC - Double(i)-Deduction_2011)/(total - Double(i)-Deduction_2011)
             
-            var FTCLimitation = BasicFederalTax * ratio
+            let FTCLimitation = BasicFederalTax * ratio
             
-            var right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
+            let right : Double = ForeignTaxPaid - min(ForeignTaxPaid, FTCLimitation) - min(ForeignTaxPaid-min(FTCLimitation, ForeignTaxPaid), BasicPersonalTax * ratio)
             
-            var balance : Double = abs(Double(i) - right)
+            let balance : Double = abs(Double(i) - right)
             
             if (balance < 1){
                 
@@ -323,7 +347,7 @@ class OntarioTax : ProvincialTax {
     }
     
     
-    func foreignTaxCreditHelper(value : Double, _ mode : Location) -> Double {
+    func foreignTaxCreditHelper(_ value : Double, _ mode : Location) -> Double {
         var a  : Double = Double()
         if mode == Location.Federal{
             a = TP.calculateTheDifference(0, value, TP.FederalBracketDictionary)
@@ -357,7 +381,7 @@ class OntarioTax : ProvincialTax {
         
         return result1 + result2
     }*/
-    func getBasicReduction(A: Double, _ B: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
+    func getBasicReduction(_ A: Double, _ B: Double, _ special: Bool = false, _ di: Double = 0) -> Double{
         
         //rrsp: getSingleReduction(netincome - contribution) - getSingleReduction(netincome)
         //interst: getSingleReduction(netincome) - getSingleReduction(netincome + interest)
@@ -366,7 +390,7 @@ class OntarioTax : ProvincialTax {
     }
     
     //Helper function for Basic Reduction
-    func getSingleReduction(val: Double, _ special: Bool = false, _ di: Double = 0) -> Double {
+    func getSingleReduction(_ val: Double, _ special: Bool = false, _ di: Double = 0) -> Double {
         var result = 0.0
         var a = TP.calculateTheDifference(0, val, TP.ProvincialBracketDictionary[Location.Ontario]!)
         var b = Double()
@@ -395,7 +419,7 @@ class OntarioTax : ProvincialTax {
         return result
     }
     
-    func getHealthPremium(A: Double , _ B: Double ) -> Double {
+    func getHealthPremium(_ A: Double , _ B: Double ) -> Double {
         //rrsp: income - (income-contribution)
         //interest:
         var resultA = TP.calculateTheDifference(0, A, TP.HealthPremium[Location.Ontario]!)
@@ -403,7 +427,7 @@ class OntarioTax : ProvincialTax {
         return resultA - resultB
     }
     
-    func getProvincialCredit(A : Double, _ B: Double) -> Double {
+    func getProvincialCredit(_ A : Double, _ B: Double) -> Double {
         return 0
     }
     

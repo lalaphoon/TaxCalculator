@@ -30,21 +30,21 @@ class ParentOnboardingPagesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    func Start(sender: UIButton!){
-        performSegueWithIdentifier("Start", sender: self)
+    func Start(_ sender: UIButton!){
+        performSegue(withIdentifier: "Start", sender: self)
     }
     
     func addPages(){
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! OnboardingPagesViewController
-        self.pageViewController.view.frame = CGRectMake(0,30,self.view.frame.width, self.view.frame.size.height-40)
+        self.pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageViewController") as! OnboardingPagesViewController
+        self.pageViewController.view.frame = CGRect(x: 0,y: 30,width: self.view.frame.width, height: self.view.frame.size.height-40)
         self.addChildViewController(self.pageViewController)
         self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
+        self.pageViewController.didMove(toParentViewController: self)
     }
-    func SignUp(sender: UIButton!){
+    func SignUp(_ sender: UIButton!){
         print("Sign up")
     }
-    func Login(sender: UIButton!){
+    func Login(_ sender: UIButton!){
         print("Log in")
     }
     

@@ -10,6 +10,7 @@ import UIKit
 import Charts
 
 class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
+    
     var scrollView: UIScrollView!
     var containerView: UIView!
     @IBOutlet weak var pieChart: PieChartView!
@@ -20,13 +21,13 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
     var record: Record!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.scrollView = UIScrollView(frame: UIScreen.mainScreen().bounds)
+        self.scrollView = UIScrollView(frame: UIScreen.main.bounds)
         self.scrollView.delegate = self
-        self.scrollView.contentSize = CGSizeMake(self.view.bounds.width, 667)
+        self.scrollView.contentSize = CGSize(width: self.view.bounds.width, height:667)
         
         self.containerView = UIView()
-        self.scrollView.userInteractionEnabled = true
-        self.containerView.userInteractionEnabled = true
+        self.scrollView.isUserInteractionEnabled = true
+        self.containerView.isUserInteractionEnabled = true
         var xValues : [String]
         var yValues : [Double]
         var tableData : [[String]]
@@ -41,8 +42,8 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
         ]*/
         
         (xValues,yValues,tableData) = initDatas()
-        initPieChart(xValues, values:yValues)
-        initTable(tableData)
+        initPieChart(dataPoints: xValues, values:yValues)
+        initTable(input: tableData)
         // Do any additional setup after loading the view.
     }
 
@@ -51,9 +52,9 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
-         pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.EaseOutSine)
+         pieChart.animate(yAxisDuration: 1, easingOption: ChartEasingOption.easeOutSine)
     }
     func initDatas()->([String],[Double],[[String]]){
         var output1 = [String]()
@@ -80,11 +81,11 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
     func initPieChart(dataPoints:[String], values: [Double]){
         var dataEntries:[ChartDataEntry] = []
         for i in 0..<dataPoints.count{
-           let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+           let dataEntry = ChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
         }
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Labels for attributes")
-        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "label for attributes")
+        let pieChartData = PieChartData( dataSet: pieChartDataSet)
         
         pieChartDataSet.sliceSpace = 2.0
         pieChartDataSet.colors = ChartColorTemplates.colorful()
@@ -93,10 +94,11 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
         colors = [UIColor.chartBlueColor(), UIColor.chartYellowColor(), UIColor.chartGreenColor(), UIColor.chartRedColor()]
         pieChartDataSet.colors = colors
         //======================================================
-        pieChart.descriptionText = ""
-        pieChart.descriptionTextAlign = .Center
-        pieChart.descriptionFont = UIFont(name: HEADERFONT, size: 18)
-        pieChart.setDescriptionTextPosition(x: 100.0, y: 0.0)
+        pieChart.chartDescription?.text = ""
+        pieChart.chartDescription?.textAlign = .center
+        pieChart.chartDescription?.font = UIFont(name: HEADERFONT, size: 18)!
+        pieChart.chartDescription?.xOffset = 100.0
+        pieChart.chartDescription?.yOffset = 0.0
         pieChart.data = pieChartData
         
     }
@@ -107,7 +109,7 @@ class SavedHistoryViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        containerView.frame = CGRectMake(0, 0, scrollView.contentSize.width, scrollView.contentSize.height)
+        containerView.frame = CGRect(x:0, y:0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
     }
 
     /*
@@ -125,21 +127,21 @@ extension SavedHistoryViewController: UITableViewDataSource, UITableViewDelegate
     func initTable(input: [[String]]){
         resultChart.dataSource = self
         resultChart.delegate = self
-        let cellCollNib = UINib(nibName: "TableCell", bundle: NSBundle.mainBundle())
-        resultChart.registerNib(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
+        let cellCollNib = UINib(nibName: "TableCell", bundle: Bundle.main)
+        resultChart.register(cellCollNib, forCellReuseIdentifier: reuseIdentifier)
         resultChart.tableFooterView = UIView()
-        resultChart.separatorStyle = .None
+        resultChart.separatorStyle = .none
         showData = input
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return showData.count
     }
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: ResultTableCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ResultTableCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: ResultTableCell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ResultTableCell
         let item = showData[indexPath.row]
         cell.Title1.text = item[0]
         cell.Title2.text = item[1]
