@@ -1,0 +1,374 @@
+(
+        {
+        additionalRows = 2;
+        cellIdentifier = idCellNormal;
+        isExpandable = 1;
+        isExpanded = 0;
+        isVisible = 1;
+        primaryTitle = "";
+        secondaryTitle = Fullname;
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellTextfield;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Firstname;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellTextfield;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Lastname;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 1;
+        cellIdentifier = idCellNormal;
+        isExpandable = 1;
+        isExpanded = 0;
+        isVisible = 1;
+        primaryTitle = "";
+        secondaryTitle = "Date of Birth";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellDatePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = "";
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 1;
+        cellIdentifier = idCellNormal;
+        isExpandable = 1;
+        isExpanded = 0;
+        isVisible = 1;
+        primaryTitle = "";
+        secondaryTitle = "Marital Status";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellSwitch;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = "Off = Single, On = Married";
+        secondaryTitle = "";
+        value = false;
+    }
+)
+(
+        {
+        additionalRows = 4;
+        cellIdentifier = idCellNormal;
+        isExpandable = 1;
+        isExpanded = 0;
+        isVisible = 1;
+        primaryTitle = "";
+        secondaryTitle = "Favorite Sport";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Football;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Basketball;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Baseball;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Volleyball;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 3;
+        cellIdentifier = idCellNormal;
+        isExpandable = 1;
+        isExpanded = 0;
+        isVisible = 1;
+        primaryTitle = "";
+        secondaryTitle = "Favorite Color";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Red;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Green;
+        secondaryTitle = "";
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellValuePicker;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = Blue;
+        secondaryTitle = "";
+        value = "";
+    }
+)
+(
+        {
+        additionalRows = 1;
+        cellIdentifier = idCellNormal;
+        isExpandable = 1;
+        isExpanded = 0;
+        isVisible = 1;
+        primaryTitle = "";
+        secondaryTitle = Level;
+        value = "";
+    },
+        {
+        additionalRows = 0;
+        cellIdentifier = idCellSlider;
+        isExpandable = 0;
+        isExpanded = 0;
+        isVisible = 0;
+        primaryTitle = "";
+        secondaryTitle = "";
+        value = "0.0";
+    }
+)
+(
+        (
+                {
+            additionalRows = 2;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = Fullname;
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellTextfield;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Firstname;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellTextfield;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Lastname;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 1;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = "Date of Birth";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellDatePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 1;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = "Marital Status";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellSwitch;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Off = Single, On = Married";
+            secondaryTitle = "";
+            value = false;
+        }
+    ),
+        (
+                {
+            additionalRows = 4;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = "Favorite Sport";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Football;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Basketball;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Baseball;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Volleyball;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 3;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = "Favorite Color";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Red;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Green;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Blue;
+            secondaryTitle = "";
+            value = "";
+        }
+    ),
+        (
+                {
+            additionalRows = 1;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = Level;
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellSlider;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "";
+            secondaryTitle = "";
+            value = "0.0";
+        }
+    )
+)

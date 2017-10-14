@@ -1,0 +1,94 @@
+(
+        (
+                {
+            additionalRows = 8;
+            cellIdentifier = idCellNormal;
+            isExpandable = 1;
+            isExpanded = 0;
+            isVisible = 1;
+            primaryTitle = "";
+            secondaryTitle = Topic;
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Investment Income";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = Employment;
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Interest Income";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Business and Professional Income";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Pension and Other Income";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Rental Income";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Capital Gain";
+            secondaryTitle = "";
+            value = "";
+        },
+                {
+            additionalRows = 0;
+            cellIdentifier = idCellValuePicker;
+            isExpandable = 0;
+            isExpanded = 0;
+            isVisible = 0;
+            primaryTitle = "Dividend Income";
+            secondaryTitle = "";
+            value = "";
+        }
+    )
+)

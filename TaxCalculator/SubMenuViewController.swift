@@ -57,7 +57,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     func MoveIntoNext(){
-        //print(cellDescriptors)
+       // print(cellDescriptors)
     //    var array: NSMutableArray = (cellDescriptors[0] as AnyObject).mutableCopy() as! NSMutableArray
         var array:NSMutableArray = cellDescriptors[0] as! NSMutableArray
         for item in array {
@@ -118,6 +118,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         tblExpandable.register(UINib(nibName: "SwitchCell", bundle: nil), forCellReuseIdentifier: "idCellSwitch")
         tblExpandable.register(UINib(nibName: "ValuePickerCell", bundle: nil), forCellReuseIdentifier: "idCellValuePicker")
         tblExpandable.register(UINib(nibName: "SliderCell", bundle: nil), forCellReuseIdentifier: "idCellSlider")
+       
     }
     
     func addNormalCell(_ Title: String, _ child: Int, _ guy: NSMutableArray){
@@ -172,7 +173,6 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         getIndicesOfVisibleRows()
         tblExpandable.reloadData()
-
     }
     
     
@@ -180,11 +180,13 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         visibleRowsPerSection.removeAll()
         //print(cellDescriptors)
         for currentSectionCells in cellDescriptors {
-            //print(currentSectionCells)
+            print("printing cell")
+            print(currentSectionCells)
             var visibleRows = [Int]()
-            
+            var i : Int = 0
             for row in 0...((currentSectionCells as AnyObject).count - 1) {
                 if (currentSectionCells as AnyObject).objectAt(row)["isVisible"] as! Bool == true {
+                   // print("the current i is \(i)")
                     visibleRows.append(row)
                 }
             }
@@ -205,6 +207,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func numberOfSections(in tableView: UITableView) -> Int {
        // if cellDescriptors != nil {
+            print("the cellDescriptors counter is ---------> \(cellDescriptors.count)")
             return cellDescriptors.count
        // }
        // else {
@@ -214,6 +217,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("the visibleRowsPerSection is ------> \(visibleRowsPerSection[section].count)")
         return visibleRowsPerSection[section].count
     }
     
@@ -233,6 +237,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("called this   ----------------- > ????????")
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: currentCellDescriptor["cellIdentifier"] as! String, for: indexPath) as! CustomCell
         
