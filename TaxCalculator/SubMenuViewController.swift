@@ -207,7 +207,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func numberOfSections(in tableView: UITableView) -> Int {
        // if cellDescriptors != nil {
-            print("the cellDescriptors counter is ---------> \(cellDescriptors.count)")
+        
             return cellDescriptors.count
        // }
        // else {
@@ -217,7 +217,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("the visibleRowsPerSection is ------> \(visibleRowsPerSection[section].count)")
+       
         return visibleRowsPerSection[section].count
     }
     
@@ -237,7 +237,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("called this   ----------------- > ????????")
+      
         let currentCellDescriptor = getCellDescriptorForIndexPath(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: currentCellDescriptor["cellIdentifier"] as! String, for: indexPath) as! CustomCell
         
@@ -299,21 +299,50 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 shouldExpandAndShowSubRows = true
             }
             //https://www.appcoda.com/expandable-table-view/
+            print("the indexpath section is  -------->   \(indexPath.section)")
             var array: NSMutableArray = cellDescriptors[indexPath.section] as! NSMutableArray
+            
+            print("the array count is \(array.count)")
+            print("the indexOfTappedRow is      ->   \(indexOfTappedRow)")
+            /*
             var test : NSMutableDictionary = (cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfTappedRow] as! NSMutableDictionary
             test.setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
             array.replaceObject(at: indexOfTappedRow, with: test)
             cellDescriptors[indexPath.section] = array
+            */
+            
+            
+            
+            var test : [String: AnyObject] = (cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfTappedRow] as! [String: AnyObject]
+            
+           // test.setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
+            test["isExpanded"] = shouldExpandAndShowSubRows as AnyObject
+            array.replaceObject(at: indexOfTappedRow, with: test)
+            cellDescriptors[indexPath.section] = array
+            
+            
+            
+            // ((cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfTappedRow] as AnyObject).setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
 
-          //  cellDescriptors[indexPath.section][indexOfTappedRow].setValue(shouldExpandAndShowSubRows, forKey: "isExpanded")
+        
             
             for i in (indexOfTappedRow + 1)...(indexOfTappedRow + ((cellDescriptors[indexPath.section] as! [[String:AnyObject]])[indexOfTappedRow]["additionalRows"] as! Int)) {
                // cellDescriptors[indexPath.section][i].setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
                 var array: NSMutableArray = cellDescriptors[indexPath.section] as! NSMutableArray
+                /*
                 var test : NSMutableDictionary = (cellDescriptors[indexPath.section] as! [[String:AnyObject]])[i] as! NSMutableDictionary
                 test.setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
                 array.replaceObject(at: i, with: test)
+                cellDescriptors[indexPath.section] = array*/
+                
+                
+                var test : [String: AnyObject] = (cellDescriptors[indexPath.section] as! NSMutableArray)[i] as! [String: AnyObject]
+                test["isVisible"] = shouldExpandAndShowSubRows as AnyObject
+                array.replaceObject(at: i, with: test)
                 cellDescriptors[indexPath.section] = array
+                
+                
+                
             }
             
         }
