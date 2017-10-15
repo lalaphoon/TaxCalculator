@@ -186,17 +186,21 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pc4-SR-pUW" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="24" y="49" width="327" height="213"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pc4-SR-pUW" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="24" y="49" width="327" height="280"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-Ie-Kz0">
-                                <rect key="frame" x="24" y="281" width="327" height="198"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9d-Ie-Kz0">
+                                <rect key="frame" x="24" y="348" width="327" height="198"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="198" id="wm3-kR-7Pd"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Pc4-SR-pUW" firstAttribute="top" secondItem="ny3-Yi-W4C" secondAttribute="bottom" constant="49" id="02M-sw-oJX"/>
                             <constraint firstItem="u9d-Ie-Kz0" firstAttribute="leading" secondItem="MRv-H4-gOh" secondAttribute="leadingMargin" constant="8" id="7m5-lV-E3F"/>
                             <constraint firstItem="Pc4-SR-pUW" firstAttribute="leading" secondItem="MRv-H4-gOh" secondAttribute="leadingMargin" constant="8" id="EdK-5v-L00"/>
                             <constraint firstItem="u9d-Ie-Kz0" firstAttribute="top" secondItem="Pc4-SR-pUW" secondAttribute="bottom" constant="19" id="L5A-Hi-eGV"/>
