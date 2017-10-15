@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ChartsRealm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-TaxCalculator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -41,42 +46,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>01145836D2E034D94CF4F564707461DE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>02B1D1C3FAC9DD2A7CB890874F26A807</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>33B7FE366608408C660BD445EF5E20B8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>600CBABB8ED5A985E93F98A6BEF19B68</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>98851BBC98AF4332FFA8E4A8D30B0D4A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D2EE878FEAB8779F99238B71FE1F87C1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F307B842FF76B2DE6C55DB67C0885325</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

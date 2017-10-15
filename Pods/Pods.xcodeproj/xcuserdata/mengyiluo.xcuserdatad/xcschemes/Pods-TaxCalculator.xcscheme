@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D2EE878FEAB8779F99238B71FE1F87C1"
+               BlueprintIdentifier = "03E450078AA449BCF0E7227D76A15EC3"
                BuildableName = "Pods_TaxCalculator.framework"
                BlueprintName = "Pods-TaxCalculator"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -36,6 +37,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -45,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D2EE878FEAB8779F99238B71FE1F87C1"
+            BlueprintIdentifier = "03E450078AA449BCF0E7227D76A15EC3"
             BuildableName = "Pods_TaxCalculator.framework"
             BlueprintName = "Pods-TaxCalculator"
             ReferencedContainer = "container:Pods.xcodeproj">

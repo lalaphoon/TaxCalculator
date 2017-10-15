@@ -7,13 +7,14 @@ target 'TaxCalculator' do
 
   # Pods for TaxCalculator
   pod 'PureLayout'
-  pod 'Charts','3.0.1'
-  pod 'RealmSwift', '~> 2.0.2'
+  pod 'Charts','3.0.4'
+ # pod 'RealmSwift', '~> 2.0.2'
+  pod 'ChartsRealm'
 
   post_install do |installer|
 	installer.pods_project.targets.each do |target|
 		target.build_configurations.each do |config|
-			config.build_settings['SWIFT_VERSION'] = '3.0'
+			config.build_settings['SWIFT_VERSION'] = '4.0'
 		end
 	end
  end
