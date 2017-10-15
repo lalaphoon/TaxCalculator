@@ -329,13 +329,6 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
             for i in (indexOfTappedRow + 1)...(indexOfTappedRow + ((cellDescriptors[indexPath.section] as! [[String:AnyObject]])[indexOfTappedRow]["additionalRows"] as! Int)) {
                // cellDescriptors[indexPath.section][i].setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
                 var array: NSMutableArray = cellDescriptors[indexPath.section] as! NSMutableArray
-                /*
-                var test : NSMutableDictionary = (cellDescriptors[indexPath.section] as! [[String:AnyObject]])[i] as! NSMutableDictionary
-                test.setValue(shouldExpandAndShowSubRows, forKey: "isVisible")
-                array.replaceObject(at: i, with: test)
-                cellDescriptors[indexPath.section] = array*/
-                
-                
                 var test : [String: AnyObject] = (cellDescriptors[indexPath.section] as! NSMutableArray)[i] as! [String: AnyObject]
                 test["isVisible"] = shouldExpandAndShowSubRows as AnyObject
                 array.replaceObject(at: i, with: test)
@@ -365,7 +358,9 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 
                 
-                
+                //  ((cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfParentCell] as AnyObject).setValue((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
+                //  ((cellDescriptors[indexPath.section] as! NSMutableArray) [indexOfParentCell] as AnyObject).setValue(false, forKey: "isExpanded")
+                // I have to change those above to this shit below
                 var array : NSMutableArray = cellDescriptors[indexPath.section] as! NSMutableArray
                 var test : [String: AnyObject] = (cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfParentCell] as! [String: AnyObject]
                 test["primaryTitle"] = (tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text as AnyObject
@@ -377,21 +372,17 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 
                 
-                
-                print("based on the test the value is \(test["primaryTitle"])")
-                print("the value I want to set is \((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text) ")
-                
-              //  ((cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfParentCell] as AnyObject).setValue((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
-              //  ((cellDescriptors[indexPath.section] as! NSMutableArray) [indexOfParentCell] as AnyObject).setValue(false, forKey: "isExpanded")
-                
                
                 for i in (indexOfParentCell + 1)...(indexOfParentCell + ((cellDescriptors[indexPath.section] as! [[String:AnyObject]])[indexOfParentCell]["additionalRows"] as! Int)) {
-                   // ((cellDescriptors[indexPath.section] as! NSMutableArray)[i] as AnyObject).setValue(false, forKey: "isVisible")
+                   // ((cellDescriptors[indexPath.section] as! NSMutableArray)[i] as  AnyObject ).setValue(false as AnyObject, forKey: "isVisible")
+                    
+                   // I have to change those above to this shit below
                    array = cellDescriptors[indexPath.section] as! NSMutableArray
                    test = (cellDescriptors[indexPath.section] as! NSMutableArray)[i] as! [String: AnyObject]
                    test["isVisible"] = false as AnyObject
                    array.replaceObject(at: i, with: test)
                    cellDescriptors[indexPath.section] = array
+                    
                     
                 }
                 
