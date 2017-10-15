@@ -11,7 +11,6 @@
 		46006C8E1D80AF4800CCBFFE /* EmptyBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */; };
 		46006C901D82332900CCBFFE /* SubMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C8F1D82332900CCBFFE /* SubMenuViewController.swift */; };
 		46006C921D82346F00CCBFFE /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46006C911D82346F00CCBFFE /* CustomCell.swift */; };
-		46006C971D82360D00CCBFFE /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C961D82360D00CCBFFE /* NormalCell.xib */; };
 		46006C991D82361E00CCBFFE /* TextfieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C981D82361E00CCBFFE /* TextfieldCell.xib */; };
 		46006C9B1D82362500CCBFFE /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C9A1D82362500CCBFFE /* DatePickerCell.xib */; };
 		46006C9D1D82363500CCBFFE /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46006C9C1D82363500CCBFFE /* SwitchCell.xib */; };
@@ -73,6 +72,7 @@
 		463CDAD21E0FAD760096076F /* OldAgeSecurityPension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463CDAD11E0FAD760096076F /* OldAgeSecurityPension.swift */; };
 		465C74FA1D62282800F9572A /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C74F91D62282800F9572A /* ResultViewController.swift */; };
 		465C74FD1D62A3F100F9572A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C74FC1D62A3F100F9572A /* HistoryViewController.swift */; };
+		466F8E041F92F37200F3CE3D /* NormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 466F8E031F92F37200F3CE3D /* NormalCell.xib */; };
 		4670331E1D5FC75900688802 /* InputsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331D1D5FC75900688802 /* InputsViewController.swift */; };
 		467033201D612F8900688802 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670331F1D612F8900688802 /* ProfileViewController.swift */; };
 		467D34961D380110008D820B /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467D34951D380110008D820B /* StartViewController.swift */; };
@@ -141,7 +141,6 @@
 		46006C8D1D80AF4800CCBFFE /* EmptyBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyBackgroundView.swift; sourceTree = "<group>"; };
 		46006C8F1D82332900CCBFFE /* SubMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubMenuViewController.swift; sourceTree = "<group>"; };
 		46006C911D82346F00CCBFFE /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		46006C961D82360D00CCBFFE /* NormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalCell.xib; sourceTree = "<group>"; };
 		46006C981D82361E00CCBFFE /* TextfieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextfieldCell.xib; sourceTree = "<group>"; };
 		46006C9A1D82362500CCBFFE /* DatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		46006C9C1D82363500CCBFFE /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
@@ -209,6 +208,7 @@
 		463CDAD11E0FAD760096076F /* OldAgeSecurityPension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldAgeSecurityPension.swift; sourceTree = "<group>"; };
 		465C74F91D62282800F9572A /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		465C74FC1D62A3F100F9572A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		466F8E031F92F37200F3CE3D /* NormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalCell.xib; sourceTree = "<group>"; };
 		4670331D1D5FC75900688802 /* InputsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputsViewController.swift; sourceTree = "<group>"; };
 		4670331F1D612F8900688802 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		467D34951D380110008D820B /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
@@ -287,7 +287,7 @@
 				46006C9E1D82363C00CCBFFE /* ValuePickerCell.xib */,
 				46006CA01D82364400CCBFFE /* SliderCell.xib */,
 				46006C9C1D82363500CCBFFE /* SwitchCell.xib */,
-				46006C961D82360D00CCBFFE /* NormalCell.xib */,
+				466F8E031F92F37200F3CE3D /* NormalCell.xib */,
 				469C30BB1D918C74002BBB4C /* TableCell.xib */,
 				4615EF961D990B9E007CDEAA /* ResultCell.xib */,
 			);
@@ -731,12 +731,12 @@
 				46006CA11D82364400CCBFFE /* SliderCell.xib in Resources */,
 				46006CA31D82365000CCBFFE /* CellDescriptor.plist in Resources */,
 				469C30BC1D918C74002BBB4C /* TableCell.xib in Resources */,
-				46006C971D82360D00CCBFFE /* NormalCell.xib in Resources */,
 				46006C991D82361E00CCBFFE /* TextfieldCell.xib in Resources */,
 				462D62721D33279000D4FE94 /* LaunchScreen.storyboard in Resources */,
 				46006C9B1D82362500CCBFFE /* DatePickerCell.xib in Resources */,
 				462D626F1D33279000D4FE94 /* Assets.xcassets in Resources */,
 				460173871DB1F7F9002BE015 /* Terms.html in Resources */,
+				466F8E041F92F37200F3CE3D /* NormalCell.xib in Resources */,
 				46006C9D1D82363500CCBFFE /* SwitchCell.xib in Resources */,
 				462D626A1D33279000D4FE94 /* Main.storyboard in Resources */,
 				460173851DB1D483002BE015 /* privacyCSS.css in Resources */,

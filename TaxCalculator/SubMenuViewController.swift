@@ -61,7 +61,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
     //    var array: NSMutableArray = (cellDescriptors[0] as AnyObject).mutableCopy() as! NSMutableArray
         var array:NSMutableArray = cellDescriptors[0] as! NSMutableArray
         for item in array {
-            var m : NSMutableDictionary = item as! NSMutableDictionary
+            var m : [String: AnyObject] = item as! [String: AnyObject]
             if m["cellIdentifier"] as! String == "idCellNormal" {
                // print(m["primaryTitle"] as! String)
                 if (((m["primaryTitle"] as! String).isEqual(""))) {
@@ -79,7 +79,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         if cellDescriptors.count > 1 {
             array = cellDescriptors[1]  as! NSMutableArray
             for item in array {
-                var m : NSMutableDictionary = item  as! NSMutableDictionary
+                var m : [String : AnyObject] = item  as! [String : AnyObject]
                 if m["cellIdentifier"] as! String == "idCellNormal" {
                     if (((m["primaryTitle"] as! String).isEqual(""))) {
                     
@@ -144,7 +144,7 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
         var topic_name : String!
         // var test : NSMutableDictionary = cellDescriptors[0][indexOfTappedRow].mutableCopy() as! NSMutableDictionary
         for item in array {
-            var m : NSMutableDictionary = item  as! NSMutableDictionary
+            var m : [String: AnyObject] = item  as! [String:AnyObject]
             if m["cellIdentifier"] as! String == "idCellNormal" {
                 topic_name = m["primaryTitle"] as! String
             }
@@ -361,13 +361,38 @@ class SubMenuViewController: UIViewController, UITableViewDelegate, UITableViewD
                         break
                     }
                 }
+                print("the indexOfParentCell is \(indexOfParentCell)")
                 
-                ((cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfParentCell] as AnyObject).setValue((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
-                ((cellDescriptors[indexPath.section] as! NSMutableArray) [indexOfParentCell] as AnyObject).setValue(false, forKey: "isExpanded")
+                
+                
+                
+                var array : NSMutableArray = cellDescriptors[indexPath.section] as! NSMutableArray
+                var test : [String: AnyObject] = (cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfParentCell] as! [String: AnyObject]
+                test["primaryTitle"] = (tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text as AnyObject
+                test["isExpanded"] = false as AnyObject
+                array.replaceObject(at: indexOfParentCell, with: test)
+                cellDescriptors[indexPath.section] = array
+                
+                
+                
+                
+                
+                
+                print("based on the test the value is \(test["primaryTitle"])")
+                print("the value I want to set is \((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text) ")
+                
+              //  ((cellDescriptors[indexPath.section] as! NSMutableArray)[indexOfParentCell] as AnyObject).setValue((tblExpandable.cellForRow(at: indexPath) as! CustomCell).textLabel?.text, forKey: "primaryTitle")
+              //  ((cellDescriptors[indexPath.section] as! NSMutableArray) [indexOfParentCell] as AnyObject).setValue(false, forKey: "isExpanded")
                 
                
                 for i in (indexOfParentCell + 1)...(indexOfParentCell + ((cellDescriptors[indexPath.section] as! [[String:AnyObject]])[indexOfParentCell]["additionalRows"] as! Int)) {
-                    ((cellDescriptors[indexPath.section] as! NSMutableArray)[i] as AnyObject).setValue(false, forKey: "isVisible")
+                   // ((cellDescriptors[indexPath.section] as! NSMutableArray)[i] as AnyObject).setValue(false, forKey: "isVisible")
+                   array = cellDescriptors[indexPath.section] as! NSMutableArray
+                   test = (cellDescriptors[indexPath.section] as! NSMutableArray)[i] as! [String: AnyObject]
+                   test["isVisible"] = false as AnyObject
+                   array.replaceObject(at: i, with: test)
+                   cellDescriptors[indexPath.section] = array
+                    
                 }
                 
                 //================Adding Additional cell===================
